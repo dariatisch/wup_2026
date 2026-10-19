@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.6.39" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<meta name="author" content="Daria Tisch" />
+
+<title>4. Übungsblatt (Faktorielle Umfrageexperimente) – Fortgeschrittene quantitative Methoden</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<!-- htmldependencies:E3FAD763 -->
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn"
+      data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <h1 class="quarto-secondary-nav-title no-breadcrumbs"></h1>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" role="link"
+        aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+        onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="/">
+      Fortgeschrittene quantitative Methoden
+      </a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dariatisch/wup_2026"  title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kursinformationen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1"  role="navigation" aria-expanded="true">
+ <span class="menu-text">Zeitplan und Dateien</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/slides/1_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Seminar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/slides/1_uebung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Übung</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/uebungen/1_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Übungsblatt</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/slides/2_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Seminar  (Paneldaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/uebungen/2_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Übungsblatt (Paneldaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/slides/3_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - Seminar  (Ereignisdaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/uebungen/3_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - Übungsblatt (Ereignisdaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/slides/4_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 - Seminar  (Faktorielle Umfrageexperimente)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/uebungen/4_uebungsblatt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">4 - Übungsblatt (Faktorielle Umfrageexperimente)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" ></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <div id="quarto-toc-target"></div>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">4. Übungsblatt (Faktorielle Umfrageexperimente)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Daria Tisch </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#organisation" id="toc-organisation"><span class="header-section-number">1</span> Organisation</a>
+  <ul>
+  <li><a href="#arbeitsverzeichnis-festsetzen" id="toc-arbeitsverzeichnis-festsetzen"><span class="header-section-number">1.1</span> Arbeitsverzeichnis festsetzen</a></li>
+  <li><a href="#packages-installieren-und-laden" id="toc-packages-installieren-und-laden"><span class="header-section-number">1.2</span> Packages installieren und laden</a></li>
+  <li><a href="#einführung" id="toc-einführung"><span class="header-section-number">1.3</span> Einführung</a></li>
+  <li><a href="#daten-einlesen" id="toc-daten-einlesen"><span class="header-section-number">1.4</span> Daten einlesen</a></li>
+  <li><a href="#variablenlabels-einlesen" id="toc-variablenlabels-einlesen"><span class="header-section-number">1.5</span> Variablenlabels einlesen</a></li>
+  <li><a href="#value-labels-einlesen" id="toc-value-labels-einlesen"><span class="header-section-number">1.6</span> Value labels einlesen</a></li>
+  </ul></li>
+  <li><a href="#kennenlernen-des-datensatzes" id="toc-kennenlernen-des-datensatzes"><span class="header-section-number">2</span> Kennenlernen des Datensatzes</a>
+  <ul>
+  <li><a href="#wie-viele-beobachtungen-enthält-der-datensatz" id="toc-wie-viele-beobachtungen-enthält-der-datensatz"><span class="header-section-number">2.1</span> Wie viele Beobachtungen enthält der Datensatz?</a></li>
+  <li><a href="#wie-viele-befragte-personen-sind-im-datensatz-enthalten" id="toc-wie-viele-befragte-personen-sind-im-datensatz-enthalten"><span class="header-section-number">2.2</span> Wie viele befragte Personen sind im Datensatz enthalten?</a></li>
+  <li><a href="#wie-viele-vignetten-hat-jede-befragte-person-bewertet" id="toc-wie-viele-vignetten-hat-jede-befragte-person-bewertet"><span class="header-section-number">2.3</span> Wie viele Vignetten hat jede befragte Person bewertet?</a></li>
+  <li><a href="#wie-viele-vignetten-gibt-es" id="toc-wie-viele-vignetten-gibt-es"><span class="header-section-number">2.4</span> Wie viele Vignetten gibt es?</a></li>
+  <li><a href="#wie-viele-decks-gibt-es" id="toc-wie-viele-decks-gibt-es"><span class="header-section-number">2.5</span> Wie viele Decks gibt es?</a></li>
+  <li><a href="#dimensionen-und-ausprägungen" id="toc-dimensionen-und-ausprägungen"><span class="header-section-number">2.6</span> Dimensionen und Ausprägungen</a></li>
+  </ul></li>
+  <li><a href="#orthogonalität-und-balance" id="toc-orthogonalität-und-balance"><span class="header-section-number">3</span> Orthogonalität und Balance</a>
+  <ul>
+  <li><a href="#sind-die-dimensionen-orthogonal" id="toc-sind-die-dimensionen-orthogonal"><span class="header-section-number">3.1</span> Sind die Dimensionen orthogonal?</a></li>
+  <li><a href="#sind-die-dimensionen-ausprägungen-balanced" id="toc-sind-die-dimensionen-ausprägungen-balanced"><span class="header-section-number">3.2</span> Sind die Dimensionen / Ausprägungen balanced?</a></li>
+  </ul></li>
+  <li><a href="#deskriptive-statistik" id="toc-deskriptive-statistik"><span class="header-section-number">4</span> Deskriptive Statistik</a>
+  <ul>
+  <li><a href="#replikation-tabelle-2" id="toc-replikation-tabelle-2"><span class="header-section-number">4.1</span> Replikation Tabelle 2</a></li>
+  <li><a href="#replikation-figure-1" id="toc-replikation-figure-1"><span class="header-section-number">4.2</span> Replikation Figure 1</a></li>
+  </ul></li>
+  <li><a href="#regression" id="toc-regression"><span class="header-section-number">5</span> Regression</a>
+  <ul>
+  <li><a href="#replikation-von-tabelle-3" id="toc-replikation-von-tabelle-3"><span class="header-section-number">5.1</span> Replikation von Tabelle 3</a></li>
+  </ul></li>
+  <li><a href="#render" id="toc-render"><span class="header-section-number">6</span> Render</a></li>
+  <li><a href="#weiterführende-literatur" id="toc-weiterführende-literatur"><span class="header-section-number">7</span> Weiterführende Literatur</a></li>
+  </ul>
+</nav>
+<section id="organisation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Organisation</h1>
+<section id="arbeitsverzeichnis-festsetzen" class="level2" data-number="1.1">
+<h2 data-number="1.1"><span class="header-section-number">1.1</span> Arbeitsverzeichnis festsetzen</h2>
+</section>
+<section id="packages-installieren-und-laden" class="level2" data-number="1.2">
+<h2 data-number="1.2"><span class="header-section-number">1.2</span> Packages installieren und laden</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Packages</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="st">&quot;tidyverse&quot;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="st">&quot;sjPlot&quot;</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="st">&quot;haven&quot;</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="st">&quot;labelled&quot;</span> ,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="st">&quot;sandwich&quot;</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>  <span class="st">&quot;lmtest&quot;</span>,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="st">&quot;Hmisc&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>) </span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="einführung" class="level2" data-number="1.3">
+<h2 data-number="1.3"><span class="header-section-number">1.3</span> Einführung</h2>
+<p>In dieser Übung replizieren wir die Ergebnisse folgender Studie:</p>
+<p>Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.</p>
+<p>Der Datensatz kann <a href="https://dariatisch.github.io/wup2024/downloads/just_transfers.csv">hier</a> heruntergeladen werden.</p>
+<p>Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?</p>
+</section>
+<section id="daten-einlesen" class="level2" data-number="1.4">
+<h2 data-number="1.4"><span class="header-section-number">1.4</span> Daten einlesen</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load the data file</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers.csv&quot;</span>)</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="variablenlabels-einlesen" class="level2" data-number="1.5">
+<h2 data-number="1.5"><span class="header-section-number">1.5</span> Variablenlabels einlesen</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Load the variable labels</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>variable_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers_variable_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># View variable labels</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#print(variable_labels)</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Loop through the labels and assign them to variables in the dataset</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(variable_labels)) {</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="cf">if</span> (var <span class="sc">%in%</span> <span class="fu">names</span>(df)) {</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="fu">var_label</span>(df[[var]]) <span class="ot">&lt;-</span> variable_labels[[var]]</span>
+<span id="cb3-12"><a href="#cb3-12"></a>  }</span>
+<span id="cb3-13"><a href="#cb3-13"></a>}</span></code></pre></div>
+</details>
+</div>
+</section>
+<section id="value-labels-einlesen" class="level2" data-number="1.6">
+<h2 data-number="1.6"><span class="header-section-number">1.6</span> Value labels einlesen</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Load the value labels</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>value_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/value_labels.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># View value labels</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">head</span>(value_labels)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["variable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["label"],"name":[2],"type":["chr"],"align":["left"]},{"label":["value"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"firstborn","2":"Son firstborn","3":"1","_rn_":"1"},{"1":"firstborn","2":"Twins","3":"2","_rn_":"2"},{"1":"firstborn","2":"Daughter firstborn","3":"3","_rn_":"3"},{"1":"need","2":"Son unemployed","3":"1","_rn_":"4"},{"1":"need","2":"Equal earnings","3":"2","_rn_":"5"},{"1":"need","2":"Daughter unemployed","3":"3","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="kennenlernen-des-datensatzes" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Kennenlernen des Datensatzes</h1>
+<section id="wie-viele-beobachtungen-enthält-der-datensatz" class="level2" data-number="2.1">
+<h2 data-number="2.1"><span class="header-section-number">2.1</span> Wie viele Beobachtungen enthält der Datensatz?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4284</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-viele-befragte-personen-sind-im-datensatz-enthalten" class="level2" data-number="2.2">
+<h2 data-number="2.2"><span class="header-section-number">2.2</span> Wie viele befragte Personen sind im Datensatz enthalten?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_resp))</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 714</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-viele-vignetten-hat-jede-befragte-person-bewertet" class="level2" data-number="2.3">
+<h2 data-number="2.3"><span class="header-section-number">2.3</span> Wie viele Vignetten hat jede befragte Person bewertet?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_within))</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">table</span>(df<span class="sc">$</span>id_within)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3 
+1428 1428 1428 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="dv">1428</span><span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 714</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-viele-vignetten-gibt-es" class="level2" data-number="2.4">
+<h2 data-number="2.4"><span class="header-section-number">2.4</span> Wie viele Vignetten gibt es?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">table</span>(df<span class="sc">$</span>id_vignette)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 
+134 134 134 162 162 162 180 180 180 168 168 168 146 146 146 174 174 174 154 154 
+ 21  22  23  24  25  26  27 
+154 152 152 152 158 158 158 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_vignette))</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-viele-decks-gibt-es" class="level2" data-number="2.5">
+<h2 data-number="2.5"><span class="header-section-number">2.5</span> Wie viele Decks gibt es?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">table</span>(df<span class="sc">$</span>deck)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  1   2   3   4   5   6   7   8   9 
+402 486 540 504 438 522 462 456 474 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>deck))</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+</section>
+<section id="dimensionen-und-ausprägungen" class="level2" data-number="2.6">
+<h2 data-number="2.6"><span class="header-section-number">2.6</span> Dimensionen und Ausprägungen</h2>
+<p>Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">head</span>(value_labels, <span class="dv">9</span>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["variable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["label"],"name":[2],"type":["chr"],"align":["left"]},{"label":["value"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"firstborn","2":"Son firstborn","3":"1","_rn_":"1"},{"1":"firstborn","2":"Twins","3":"2","_rn_":"2"},{"1":"firstborn","2":"Daughter firstborn","3":"3","_rn_":"3"},{"1":"need","2":"Son unemployed","3":"1","_rn_":"4"},{"1":"need","2":"Equal earnings","3":"2","_rn_":"5"},{"1":"need","2":"Daughter unemployed","3":"3","_rn_":"6"},{"1":"help","2":"Son helps","3":"1","_rn_":"7"},{"1":"help","2":"Both help","3":"2","_rn_":"8"},{"1":"help","2":"Daughter helps","3":"3","_rn_":"9"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="orthogonalität-und-balance" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Orthogonalität und Balance</h1>
+<section id="sind-die-dimensionen-orthogonal" class="level2" data-number="3.1">
+<h2 data-number="3.1"><span class="header-section-number">3.1</span> Sind die Dimensionen orthogonal?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Dummy-Variablen mit dplyr erstellen</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="co"># Dummy-Variablen für firstborn</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>    <span class="at">firstborn_1 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-6"><a href="#cb24-6"></a>    <span class="at">firstborn_2 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-7"><a href="#cb24-7"></a>    <span class="at">firstborn_3 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-8"><a href="#cb24-8"></a>    </span>
+<span id="cb24-9"><a href="#cb24-9"></a>    <span class="co"># Dummy-Variablen für help</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a>    <span class="at">help_1 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-11"><a href="#cb24-11"></a>    <span class="at">help_2 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-12"><a href="#cb24-12"></a>    <span class="at">help_3 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-13"><a href="#cb24-13"></a>    </span>
+<span id="cb24-14"><a href="#cb24-14"></a>    <span class="co"># Dummy-Variablen für need</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>    <span class="at">need_1 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-16"><a href="#cb24-16"></a>    <span class="at">need_2 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb24-17"><a href="#cb24-17"></a>    <span class="at">need_3 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb24-18"><a href="#cb24-18"></a>  )</span>
+<span id="cb24-19"><a href="#cb24-19"></a></span>
+<span id="cb24-20"><a href="#cb24-20"></a></span>
+<span id="cb24-21"><a href="#cb24-21"></a><span class="co"># Select relevant columns</span></span>
+<span id="cb24-22"><a href="#cb24-22"></a>selected_columns <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">&quot;firstborn_1&quot;</span>, </span>
+<span id="cb24-23"><a href="#cb24-23"></a>                           <span class="st">&quot;firstborn_2&quot;</span>,</span>
+<span id="cb24-24"><a href="#cb24-24"></a>                           <span class="st">&quot;firstborn_3&quot;</span>,</span>
+<span id="cb24-25"><a href="#cb24-25"></a>                           <span class="st">&quot;need_1&quot;</span>,</span>
+<span id="cb24-26"><a href="#cb24-26"></a>                           <span class="st">&quot;need_2&quot;</span>,</span>
+<span id="cb24-27"><a href="#cb24-27"></a>                           <span class="st">&quot;need_3&quot;</span>,</span>
+<span id="cb24-28"><a href="#cb24-28"></a>                           <span class="st">&quot;help_1&quot;</span>,</span>
+<span id="cb24-29"><a href="#cb24-29"></a>                           <span class="st">&quot;help_2&quot;</span>, </span>
+<span id="cb24-30"><a href="#cb24-30"></a>                           <span class="st">&quot;help_3&quot;</span>)]</span>
+<span id="cb24-31"><a href="#cb24-31"></a></span>
+<span id="cb24-32"><a href="#cb24-32"></a><span class="co"># Compute pairwise correlations with significance</span></span>
+<span id="cb24-33"><a href="#cb24-33"></a>cor_results <span class="ot">&lt;-</span> <span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(selected_columns))</span>
+<span id="cb24-34"><a href="#cb24-34"></a></span>
+<span id="cb24-35"><a href="#cb24-35"></a><span class="co"># Display results</span></span>
+<span id="cb24-36"><a href="#cb24-36"></a><span class="fu">print</span>(cor_results)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>            firstborn_1 firstborn_2 firstborn_3 need_1 need_2 need_3 help_1
+firstborn_1        1.00       -0.50       -0.50   0.02  -0.01  -0.01   0.04
+firstborn_2       -0.50        1.00       -0.50   0.01  -0.02   0.00  -0.01
+firstborn_3       -0.50       -0.50        1.00  -0.03   0.03   0.01  -0.03
+need_1             0.02        0.01       -0.03   1.00  -0.50  -0.50  -0.01
+need_2            -0.01       -0.02        0.03  -0.50   1.00  -0.50  -0.01
+need_3            -0.01        0.00        0.01  -0.50  -0.50   1.00   0.02
+help_1             0.04       -0.01       -0.03  -0.01  -0.01   0.02   1.00
+help_2             0.00       -0.02        0.02   0.02  -0.01  -0.01  -0.50
+help_3            -0.04        0.04        0.01  -0.01   0.02  -0.01  -0.50
+            help_2 help_3
+firstborn_1   0.00  -0.04
+firstborn_2  -0.02   0.04
+firstborn_3   0.02   0.01
+need_1        0.02  -0.01
+need_2       -0.01   0.02
+need_3       -0.01  -0.01
+help_1       -0.50  -0.50
+help_2        1.00  -0.50
+help_3       -0.50   1.00
+
+n= 4284 
+
+
+P
+            firstborn_1 firstborn_2 firstborn_3 need_1 need_2 need_3 help_1
+firstborn_1             0.0000      0.0000      0.2160 0.5824 0.4919 0.0060
+firstborn_2 0.0000                  0.0000      0.4095 0.2714 0.7834 0.4095
+firstborn_3 0.0000      0.0000                  0.0392 0.0990 0.6800 0.0542
+need_1      0.2160      0.4095      0.0392             0.0000 0.0000 0.4919
+need_2      0.5824      0.2714      0.0990      0.0000        0.0000 0.4919
+need_3      0.4919      0.7834      0.6800      0.0000 0.0000        0.1692
+help_1      0.0060      0.4095      0.0542      0.4919 0.4919 0.1692       
+help_2      0.8907      0.1305      0.1692      0.1692 0.4919 0.4919 0.0000
+help_3      0.0039      0.0194      0.5824      0.4919 0.1692 0.4919 0.0000
+            help_2 help_3
+firstborn_1 0.8907 0.0039
+firstborn_2 0.1305 0.0194
+firstborn_3 0.1692 0.5824
+need_1      0.1692 0.4919
+need_2      0.4919 0.1692
+need_3      0.4919 0.4919
+help_1      0.0000 0.0000
+help_2             0.0000
+help_3      0.0000       </code></pre>
+</div>
+</div>
+</section>
+<section id="sind-die-dimensionen-ausprägungen-balanced" class="level2" data-number="3.2">
+<h2 data-number="3.2"><span class="header-section-number">3.2</span> Sind die Dimensionen / Ausprägungen balanced?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Check balance</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">table</span>(df<span class="sc">$</span>firstborn)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3 
+1428 1428 1428 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">table</span>(df<span class="sc">$</span>need)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3 
+1428 1428 1428 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">table</span>(df<span class="sc">$</span>help)</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3 
+1428 1428 1428 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="deskriptive-statistik" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Deskriptive Statistik</h1>
+<section id="replikation-tabelle-2" class="level2" data-number="4.1">
+<h2 data-number="4.1"><span class="header-section-number">4.1</span> Replikation Tabelle 2</h2>
+<p>Nun wollen wir Tabelle 2 aus dem Artikel replizieren.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># Filter für die Daten anwenden</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>filtered_data <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">filter</span>(id_within <span class="sc">==</span> <span class="dv">1</span>, daughter <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a><span class="co"># Deskriptive Statistiken berechnen</span></span>
+<span id="cb32-6"><a href="#cb32-6"></a>descriptive_stats <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
+<span id="cb32-7"><a href="#cb32-7"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb32-8"><a href="#cb32-8"></a>    <span class="at">Female_Mean =</span> <span class="fu">mean</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-9"><a href="#cb32-9"></a>    <span class="at">Female_SD =</span> <span class="fu">sd</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-10"><a href="#cb32-10"></a>    <span class="at">Female_Min =</span> <span class="fu">min</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-11"><a href="#cb32-11"></a>    <span class="at">Female_Max =</span> <span class="fu">max</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-12"><a href="#cb32-12"></a>    <span class="at">Female_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(female)),</span>
+<span id="cb32-13"><a href="#cb32-13"></a>    </span>
+<span id="cb32-14"><a href="#cb32-14"></a>    <span class="at">Age_Mean =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-15"><a href="#cb32-15"></a>    <span class="at">Age_SD =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-16"><a href="#cb32-16"></a>    <span class="at">Age_Min =</span> <span class="fu">min</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-17"><a href="#cb32-17"></a>    <span class="at">Age_Max =</span> <span class="fu">max</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-18"><a href="#cb32-18"></a>    <span class="at">Age_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)),</span>
+<span id="cb32-19"><a href="#cb32-19"></a>    </span>
+<span id="cb32-20"><a href="#cb32-20"></a>    <span class="at">Child_Mean =</span> <span class="fu">mean</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-21"><a href="#cb32-21"></a>    <span class="at">Child_SD =</span> <span class="fu">sd</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-22"><a href="#cb32-22"></a>    <span class="at">Child_Min =</span> <span class="fu">min</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-23"><a href="#cb32-23"></a>    <span class="at">Child_Max =</span> <span class="fu">max</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-24"><a href="#cb32-24"></a>    <span class="at">Child_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(child)),</span>
+<span id="cb32-25"><a href="#cb32-25"></a>    </span>
+<span id="cb32-26"><a href="#cb32-26"></a>    <span class="at">Mig_Mean =</span> <span class="fu">mean</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-27"><a href="#cb32-27"></a>    <span class="at">Mig_SD =</span> <span class="fu">sd</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-28"><a href="#cb32-28"></a>    <span class="at">Mig_Min =</span> <span class="fu">min</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-29"><a href="#cb32-29"></a>    <span class="at">Mig_Max =</span> <span class="fu">max</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-30"><a href="#cb32-30"></a>    <span class="at">Mig_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(mig)),</span>
+<span id="cb32-31"><a href="#cb32-31"></a>    </span>
+<span id="cb32-32"><a href="#cb32-32"></a>    <span class="at">Gifted_Mean =</span> <span class="fu">mean</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-33"><a href="#cb32-33"></a>    <span class="at">Gifted_SD =</span> <span class="fu">sd</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-34"><a href="#cb32-34"></a>    <span class="at">Gifted_Min =</span> <span class="fu">min</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-35"><a href="#cb32-35"></a>    <span class="at">Gifted_Max =</span> <span class="fu">max</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-36"><a href="#cb32-36"></a>    <span class="at">Gifted_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(gifted)),</span>
+<span id="cb32-37"><a href="#cb32-37"></a>    </span>
+<span id="cb32-38"><a href="#cb32-38"></a>    <span class="at">IV_Received_Mean =</span> <span class="fu">mean</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-39"><a href="#cb32-39"></a>    <span class="at">IV_Received_SD =</span> <span class="fu">sd</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-40"><a href="#cb32-40"></a>    <span class="at">IV_Received_Min =</span> <span class="fu">min</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-41"><a href="#cb32-41"></a>    <span class="at">IV_Received_Max =</span> <span class="fu">max</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-42"><a href="#cb32-42"></a>    <span class="at">IV_Received_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(iv_received)),</span>
+<span id="cb32-43"><a href="#cb32-43"></a>    </span>
+<span id="cb32-44"><a href="#cb32-44"></a>    <span class="at">ABI_Mean =</span> <span class="fu">mean</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-45"><a href="#cb32-45"></a>    <span class="at">ABI_SD =</span> <span class="fu">sd</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-46"><a href="#cb32-46"></a>    <span class="at">ABI_Min =</span> <span class="fu">min</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-47"><a href="#cb32-47"></a>    <span class="at">ABI_Max =</span> <span class="fu">max</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-48"><a href="#cb32-48"></a>    <span class="at">ABI_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(abi))</span>
+<span id="cb32-49"><a href="#cb32-49"></a>  )</span>
+<span id="cb32-50"><a href="#cb32-50"></a></span>
+<span id="cb32-51"><a href="#cb32-51"></a><span class="co"># Umstrukturierung der Tabelle</span></span>
+<span id="cb32-52"><a href="#cb32-52"></a>descriptive_stats_long <span class="ot">&lt;-</span> descriptive_stats <span class="sc">%&gt;%</span></span>
+<span id="cb32-53"><a href="#cb32-53"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb32-54"><a href="#cb32-54"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb32-55"><a href="#cb32-55"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
+<span id="cb32-56"><a href="#cb32-56"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.*)_(.*)&quot;</span></span>
+<span id="cb32-57"><a href="#cb32-57"></a>  )</span>
+<span id="cb32-58"><a href="#cb32-58"></a></span>
+<span id="cb32-59"><a href="#cb32-59"></a><span class="co"># Tabelle mit sjPlot anzeigen</span></span>
+<span id="cb32-60"><a href="#cb32-60"></a><span class="fu">tab_df</span>(</span>
+<span id="cb32-61"><a href="#cb32-61"></a>  descriptive_stats_long,</span>
+<span id="cb32-62"><a href="#cb32-62"></a>  <span class="at">title =</span> <span class="st">&quot;Descriptive Statistics of Respondent Characteristics&quot;</span>,</span>
+<span id="cb32-63"><a href="#cb32-63"></a>  <span class="at">col.header =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Max&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb32-64"><a href="#cb32-64"></a>)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top" data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
+<caption>Descriptive Statistics of Respondent Characteristics</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">Variable</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">Mean</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">SD</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">Min</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">Max</td>
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: italic; font-weight: normal; padding: 0.2cm; border-bottom: 1px solid black;">N</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Female</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.62</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.49</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">702</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Age</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">44.83</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">15.08</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">21</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">73</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">705</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Child</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.50</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.50</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">707</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Mig</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.12</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.33</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">704</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Gifted</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.66</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.47</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">353</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">IV_Received</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.87</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.34</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">711</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">ABI</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">0.86</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">0.35</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">0</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; border-bottom: double;">690</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="replikation-figure-1" class="level2" data-number="4.2">
+<h2 data-number="4.2"><span class="header-section-number">4.2</span> Replikation Figure 1</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Create the histogram</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> child_vig)) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..count..<span class="sc">/</span><span class="fu">sum</span>(..count..)<span class="sc">*</span><span class="dv">100</span>), <span class="at">binwidth =</span> <span class="dv">250</span>, </span>
+<span id="cb33-4"><a href="#cb33-4"></a>                 <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogram&quot;</span>,</span>
+<span id="cb33-7"><a href="#cb33-7"></a>       <span class="at">x =</span> <span class="st">&quot;Child&#39;s amount&quot;</span>,</span>
+<span id="cb33-8"><a href="#cb33-8"></a>       <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">+</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.
+ℹ Please use `after_stat(count)` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img src="4_uebungsblatt_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672" /></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="regression" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Regression</h1>
+<section id="replikation-von-tabelle-3" class="level2" data-number="5.1">
+<h2 data-number="5.1"><span class="header-section-number">5.1</span> Replikation von Tabelle 3</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>df<span class="sc">$</span>g_firstborn <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_firstborn), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>df<span class="sc">$</span>g_help <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_help), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb35-4"><a href="#cb35-4"></a>df<span class="sc">$</span>g_need <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_need), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb35-5"><a href="#cb35-5"></a></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="co"># Run the regression model</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(child_vig <span class="sc">~</span> daughter <span class="sc">*</span> g_firstborn <span class="sc">+</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>                      g_help <span class="sc">*</span> daughter <span class="sc">+</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a>                      g_need <span class="sc">*</span> daughter, </span>
+<span id="cb35-10"><a href="#cb35-10"></a>            <span class="at">data =</span> df)</span>
+<span id="cb35-11"><a href="#cb35-11"></a></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="co"># Clustered standard errors</span></span>
+<span id="cb35-13"><a href="#cb35-13"></a>clustered_se <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(model, <span class="at">vcov =</span> vcovCL, <span class="at">cluster =</span> <span class="sc">~</span> id_resp)</span>
+<span id="cb35-14"><a href="#cb35-14"></a></span>
+<span id="cb35-15"><a href="#cb35-15"></a><span class="co"># Output the results</span></span>
+<span id="cb35-16"><a href="#cb35-16"></a><span class="fu">summary</span>(model)         <span class="co"># Regression summary</span></span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = child_vig ~ daughter * g_firstborn + g_help * daughter + 
+    g_need * daughter, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4989.0  -287.8     0.0   287.8  4989.0 
+
+Coefficients:
+                      Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           4967.074     40.125 123.791  &lt; 2e-16 ***
+daughter                65.853     56.745   1.161   0.2459    
+g_firstborn1            37.237     36.629   1.017   0.3094    
+g_firstborn3             6.346     36.615   0.173   0.8624    
+g_help1                320.686     36.613   8.759  &lt; 2e-16 ***
+g_help3               -207.280     36.619  -5.660 1.61e-08 ***
+g_need1                205.191     36.615   5.604 2.23e-08 ***
+g_need3               -313.954     36.599  -8.578  &lt; 2e-16 ***
+daughter:g_firstborn1  -43.583     51.792  -0.842   0.4001    
+daughter:g_firstborn3  -43.583     51.792  -0.842   0.4001    
+daughter:g_help1      -113.406     51.783  -2.190   0.0286 *  
+daughter:g_help3      -113.406     51.783  -2.190   0.0286 *  
+daughter:g_need1       108.763     51.770   2.101   0.0357 *  
+daughter:g_need3       108.763     51.770   2.101   0.0357 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 691.3 on 4270 degrees of freedom
+Multiple R-squared:  0.1624,    Adjusted R-squared:  0.1599 
+F-statistic:  63.7 on 13 and 4270 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">print</span>(clustered_se)    <span class="co"># Results with clustered SE</span></span></code></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+t test of coefficients:
+
+                       Estimate Std. Error  t value  Pr(&gt;|t|)    
+(Intercept)           4967.0737    37.3969 132.8206 &lt; 2.2e-16 ***
+daughter                65.8526    74.7937   0.8805   0.37866    
+g_firstborn1            37.2371    43.2121   0.8617   0.38889    
+g_firstborn3             6.3457    43.4854   0.1459   0.88399    
+g_help1                320.6862    38.9626   8.2306 2.449e-16 ***
+g_help3               -207.2799    37.9277  -5.4651 4.889e-08 ***
+g_need1                205.1905    38.6142   5.3139 1.128e-07 ***
+g_need3               -313.9540    39.6818  -7.9118 3.208e-15 ***
+daughter:g_firstborn1  -43.5827    76.4992  -0.5697   0.56890    
+daughter:g_firstborn3  -43.5827    76.4992  -0.5697   0.56890    
+daughter:g_help1      -113.4063    58.6378  -1.9340   0.05318 .  
+daughter:g_help3      -113.4063    58.6378  -1.9340   0.05318 .  
+daughter:g_need1       108.7634    61.2365   1.7761   0.07578 .  
+daughter:g_need3       108.7634    61.2365   1.7761   0.07578 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">tab_model</span>(model)</span></code></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top" data-quarto-postprocess="true" style="border-collapse:collapse; border:none;">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;"> </td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">Child's amount of inter<br />
+vivos</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">4967.07</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">4888.41 – 5045.74</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">Focal vignette person<br />
+daughter</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">65.85</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-45.40 – 177.10</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.246</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">g firstborn: g firstborn<br />
+1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">37.24</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-34.58 – 109.05</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.309</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">g firstborn: g firstborn<br />
+3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.35</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-65.44 – 78.13</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.862</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">g help: g help 1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">320.69</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">248.91 – 392.47</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">g help: g help 3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-207.28</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-279.07 – -135.49</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">g need: g need 1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">205.19</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">133.41 – 276.98</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">g need: g need 3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-313.95</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-385.71 – -242.20</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">daughter:g_firstborn1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-43.58</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-145.12 – 57.96</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.400</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">daughter:g_firstborn3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-43.58</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-145.12 – 57.96</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.400</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">daughter:g_help1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-113.41</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-214.93 – -11.89</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.029</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">daughter:g_help3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-113.41</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-214.93 – -11.89</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.029</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">daughter:g_need1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">108.76</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">7.27 – 210.26</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.036</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">daughter:g_need3</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">108.76</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">7.27 – 210.26</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.036</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">4284</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.162 / 0.160</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+</section>
+<section id="render" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Render</h1>
+<p>Wandle dieses Dokument in ein PDF und ein HTML Dokument um.</p>
+</section>
+<section id="weiterführende-literatur" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Weiterführende Literatur</h1>
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+</ul>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Fortgeschrittene quantitative Methoden</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Fortgeschrittene quantitative Methoden</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1wcmV2">4 - Seminar (Faktorielle Umfrageexperimente)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9pbmRleC5odG1sS3Vyc2luZm9ybWF0aW9uZW4=">Kursinformationen</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOnF1YXJ0by1zaWRlYmFyLXNlY3Rpb24tMQ==">Zeitplan und Dateien</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zY2hlZHVsZS5odG1sw5xiZXJzaWNodA==">Übersicht</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zbGlkZXMvMV9zZW1pbmFyLmh0bWwxLS0tU2VtaW5hcg==">1 - Seminar</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zbGlkZXMvMV91ZWJ1bmcuaHRtbDEtLS3DnGJ1bmc=">1 - Übung</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi91ZWJ1bmdlbi8xX3VlYnVuZ3NibGF0dC5odG1sMS0tLcOcYnVuZ3NibGF0dA==">1 - Übungsblatt</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zbGlkZXMvMl9zZW1pbmFyLmh0bWwyLS0tU2VtaW5hci0tKFBhbmVsZGF0ZW4p">2 - Seminar (Paneldaten)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi91ZWJ1bmdlbi8yX3VlYnVuZ3NibGF0dC5odG1sMi0tLcOcYnVuZ3NibGF0dC0oUGFuZWxkYXRlbik=">2 - Übungsblatt (Paneldaten)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zbGlkZXMvM19zZW1pbmFyLmh0bWwzLS0tU2VtaW5hci0tKEVyZWlnbmlzZGF0ZW4p">3 - Seminar (Ereignisdaten)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi91ZWJ1bmdlbi8zX3VlYnVuZ3NibGF0dC5odG1sMy0tLcOcYnVuZ3NibGF0dC0oRXJlaWduaXNkYXRlbik=">3 - Übungsblatt (Ereignisdaten)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi9zbGlkZXMvNF9zZW1pbmFyLmh0bWw0LS0tU2VtaW5hci0tKEZha3RvcmllbGxlLVVtZnJhZ2VleHBlcmltZW50ZSk=">4 - Seminar (Faktorielle Umfrageexperimente)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyOi91ZWJ1bmdlbi80X3VlYnVuZ3NibGF0dC5odG1sNC0tLcOcYnVuZ3NibGF0dC0oRmFrdG9yaWVsbGUtVW1mcmFnZWV4cGVyaW1lbnRlKQ==">4 - Übungsblatt (Faktorielle Umfrageexperimente)</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLVplaXRwbGFuLXVuZC1EYXRlaWVu">Zeitplan und Dateien</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWJyZWFkY3J1bWJzLTQtLS3DnGJ1bmdzYmxhdHQtKEZha3RvcmllbGxlLVVtZnJhZ2VleHBlcmltZW50ZSk=">4 - Übungsblatt (Faktorielle Umfrageexperimente)</span></p>
+<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLWxlZnQ=">
+<p>© Copyright 2026, Daria Tisch</p>
+</div>
+<div class="hidden quarto-markdown-envelope-contents" data-render-id="Zm9vdGVyLXJpZ2h0">
+<p>This page is built with 💙 and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">4. Übungsblatt (Faktorielle Umfrageexperimente) – Fortgeschrittene quantitative Methoden</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">4. Übungsblatt (Faktorielle Umfrageexperimente) – Fortgeschrittene quantitative Methoden</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">4. Übungsblatt (Faktorielle Umfrageexperimente) – Fortgeschrittene quantitative Methoden</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Fortgeschrittene quantitative Methoden</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw=="></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj"></span></p>
+</div>
+<!-- -->
+<div class="quarto-embedded-source-code">
+<div class="sourceCode" id="cb40" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines"><code class="sourceCode markdown"><span id="cb40-1"><a href="#cb40-1"></a><span class="co">---</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="an">title:</span><span class="co"> &quot;4. Übungsblatt (Faktorielle Umfrageexperimente)&quot;</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a><span class="an">author:</span><span class="co"> &quot;Daria Tisch&quot;</span></span>
+<span id="cb40-4"><a href="#cb40-4"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb40-5"><a href="#cb40-5"></a><span class="co">  html:</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a><span class="co">    code-fold: true</span></span>
+<span id="cb40-7"><a href="#cb40-7"></a><span class="co">    code-tools: true</span></span>
+<span id="cb40-8"><a href="#cb40-8"></a><span class="co">    code-link: true</span></span>
+<span id="cb40-9"><a href="#cb40-9"></a><span class="co">    df-print: paged</span></span>
+<span id="cb40-10"><a href="#cb40-10"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb40-11"><a href="#cb40-11"></a><span class="co">  pdf: default</span></span>
+<span id="cb40-12"><a href="#cb40-12"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb40-13"><a href="#cb40-13"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb40-14"><a href="#cb40-14"></a><span class="co">---</span></span>
+<span id="cb40-15"><a href="#cb40-15"></a></span>
+<span id="cb40-16"><a href="#cb40-16"></a><span class="fu"># Organisation</span></span>
+<span id="cb40-17"><a href="#cb40-17"></a></span>
+<span id="cb40-18"><a href="#cb40-18"></a><span class="fu">## Arbeitsverzeichnis festsetzen</span></span>
+<span id="cb40-19"><a href="#cb40-19"></a></span>
+<span id="cb40-20"><a href="#cb40-20"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb40-21"><a href="#cb40-21"></a><span class="in"># set working directory</span></span>
+<span id="cb40-22"><a href="#cb40-22"></a><span class="in">knitr::opts_knit$set(root.dir = &quot;D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen&quot;)</span></span>
+<span id="cb40-23"><a href="#cb40-23"></a><span class="in">```</span></span>
+<span id="cb40-24"><a href="#cb40-24"></a></span>
+<span id="cb40-25"><a href="#cb40-25"></a><span class="fu">## Packages installieren und laden</span></span>
+<span id="cb40-26"><a href="#cb40-26"></a></span>
+<span id="cb40-27"><a href="#cb40-27"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-28"><a href="#cb40-28"></a></span>
+<span id="cb40-29"><a href="#cb40-29"></a><span class="in">```r</span></span>
+<span id="cb40-30"><a href="#cb40-30"></a><span class="co">#| echo: true</span></span>
+<span id="cb40-31"><a href="#cb40-31"></a><span class="co">#| results: &quot;hide&quot;</span></span>
+<span id="cb40-32"><a href="#cb40-32"></a><span class="co">#| warning: false</span></span>
+<span id="cb40-33"><a href="#cb40-33"></a><span class="co"># Packages</span></span>
+<span id="cb40-34"><a href="#cb40-34"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb40-35"><a href="#cb40-35"></a>  <span class="st">&quot;tidyverse&quot;</span>,</span>
+<span id="cb40-36"><a href="#cb40-36"></a>  <span class="st">&quot;sjPlot&quot;</span>,</span>
+<span id="cb40-37"><a href="#cb40-37"></a>  <span class="st">&quot;haven&quot;</span>,</span>
+<span id="cb40-38"><a href="#cb40-38"></a>  <span class="st">&quot;labelled&quot;</span> ,</span>
+<span id="cb40-39"><a href="#cb40-39"></a>  <span class="st">&quot;sandwich&quot;</span>,</span>
+<span id="cb40-40"><a href="#cb40-40"></a>  <span class="st">&quot;lmtest&quot;</span>,</span>
+<span id="cb40-41"><a href="#cb40-41"></a>  <span class="st">&quot;Hmisc&quot;</span></span>
+<span id="cb40-42"><a href="#cb40-42"></a>) </span>
+<span id="cb40-43"><a href="#cb40-43"></a></span>
+<span id="cb40-44"><a href="#cb40-44"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb40-45"><a href="#cb40-45"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb40-46"><a href="#cb40-46"></a></span>
+<span id="cb40-47"><a href="#cb40-47"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb40-48"><a href="#cb40-48"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-49"><a href="#cb40-49"></a></span>
+<span id="cb40-50"><a href="#cb40-50"></a><span class="in">```</span></span>
+<span id="cb40-51"><a href="#cb40-51"></a></span>
+<span id="cb40-52"><a href="#cb40-52"></a><span class="fu">## Einführung</span></span>
+<span id="cb40-53"><a href="#cb40-53"></a></span>
+<span id="cb40-54"><a href="#cb40-54"></a>In dieser Übung replizieren wir die Ergebnisse folgender Studie:</span>
+<span id="cb40-55"><a href="#cb40-55"></a></span>
+<span id="cb40-56"><a href="#cb40-56"></a>Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.</span>
+<span id="cb40-57"><a href="#cb40-57"></a></span>
+<span id="cb40-58"><a href="#cb40-58"></a>Der Datensatz kann <span class="co">[</span><span class="ot">hier</span><span class="co">](https://dariatisch.github.io/wup2024/downloads/just_transfers.csv)</span> heruntergeladen werden.</span>
+<span id="cb40-59"><a href="#cb40-59"></a></span>
+<span id="cb40-60"><a href="#cb40-60"></a>Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?</span>
+<span id="cb40-61"><a href="#cb40-61"></a></span>
+<span id="cb40-62"><a href="#cb40-62"></a><span class="fu">## Daten einlesen</span></span>
+<span id="cb40-63"><a href="#cb40-63"></a></span>
+<span id="cb40-64"><a href="#cb40-64"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-65"><a href="#cb40-65"></a></span>
+<span id="cb40-66"><a href="#cb40-66"></a><span class="in">```r</span></span>
+<span id="cb40-67"><a href="#cb40-67"></a><span class="co"># Load the data file</span></span>
+<span id="cb40-68"><a href="#cb40-68"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers.csv&quot;</span>)</span>
+<span id="cb40-69"><a href="#cb40-69"></a></span>
+<span id="cb40-70"><a href="#cb40-70"></a><span class="in">```</span></span>
+<span id="cb40-71"><a href="#cb40-71"></a></span>
+<span id="cb40-72"><a href="#cb40-72"></a><span class="fu">## Variablenlabels einlesen</span></span>
+<span id="cb40-73"><a href="#cb40-73"></a></span>
+<span id="cb40-74"><a href="#cb40-74"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-75"><a href="#cb40-75"></a></span>
+<span id="cb40-76"><a href="#cb40-76"></a><span class="in">```r</span></span>
+<span id="cb40-77"><a href="#cb40-77"></a><span class="co"># Load the variable labels</span></span>
+<span id="cb40-78"><a href="#cb40-78"></a>variable_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers_variable_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-79"><a href="#cb40-79"></a></span>
+<span id="cb40-80"><a href="#cb40-80"></a><span class="co"># View variable labels</span></span>
+<span id="cb40-81"><a href="#cb40-81"></a><span class="co">#print(variable_labels)</span></span>
+<span id="cb40-82"><a href="#cb40-82"></a></span>
+<span id="cb40-83"><a href="#cb40-83"></a></span>
+<span id="cb40-84"><a href="#cb40-84"></a><span class="co"># Loop through the labels and assign them to variables in the dataset</span></span>
+<span id="cb40-85"><a href="#cb40-85"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(variable_labels)) {</span>
+<span id="cb40-86"><a href="#cb40-86"></a>  <span class="cf">if</span> (var <span class="sc">%in%</span> <span class="fu">names</span>(df)) {</span>
+<span id="cb40-87"><a href="#cb40-87"></a>    <span class="fu">var_label</span>(df[[var]]) <span class="ot">&lt;-</span> variable_labels[[var]]</span>
+<span id="cb40-88"><a href="#cb40-88"></a>  }</span>
+<span id="cb40-89"><a href="#cb40-89"></a>}</span>
+<span id="cb40-90"><a href="#cb40-90"></a></span>
+<span id="cb40-91"><a href="#cb40-91"></a><span class="in">```</span></span>
+<span id="cb40-92"><a href="#cb40-92"></a></span>
+<span id="cb40-93"><a href="#cb40-93"></a><span class="fu">## Value labels einlesen</span></span>
+<span id="cb40-94"><a href="#cb40-94"></a></span>
+<span id="cb40-95"><a href="#cb40-95"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-96"><a href="#cb40-96"></a></span>
+<span id="cb40-97"><a href="#cb40-97"></a><span class="in">```r</span></span>
+<span id="cb40-98"><a href="#cb40-98"></a><span class="co"># Load the value labels</span></span>
+<span id="cb40-99"><a href="#cb40-99"></a>value_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/value_labels.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-100"><a href="#cb40-100"></a></span>
+<span id="cb40-101"><a href="#cb40-101"></a><span class="co"># View value labels</span></span>
+<span id="cb40-102"><a href="#cb40-102"></a><span class="fu">head</span>(value_labels)</span>
+<span id="cb40-103"><a href="#cb40-103"></a><span class="in">```</span></span>
+<span id="cb40-104"><a href="#cb40-104"></a></span>
+<span id="cb40-105"><a href="#cb40-105"></a><span class="fu"># Kennenlernen des Datensatzes</span></span>
+<span id="cb40-106"><a href="#cb40-106"></a></span>
+<span id="cb40-107"><a href="#cb40-107"></a><span class="fu">## Wie viele Beobachtungen enthält der Datensatz?</span></span>
+<span id="cb40-108"><a href="#cb40-108"></a></span>
+<span id="cb40-109"><a href="#cb40-109"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-110"><a href="#cb40-110"></a></span>
+<span id="cb40-111"><a href="#cb40-111"></a><span class="in">```r</span></span>
+<span id="cb40-112"><a href="#cb40-112"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb40-113"><a href="#cb40-113"></a><span class="in">```</span></span>
+<span id="cb40-114"><a href="#cb40-114"></a></span>
+<span id="cb40-115"><a href="#cb40-115"></a><span class="fu">## Wie viele befragte Personen sind im Datensatz enthalten?</span></span>
+<span id="cb40-116"><a href="#cb40-116"></a></span>
+<span id="cb40-117"><a href="#cb40-117"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-118"><a href="#cb40-118"></a></span>
+<span id="cb40-119"><a href="#cb40-119"></a><span class="in">```r</span></span>
+<span id="cb40-120"><a href="#cb40-120"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_resp))</span>
+<span id="cb40-121"><a href="#cb40-121"></a><span class="in">```</span></span>
+<span id="cb40-122"><a href="#cb40-122"></a></span>
+<span id="cb40-123"><a href="#cb40-123"></a><span class="fu">## Wie viele Vignetten hat jede befragte Person bewertet?</span></span>
+<span id="cb40-124"><a href="#cb40-124"></a></span>
+<span id="cb40-125"><a href="#cb40-125"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-126"><a href="#cb40-126"></a></span>
+<span id="cb40-127"><a href="#cb40-127"></a><span class="in">```r</span></span>
+<span id="cb40-128"><a href="#cb40-128"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_within))</span>
+<span id="cb40-129"><a href="#cb40-129"></a><span class="fu">table</span>(df<span class="sc">$</span>id_within)</span>
+<span id="cb40-130"><a href="#cb40-130"></a><span class="dv">1428</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb40-131"><a href="#cb40-131"></a><span class="in">```</span></span>
+<span id="cb40-132"><a href="#cb40-132"></a></span>
+<span id="cb40-133"><a href="#cb40-133"></a><span class="fu">## Wie viele Vignetten gibt es?</span></span>
+<span id="cb40-134"><a href="#cb40-134"></a></span>
+<span id="cb40-135"><a href="#cb40-135"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-136"><a href="#cb40-136"></a></span>
+<span id="cb40-137"><a href="#cb40-137"></a><span class="in">```r</span></span>
+<span id="cb40-138"><a href="#cb40-138"></a><span class="fu">table</span>(df<span class="sc">$</span>id_vignette)</span>
+<span id="cb40-139"><a href="#cb40-139"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_vignette))</span>
+<span id="cb40-140"><a href="#cb40-140"></a><span class="in">```</span></span>
+<span id="cb40-141"><a href="#cb40-141"></a></span>
+<span id="cb40-142"><a href="#cb40-142"></a><span class="fu">## Wie viele Decks gibt es?</span></span>
+<span id="cb40-143"><a href="#cb40-143"></a></span>
+<span id="cb40-144"><a href="#cb40-144"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-145"><a href="#cb40-145"></a></span>
+<span id="cb40-146"><a href="#cb40-146"></a><span class="in">```r</span></span>
+<span id="cb40-147"><a href="#cb40-147"></a><span class="fu">table</span>(df<span class="sc">$</span>deck)</span>
+<span id="cb40-148"><a href="#cb40-148"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>deck))</span>
+<span id="cb40-149"><a href="#cb40-149"></a><span class="in">```</span></span>
+<span id="cb40-150"><a href="#cb40-150"></a></span>
+<span id="cb40-151"><a href="#cb40-151"></a><span class="fu">## Dimensionen und Ausprägungen</span></span>
+<span id="cb40-152"><a href="#cb40-152"></a></span>
+<span id="cb40-153"><a href="#cb40-153"></a>Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels</span>
+<span id="cb40-154"><a href="#cb40-154"></a></span>
+<span id="cb40-155"><a href="#cb40-155"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-156"><a href="#cb40-156"></a></span>
+<span id="cb40-157"><a href="#cb40-157"></a><span class="in">```r</span></span>
+<span id="cb40-158"><a href="#cb40-158"></a><span class="fu">head</span>(value_labels, <span class="dv">9</span>)</span>
+<span id="cb40-159"><a href="#cb40-159"></a><span class="in">```</span></span>
+<span id="cb40-160"><a href="#cb40-160"></a></span>
+<span id="cb40-161"><a href="#cb40-161"></a><span class="fu"># Orthogonalität und Balance</span></span>
+<span id="cb40-162"><a href="#cb40-162"></a></span>
+<span id="cb40-163"><a href="#cb40-163"></a><span class="fu">## Sind die Dimensionen orthogonal?</span></span>
+<span id="cb40-164"><a href="#cb40-164"></a></span>
+<span id="cb40-165"><a href="#cb40-165"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-166"><a href="#cb40-166"></a></span>
+<span id="cb40-167"><a href="#cb40-167"></a><span class="in">```r</span></span>
+<span id="cb40-168"><a href="#cb40-168"></a><span class="co"># Dummy-Variablen mit dplyr erstellen</span></span>
+<span id="cb40-169"><a href="#cb40-169"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb40-170"><a href="#cb40-170"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-171"><a href="#cb40-171"></a>    <span class="co"># Dummy-Variablen für firstborn</span></span>
+<span id="cb40-172"><a href="#cb40-172"></a>    <span class="at">firstborn_1 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-173"><a href="#cb40-173"></a>    <span class="at">firstborn_2 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-174"><a href="#cb40-174"></a>    <span class="at">firstborn_3 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-175"><a href="#cb40-175"></a>    </span>
+<span id="cb40-176"><a href="#cb40-176"></a>    <span class="co"># Dummy-Variablen für help</span></span>
+<span id="cb40-177"><a href="#cb40-177"></a>    <span class="at">help_1 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-178"><a href="#cb40-178"></a>    <span class="at">help_2 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-179"><a href="#cb40-179"></a>    <span class="at">help_3 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-180"><a href="#cb40-180"></a>    </span>
+<span id="cb40-181"><a href="#cb40-181"></a>    <span class="co"># Dummy-Variablen für need</span></span>
+<span id="cb40-182"><a href="#cb40-182"></a>    <span class="at">need_1 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-183"><a href="#cb40-183"></a>    <span class="at">need_2 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-184"><a href="#cb40-184"></a>    <span class="at">need_3 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb40-185"><a href="#cb40-185"></a>  )</span>
+<span id="cb40-186"><a href="#cb40-186"></a></span>
+<span id="cb40-187"><a href="#cb40-187"></a></span>
+<span id="cb40-188"><a href="#cb40-188"></a><span class="co"># Select relevant columns</span></span>
+<span id="cb40-189"><a href="#cb40-189"></a>selected_columns <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">&quot;firstborn_1&quot;</span>, </span>
+<span id="cb40-190"><a href="#cb40-190"></a>                           <span class="st">&quot;firstborn_2&quot;</span>,</span>
+<span id="cb40-191"><a href="#cb40-191"></a>                           <span class="st">&quot;firstborn_3&quot;</span>,</span>
+<span id="cb40-192"><a href="#cb40-192"></a>                           <span class="st">&quot;need_1&quot;</span>,</span>
+<span id="cb40-193"><a href="#cb40-193"></a>                           <span class="st">&quot;need_2&quot;</span>,</span>
+<span id="cb40-194"><a href="#cb40-194"></a>                           <span class="st">&quot;need_3&quot;</span>,</span>
+<span id="cb40-195"><a href="#cb40-195"></a>                           <span class="st">&quot;help_1&quot;</span>,</span>
+<span id="cb40-196"><a href="#cb40-196"></a>                           <span class="st">&quot;help_2&quot;</span>, </span>
+<span id="cb40-197"><a href="#cb40-197"></a>                           <span class="st">&quot;help_3&quot;</span>)]</span>
+<span id="cb40-198"><a href="#cb40-198"></a></span>
+<span id="cb40-199"><a href="#cb40-199"></a><span class="co"># Compute pairwise correlations with significance</span></span>
+<span id="cb40-200"><a href="#cb40-200"></a>cor_results <span class="ot">&lt;-</span> <span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(selected_columns))</span>
+<span id="cb40-201"><a href="#cb40-201"></a></span>
+<span id="cb40-202"><a href="#cb40-202"></a><span class="co"># Display results</span></span>
+<span id="cb40-203"><a href="#cb40-203"></a><span class="fu">print</span>(cor_results)</span>
+<span id="cb40-204"><a href="#cb40-204"></a></span>
+<span id="cb40-205"><a href="#cb40-205"></a><span class="in">```</span></span>
+<span id="cb40-206"><a href="#cb40-206"></a></span>
+<span id="cb40-207"><a href="#cb40-207"></a><span class="fu">## Sind die Dimensionen / Ausprägungen balanced?</span></span>
+<span id="cb40-208"><a href="#cb40-208"></a></span>
+<span id="cb40-209"><a href="#cb40-209"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-210"><a href="#cb40-210"></a></span>
+<span id="cb40-211"><a href="#cb40-211"></a><span class="in">```r</span></span>
+<span id="cb40-212"><a href="#cb40-212"></a><span class="co"># Check balance</span></span>
+<span id="cb40-213"><a href="#cb40-213"></a><span class="fu">table</span>(df<span class="sc">$</span>firstborn)</span>
+<span id="cb40-214"><a href="#cb40-214"></a><span class="fu">table</span>(df<span class="sc">$</span>need)</span>
+<span id="cb40-215"><a href="#cb40-215"></a><span class="fu">table</span>(df<span class="sc">$</span>help)</span>
+<span id="cb40-216"><a href="#cb40-216"></a><span class="in">```</span></span>
+<span id="cb40-217"><a href="#cb40-217"></a></span>
+<span id="cb40-218"><a href="#cb40-218"></a><span class="fu"># Deskriptive Statistik</span></span>
+<span id="cb40-219"><a href="#cb40-219"></a></span>
+<span id="cb40-220"><a href="#cb40-220"></a><span class="fu">## Replikation Tabelle 2</span></span>
+<span id="cb40-221"><a href="#cb40-221"></a></span>
+<span id="cb40-222"><a href="#cb40-222"></a>Nun wollen wir Tabelle 2 aus dem Artikel replizieren.</span>
+<span id="cb40-223"><a href="#cb40-223"></a></span>
+<span id="cb40-224"><a href="#cb40-224"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-225"><a href="#cb40-225"></a></span>
+<span id="cb40-226"><a href="#cb40-226"></a><span class="in">```r</span></span>
+<span id="cb40-227"><a href="#cb40-227"></a><span class="co"># Filter für die Daten anwenden</span></span>
+<span id="cb40-228"><a href="#cb40-228"></a>filtered_data <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb40-229"><a href="#cb40-229"></a>  <span class="fu">filter</span>(id_within <span class="sc">==</span> <span class="dv">1</span>, daughter <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb40-230"><a href="#cb40-230"></a></span>
+<span id="cb40-231"><a href="#cb40-231"></a><span class="co"># Deskriptive Statistiken berechnen</span></span>
+<span id="cb40-232"><a href="#cb40-232"></a>descriptive_stats <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
+<span id="cb40-233"><a href="#cb40-233"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb40-234"><a href="#cb40-234"></a>    <span class="at">Female_Mean =</span> <span class="fu">mean</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-235"><a href="#cb40-235"></a>    <span class="at">Female_SD =</span> <span class="fu">sd</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-236"><a href="#cb40-236"></a>    <span class="at">Female_Min =</span> <span class="fu">min</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-237"><a href="#cb40-237"></a>    <span class="at">Female_Max =</span> <span class="fu">max</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-238"><a href="#cb40-238"></a>    <span class="at">Female_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(female)),</span>
+<span id="cb40-239"><a href="#cb40-239"></a>    </span>
+<span id="cb40-240"><a href="#cb40-240"></a>    <span class="at">Age_Mean =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-241"><a href="#cb40-241"></a>    <span class="at">Age_SD =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-242"><a href="#cb40-242"></a>    <span class="at">Age_Min =</span> <span class="fu">min</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-243"><a href="#cb40-243"></a>    <span class="at">Age_Max =</span> <span class="fu">max</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-244"><a href="#cb40-244"></a>    <span class="at">Age_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)),</span>
+<span id="cb40-245"><a href="#cb40-245"></a>    </span>
+<span id="cb40-246"><a href="#cb40-246"></a>    <span class="at">Child_Mean =</span> <span class="fu">mean</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-247"><a href="#cb40-247"></a>    <span class="at">Child_SD =</span> <span class="fu">sd</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-248"><a href="#cb40-248"></a>    <span class="at">Child_Min =</span> <span class="fu">min</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-249"><a href="#cb40-249"></a>    <span class="at">Child_Max =</span> <span class="fu">max</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-250"><a href="#cb40-250"></a>    <span class="at">Child_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(child)),</span>
+<span id="cb40-251"><a href="#cb40-251"></a>    </span>
+<span id="cb40-252"><a href="#cb40-252"></a>    <span class="at">Mig_Mean =</span> <span class="fu">mean</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-253"><a href="#cb40-253"></a>    <span class="at">Mig_SD =</span> <span class="fu">sd</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-254"><a href="#cb40-254"></a>    <span class="at">Mig_Min =</span> <span class="fu">min</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-255"><a href="#cb40-255"></a>    <span class="at">Mig_Max =</span> <span class="fu">max</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-256"><a href="#cb40-256"></a>    <span class="at">Mig_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(mig)),</span>
+<span id="cb40-257"><a href="#cb40-257"></a>    </span>
+<span id="cb40-258"><a href="#cb40-258"></a>    <span class="at">Gifted_Mean =</span> <span class="fu">mean</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-259"><a href="#cb40-259"></a>    <span class="at">Gifted_SD =</span> <span class="fu">sd</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-260"><a href="#cb40-260"></a>    <span class="at">Gifted_Min =</span> <span class="fu">min</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-261"><a href="#cb40-261"></a>    <span class="at">Gifted_Max =</span> <span class="fu">max</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-262"><a href="#cb40-262"></a>    <span class="at">Gifted_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(gifted)),</span>
+<span id="cb40-263"><a href="#cb40-263"></a>    </span>
+<span id="cb40-264"><a href="#cb40-264"></a>    <span class="at">IV_Received_Mean =</span> <span class="fu">mean</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-265"><a href="#cb40-265"></a>    <span class="at">IV_Received_SD =</span> <span class="fu">sd</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-266"><a href="#cb40-266"></a>    <span class="at">IV_Received_Min =</span> <span class="fu">min</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-267"><a href="#cb40-267"></a>    <span class="at">IV_Received_Max =</span> <span class="fu">max</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-268"><a href="#cb40-268"></a>    <span class="at">IV_Received_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(iv_received)),</span>
+<span id="cb40-269"><a href="#cb40-269"></a>    </span>
+<span id="cb40-270"><a href="#cb40-270"></a>    <span class="at">ABI_Mean =</span> <span class="fu">mean</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-271"><a href="#cb40-271"></a>    <span class="at">ABI_SD =</span> <span class="fu">sd</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-272"><a href="#cb40-272"></a>    <span class="at">ABI_Min =</span> <span class="fu">min</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-273"><a href="#cb40-273"></a>    <span class="at">ABI_Max =</span> <span class="fu">max</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-274"><a href="#cb40-274"></a>    <span class="at">ABI_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(abi))</span>
+<span id="cb40-275"><a href="#cb40-275"></a>  )</span>
+<span id="cb40-276"><a href="#cb40-276"></a></span>
+<span id="cb40-277"><a href="#cb40-277"></a><span class="co"># Umstrukturierung der Tabelle</span></span>
+<span id="cb40-278"><a href="#cb40-278"></a>descriptive_stats_long <span class="ot">&lt;-</span> descriptive_stats <span class="sc">%&gt;%</span></span>
+<span id="cb40-279"><a href="#cb40-279"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb40-280"><a href="#cb40-280"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb40-281"><a href="#cb40-281"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
+<span id="cb40-282"><a href="#cb40-282"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.*)_(.*)&quot;</span></span>
+<span id="cb40-283"><a href="#cb40-283"></a>  )</span>
+<span id="cb40-284"><a href="#cb40-284"></a></span>
+<span id="cb40-285"><a href="#cb40-285"></a><span class="co"># Tabelle mit sjPlot anzeigen</span></span>
+<span id="cb40-286"><a href="#cb40-286"></a><span class="fu">tab_df</span>(</span>
+<span id="cb40-287"><a href="#cb40-287"></a>  descriptive_stats_long,</span>
+<span id="cb40-288"><a href="#cb40-288"></a>  <span class="at">title =</span> <span class="st">&quot;Descriptive Statistics of Respondent Characteristics&quot;</span>,</span>
+<span id="cb40-289"><a href="#cb40-289"></a>  <span class="at">col.header =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Max&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb40-290"><a href="#cb40-290"></a>)</span>
+<span id="cb40-291"><a href="#cb40-291"></a></span>
+<span id="cb40-292"><a href="#cb40-292"></a><span class="in">```</span></span>
+<span id="cb40-293"><a href="#cb40-293"></a></span>
+<span id="cb40-294"><a href="#cb40-294"></a><span class="fu">## Replikation Figure 1</span></span>
+<span id="cb40-295"><a href="#cb40-295"></a></span>
+<span id="cb40-296"><a href="#cb40-296"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-297"><a href="#cb40-297"></a></span>
+<span id="cb40-298"><a href="#cb40-298"></a><span class="in">```r</span></span>
+<span id="cb40-299"><a href="#cb40-299"></a><span class="co"># Create the histogram</span></span>
+<span id="cb40-300"><a href="#cb40-300"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> child_vig)) <span class="sc">+</span></span>
+<span id="cb40-301"><a href="#cb40-301"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..count..<span class="sc">/</span><span class="fu">sum</span>(..count..)<span class="sc">*</span><span class="dv">100</span>), <span class="at">binwidth =</span> <span class="dv">250</span>, </span>
+<span id="cb40-302"><a href="#cb40-302"></a>                 <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb40-303"><a href="#cb40-303"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb40-304"><a href="#cb40-304"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogram&quot;</span>,</span>
+<span id="cb40-305"><a href="#cb40-305"></a>       <span class="at">x =</span> <span class="st">&quot;Child&#39;s amount&quot;</span>,</span>
+<span id="cb40-306"><a href="#cb40-306"></a>       <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">+</span></span>
+<span id="cb40-307"><a href="#cb40-307"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb40-308"><a href="#cb40-308"></a><span class="in">```</span></span>
+<span id="cb40-309"><a href="#cb40-309"></a></span>
+<span id="cb40-310"><a href="#cb40-310"></a><span class="fu"># Regression</span></span>
+<span id="cb40-311"><a href="#cb40-311"></a></span>
+<span id="cb40-312"><a href="#cb40-312"></a><span class="fu">## Replikation von Tabelle 3</span></span>
+<span id="cb40-313"><a href="#cb40-313"></a></span>
+<span id="cb40-314"><a href="#cb40-314"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-315"><a href="#cb40-315"></a></span>
+<span id="cb40-316"><a href="#cb40-316"></a><span class="in">```r</span></span>
+<span id="cb40-317"><a href="#cb40-317"></a><span class="co"># Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.</span></span>
+<span id="cb40-318"><a href="#cb40-318"></a>df<span class="sc">$</span>g_firstborn <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_firstborn), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb40-319"><a href="#cb40-319"></a>df<span class="sc">$</span>g_help <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_help), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb40-320"><a href="#cb40-320"></a>df<span class="sc">$</span>g_need <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_need), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb40-321"><a href="#cb40-321"></a></span>
+<span id="cb40-322"><a href="#cb40-322"></a><span class="co"># Run the regression model</span></span>
+<span id="cb40-323"><a href="#cb40-323"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(child_vig <span class="sc">~</span> daughter <span class="sc">*</span> g_firstborn <span class="sc">+</span></span>
+<span id="cb40-324"><a href="#cb40-324"></a>                      g_help <span class="sc">*</span> daughter <span class="sc">+</span></span>
+<span id="cb40-325"><a href="#cb40-325"></a>                      g_need <span class="sc">*</span> daughter, </span>
+<span id="cb40-326"><a href="#cb40-326"></a>            <span class="at">data =</span> df)</span>
+<span id="cb40-327"><a href="#cb40-327"></a></span>
+<span id="cb40-328"><a href="#cb40-328"></a><span class="co"># Clustered standard errors</span></span>
+<span id="cb40-329"><a href="#cb40-329"></a>clustered_se <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(model, <span class="at">vcov =</span> vcovCL, <span class="at">cluster =</span> <span class="sc">~</span> id_resp)</span>
+<span id="cb40-330"><a href="#cb40-330"></a></span>
+<span id="cb40-331"><a href="#cb40-331"></a><span class="co"># Output the results</span></span>
+<span id="cb40-332"><a href="#cb40-332"></a><span class="fu">summary</span>(model)         <span class="co"># Regression summary</span></span>
+<span id="cb40-333"><a href="#cb40-333"></a><span class="fu">print</span>(clustered_se)    <span class="co"># Results with clustered SE</span></span>
+<span id="cb40-334"><a href="#cb40-334"></a><span class="fu">tab_model</span>(model)</span>
+<span id="cb40-335"><a href="#cb40-335"></a><span class="in">```</span></span>
+<span id="cb40-336"><a href="#cb40-336"></a></span>
+<span id="cb40-337"><a href="#cb40-337"></a><span class="fu"># Render</span></span>
+<span id="cb40-338"><a href="#cb40-338"></a></span>
+<span id="cb40-339"><a href="#cb40-339"></a>Wandle dieses Dokument in ein PDF und ein HTML Dokument um.</span>
+<span id="cb40-340"><a href="#cb40-340"></a></span>
+<span id="cb40-341"><a href="#cb40-341"></a><span class="fu"># Weiterführende Literatur</span></span>
+<span id="cb40-342"><a href="#cb40-342"></a></span>
+<span id="cb40-343"><a href="#cb40-343"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">R for Data Science</span><span class="co">](https://r4ds.had.co.nz/)</span></span></code></pre></div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a  href="/slides/4_seminar.html" class="pagination-link" aria-label="4 - Seminar  (Faktorielle Umfrageexperimente)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4 - Seminar  (Faktorielle Umfrageexperimente)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <div class='footer-contents'>&copy; Copyright 2026, Daria Tisch</div>  
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <div class='footer-contents'>This page is built with 💙 and [Quarto](https://quarto.org/).</div>  
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
