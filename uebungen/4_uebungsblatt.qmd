@@ -19,7 +19,8 @@ number-sections: true
 
 ```{r setup, include=FALSE}
 # set working directory
-knitr::opts_knit$set(root.dir = "D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
+knitr::opts_knit$set(
+  root.dir = "D:/OneDrive/teaching/2026_wup/wup_2026")
 ```
 
 ## Packages installieren und laden
@@ -61,7 +62,7 @@ Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung gep
 
 ```{r}
 # Load the data file
-df <- read.csv("../daten/just_transfers.csv")
+df <- read.csv("daten/just_transfers.csv")
 
 ```
 
@@ -69,7 +70,7 @@ df <- read.csv("../daten/just_transfers.csv")
 
 ```{r}
 # Load the variable labels
-variable_labels <- read.csv("../daten/just_transfers_variable_labels.csv", row.names = 1, stringsAsFactors = FALSE)
+variable_labels <- read.csv("daten/just_transfers_variable_labels.csv", row.names = 1, stringsAsFactors = FALSE)
 
 # View variable labels
 #print(variable_labels)
@@ -88,7 +89,7 @@ for (var in names(variable_labels)) {
 
 ```{r}
 # Load the value labels
-value_labels <- read.csv("../daten/value_labels.csv", stringsAsFactors = FALSE)
+value_labels <- read.csv("daten/value_labels.csv", stringsAsFactors = FALSE)
 
 # View value labels
 head(value_labels)

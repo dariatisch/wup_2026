@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Load the data file</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers.csv&quot;</span>)</span></code></pre></div>
+<span id="cb2-2"><a href="#cb2-2"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;daten/just_transfers.csv&quot;</span>)</span></code></pre></div>
 </details>
 </div>
 </section>
@@ -341,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Load the variable labels</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>variable_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers_variable_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>variable_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;daten/just_transfers_variable_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co"># View variable labels</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="co">#print(variable_labels)</span></span>
@@ -362,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r cell-code number-lines"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Load the value labels</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>value_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/value_labels.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>value_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;daten/value_labels.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co"># View value labels</span></span>
 <span id="cb4-5"><a href="#cb4-5"></a><span class="fu">head</span>(value_labels)</span></code></pre></div>
@@ -1051,328 +1051,329 @@ daughter</td>
 <span id="cb40-19"><a href="#cb40-19"></a></span>
 <span id="cb40-20"><a href="#cb40-20"></a><span class="in">```{r setup, include=FALSE}</span></span>
 <span id="cb40-21"><a href="#cb40-21"></a><span class="in"># set working directory</span></span>
-<span id="cb40-22"><a href="#cb40-22"></a><span class="in">knitr::opts_knit$set(root.dir = &quot;D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen&quot;)</span></span>
-<span id="cb40-23"><a href="#cb40-23"></a><span class="in">```</span></span>
-<span id="cb40-24"><a href="#cb40-24"></a></span>
-<span id="cb40-25"><a href="#cb40-25"></a><span class="fu">## Packages installieren und laden</span></span>
-<span id="cb40-26"><a href="#cb40-26"></a></span>
-<span id="cb40-27"><a href="#cb40-27"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-28"><a href="#cb40-28"></a></span>
-<span id="cb40-29"><a href="#cb40-29"></a><span class="in">```r</span></span>
-<span id="cb40-30"><a href="#cb40-30"></a><span class="co">#| echo: true</span></span>
-<span id="cb40-31"><a href="#cb40-31"></a><span class="co">#| results: &quot;hide&quot;</span></span>
-<span id="cb40-32"><a href="#cb40-32"></a><span class="co">#| warning: false</span></span>
-<span id="cb40-33"><a href="#cb40-33"></a><span class="co"># Packages</span></span>
-<span id="cb40-34"><a href="#cb40-34"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb40-35"><a href="#cb40-35"></a>  <span class="st">&quot;tidyverse&quot;</span>,</span>
-<span id="cb40-36"><a href="#cb40-36"></a>  <span class="st">&quot;sjPlot&quot;</span>,</span>
-<span id="cb40-37"><a href="#cb40-37"></a>  <span class="st">&quot;haven&quot;</span>,</span>
-<span id="cb40-38"><a href="#cb40-38"></a>  <span class="st">&quot;labelled&quot;</span> ,</span>
-<span id="cb40-39"><a href="#cb40-39"></a>  <span class="st">&quot;sandwich&quot;</span>,</span>
-<span id="cb40-40"><a href="#cb40-40"></a>  <span class="st">&quot;lmtest&quot;</span>,</span>
-<span id="cb40-41"><a href="#cb40-41"></a>  <span class="st">&quot;Hmisc&quot;</span></span>
-<span id="cb40-42"><a href="#cb40-42"></a>) </span>
-<span id="cb40-43"><a href="#cb40-43"></a></span>
-<span id="cb40-44"><a href="#cb40-44"></a><span class="do">## Install uninstalled packages</span></span>
-<span id="cb40-45"><a href="#cb40-45"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
-<span id="cb40-46"><a href="#cb40-46"></a></span>
-<span id="cb40-47"><a href="#cb40-47"></a><span class="do">## Load all packages to library</span></span>
-<span id="cb40-48"><a href="#cb40-48"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb40-49"><a href="#cb40-49"></a></span>
-<span id="cb40-50"><a href="#cb40-50"></a><span class="in">```</span></span>
-<span id="cb40-51"><a href="#cb40-51"></a></span>
-<span id="cb40-52"><a href="#cb40-52"></a><span class="fu">## Einführung</span></span>
-<span id="cb40-53"><a href="#cb40-53"></a></span>
-<span id="cb40-54"><a href="#cb40-54"></a>In dieser Übung replizieren wir die Ergebnisse folgender Studie:</span>
-<span id="cb40-55"><a href="#cb40-55"></a></span>
-<span id="cb40-56"><a href="#cb40-56"></a>Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.</span>
-<span id="cb40-57"><a href="#cb40-57"></a></span>
-<span id="cb40-58"><a href="#cb40-58"></a>Der Datensatz kann <span class="co">[</span><span class="ot">hier</span><span class="co">](https://dariatisch.github.io/wup2024/downloads/just_transfers.csv)</span> heruntergeladen werden.</span>
-<span id="cb40-59"><a href="#cb40-59"></a></span>
-<span id="cb40-60"><a href="#cb40-60"></a>Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?</span>
-<span id="cb40-61"><a href="#cb40-61"></a></span>
-<span id="cb40-62"><a href="#cb40-62"></a><span class="fu">## Daten einlesen</span></span>
-<span id="cb40-63"><a href="#cb40-63"></a></span>
-<span id="cb40-64"><a href="#cb40-64"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-65"><a href="#cb40-65"></a></span>
-<span id="cb40-66"><a href="#cb40-66"></a><span class="in">```r</span></span>
-<span id="cb40-67"><a href="#cb40-67"></a><span class="co"># Load the data file</span></span>
-<span id="cb40-68"><a href="#cb40-68"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers.csv&quot;</span>)</span>
-<span id="cb40-69"><a href="#cb40-69"></a></span>
-<span id="cb40-70"><a href="#cb40-70"></a><span class="in">```</span></span>
-<span id="cb40-71"><a href="#cb40-71"></a></span>
-<span id="cb40-72"><a href="#cb40-72"></a><span class="fu">## Variablenlabels einlesen</span></span>
-<span id="cb40-73"><a href="#cb40-73"></a></span>
-<span id="cb40-74"><a href="#cb40-74"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-75"><a href="#cb40-75"></a></span>
-<span id="cb40-76"><a href="#cb40-76"></a><span class="in">```r</span></span>
-<span id="cb40-77"><a href="#cb40-77"></a><span class="co"># Load the variable labels</span></span>
-<span id="cb40-78"><a href="#cb40-78"></a>variable_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/just_transfers_variable_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb40-79"><a href="#cb40-79"></a></span>
-<span id="cb40-80"><a href="#cb40-80"></a><span class="co"># View variable labels</span></span>
-<span id="cb40-81"><a href="#cb40-81"></a><span class="co">#print(variable_labels)</span></span>
-<span id="cb40-82"><a href="#cb40-82"></a></span>
+<span id="cb40-22"><a href="#cb40-22"></a><span class="in">knitr::opts_knit$set(</span></span>
+<span id="cb40-23"><a href="#cb40-23"></a><span class="in">  root.dir = &quot;D:/OneDrive/teaching/2026_wup/wup_2026&quot;)</span></span>
+<span id="cb40-24"><a href="#cb40-24"></a><span class="in">```</span></span>
+<span id="cb40-25"><a href="#cb40-25"></a></span>
+<span id="cb40-26"><a href="#cb40-26"></a><span class="fu">## Packages installieren und laden</span></span>
+<span id="cb40-27"><a href="#cb40-27"></a></span>
+<span id="cb40-28"><a href="#cb40-28"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-29"><a href="#cb40-29"></a></span>
+<span id="cb40-30"><a href="#cb40-30"></a><span class="in">```r</span></span>
+<span id="cb40-31"><a href="#cb40-31"></a><span class="co">#| echo: true</span></span>
+<span id="cb40-32"><a href="#cb40-32"></a><span class="co">#| results: &quot;hide&quot;</span></span>
+<span id="cb40-33"><a href="#cb40-33"></a><span class="co">#| warning: false</span></span>
+<span id="cb40-34"><a href="#cb40-34"></a><span class="co"># Packages</span></span>
+<span id="cb40-35"><a href="#cb40-35"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb40-36"><a href="#cb40-36"></a>  <span class="st">&quot;tidyverse&quot;</span>,</span>
+<span id="cb40-37"><a href="#cb40-37"></a>  <span class="st">&quot;sjPlot&quot;</span>,</span>
+<span id="cb40-38"><a href="#cb40-38"></a>  <span class="st">&quot;haven&quot;</span>,</span>
+<span id="cb40-39"><a href="#cb40-39"></a>  <span class="st">&quot;labelled&quot;</span> ,</span>
+<span id="cb40-40"><a href="#cb40-40"></a>  <span class="st">&quot;sandwich&quot;</span>,</span>
+<span id="cb40-41"><a href="#cb40-41"></a>  <span class="st">&quot;lmtest&quot;</span>,</span>
+<span id="cb40-42"><a href="#cb40-42"></a>  <span class="st">&quot;Hmisc&quot;</span></span>
+<span id="cb40-43"><a href="#cb40-43"></a>) </span>
+<span id="cb40-44"><a href="#cb40-44"></a></span>
+<span id="cb40-45"><a href="#cb40-45"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb40-46"><a href="#cb40-46"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb40-47"><a href="#cb40-47"></a></span>
+<span id="cb40-48"><a href="#cb40-48"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb40-49"><a href="#cb40-49"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb40-50"><a href="#cb40-50"></a></span>
+<span id="cb40-51"><a href="#cb40-51"></a><span class="in">```</span></span>
+<span id="cb40-52"><a href="#cb40-52"></a></span>
+<span id="cb40-53"><a href="#cb40-53"></a><span class="fu">## Einführung</span></span>
+<span id="cb40-54"><a href="#cb40-54"></a></span>
+<span id="cb40-55"><a href="#cb40-55"></a>In dieser Übung replizieren wir die Ergebnisse folgender Studie:</span>
+<span id="cb40-56"><a href="#cb40-56"></a></span>
+<span id="cb40-57"><a href="#cb40-57"></a>Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.</span>
+<span id="cb40-58"><a href="#cb40-58"></a></span>
+<span id="cb40-59"><a href="#cb40-59"></a>Der Datensatz kann <span class="co">[</span><span class="ot">hier</span><span class="co">](https://dariatisch.github.io/wup2024/downloads/just_transfers.csv)</span> heruntergeladen werden.</span>
+<span id="cb40-60"><a href="#cb40-60"></a></span>
+<span id="cb40-61"><a href="#cb40-61"></a>Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?</span>
+<span id="cb40-62"><a href="#cb40-62"></a></span>
+<span id="cb40-63"><a href="#cb40-63"></a><span class="fu">## Daten einlesen</span></span>
+<span id="cb40-64"><a href="#cb40-64"></a></span>
+<span id="cb40-65"><a href="#cb40-65"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-66"><a href="#cb40-66"></a></span>
+<span id="cb40-67"><a href="#cb40-67"></a><span class="in">```r</span></span>
+<span id="cb40-68"><a href="#cb40-68"></a><span class="co"># Load the data file</span></span>
+<span id="cb40-69"><a href="#cb40-69"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;daten/just_transfers.csv&quot;</span>)</span>
+<span id="cb40-70"><a href="#cb40-70"></a></span>
+<span id="cb40-71"><a href="#cb40-71"></a><span class="in">```</span></span>
+<span id="cb40-72"><a href="#cb40-72"></a></span>
+<span id="cb40-73"><a href="#cb40-73"></a><span class="fu">## Variablenlabels einlesen</span></span>
+<span id="cb40-74"><a href="#cb40-74"></a></span>
+<span id="cb40-75"><a href="#cb40-75"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-76"><a href="#cb40-76"></a></span>
+<span id="cb40-77"><a href="#cb40-77"></a><span class="in">```r</span></span>
+<span id="cb40-78"><a href="#cb40-78"></a><span class="co"># Load the variable labels</span></span>
+<span id="cb40-79"><a href="#cb40-79"></a>variable_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;daten/just_transfers_variable_labels.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-80"><a href="#cb40-80"></a></span>
+<span id="cb40-81"><a href="#cb40-81"></a><span class="co"># View variable labels</span></span>
+<span id="cb40-82"><a href="#cb40-82"></a><span class="co">#print(variable_labels)</span></span>
 <span id="cb40-83"><a href="#cb40-83"></a></span>
-<span id="cb40-84"><a href="#cb40-84"></a><span class="co"># Loop through the labels and assign them to variables in the dataset</span></span>
-<span id="cb40-85"><a href="#cb40-85"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(variable_labels)) {</span>
-<span id="cb40-86"><a href="#cb40-86"></a>  <span class="cf">if</span> (var <span class="sc">%in%</span> <span class="fu">names</span>(df)) {</span>
-<span id="cb40-87"><a href="#cb40-87"></a>    <span class="fu">var_label</span>(df[[var]]) <span class="ot">&lt;-</span> variable_labels[[var]]</span>
-<span id="cb40-88"><a href="#cb40-88"></a>  }</span>
-<span id="cb40-89"><a href="#cb40-89"></a>}</span>
-<span id="cb40-90"><a href="#cb40-90"></a></span>
-<span id="cb40-91"><a href="#cb40-91"></a><span class="in">```</span></span>
-<span id="cb40-92"><a href="#cb40-92"></a></span>
-<span id="cb40-93"><a href="#cb40-93"></a><span class="fu">## Value labels einlesen</span></span>
-<span id="cb40-94"><a href="#cb40-94"></a></span>
-<span id="cb40-95"><a href="#cb40-95"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-96"><a href="#cb40-96"></a></span>
-<span id="cb40-97"><a href="#cb40-97"></a><span class="in">```r</span></span>
-<span id="cb40-98"><a href="#cb40-98"></a><span class="co"># Load the value labels</span></span>
-<span id="cb40-99"><a href="#cb40-99"></a>value_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../daten/value_labels.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb40-100"><a href="#cb40-100"></a></span>
-<span id="cb40-101"><a href="#cb40-101"></a><span class="co"># View value labels</span></span>
-<span id="cb40-102"><a href="#cb40-102"></a><span class="fu">head</span>(value_labels)</span>
-<span id="cb40-103"><a href="#cb40-103"></a><span class="in">```</span></span>
-<span id="cb40-104"><a href="#cb40-104"></a></span>
-<span id="cb40-105"><a href="#cb40-105"></a><span class="fu"># Kennenlernen des Datensatzes</span></span>
-<span id="cb40-106"><a href="#cb40-106"></a></span>
-<span id="cb40-107"><a href="#cb40-107"></a><span class="fu">## Wie viele Beobachtungen enthält der Datensatz?</span></span>
-<span id="cb40-108"><a href="#cb40-108"></a></span>
-<span id="cb40-109"><a href="#cb40-109"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-110"><a href="#cb40-110"></a></span>
-<span id="cb40-111"><a href="#cb40-111"></a><span class="in">```r</span></span>
-<span id="cb40-112"><a href="#cb40-112"></a><span class="fu">nrow</span>(df)</span>
-<span id="cb40-113"><a href="#cb40-113"></a><span class="in">```</span></span>
-<span id="cb40-114"><a href="#cb40-114"></a></span>
-<span id="cb40-115"><a href="#cb40-115"></a><span class="fu">## Wie viele befragte Personen sind im Datensatz enthalten?</span></span>
-<span id="cb40-116"><a href="#cb40-116"></a></span>
-<span id="cb40-117"><a href="#cb40-117"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-118"><a href="#cb40-118"></a></span>
-<span id="cb40-119"><a href="#cb40-119"></a><span class="in">```r</span></span>
-<span id="cb40-120"><a href="#cb40-120"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_resp))</span>
-<span id="cb40-121"><a href="#cb40-121"></a><span class="in">```</span></span>
-<span id="cb40-122"><a href="#cb40-122"></a></span>
-<span id="cb40-123"><a href="#cb40-123"></a><span class="fu">## Wie viele Vignetten hat jede befragte Person bewertet?</span></span>
-<span id="cb40-124"><a href="#cb40-124"></a></span>
-<span id="cb40-125"><a href="#cb40-125"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-126"><a href="#cb40-126"></a></span>
-<span id="cb40-127"><a href="#cb40-127"></a><span class="in">```r</span></span>
-<span id="cb40-128"><a href="#cb40-128"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_within))</span>
-<span id="cb40-129"><a href="#cb40-129"></a><span class="fu">table</span>(df<span class="sc">$</span>id_within)</span>
-<span id="cb40-130"><a href="#cb40-130"></a><span class="dv">1428</span><span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb40-131"><a href="#cb40-131"></a><span class="in">```</span></span>
-<span id="cb40-132"><a href="#cb40-132"></a></span>
-<span id="cb40-133"><a href="#cb40-133"></a><span class="fu">## Wie viele Vignetten gibt es?</span></span>
-<span id="cb40-134"><a href="#cb40-134"></a></span>
-<span id="cb40-135"><a href="#cb40-135"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-136"><a href="#cb40-136"></a></span>
-<span id="cb40-137"><a href="#cb40-137"></a><span class="in">```r</span></span>
-<span id="cb40-138"><a href="#cb40-138"></a><span class="fu">table</span>(df<span class="sc">$</span>id_vignette)</span>
-<span id="cb40-139"><a href="#cb40-139"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_vignette))</span>
-<span id="cb40-140"><a href="#cb40-140"></a><span class="in">```</span></span>
-<span id="cb40-141"><a href="#cb40-141"></a></span>
-<span id="cb40-142"><a href="#cb40-142"></a><span class="fu">## Wie viele Decks gibt es?</span></span>
-<span id="cb40-143"><a href="#cb40-143"></a></span>
-<span id="cb40-144"><a href="#cb40-144"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-145"><a href="#cb40-145"></a></span>
-<span id="cb40-146"><a href="#cb40-146"></a><span class="in">```r</span></span>
-<span id="cb40-147"><a href="#cb40-147"></a><span class="fu">table</span>(df<span class="sc">$</span>deck)</span>
-<span id="cb40-148"><a href="#cb40-148"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>deck))</span>
-<span id="cb40-149"><a href="#cb40-149"></a><span class="in">```</span></span>
-<span id="cb40-150"><a href="#cb40-150"></a></span>
-<span id="cb40-151"><a href="#cb40-151"></a><span class="fu">## Dimensionen und Ausprägungen</span></span>
-<span id="cb40-152"><a href="#cb40-152"></a></span>
-<span id="cb40-153"><a href="#cb40-153"></a>Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels</span>
-<span id="cb40-154"><a href="#cb40-154"></a></span>
-<span id="cb40-155"><a href="#cb40-155"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-156"><a href="#cb40-156"></a></span>
-<span id="cb40-157"><a href="#cb40-157"></a><span class="in">```r</span></span>
-<span id="cb40-158"><a href="#cb40-158"></a><span class="fu">head</span>(value_labels, <span class="dv">9</span>)</span>
-<span id="cb40-159"><a href="#cb40-159"></a><span class="in">```</span></span>
-<span id="cb40-160"><a href="#cb40-160"></a></span>
-<span id="cb40-161"><a href="#cb40-161"></a><span class="fu"># Orthogonalität und Balance</span></span>
-<span id="cb40-162"><a href="#cb40-162"></a></span>
-<span id="cb40-163"><a href="#cb40-163"></a><span class="fu">## Sind die Dimensionen orthogonal?</span></span>
-<span id="cb40-164"><a href="#cb40-164"></a></span>
-<span id="cb40-165"><a href="#cb40-165"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-166"><a href="#cb40-166"></a></span>
-<span id="cb40-167"><a href="#cb40-167"></a><span class="in">```r</span></span>
-<span id="cb40-168"><a href="#cb40-168"></a><span class="co"># Dummy-Variablen mit dplyr erstellen</span></span>
-<span id="cb40-169"><a href="#cb40-169"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb40-170"><a href="#cb40-170"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb40-171"><a href="#cb40-171"></a>    <span class="co"># Dummy-Variablen für firstborn</span></span>
-<span id="cb40-172"><a href="#cb40-172"></a>    <span class="at">firstborn_1 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-173"><a href="#cb40-173"></a>    <span class="at">firstborn_2 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-174"><a href="#cb40-174"></a>    <span class="at">firstborn_3 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-175"><a href="#cb40-175"></a>    </span>
-<span id="cb40-176"><a href="#cb40-176"></a>    <span class="co"># Dummy-Variablen für help</span></span>
-<span id="cb40-177"><a href="#cb40-177"></a>    <span class="at">help_1 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-178"><a href="#cb40-178"></a>    <span class="at">help_2 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-179"><a href="#cb40-179"></a>    <span class="at">help_3 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-180"><a href="#cb40-180"></a>    </span>
-<span id="cb40-181"><a href="#cb40-181"></a>    <span class="co"># Dummy-Variablen für need</span></span>
-<span id="cb40-182"><a href="#cb40-182"></a>    <span class="at">need_1 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-183"><a href="#cb40-183"></a>    <span class="at">need_2 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb40-184"><a href="#cb40-184"></a>    <span class="at">need_3 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb40-185"><a href="#cb40-185"></a>  )</span>
-<span id="cb40-186"><a href="#cb40-186"></a></span>
+<span id="cb40-84"><a href="#cb40-84"></a></span>
+<span id="cb40-85"><a href="#cb40-85"></a><span class="co"># Loop through the labels and assign them to variables in the dataset</span></span>
+<span id="cb40-86"><a href="#cb40-86"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(variable_labels)) {</span>
+<span id="cb40-87"><a href="#cb40-87"></a>  <span class="cf">if</span> (var <span class="sc">%in%</span> <span class="fu">names</span>(df)) {</span>
+<span id="cb40-88"><a href="#cb40-88"></a>    <span class="fu">var_label</span>(df[[var]]) <span class="ot">&lt;-</span> variable_labels[[var]]</span>
+<span id="cb40-89"><a href="#cb40-89"></a>  }</span>
+<span id="cb40-90"><a href="#cb40-90"></a>}</span>
+<span id="cb40-91"><a href="#cb40-91"></a></span>
+<span id="cb40-92"><a href="#cb40-92"></a><span class="in">```</span></span>
+<span id="cb40-93"><a href="#cb40-93"></a></span>
+<span id="cb40-94"><a href="#cb40-94"></a><span class="fu">## Value labels einlesen</span></span>
+<span id="cb40-95"><a href="#cb40-95"></a></span>
+<span id="cb40-96"><a href="#cb40-96"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-97"><a href="#cb40-97"></a></span>
+<span id="cb40-98"><a href="#cb40-98"></a><span class="in">```r</span></span>
+<span id="cb40-99"><a href="#cb40-99"></a><span class="co"># Load the value labels</span></span>
+<span id="cb40-100"><a href="#cb40-100"></a>value_labels <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;daten/value_labels.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-101"><a href="#cb40-101"></a></span>
+<span id="cb40-102"><a href="#cb40-102"></a><span class="co"># View value labels</span></span>
+<span id="cb40-103"><a href="#cb40-103"></a><span class="fu">head</span>(value_labels)</span>
+<span id="cb40-104"><a href="#cb40-104"></a><span class="in">```</span></span>
+<span id="cb40-105"><a href="#cb40-105"></a></span>
+<span id="cb40-106"><a href="#cb40-106"></a><span class="fu"># Kennenlernen des Datensatzes</span></span>
+<span id="cb40-107"><a href="#cb40-107"></a></span>
+<span id="cb40-108"><a href="#cb40-108"></a><span class="fu">## Wie viele Beobachtungen enthält der Datensatz?</span></span>
+<span id="cb40-109"><a href="#cb40-109"></a></span>
+<span id="cb40-110"><a href="#cb40-110"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-111"><a href="#cb40-111"></a></span>
+<span id="cb40-112"><a href="#cb40-112"></a><span class="in">```r</span></span>
+<span id="cb40-113"><a href="#cb40-113"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb40-114"><a href="#cb40-114"></a><span class="in">```</span></span>
+<span id="cb40-115"><a href="#cb40-115"></a></span>
+<span id="cb40-116"><a href="#cb40-116"></a><span class="fu">## Wie viele befragte Personen sind im Datensatz enthalten?</span></span>
+<span id="cb40-117"><a href="#cb40-117"></a></span>
+<span id="cb40-118"><a href="#cb40-118"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-119"><a href="#cb40-119"></a></span>
+<span id="cb40-120"><a href="#cb40-120"></a><span class="in">```r</span></span>
+<span id="cb40-121"><a href="#cb40-121"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_resp))</span>
+<span id="cb40-122"><a href="#cb40-122"></a><span class="in">```</span></span>
+<span id="cb40-123"><a href="#cb40-123"></a></span>
+<span id="cb40-124"><a href="#cb40-124"></a><span class="fu">## Wie viele Vignetten hat jede befragte Person bewertet?</span></span>
+<span id="cb40-125"><a href="#cb40-125"></a></span>
+<span id="cb40-126"><a href="#cb40-126"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-127"><a href="#cb40-127"></a></span>
+<span id="cb40-128"><a href="#cb40-128"></a><span class="in">```r</span></span>
+<span id="cb40-129"><a href="#cb40-129"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_within))</span>
+<span id="cb40-130"><a href="#cb40-130"></a><span class="fu">table</span>(df<span class="sc">$</span>id_within)</span>
+<span id="cb40-131"><a href="#cb40-131"></a><span class="dv">1428</span><span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb40-132"><a href="#cb40-132"></a><span class="in">```</span></span>
+<span id="cb40-133"><a href="#cb40-133"></a></span>
+<span id="cb40-134"><a href="#cb40-134"></a><span class="fu">## Wie viele Vignetten gibt es?</span></span>
+<span id="cb40-135"><a href="#cb40-135"></a></span>
+<span id="cb40-136"><a href="#cb40-136"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-137"><a href="#cb40-137"></a></span>
+<span id="cb40-138"><a href="#cb40-138"></a><span class="in">```r</span></span>
+<span id="cb40-139"><a href="#cb40-139"></a><span class="fu">table</span>(df<span class="sc">$</span>id_vignette)</span>
+<span id="cb40-140"><a href="#cb40-140"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id_vignette))</span>
+<span id="cb40-141"><a href="#cb40-141"></a><span class="in">```</span></span>
+<span id="cb40-142"><a href="#cb40-142"></a></span>
+<span id="cb40-143"><a href="#cb40-143"></a><span class="fu">## Wie viele Decks gibt es?</span></span>
+<span id="cb40-144"><a href="#cb40-144"></a></span>
+<span id="cb40-145"><a href="#cb40-145"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-146"><a href="#cb40-146"></a></span>
+<span id="cb40-147"><a href="#cb40-147"></a><span class="in">```r</span></span>
+<span id="cb40-148"><a href="#cb40-148"></a><span class="fu">table</span>(df<span class="sc">$</span>deck)</span>
+<span id="cb40-149"><a href="#cb40-149"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>deck))</span>
+<span id="cb40-150"><a href="#cb40-150"></a><span class="in">```</span></span>
+<span id="cb40-151"><a href="#cb40-151"></a></span>
+<span id="cb40-152"><a href="#cb40-152"></a><span class="fu">## Dimensionen und Ausprägungen</span></span>
+<span id="cb40-153"><a href="#cb40-153"></a></span>
+<span id="cb40-154"><a href="#cb40-154"></a>Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels</span>
+<span id="cb40-155"><a href="#cb40-155"></a></span>
+<span id="cb40-156"><a href="#cb40-156"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-157"><a href="#cb40-157"></a></span>
+<span id="cb40-158"><a href="#cb40-158"></a><span class="in">```r</span></span>
+<span id="cb40-159"><a href="#cb40-159"></a><span class="fu">head</span>(value_labels, <span class="dv">9</span>)</span>
+<span id="cb40-160"><a href="#cb40-160"></a><span class="in">```</span></span>
+<span id="cb40-161"><a href="#cb40-161"></a></span>
+<span id="cb40-162"><a href="#cb40-162"></a><span class="fu"># Orthogonalität und Balance</span></span>
+<span id="cb40-163"><a href="#cb40-163"></a></span>
+<span id="cb40-164"><a href="#cb40-164"></a><span class="fu">## Sind die Dimensionen orthogonal?</span></span>
+<span id="cb40-165"><a href="#cb40-165"></a></span>
+<span id="cb40-166"><a href="#cb40-166"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-167"><a href="#cb40-167"></a></span>
+<span id="cb40-168"><a href="#cb40-168"></a><span class="in">```r</span></span>
+<span id="cb40-169"><a href="#cb40-169"></a><span class="co"># Dummy-Variablen mit dplyr erstellen</span></span>
+<span id="cb40-170"><a href="#cb40-170"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb40-171"><a href="#cb40-171"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-172"><a href="#cb40-172"></a>    <span class="co"># Dummy-Variablen für firstborn</span></span>
+<span id="cb40-173"><a href="#cb40-173"></a>    <span class="at">firstborn_1 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-174"><a href="#cb40-174"></a>    <span class="at">firstborn_2 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-175"><a href="#cb40-175"></a>    <span class="at">firstborn_3 =</span> <span class="fu">if_else</span>(firstborn <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-176"><a href="#cb40-176"></a>    </span>
+<span id="cb40-177"><a href="#cb40-177"></a>    <span class="co"># Dummy-Variablen für help</span></span>
+<span id="cb40-178"><a href="#cb40-178"></a>    <span class="at">help_1 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-179"><a href="#cb40-179"></a>    <span class="at">help_2 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-180"><a href="#cb40-180"></a>    <span class="at">help_3 =</span> <span class="fu">if_else</span>(help <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-181"><a href="#cb40-181"></a>    </span>
+<span id="cb40-182"><a href="#cb40-182"></a>    <span class="co"># Dummy-Variablen für need</span></span>
+<span id="cb40-183"><a href="#cb40-183"></a>    <span class="at">need_1 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-184"><a href="#cb40-184"></a>    <span class="at">need_2 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb40-185"><a href="#cb40-185"></a>    <span class="at">need_3 =</span> <span class="fu">if_else</span>(need <span class="sc">==</span> <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb40-186"><a href="#cb40-186"></a>  )</span>
 <span id="cb40-187"><a href="#cb40-187"></a></span>
-<span id="cb40-188"><a href="#cb40-188"></a><span class="co"># Select relevant columns</span></span>
-<span id="cb40-189"><a href="#cb40-189"></a>selected_columns <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">&quot;firstborn_1&quot;</span>, </span>
-<span id="cb40-190"><a href="#cb40-190"></a>                           <span class="st">&quot;firstborn_2&quot;</span>,</span>
-<span id="cb40-191"><a href="#cb40-191"></a>                           <span class="st">&quot;firstborn_3&quot;</span>,</span>
-<span id="cb40-192"><a href="#cb40-192"></a>                           <span class="st">&quot;need_1&quot;</span>,</span>
-<span id="cb40-193"><a href="#cb40-193"></a>                           <span class="st">&quot;need_2&quot;</span>,</span>
-<span id="cb40-194"><a href="#cb40-194"></a>                           <span class="st">&quot;need_3&quot;</span>,</span>
-<span id="cb40-195"><a href="#cb40-195"></a>                           <span class="st">&quot;help_1&quot;</span>,</span>
-<span id="cb40-196"><a href="#cb40-196"></a>                           <span class="st">&quot;help_2&quot;</span>, </span>
-<span id="cb40-197"><a href="#cb40-197"></a>                           <span class="st">&quot;help_3&quot;</span>)]</span>
-<span id="cb40-198"><a href="#cb40-198"></a></span>
-<span id="cb40-199"><a href="#cb40-199"></a><span class="co"># Compute pairwise correlations with significance</span></span>
-<span id="cb40-200"><a href="#cb40-200"></a>cor_results <span class="ot">&lt;-</span> <span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(selected_columns))</span>
-<span id="cb40-201"><a href="#cb40-201"></a></span>
-<span id="cb40-202"><a href="#cb40-202"></a><span class="co"># Display results</span></span>
-<span id="cb40-203"><a href="#cb40-203"></a><span class="fu">print</span>(cor_results)</span>
-<span id="cb40-204"><a href="#cb40-204"></a></span>
-<span id="cb40-205"><a href="#cb40-205"></a><span class="in">```</span></span>
-<span id="cb40-206"><a href="#cb40-206"></a></span>
-<span id="cb40-207"><a href="#cb40-207"></a><span class="fu">## Sind die Dimensionen / Ausprägungen balanced?</span></span>
-<span id="cb40-208"><a href="#cb40-208"></a></span>
-<span id="cb40-209"><a href="#cb40-209"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-210"><a href="#cb40-210"></a></span>
-<span id="cb40-211"><a href="#cb40-211"></a><span class="in">```r</span></span>
-<span id="cb40-212"><a href="#cb40-212"></a><span class="co"># Check balance</span></span>
-<span id="cb40-213"><a href="#cb40-213"></a><span class="fu">table</span>(df<span class="sc">$</span>firstborn)</span>
-<span id="cb40-214"><a href="#cb40-214"></a><span class="fu">table</span>(df<span class="sc">$</span>need)</span>
-<span id="cb40-215"><a href="#cb40-215"></a><span class="fu">table</span>(df<span class="sc">$</span>help)</span>
-<span id="cb40-216"><a href="#cb40-216"></a><span class="in">```</span></span>
-<span id="cb40-217"><a href="#cb40-217"></a></span>
-<span id="cb40-218"><a href="#cb40-218"></a><span class="fu"># Deskriptive Statistik</span></span>
-<span id="cb40-219"><a href="#cb40-219"></a></span>
-<span id="cb40-220"><a href="#cb40-220"></a><span class="fu">## Replikation Tabelle 2</span></span>
-<span id="cb40-221"><a href="#cb40-221"></a></span>
-<span id="cb40-222"><a href="#cb40-222"></a>Nun wollen wir Tabelle 2 aus dem Artikel replizieren.</span>
-<span id="cb40-223"><a href="#cb40-223"></a></span>
-<span id="cb40-224"><a href="#cb40-224"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-225"><a href="#cb40-225"></a></span>
-<span id="cb40-226"><a href="#cb40-226"></a><span class="in">```r</span></span>
-<span id="cb40-227"><a href="#cb40-227"></a><span class="co"># Filter für die Daten anwenden</span></span>
-<span id="cb40-228"><a href="#cb40-228"></a>filtered_data <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb40-229"><a href="#cb40-229"></a>  <span class="fu">filter</span>(id_within <span class="sc">==</span> <span class="dv">1</span>, daughter <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb40-230"><a href="#cb40-230"></a></span>
-<span id="cb40-231"><a href="#cb40-231"></a><span class="co"># Deskriptive Statistiken berechnen</span></span>
-<span id="cb40-232"><a href="#cb40-232"></a>descriptive_stats <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
-<span id="cb40-233"><a href="#cb40-233"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb40-234"><a href="#cb40-234"></a>    <span class="at">Female_Mean =</span> <span class="fu">mean</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-235"><a href="#cb40-235"></a>    <span class="at">Female_SD =</span> <span class="fu">sd</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-236"><a href="#cb40-236"></a>    <span class="at">Female_Min =</span> <span class="fu">min</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-237"><a href="#cb40-237"></a>    <span class="at">Female_Max =</span> <span class="fu">max</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-238"><a href="#cb40-238"></a>    <span class="at">Female_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(female)),</span>
-<span id="cb40-239"><a href="#cb40-239"></a>    </span>
-<span id="cb40-240"><a href="#cb40-240"></a>    <span class="at">Age_Mean =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-241"><a href="#cb40-241"></a>    <span class="at">Age_SD =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-242"><a href="#cb40-242"></a>    <span class="at">Age_Min =</span> <span class="fu">min</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-243"><a href="#cb40-243"></a>    <span class="at">Age_Max =</span> <span class="fu">max</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-244"><a href="#cb40-244"></a>    <span class="at">Age_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)),</span>
-<span id="cb40-245"><a href="#cb40-245"></a>    </span>
-<span id="cb40-246"><a href="#cb40-246"></a>    <span class="at">Child_Mean =</span> <span class="fu">mean</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-247"><a href="#cb40-247"></a>    <span class="at">Child_SD =</span> <span class="fu">sd</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-248"><a href="#cb40-248"></a>    <span class="at">Child_Min =</span> <span class="fu">min</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-249"><a href="#cb40-249"></a>    <span class="at">Child_Max =</span> <span class="fu">max</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-250"><a href="#cb40-250"></a>    <span class="at">Child_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(child)),</span>
-<span id="cb40-251"><a href="#cb40-251"></a>    </span>
-<span id="cb40-252"><a href="#cb40-252"></a>    <span class="at">Mig_Mean =</span> <span class="fu">mean</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-253"><a href="#cb40-253"></a>    <span class="at">Mig_SD =</span> <span class="fu">sd</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-254"><a href="#cb40-254"></a>    <span class="at">Mig_Min =</span> <span class="fu">min</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-255"><a href="#cb40-255"></a>    <span class="at">Mig_Max =</span> <span class="fu">max</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-256"><a href="#cb40-256"></a>    <span class="at">Mig_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(mig)),</span>
-<span id="cb40-257"><a href="#cb40-257"></a>    </span>
-<span id="cb40-258"><a href="#cb40-258"></a>    <span class="at">Gifted_Mean =</span> <span class="fu">mean</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-259"><a href="#cb40-259"></a>    <span class="at">Gifted_SD =</span> <span class="fu">sd</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-260"><a href="#cb40-260"></a>    <span class="at">Gifted_Min =</span> <span class="fu">min</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-261"><a href="#cb40-261"></a>    <span class="at">Gifted_Max =</span> <span class="fu">max</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-262"><a href="#cb40-262"></a>    <span class="at">Gifted_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(gifted)),</span>
-<span id="cb40-263"><a href="#cb40-263"></a>    </span>
-<span id="cb40-264"><a href="#cb40-264"></a>    <span class="at">IV_Received_Mean =</span> <span class="fu">mean</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-265"><a href="#cb40-265"></a>    <span class="at">IV_Received_SD =</span> <span class="fu">sd</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-266"><a href="#cb40-266"></a>    <span class="at">IV_Received_Min =</span> <span class="fu">min</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-267"><a href="#cb40-267"></a>    <span class="at">IV_Received_Max =</span> <span class="fu">max</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-268"><a href="#cb40-268"></a>    <span class="at">IV_Received_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(iv_received)),</span>
-<span id="cb40-269"><a href="#cb40-269"></a>    </span>
-<span id="cb40-270"><a href="#cb40-270"></a>    <span class="at">ABI_Mean =</span> <span class="fu">mean</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-271"><a href="#cb40-271"></a>    <span class="at">ABI_SD =</span> <span class="fu">sd</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-272"><a href="#cb40-272"></a>    <span class="at">ABI_Min =</span> <span class="fu">min</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-273"><a href="#cb40-273"></a>    <span class="at">ABI_Max =</span> <span class="fu">max</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb40-274"><a href="#cb40-274"></a>    <span class="at">ABI_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(abi))</span>
-<span id="cb40-275"><a href="#cb40-275"></a>  )</span>
-<span id="cb40-276"><a href="#cb40-276"></a></span>
-<span id="cb40-277"><a href="#cb40-277"></a><span class="co"># Umstrukturierung der Tabelle</span></span>
-<span id="cb40-278"><a href="#cb40-278"></a>descriptive_stats_long <span class="ot">&lt;-</span> descriptive_stats <span class="sc">%&gt;%</span></span>
-<span id="cb40-279"><a href="#cb40-279"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb40-280"><a href="#cb40-280"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
-<span id="cb40-281"><a href="#cb40-281"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
-<span id="cb40-282"><a href="#cb40-282"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.*)_(.*)&quot;</span></span>
-<span id="cb40-283"><a href="#cb40-283"></a>  )</span>
-<span id="cb40-284"><a href="#cb40-284"></a></span>
-<span id="cb40-285"><a href="#cb40-285"></a><span class="co"># Tabelle mit sjPlot anzeigen</span></span>
-<span id="cb40-286"><a href="#cb40-286"></a><span class="fu">tab_df</span>(</span>
-<span id="cb40-287"><a href="#cb40-287"></a>  descriptive_stats_long,</span>
-<span id="cb40-288"><a href="#cb40-288"></a>  <span class="at">title =</span> <span class="st">&quot;Descriptive Statistics of Respondent Characteristics&quot;</span>,</span>
-<span id="cb40-289"><a href="#cb40-289"></a>  <span class="at">col.header =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Max&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
-<span id="cb40-290"><a href="#cb40-290"></a>)</span>
-<span id="cb40-291"><a href="#cb40-291"></a></span>
-<span id="cb40-292"><a href="#cb40-292"></a><span class="in">```</span></span>
-<span id="cb40-293"><a href="#cb40-293"></a></span>
-<span id="cb40-294"><a href="#cb40-294"></a><span class="fu">## Replikation Figure 1</span></span>
-<span id="cb40-295"><a href="#cb40-295"></a></span>
-<span id="cb40-296"><a href="#cb40-296"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-297"><a href="#cb40-297"></a></span>
-<span id="cb40-298"><a href="#cb40-298"></a><span class="in">```r</span></span>
-<span id="cb40-299"><a href="#cb40-299"></a><span class="co"># Create the histogram</span></span>
-<span id="cb40-300"><a href="#cb40-300"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> child_vig)) <span class="sc">+</span></span>
-<span id="cb40-301"><a href="#cb40-301"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..count..<span class="sc">/</span><span class="fu">sum</span>(..count..)<span class="sc">*</span><span class="dv">100</span>), <span class="at">binwidth =</span> <span class="dv">250</span>, </span>
-<span id="cb40-302"><a href="#cb40-302"></a>                 <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb40-303"><a href="#cb40-303"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb40-304"><a href="#cb40-304"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogram&quot;</span>,</span>
-<span id="cb40-305"><a href="#cb40-305"></a>       <span class="at">x =</span> <span class="st">&quot;Child&#39;s amount&quot;</span>,</span>
-<span id="cb40-306"><a href="#cb40-306"></a>       <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">+</span></span>
-<span id="cb40-307"><a href="#cb40-307"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb40-308"><a href="#cb40-308"></a><span class="in">```</span></span>
-<span id="cb40-309"><a href="#cb40-309"></a></span>
-<span id="cb40-310"><a href="#cb40-310"></a><span class="fu"># Regression</span></span>
-<span id="cb40-311"><a href="#cb40-311"></a></span>
-<span id="cb40-312"><a href="#cb40-312"></a><span class="fu">## Replikation von Tabelle 3</span></span>
-<span id="cb40-313"><a href="#cb40-313"></a></span>
-<span id="cb40-314"><a href="#cb40-314"></a>quarto-executable-code-5450563D</span>
-<span id="cb40-315"><a href="#cb40-315"></a></span>
-<span id="cb40-316"><a href="#cb40-316"></a><span class="in">```r</span></span>
-<span id="cb40-317"><a href="#cb40-317"></a><span class="co"># Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.</span></span>
-<span id="cb40-318"><a href="#cb40-318"></a>df<span class="sc">$</span>g_firstborn <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_firstborn), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
-<span id="cb40-319"><a href="#cb40-319"></a>df<span class="sc">$</span>g_help <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_help), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
-<span id="cb40-320"><a href="#cb40-320"></a>df<span class="sc">$</span>g_need <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_need), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
-<span id="cb40-321"><a href="#cb40-321"></a></span>
-<span id="cb40-322"><a href="#cb40-322"></a><span class="co"># Run the regression model</span></span>
-<span id="cb40-323"><a href="#cb40-323"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(child_vig <span class="sc">~</span> daughter <span class="sc">*</span> g_firstborn <span class="sc">+</span></span>
-<span id="cb40-324"><a href="#cb40-324"></a>                      g_help <span class="sc">*</span> daughter <span class="sc">+</span></span>
-<span id="cb40-325"><a href="#cb40-325"></a>                      g_need <span class="sc">*</span> daughter, </span>
-<span id="cb40-326"><a href="#cb40-326"></a>            <span class="at">data =</span> df)</span>
-<span id="cb40-327"><a href="#cb40-327"></a></span>
-<span id="cb40-328"><a href="#cb40-328"></a><span class="co"># Clustered standard errors</span></span>
-<span id="cb40-329"><a href="#cb40-329"></a>clustered_se <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(model, <span class="at">vcov =</span> vcovCL, <span class="at">cluster =</span> <span class="sc">~</span> id_resp)</span>
-<span id="cb40-330"><a href="#cb40-330"></a></span>
-<span id="cb40-331"><a href="#cb40-331"></a><span class="co"># Output the results</span></span>
-<span id="cb40-332"><a href="#cb40-332"></a><span class="fu">summary</span>(model)         <span class="co"># Regression summary</span></span>
-<span id="cb40-333"><a href="#cb40-333"></a><span class="fu">print</span>(clustered_se)    <span class="co"># Results with clustered SE</span></span>
-<span id="cb40-334"><a href="#cb40-334"></a><span class="fu">tab_model</span>(model)</span>
-<span id="cb40-335"><a href="#cb40-335"></a><span class="in">```</span></span>
-<span id="cb40-336"><a href="#cb40-336"></a></span>
-<span id="cb40-337"><a href="#cb40-337"></a><span class="fu"># Render</span></span>
-<span id="cb40-338"><a href="#cb40-338"></a></span>
-<span id="cb40-339"><a href="#cb40-339"></a>Wandle dieses Dokument in ein PDF und ein HTML Dokument um.</span>
-<span id="cb40-340"><a href="#cb40-340"></a></span>
-<span id="cb40-341"><a href="#cb40-341"></a><span class="fu"># Weiterführende Literatur</span></span>
-<span id="cb40-342"><a href="#cb40-342"></a></span>
-<span id="cb40-343"><a href="#cb40-343"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">R for Data Science</span><span class="co">](https://r4ds.had.co.nz/)</span></span></code></pre></div>
+<span id="cb40-188"><a href="#cb40-188"></a></span>
+<span id="cb40-189"><a href="#cb40-189"></a><span class="co"># Select relevant columns</span></span>
+<span id="cb40-190"><a href="#cb40-190"></a>selected_columns <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">&quot;firstborn_1&quot;</span>, </span>
+<span id="cb40-191"><a href="#cb40-191"></a>                           <span class="st">&quot;firstborn_2&quot;</span>,</span>
+<span id="cb40-192"><a href="#cb40-192"></a>                           <span class="st">&quot;firstborn_3&quot;</span>,</span>
+<span id="cb40-193"><a href="#cb40-193"></a>                           <span class="st">&quot;need_1&quot;</span>,</span>
+<span id="cb40-194"><a href="#cb40-194"></a>                           <span class="st">&quot;need_2&quot;</span>,</span>
+<span id="cb40-195"><a href="#cb40-195"></a>                           <span class="st">&quot;need_3&quot;</span>,</span>
+<span id="cb40-196"><a href="#cb40-196"></a>                           <span class="st">&quot;help_1&quot;</span>,</span>
+<span id="cb40-197"><a href="#cb40-197"></a>                           <span class="st">&quot;help_2&quot;</span>, </span>
+<span id="cb40-198"><a href="#cb40-198"></a>                           <span class="st">&quot;help_3&quot;</span>)]</span>
+<span id="cb40-199"><a href="#cb40-199"></a></span>
+<span id="cb40-200"><a href="#cb40-200"></a><span class="co"># Compute pairwise correlations with significance</span></span>
+<span id="cb40-201"><a href="#cb40-201"></a>cor_results <span class="ot">&lt;-</span> <span class="fu">rcorr</span>(<span class="fu">as.matrix</span>(selected_columns))</span>
+<span id="cb40-202"><a href="#cb40-202"></a></span>
+<span id="cb40-203"><a href="#cb40-203"></a><span class="co"># Display results</span></span>
+<span id="cb40-204"><a href="#cb40-204"></a><span class="fu">print</span>(cor_results)</span>
+<span id="cb40-205"><a href="#cb40-205"></a></span>
+<span id="cb40-206"><a href="#cb40-206"></a><span class="in">```</span></span>
+<span id="cb40-207"><a href="#cb40-207"></a></span>
+<span id="cb40-208"><a href="#cb40-208"></a><span class="fu">## Sind die Dimensionen / Ausprägungen balanced?</span></span>
+<span id="cb40-209"><a href="#cb40-209"></a></span>
+<span id="cb40-210"><a href="#cb40-210"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-211"><a href="#cb40-211"></a></span>
+<span id="cb40-212"><a href="#cb40-212"></a><span class="in">```r</span></span>
+<span id="cb40-213"><a href="#cb40-213"></a><span class="co"># Check balance</span></span>
+<span id="cb40-214"><a href="#cb40-214"></a><span class="fu">table</span>(df<span class="sc">$</span>firstborn)</span>
+<span id="cb40-215"><a href="#cb40-215"></a><span class="fu">table</span>(df<span class="sc">$</span>need)</span>
+<span id="cb40-216"><a href="#cb40-216"></a><span class="fu">table</span>(df<span class="sc">$</span>help)</span>
+<span id="cb40-217"><a href="#cb40-217"></a><span class="in">```</span></span>
+<span id="cb40-218"><a href="#cb40-218"></a></span>
+<span id="cb40-219"><a href="#cb40-219"></a><span class="fu"># Deskriptive Statistik</span></span>
+<span id="cb40-220"><a href="#cb40-220"></a></span>
+<span id="cb40-221"><a href="#cb40-221"></a><span class="fu">## Replikation Tabelle 2</span></span>
+<span id="cb40-222"><a href="#cb40-222"></a></span>
+<span id="cb40-223"><a href="#cb40-223"></a>Nun wollen wir Tabelle 2 aus dem Artikel replizieren.</span>
+<span id="cb40-224"><a href="#cb40-224"></a></span>
+<span id="cb40-225"><a href="#cb40-225"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-226"><a href="#cb40-226"></a></span>
+<span id="cb40-227"><a href="#cb40-227"></a><span class="in">```r</span></span>
+<span id="cb40-228"><a href="#cb40-228"></a><span class="co"># Filter für die Daten anwenden</span></span>
+<span id="cb40-229"><a href="#cb40-229"></a>filtered_data <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb40-230"><a href="#cb40-230"></a>  <span class="fu">filter</span>(id_within <span class="sc">==</span> <span class="dv">1</span>, daughter <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb40-231"><a href="#cb40-231"></a></span>
+<span id="cb40-232"><a href="#cb40-232"></a><span class="co"># Deskriptive Statistiken berechnen</span></span>
+<span id="cb40-233"><a href="#cb40-233"></a>descriptive_stats <span class="ot">&lt;-</span> filtered_data <span class="sc">%&gt;%</span></span>
+<span id="cb40-234"><a href="#cb40-234"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb40-235"><a href="#cb40-235"></a>    <span class="at">Female_Mean =</span> <span class="fu">mean</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-236"><a href="#cb40-236"></a>    <span class="at">Female_SD =</span> <span class="fu">sd</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-237"><a href="#cb40-237"></a>    <span class="at">Female_Min =</span> <span class="fu">min</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-238"><a href="#cb40-238"></a>    <span class="at">Female_Max =</span> <span class="fu">max</span>(female, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-239"><a href="#cb40-239"></a>    <span class="at">Female_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(female)),</span>
+<span id="cb40-240"><a href="#cb40-240"></a>    </span>
+<span id="cb40-241"><a href="#cb40-241"></a>    <span class="at">Age_Mean =</span> <span class="fu">mean</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-242"><a href="#cb40-242"></a>    <span class="at">Age_SD =</span> <span class="fu">sd</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-243"><a href="#cb40-243"></a>    <span class="at">Age_Min =</span> <span class="fu">min</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-244"><a href="#cb40-244"></a>    <span class="at">Age_Max =</span> <span class="fu">max</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-245"><a href="#cb40-245"></a>    <span class="at">Age_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)),</span>
+<span id="cb40-246"><a href="#cb40-246"></a>    </span>
+<span id="cb40-247"><a href="#cb40-247"></a>    <span class="at">Child_Mean =</span> <span class="fu">mean</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-248"><a href="#cb40-248"></a>    <span class="at">Child_SD =</span> <span class="fu">sd</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-249"><a href="#cb40-249"></a>    <span class="at">Child_Min =</span> <span class="fu">min</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-250"><a href="#cb40-250"></a>    <span class="at">Child_Max =</span> <span class="fu">max</span>(child, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-251"><a href="#cb40-251"></a>    <span class="at">Child_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(child)),</span>
+<span id="cb40-252"><a href="#cb40-252"></a>    </span>
+<span id="cb40-253"><a href="#cb40-253"></a>    <span class="at">Mig_Mean =</span> <span class="fu">mean</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-254"><a href="#cb40-254"></a>    <span class="at">Mig_SD =</span> <span class="fu">sd</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-255"><a href="#cb40-255"></a>    <span class="at">Mig_Min =</span> <span class="fu">min</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-256"><a href="#cb40-256"></a>    <span class="at">Mig_Max =</span> <span class="fu">max</span>(mig, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-257"><a href="#cb40-257"></a>    <span class="at">Mig_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(mig)),</span>
+<span id="cb40-258"><a href="#cb40-258"></a>    </span>
+<span id="cb40-259"><a href="#cb40-259"></a>    <span class="at">Gifted_Mean =</span> <span class="fu">mean</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-260"><a href="#cb40-260"></a>    <span class="at">Gifted_SD =</span> <span class="fu">sd</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-261"><a href="#cb40-261"></a>    <span class="at">Gifted_Min =</span> <span class="fu">min</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-262"><a href="#cb40-262"></a>    <span class="at">Gifted_Max =</span> <span class="fu">max</span>(gifted, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-263"><a href="#cb40-263"></a>    <span class="at">Gifted_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(gifted)),</span>
+<span id="cb40-264"><a href="#cb40-264"></a>    </span>
+<span id="cb40-265"><a href="#cb40-265"></a>    <span class="at">IV_Received_Mean =</span> <span class="fu">mean</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-266"><a href="#cb40-266"></a>    <span class="at">IV_Received_SD =</span> <span class="fu">sd</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-267"><a href="#cb40-267"></a>    <span class="at">IV_Received_Min =</span> <span class="fu">min</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-268"><a href="#cb40-268"></a>    <span class="at">IV_Received_Max =</span> <span class="fu">max</span>(iv_received, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-269"><a href="#cb40-269"></a>    <span class="at">IV_Received_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(iv_received)),</span>
+<span id="cb40-270"><a href="#cb40-270"></a>    </span>
+<span id="cb40-271"><a href="#cb40-271"></a>    <span class="at">ABI_Mean =</span> <span class="fu">mean</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-272"><a href="#cb40-272"></a>    <span class="at">ABI_SD =</span> <span class="fu">sd</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-273"><a href="#cb40-273"></a>    <span class="at">ABI_Min =</span> <span class="fu">min</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-274"><a href="#cb40-274"></a>    <span class="at">ABI_Max =</span> <span class="fu">max</span>(abi, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb40-275"><a href="#cb40-275"></a>    <span class="at">ABI_N =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(abi))</span>
+<span id="cb40-276"><a href="#cb40-276"></a>  )</span>
+<span id="cb40-277"><a href="#cb40-277"></a></span>
+<span id="cb40-278"><a href="#cb40-278"></a><span class="co"># Umstrukturierung der Tabelle</span></span>
+<span id="cb40-279"><a href="#cb40-279"></a>descriptive_stats_long <span class="ot">&lt;-</span> descriptive_stats <span class="sc">%&gt;%</span></span>
+<span id="cb40-280"><a href="#cb40-280"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb40-281"><a href="#cb40-281"></a>    <span class="at">cols =</span> <span class="fu">everything</span>(),</span>
+<span id="cb40-282"><a href="#cb40-282"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;.value&quot;</span>),</span>
+<span id="cb40-283"><a href="#cb40-283"></a>    <span class="at">names_pattern =</span> <span class="st">&quot;(.*)_(.*)&quot;</span></span>
+<span id="cb40-284"><a href="#cb40-284"></a>  )</span>
+<span id="cb40-285"><a href="#cb40-285"></a></span>
+<span id="cb40-286"><a href="#cb40-286"></a><span class="co"># Tabelle mit sjPlot anzeigen</span></span>
+<span id="cb40-287"><a href="#cb40-287"></a><span class="fu">tab_df</span>(</span>
+<span id="cb40-288"><a href="#cb40-288"></a>  descriptive_stats_long,</span>
+<span id="cb40-289"><a href="#cb40-289"></a>  <span class="at">title =</span> <span class="st">&quot;Descriptive Statistics of Respondent Characteristics&quot;</span>,</span>
+<span id="cb40-290"><a href="#cb40-290"></a>  <span class="at">col.header =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;SD&quot;</span>, <span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Max&quot;</span>, <span class="st">&quot;N&quot;</span>)</span>
+<span id="cb40-291"><a href="#cb40-291"></a>)</span>
+<span id="cb40-292"><a href="#cb40-292"></a></span>
+<span id="cb40-293"><a href="#cb40-293"></a><span class="in">```</span></span>
+<span id="cb40-294"><a href="#cb40-294"></a></span>
+<span id="cb40-295"><a href="#cb40-295"></a><span class="fu">## Replikation Figure 1</span></span>
+<span id="cb40-296"><a href="#cb40-296"></a></span>
+<span id="cb40-297"><a href="#cb40-297"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-298"><a href="#cb40-298"></a></span>
+<span id="cb40-299"><a href="#cb40-299"></a><span class="in">```r</span></span>
+<span id="cb40-300"><a href="#cb40-300"></a><span class="co"># Create the histogram</span></span>
+<span id="cb40-301"><a href="#cb40-301"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> child_vig)) <span class="sc">+</span></span>
+<span id="cb40-302"><a href="#cb40-302"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..count..<span class="sc">/</span><span class="fu">sum</span>(..count..)<span class="sc">*</span><span class="dv">100</span>), <span class="at">binwidth =</span> <span class="dv">250</span>, </span>
+<span id="cb40-303"><a href="#cb40-303"></a>                 <span class="at">fill =</span> <span class="st">&quot;grey&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb40-304"><a href="#cb40-304"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb40-305"><a href="#cb40-305"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Histogram&quot;</span>,</span>
+<span id="cb40-306"><a href="#cb40-306"></a>       <span class="at">x =</span> <span class="st">&quot;Child&#39;s amount&quot;</span>,</span>
+<span id="cb40-307"><a href="#cb40-307"></a>       <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">+</span></span>
+<span id="cb40-308"><a href="#cb40-308"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb40-309"><a href="#cb40-309"></a><span class="in">```</span></span>
+<span id="cb40-310"><a href="#cb40-310"></a></span>
+<span id="cb40-311"><a href="#cb40-311"></a><span class="fu"># Regression</span></span>
+<span id="cb40-312"><a href="#cb40-312"></a></span>
+<span id="cb40-313"><a href="#cb40-313"></a><span class="fu">## Replikation von Tabelle 3</span></span>
+<span id="cb40-314"><a href="#cb40-314"></a></span>
+<span id="cb40-315"><a href="#cb40-315"></a>quarto-executable-code-5450563D</span>
+<span id="cb40-316"><a href="#cb40-316"></a></span>
+<span id="cb40-317"><a href="#cb40-317"></a><span class="in">```r</span></span>
+<span id="cb40-318"><a href="#cb40-318"></a><span class="co"># Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.</span></span>
+<span id="cb40-319"><a href="#cb40-319"></a>df<span class="sc">$</span>g_firstborn <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_firstborn), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb40-320"><a href="#cb40-320"></a>df<span class="sc">$</span>g_help <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_help), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb40-321"><a href="#cb40-321"></a>df<span class="sc">$</span>g_need <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(df<span class="sc">$</span>g_need), <span class="at">ref =</span> <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb40-322"><a href="#cb40-322"></a></span>
+<span id="cb40-323"><a href="#cb40-323"></a><span class="co"># Run the regression model</span></span>
+<span id="cb40-324"><a href="#cb40-324"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(child_vig <span class="sc">~</span> daughter <span class="sc">*</span> g_firstborn <span class="sc">+</span></span>
+<span id="cb40-325"><a href="#cb40-325"></a>                      g_help <span class="sc">*</span> daughter <span class="sc">+</span></span>
+<span id="cb40-326"><a href="#cb40-326"></a>                      g_need <span class="sc">*</span> daughter, </span>
+<span id="cb40-327"><a href="#cb40-327"></a>            <span class="at">data =</span> df)</span>
+<span id="cb40-328"><a href="#cb40-328"></a></span>
+<span id="cb40-329"><a href="#cb40-329"></a><span class="co"># Clustered standard errors</span></span>
+<span id="cb40-330"><a href="#cb40-330"></a>clustered_se <span class="ot">&lt;-</span> <span class="fu">coeftest</span>(model, <span class="at">vcov =</span> vcovCL, <span class="at">cluster =</span> <span class="sc">~</span> id_resp)</span>
+<span id="cb40-331"><a href="#cb40-331"></a></span>
+<span id="cb40-332"><a href="#cb40-332"></a><span class="co"># Output the results</span></span>
+<span id="cb40-333"><a href="#cb40-333"></a><span class="fu">summary</span>(model)         <span class="co"># Regression summary</span></span>
+<span id="cb40-334"><a href="#cb40-334"></a><span class="fu">print</span>(clustered_se)    <span class="co"># Results with clustered SE</span></span>
+<span id="cb40-335"><a href="#cb40-335"></a><span class="fu">tab_model</span>(model)</span>
+<span id="cb40-336"><a href="#cb40-336"></a><span class="in">```</span></span>
+<span id="cb40-337"><a href="#cb40-337"></a></span>
+<span id="cb40-338"><a href="#cb40-338"></a><span class="fu"># Render</span></span>
+<span id="cb40-339"><a href="#cb40-339"></a></span>
+<span id="cb40-340"><a href="#cb40-340"></a>Wandle dieses Dokument in ein PDF und ein HTML Dokument um.</span>
+<span id="cb40-341"><a href="#cb40-341"></a></span>
+<span id="cb40-342"><a href="#cb40-342"></a><span class="fu"># Weiterführende Literatur</span></span>
+<span id="cb40-343"><a href="#cb40-343"></a></span>
+<span id="cb40-344"><a href="#cb40-344"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">R for Data Science</span><span class="co">](https://r4ds.had.co.nz/)</span></span></code></pre></div>
 </div>
 </section>
 
