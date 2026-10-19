@@ -2,14 +2,14 @@
 title: "Fortgeschrittene quantitative Methoden"
 ---
 
-Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).
+Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 26-27).
 
 Dozentin: [Daria Tisch](https://dariatisch.github.io/), Sprechstunde nach Vereinbarung per Zoom.
 
 Abgaben: 
 
-- 16.01.2025: Analyse von Paneldaten
+- XX.XX.2026: Analyse von Paneldaten
 
-- 30.01.2025: Replikation einer Ereignisdatenanalyse
+- XX.XX.2026: Replikation einer Ereignisdatenanalyse
 
-Weitere Informationen in Moodle.
+Weitere Informationen zur Abgabe in Moodle.
