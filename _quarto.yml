@@ -12,7 +12,7 @@ website:
   page-footer:
     right: "This page is built with 💙 and [Quarto](https://quarto.org/)."
     left: "&copy; Copyright 2026, Daria Tisch"
-    background: "#20a1a1"
+    background: "#2081a1"
 
   sidebar:
     background: "#20a1a1"
