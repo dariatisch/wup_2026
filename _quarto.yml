@@ -1,0 +1,63 @@
+project:
+  render:
+    - "*.qmd"
+    - "!/downloads"
+  type: website
+  output-dir: docs
+
+website:
+  page-navigation: true
+  title: "Fortgeschrittene quantitative Methoden"
+
+  page-footer:
+    right: "This page is built with 💙 and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2024, Daria Tisch"
+    background: "#20a1a1"
+
+  sidebar:
+    background: "#20a1a1"
+    # logo: "images/logo.png"
+    pinned: true
+    align: center
+    tools:
+      - icon: github
+        href: https://github.com/dariatisch/wup2024
+        text: GitHub
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: "Kursinformationen"
+      - section: "Zeitplan und Dateien"
+        contents:
+          - href: schedule.qmd
+            text: Übersicht
+          - href: slides/1_seminar.qmd
+            text: "1 - Seminar"
+          - href: slides/1_uebung.qmd
+            text: "1 - Übung"
+          - href: uebungen/1_uebungsblatt.qmd
+            text: "1 - Übungsblatt"
+          - href: slides/2_seminar.qmd
+            text: "2 - Seminar  (Paneldaten)"
+          - href: uebungen/2_uebungsblatt.qmd
+            text: "2 - Übungsblatt (Paneldaten)"
+          - href: slides/3_seminar.qmd
+            text: "3 - Seminar  (Ereignisdaten)"
+          - href: uebungen/3_uebungsblatt.qmd
+            text: "3 - Übungsblatt (Ereignisdaten)"
+          - href: slides/4_seminar.qmd
+            text: "4 - Seminar  (Faktorielle Umfrageexperimente)"
+          - href: uebungen/4_uebungsblatt.qmd
+            text: "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
+format:
+  html:
+    theme: cosmo
+    # css: styles.css
+    toc: true
+
+
+execute:
+  freeze: auto
+
