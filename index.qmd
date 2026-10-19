@@ -12,4 +12,4 @@ Abgaben:
 
 - xx.xx.2026: Replikation einer Ereignisdatenanalyse
 
-Weitere Informationen in Moodle.
+Weitere Informationen zu den Abgaben auf Moodle.
