@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bitte Namen eintragen">
+
+<title>1. Abgabe (Paneldaten) – Fortgeschrittene quantitative Methoden</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-85320ec8dc19b27ed4f5d683aad28fd0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Fortgeschrittene quantitative Methoden
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Fortgeschrittene quantitative Methoden</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dariatisch/wup_2026" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kursinformationen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Zeitplan und Dateien</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/1_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Seminar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/1_uebung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Übung</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../uebungen/1_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Übungsblatt</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/2_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Seminar (Paneldaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../uebungen/2_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Übungsblatt (Paneldaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/3_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - Seminar (Ereignisdaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../uebungen/3_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - Übungsblatt (Ereignisdaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/4_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 - Seminar (Faktorielle Umfrageexperimente)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../uebungen/4_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 - Übungsblatt (Faktorielle Umfrageexperimente)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#organisation" id="toc-organisation" class="nav-link active" data-scroll-target="#organisation"><span class="header-section-number">1</span> Organisation</a>
+  <ul class="collapse">
+  <li><a href="#arbeitsverzeichnis-festsetzen" id="toc-arbeitsverzeichnis-festsetzen" class="nav-link" data-scroll-target="#arbeitsverzeichnis-festsetzen"><span class="header-section-number">1.1</span> Arbeitsverzeichnis festsetzen</a></li>
+  <li><a href="#packages-installieren-und-laden" id="toc-packages-installieren-und-laden" class="nav-link" data-scroll-target="#packages-installieren-und-laden"><span class="header-section-number">1.2</span> Packages installieren und laden</a></li>
+  <li><a href="#daten-einlesen" id="toc-daten-einlesen" class="nav-link" data-scroll-target="#daten-einlesen"><span class="header-section-number">1.3</span> Daten einlesen</a></li>
+  </ul></li>
+  <li><a href="#kausalanalyse" id="toc-kausalanalyse" class="nav-link" data-scroll-target="#kausalanalyse"><span class="header-section-number">2</span> Kausalanalyse</a>
+  <ul class="collapse">
+  <li><a href="#kausalmodell-2-punkte" id="toc-kausalmodell-2-punkte" class="nav-link" data-scroll-target="#kausalmodell-2-punkte"><span class="header-section-number">2.1</span> Kausalmodell [2 Punkte]</a></li>
+  <li><a href="#auswahl-des-regressionsmodels-4-punkte" id="toc-auswahl-des-regressionsmodels-4-punkte" class="nav-link" data-scroll-target="#auswahl-des-regressionsmodels-4-punkte"><span class="header-section-number">2.2</span> Auswahl des Regressionsmodels [4 Punkte]</a></li>
+  <li><a href="#kausalmodell-3-punkte" id="toc-kausalmodell-3-punkte" class="nav-link" data-scroll-target="#kausalmodell-3-punkte"><span class="header-section-number">2.3</span> Kausalmodell [3 Punkte]</a></li>
+  </ul></li>
+  <li><a href="#datenaufbereitung" id="toc-datenaufbereitung" class="nav-link" data-scroll-target="#datenaufbereitung"><span class="header-section-number">3</span> Datenaufbereitung</a>
+  <ul class="collapse">
+  <li><a href="#gesundheitszustand-1-punkt" id="toc-gesundheitszustand-1-punkt" class="nav-link" data-scroll-target="#gesundheitszustand-1-punkt"><span class="header-section-number">3.1</span> Gesundheitszustand [1 Punkt]</a></li>
+  <li><a href="#geschlecht-1-punkt" id="toc-geschlecht-1-punkt" class="nav-link" data-scroll-target="#geschlecht-1-punkt"><span class="header-section-number">3.2</span> Geschlecht [1 Punkt]</a></li>
+  <li><a href="#einkommen-hauptberuf-1-punkt" id="toc-einkommen-hauptberuf-1-punkt" class="nav-link" data-scroll-target="#einkommen-hauptberuf-1-punkt"><span class="header-section-number">3.3</span> Einkommen (Hauptberuf) [1 Punkt]</a></li>
+  <li><a href="#analysesample-bilden-3-punkte" id="toc-analysesample-bilden-3-punkte" class="nav-link" data-scroll-target="#analysesample-bilden-3-punkte"><span class="header-section-number">3.4</span> Analysesample bilden [3 Punkte]</a></li>
+  </ul></li>
+  <li><a href="#datenexploration" id="toc-datenexploration" class="nav-link" data-scroll-target="#datenexploration"><span class="header-section-number">4</span> Datenexploration</a>
+  <ul class="collapse">
+  <li><a href="#wieviele-personenjahre-sind-im-datensatz-1-punkt" id="toc-wieviele-personenjahre-sind-im-datensatz-1-punkt" class="nav-link" data-scroll-target="#wieviele-personenjahre-sind-im-datensatz-1-punkt"><span class="header-section-number">4.1</span> Wieviele Personenjahre sind im Datensatz? [1 Punkt]</a></li>
+  <li><a href="#wie-viele-personen-sind-im-datensatz-1-punkt" id="toc-wie-viele-personen-sind-im-datensatz-1-punkt" class="nav-link" data-scroll-target="#wie-viele-personen-sind-im-datensatz-1-punkt"><span class="header-section-number">4.2</span> Wie viele Personen sind im Datensatz? [1 Punkt]</a></li>
+  <li><a href="#wieviele-personen-nehmen-pro-jahr-teil-2-punkte" id="toc-wieviele-personen-nehmen-pro-jahr-teil-2-punkte" class="nav-link" data-scroll-target="#wieviele-personen-nehmen-pro-jahr-teil-2-punkte"><span class="header-section-number">4.3</span> Wieviele Personen nehmen pro Jahr teil? [2 Punkte]</a></li>
+  <li><a href="#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte" id="toc-welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte" class="nav-link" data-scroll-target="#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte"><span class="header-section-number">4.4</span> Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]</a></li>
+  <li><a href="#teilnahme-2-punkte" id="toc-teilnahme-2-punkte" class="nav-link" data-scroll-target="#teilnahme-2-punkte"><span class="header-section-number">4.5</span> Teilnahme [2 Punkte]</a></li>
+  </ul></li>
+  <li><a href="#regressionen" id="toc-regressionen" class="nav-link" data-scroll-target="#regressionen"><span class="header-section-number">5</span> Regressionen</a>
+  <ul class="collapse">
+  <li><a href="#schätzen-sie-ein-pols-modell-3-punkte" id="toc-schätzen-sie-ein-pols-modell-3-punkte" class="nav-link" data-scroll-target="#schätzen-sie-ein-pols-modell-3-punkte"><span class="header-section-number">5.1</span> Schätzen Sie ein POLS Modell [3 Punkte]</a></li>
+  <li><a href="#schätzen-sie-ein-be-modell-3-punkte" id="toc-schätzen-sie-ein-be-modell-3-punkte" class="nav-link" data-scroll-target="#schätzen-sie-ein-be-modell-3-punkte"><span class="header-section-number">5.2</span> Schätzen Sie ein BE Modell [3 Punkte]</a></li>
+  <li><a href="#schätzen-sie-ein-fe-modell-3-punkte" id="toc-schätzen-sie-ein-fe-modell-3-punkte" class="nav-link" data-scroll-target="#schätzen-sie-ein-fe-modell-3-punkte"><span class="header-section-number">5.3</span> Schätzen Sie ein FE Modell [3 Punkte]</a></li>
+  <li><a href="#schätzen-sie-ein-re-modell-3-punkte" id="toc-schätzen-sie-ein-re-modell-3-punkte" class="nav-link" data-scroll-target="#schätzen-sie-ein-re-modell-3-punkte"><span class="header-section-number">5.4</span> Schätzen Sie ein RE Modell [3 Punkte]</a></li>
+  <li><a href="#vergleich-5-punkte" id="toc-vergleich-5-punkte" class="nav-link" data-scroll-target="#vergleich-5-punkte"><span class="header-section-number">5.5</span> Vergleich [5 Punkte]</a></li>
+  <li><a href="#hausman-test-2-punkte" id="toc-hausman-test-2-punkte" class="nav-link" data-scroll-target="#hausman-test-2-punkte"><span class="header-section-number">5.6</span> Hausman Test [2 Punkte]</a></li>
+  </ul></li>
+  <li><a href="#render-7-punkte" id="toc-render-7-punkte" class="nav-link" data-scroll-target="#render-7-punkte"><span class="header-section-number">6</span> Render [7 Punkte]</a></li>
+  <li><a href="#bewertung" id="toc-bewertung" class="nav-link" data-scroll-target="#bewertung"><span class="header-section-number">7</span> Bewertung</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="1_abgabe_NACHNAME.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">1. Abgabe (Paneldaten)</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bitte Namen eintragen </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="organisation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Organisation</h1>
+<section id="arbeitsverzeichnis-festsetzen" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="arbeitsverzeichnis-festsetzen"><span class="header-section-number">1.1</span> Arbeitsverzeichnis festsetzen</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="co"># set working directory</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="packages-installieren-und-laden" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="packages-installieren-und-laden"><span class="header-section-number">1.2</span> Packages installieren und laden</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a><span class="co"># Packages</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a>  <span class="st">"tidyverse"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a>  <span class="st">"sjlabelled"</span>, <span class="co"># for variable labels</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a>  <span class="st">"plm"</span>, <span class="co"># Panelregressionen</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a>  <span class="st">"sjPlot"</span> <span class="co"># um Regressionstabellen schön darzustellen</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-label="7"></a>) </span>
+<span id="cb2-8"><a href="#cb2-8" aria-label="8"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-label="9"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-label="10"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-label="11"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-label="12"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-label="13"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+<section id="daten-einlesen" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="daten-einlesen"><span class="header-section-number">1.3</span> Daten einlesen</h2>
+<p>Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="co"># read data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a><span class="co"># df = read.csv("../daten/soep_uebung.csv")</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a><span class="co"># df_labels = read.csv("../daten/soep_labels.csv")</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-label="4"></a><span class="co"># </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-label="5"></a><span class="co"># # Add variable labels</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-label="6"></a><span class="co"># for (i in 1:nrow(df_labels)) {</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-label="7"></a><span class="co">#   variable_name &lt;- df_labels$variable[i]</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-label="8"></a><span class="co">#   variable_label &lt;- df_labels$variable_label[i]</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-label="9"></a><span class="co">#   </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-label="10"></a><span class="co">#   # Apply the label to the corresponding column in df</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-label="11"></a><span class="co">#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-label="12"></a><span class="co"># }</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+</section>
+</section>
+<section id="kausalanalyse" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Kausalanalyse</h1>
+<p>Sie möchten herausfinden, welche Faktoren mit dem subjektiven Gesundheitszustand (gesund_org) zusammenhängen.</p>
+<section id="kausalmodell-2-punkte" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="kausalmodell-2-punkte"><span class="header-section-number">2.1</span> Kausalmodell [2 Punkte]</h2>
+<p>Überlegen Sie sich ein Kausalmodell. Das heißt, überlegen Sie sich eine Variable, die einen kausalen Effekt auf den subjektiven Gesundheitszustand haben könnte und begründen Sie Ihre Wahl.</p>
+<p>Antwort:</p>
+</section>
+<section id="auswahl-des-regressionsmodels-4-punkte" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="auswahl-des-regressionsmodels-4-punkte"><span class="header-section-number">2.2</span> Auswahl des Regressionsmodels [4 Punkte]</h2>
+<p>Um den kausalen Effekt zu identifizieren, möchten Sie eine Regressionsanalyse durchführen und überlegen, ob Sie ein POLS, ein BE, ein RE oder ein FE Modell nutzen sollten. Beschreiben Sie Ihren Gedankenvorgang.</p>
+<p>Antwort:</p>
+</section>
+<section id="kausalmodell-3-punkte" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="kausalmodell-3-punkte"><span class="header-section-number">2.3</span> Kausalmodell [3 Punkte]</h2>
+<p>Bitte nennen Sie jeweils ein Beispiel für eine/n</p>
+<ol type="a">
+<li><p>confounder</p></li>
+<li><p>collider</p></li>
+<li><p>Variable, die zu einem overcontrol bias führen könnte</p></li>
+</ol>
+<p>und erklären Sie kurz, warum es sich um eine/n solche/n handelt.</p>
+<p>Antwort:</p>
+</section>
+</section>
+<section id="datenaufbereitung" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Datenaufbereitung</h1>
+<p>Unabhängig vom tatsächlichen Kausalmodell soll nun eine Regressionsanalyse durchgeführt werden. Die abhängige Variable ist der subjektive Gesundheitszustand (als numerische Variable), als unabhängige Variablen sollen genutzt werden: Geschlecht (als numerische Variable mit dem Wert 1 für weiblich und 0 für männlich) und das log. Einkommen des Hauptberufs (als numerische Variable).</p>
+<p>Bereiten Sie diese drei Variablen auf. Das heißt, definieren Sie die fehlende Werte und wandeln Sie bei Bedarf kategoriale Variablen in numerische Variablen um. Überprüfen Sie die Datenaufbereitung tabellarisch.</p>
+<section id="gesundheitszustand-1-punkt" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="gesundheitszustand-1-punkt"><span class="header-section-number">3.1</span> Gesundheitszustand [1 Punkt]</h2>
+</section>
+<section id="geschlecht-1-punkt" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="geschlecht-1-punkt"><span class="header-section-number">3.2</span> Geschlecht [1 Punkt]</h2>
+</section>
+<section id="einkommen-hauptberuf-1-punkt" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="einkommen-hauptberuf-1-punkt"><span class="header-section-number">3.3</span> Einkommen (Hauptberuf) [1 Punkt]</h2>
+<p>Erstellen Sie eine neue Variable <strong>ek</strong>, die den log. Wert des Bruttoeinkommen/Jahr des Hauptberufs enthält. Nehmen Sie dazu die Variable <em>einkommenj1</em> (Bruttoeinkommen/Jahr Hauptberuf). Logarithmieren Sie diese. Da einige Beobachtungen 0 Euro Einkommen haben, addieren Sie zu jedem Wert 1 Euro <strong>vor</strong> der Log-Transformation.</p>
+</section>
+<section id="analysesample-bilden-3-punkte" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="analysesample-bilden-3-punkte"><span class="header-section-number">3.4</span> Analysesample bilden [3 Punkte]</h2>
+<ol type="a">
+<li>Selektieren Sie nur die Variablen, die wir brauchen. Also die drei Variablen sowie die ID Variable (id) und die Zeit Variable (syear)</li>
+</ol>
+<ol start="2" type="a">
+<li>Wir wenden “listwise deletion” an. Wie viele Beobachtungen gehen uns verloren?</li>
+</ol>
+<p>Antwort:</p>
+</section>
+</section>
+<section id="datenexploration" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Datenexploration</h1>
+<section id="wieviele-personenjahre-sind-im-datensatz-1-punkt" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="wieviele-personenjahre-sind-im-datensatz-1-punkt"><span class="header-section-number">4.1</span> Wieviele Personenjahre sind im Datensatz? [1 Punkt]</h2>
+<p>Antwort:</p>
+</section>
+<section id="wie-viele-personen-sind-im-datensatz-1-punkt" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="wie-viele-personen-sind-im-datensatz-1-punkt"><span class="header-section-number">4.2</span> Wie viele Personen sind im Datensatz? [1 Punkt]</h2>
+<p>Antwort:</p>
+</section>
+<section id="wieviele-personen-nehmen-pro-jahr-teil-2-punkte" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="wieviele-personen-nehmen-pro-jahr-teil-2-punkte"><span class="header-section-number">4.3</span> Wieviele Personen nehmen pro Jahr teil? [2 Punkte]</h2>
+<p>Ist das Panel balanced?</p>
+<p>Antwort:</p>
+</section>
+<section id="welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte"><span class="header-section-number">4.4</span> Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]</h2>
+<p>Antwort:</p>
+</section>
+<section id="teilnahme-2-punkte" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="teilnahme-2-punkte"><span class="header-section-number">4.5</span> Teilnahme [2 Punkte]</h2>
+<p>Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?</p>
+<p>Antwort:</p>
+</section>
+</section>
+<section id="regressionen" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Regressionen</h1>
+<section id="schätzen-sie-ein-pols-modell-3-punkte" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="schätzen-sie-ein-pols-modell-3-punkte"><span class="header-section-number">5.1</span> Schätzen Sie ein POLS Modell [3 Punkte]</h2>
+<p>… und interepretieren Sie die Koeffizienten.</p>
+<p>Antwort:</p>
+</section>
+<section id="schätzen-sie-ein-be-modell-3-punkte" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="schätzen-sie-ein-be-modell-3-punkte"><span class="header-section-number">5.2</span> Schätzen Sie ein BE Modell [3 Punkte]</h2>
+<p>… und interepretieren Sie die Koeffizienten.</p>
+<p>Antwort:</p>
+</section>
+<section id="schätzen-sie-ein-fe-modell-3-punkte" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="schätzen-sie-ein-fe-modell-3-punkte"><span class="header-section-number">5.3</span> Schätzen Sie ein FE Modell [3 Punkte]</h2>
+<p>… und interepretieren Sie die Koeffizienten.</p>
+<p>Antwort:</p>
+</section>
+<section id="schätzen-sie-ein-re-modell-3-punkte" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="schätzen-sie-ein-re-modell-3-punkte"><span class="header-section-number">5.4</span> Schätzen Sie ein RE Modell [3 Punkte]</h2>
+<p>… und interepretieren Sie die Koeffizienten.</p>
+<p>Antwort:</p>
+</section>
+<section id="vergleich-5-punkte" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="vergleich-5-punkte"><span class="header-section-number">5.5</span> Vergleich [5 Punkte]</h2>
+<p>Vergleichen Sie die vier Modelle. Lassen Sie sich 3 Nachkommestellen bei den Werten der Koeffizienten ausgeben. Erstellen Sie eine tabellarische Übersicht über alle Modelle.</p>
+<ol type="a">
+<li><p>Warum wird im FE Modell kein Koeffizient für <em>female</em> geschätzt?</p>
+<p>Antwort:</p></li>
+<li><p>Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?</p>
+<p>Antwort:</p></li>
+<li><p>Interpretieren sie vergleichend die Koeffizienten des log. Einkommens.</p>
+<p>Antwort:</p></li>
+</ol>
+</section>
+<section id="hausman-test-2-punkte" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="hausman-test-2-punkte"><span class="header-section-number">5.6</span> Hausman Test [2 Punkte]</h2>
+<p>Sollen wir das RE oder das FE Modell nutzen? Führen Sie einen Hausman Test durch. Wie entscheiden Sie sich und warum?</p>
+<p>Antwort:</p>
+</section>
+</section>
+<section id="render-7-punkte" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Render [7 Punkte]</h1>
+<p>Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 9.1.2025 zwei Dokumente hoch:</p>
+<ul>
+<li>das Quarto-File (1_abgabe_Nachname.qmd)</li>
+<li>entweder ein HTML ODER ein PDF (1_abgabe_Nachname.pdf oder 1_abgabe_Nachname.html)</li>
+</ul>
+<p>Sie erhalten 7 Punkte, wenn die Prüferin lediglich das Arbeitsverzeichnis ändern muss und sonst das Quarto Dokument durchläuft.</p>
+</section>
+<section id="bewertung" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Bewertung</h1>
+<p>Es gibt insgesamt 50 Punkte.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Punktebereich</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>49 - 50</td>
+<td>1,0</td>
+</tr>
+<tr class="even">
+<td>46 - 48</td>
+<td>1,3</td>
+</tr>
+<tr class="odd">
+<td>43 - 45</td>
+<td>1,7</td>
+</tr>
+<tr class="even">
+<td>40 - 42</td>
+<td>2,0</td>
+</tr>
+<tr class="odd">
+<td>37 - 39</td>
+<td>2,3</td>
+</tr>
+<tr class="even">
+<td>34 - 36</td>
+<td>2,7</td>
+</tr>
+<tr class="odd">
+<td>31 - 33</td>
+<td>3,0</td>
+</tr>
+<tr class="even">
+<td>28 - 30</td>
+<td>3,3</td>
+</tr>
+<tr class="odd">
+<td>25 - 27</td>
+<td>3,7</td>
+</tr>
+<tr class="even">
+<td>22 - 24</td>
+<td>4,0</td>
+</tr>
+</tbody>
+</table>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/dariatisch\.github\.io\/wup_2026\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-label="2"></a><span class="an">title:</span><span class="co"> "1. Abgabe (Paneldaten)"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-label="3"></a><span class="an">author:</span><span class="co"> "Bitte Namen eintragen"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-label="4"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-label="5"></a><span class="co">  html:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-label="6"></a><span class="co">    toc: true </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-label="7"></a><span class="co">    code-fold: true</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-label="8"></a><span class="co">    code-tools: true</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-label="9"></a><span class="co">    df-print: paged</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-label="10"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-label="11"></a><span class="co">  pdf: default</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-label="12"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-label="13"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-label="14"></a><span class="co">---</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-label="15"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-label="16"></a><span class="fu"># Organisation</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-label="17"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-label="18"></a><span class="fu">## Arbeitsverzeichnis festsetzen</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-label="19"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-label="20"></a><span class="in">```{r}</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-label="21"></a><span class="co"># set working directory</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-label="22"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-label="23"></a><span class="in">```</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-label="24"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-label="25"></a><span class="fu">## Packages installieren und laden</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-label="26"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-label="27"></a><span class="in">```{r}</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-label="28"></a><span class="co">#| echo: true</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-label="29"></a><span class="co">#| results: "hide"</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-label="30"></a><span class="co">#| warning: false</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-label="31"></a><span class="co"># Packages</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-label="32"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb4-37"><a href="#cb4-37" aria-label="33"></a>  <span class="st">"tidyverse"</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-label="34"></a>  <span class="st">"sjlabelled"</span>, <span class="co"># for variable labels</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-label="35"></a>  <span class="st">"plm"</span>, <span class="co"># Panelregressionen</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-label="36"></a>  <span class="st">"sjPlot"</span> <span class="co"># um Regressionstabellen schön darzustellen</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-label="37"></a>) </span>
+<span id="cb4-42"><a href="#cb4-42" aria-label="38"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-label="39"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-label="40"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-label="41"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-label="42"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-label="43"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-label="44"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-label="45"></a><span class="in">```</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-label="46"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-label="47"></a><span class="fu">## Daten einlesen</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-label="48"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-label="49"></a>Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.</span>
+<span id="cb4-54"><a href="#cb4-54" aria-label="50"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-label="51"></a><span class="in">```{r}</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-label="52"></a><span class="co"># read data</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-label="53"></a><span class="co"># df = read.csv("../daten/soep_uebung.csv")</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-label="54"></a><span class="co"># df_labels = read.csv("../daten/soep_labels.csv")</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-label="55"></a><span class="co"># </span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-label="56"></a><span class="co"># # Add variable labels</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-label="57"></a><span class="co"># for (i in 1:nrow(df_labels)) {</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-label="58"></a><span class="co">#   variable_name &lt;- df_labels$variable[i]</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-label="59"></a><span class="co">#   variable_label &lt;- df_labels$variable_label[i]</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-label="60"></a><span class="co">#   </span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-label="61"></a><span class="co">#   # Apply the label to the corresponding column in df</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-label="62"></a><span class="co">#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-label="63"></a><span class="co"># }</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-label="64"></a></span>
+<span id="cb4-71"><a href="#cb4-71" aria-label="65"></a><span class="in">```</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-label="66"></a></span>
+<span id="cb4-73"><a href="#cb4-73" aria-label="67"></a><span class="fu"># Kausalanalyse</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-label="68"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-label="69"></a>Sie möchten herausfinden, welche Faktoren mit dem subjektiven Gesundheitszustand (gesund_org) zusammenhängen.</span>
+<span id="cb4-76"><a href="#cb4-76" aria-label="70"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-label="71"></a><span class="fu">## Kausalmodell \[2 Punkte\]</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-label="72"></a></span>
+<span id="cb4-79"><a href="#cb4-79" aria-label="73"></a>Überlegen Sie sich ein Kausalmodell. Das heißt, überlegen Sie sich eine Variable, die einen kausalen Effekt auf den subjektiven Gesundheitszustand haben könnte und begründen Sie Ihre Wahl.</span>
+<span id="cb4-80"><a href="#cb4-80" aria-label="74"></a></span>
+<span id="cb4-81"><a href="#cb4-81" aria-label="75"></a>Antwort:</span>
+<span id="cb4-82"><a href="#cb4-82" aria-label="76"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-label="77"></a><span class="fu">## Auswahl des Regressionsmodels \[4 Punkte\]</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-label="78"></a></span>
+<span id="cb4-85"><a href="#cb4-85" aria-label="79"></a>Um den kausalen Effekt zu identifizieren, möchten Sie eine Regressionsanalyse durchführen und überlegen, ob Sie ein POLS, ein BE, ein RE oder ein FE Modell nutzen sollten. Beschreiben Sie Ihren Gedankenvorgang.</span>
+<span id="cb4-86"><a href="#cb4-86" aria-label="80"></a></span>
+<span id="cb4-87"><a href="#cb4-87" aria-label="81"></a>Antwort:</span>
+<span id="cb4-88"><a href="#cb4-88" aria-label="82"></a></span>
+<span id="cb4-89"><a href="#cb4-89" aria-label="83"></a><span class="fu">## Kausalmodell \[3 Punkte\]</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-label="84"></a></span>
+<span id="cb4-91"><a href="#cb4-91" aria-label="85"></a>Bitte nennen Sie jeweils ein Beispiel für eine/n</span>
+<span id="cb4-92"><a href="#cb4-92" aria-label="86"></a></span>
+<span id="cb4-93"><a href="#cb4-93" aria-label="87"></a>a)  confounder</span>
+<span id="cb4-94"><a href="#cb4-94" aria-label="88"></a></span>
+<span id="cb4-95"><a href="#cb4-95" aria-label="89"></a>b)  collider</span>
+<span id="cb4-96"><a href="#cb4-96" aria-label="90"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-label="91"></a>c)  Variable, die zu einem overcontrol bias führen könnte</span>
+<span id="cb4-98"><a href="#cb4-98" aria-label="92"></a></span>
+<span id="cb4-99"><a href="#cb4-99" aria-label="93"></a>und erklären Sie kurz, warum es sich um eine/n solche/n handelt.</span>
+<span id="cb4-100"><a href="#cb4-100" aria-label="94"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-label="95"></a>Antwort:</span>
+<span id="cb4-102"><a href="#cb4-102" aria-label="96"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-label="97"></a><span class="fu"># Datenaufbereitung</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-label="98"></a></span>
+<span id="cb4-105"><a href="#cb4-105" aria-label="99"></a>Unabhängig vom tatsächlichen Kausalmodell soll nun eine Regressionsanalyse durchgeführt werden. Die abhängige Variable ist der subjektive Gesundheitszustand (als numerische Variable), als unabhängige Variablen sollen genutzt werden: Geschlecht (als numerische Variable mit dem Wert 1 für weiblich und 0 für männlich) und das log. Einkommen des Hauptberufs (als numerische Variable).</span>
+<span id="cb4-106"><a href="#cb4-106" aria-label="100"></a></span>
+<span id="cb4-107"><a href="#cb4-107" aria-label="101"></a>Bereiten Sie diese drei Variablen auf. Das heißt, definieren Sie die fehlende Werte und wandeln Sie bei Bedarf kategoriale Variablen in numerische Variablen um. Überprüfen Sie die Datenaufbereitung tabellarisch.</span>
+<span id="cb4-108"><a href="#cb4-108" aria-label="102"></a></span>
+<span id="cb4-109"><a href="#cb4-109" aria-label="103"></a><span class="fu">## Gesundheitszustand \[1 Punkt\]</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-label="104"></a></span>
+<span id="cb4-113"><a href="#cb4-113" aria-label="105"></a><span class="in">```{r}</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-label="106"></a><span class="in">```</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-label="107"></a></span>
+<span id="cb4-116"><a href="#cb4-116" aria-label="108"></a><span class="fu">## Geschlecht \[1 Punkt\]</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-label="109"></a></span>
+<span id="cb4-120"><a href="#cb4-120" aria-label="110"></a><span class="in">```{r}</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-label="111"></a><span class="in">```</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-label="112"></a></span>
+<span id="cb4-123"><a href="#cb4-123" aria-label="113"></a><span class="fu">## Einkommen (Hauptberuf) \[1 Punkt\]</span></span>
+<span id="cb4-124"><a href="#cb4-124" aria-label="114"></a></span>
+<span id="cb4-125"><a href="#cb4-125" aria-label="115"></a>Erstellen Sie eine neue Variable **ek**, die den log. Wert des Bruttoeinkommen/Jahr des Hauptberufs enthält. Nehmen Sie dazu die Variable *einkommenj1* (Bruttoeinkommen/Jahr Hauptberuf). Logarithmieren Sie diese. Da einige Beobachtungen 0 Euro Einkommen haben, addieren Sie zu jedem Wert 1 Euro **vor** der Log-Transformation.</span>
+<span id="cb4-126"><a href="#cb4-126" aria-label="116"></a></span>
+<span id="cb4-129"><a href="#cb4-129" aria-label="117"></a><span class="in">```{r}</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-label="118"></a><span class="in">```</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-label="119"></a></span>
+<span id="cb4-132"><a href="#cb4-132" aria-label="120"></a><span class="fu">## Analysesample bilden \[3 Punkte\]</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-label="121"></a></span>
+<span id="cb4-134"><a href="#cb4-134" aria-label="122"></a>(a) Selektieren Sie nur die Variablen, die wir brauchen. Also die drei Variablen sowie die ID Variable (id) und die Zeit Variable (syear)</span>
+<span id="cb4-135"><a href="#cb4-135" aria-label="123"></a></span>
+<span id="cb4-138"><a href="#cb4-138" aria-label="124"></a><span class="in">```{r}</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-label="125"></a><span class="in">```</span></span>
+<span id="cb4-140"><a href="#cb4-140" aria-label="126"></a></span>
+<span id="cb4-141"><a href="#cb4-141" aria-label="127"></a>(b) Wir wenden "listwise deletion" an. Wie viele Beobachtungen gehen uns verloren?</span>
+<span id="cb4-142"><a href="#cb4-142" aria-label="128"></a></span>
+<span id="cb4-145"><a href="#cb4-145" aria-label="129"></a><span class="in">```{r}</span></span>
+<span id="cb4-146"><a href="#cb4-146" aria-label="130"></a><span class="in">```</span></span>
+<span id="cb4-147"><a href="#cb4-147" aria-label="131"></a></span>
+<span id="cb4-148"><a href="#cb4-148" aria-label="132"></a>Antwort:</span>
+<span id="cb4-149"><a href="#cb4-149" aria-label="133"></a></span>
+<span id="cb4-150"><a href="#cb4-150" aria-label="134"></a><span class="fu"># Datenexploration</span></span>
+<span id="cb4-151"><a href="#cb4-151" aria-label="135"></a></span>
+<span id="cb4-152"><a href="#cb4-152" aria-label="136"></a><span class="fu">## Wieviele Personenjahre sind im Datensatz? \[1 Punkt\]</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-label="137"></a></span>
+<span id="cb4-156"><a href="#cb4-156" aria-label="138"></a><span class="in">```{r}</span></span>
+<span id="cb4-157"><a href="#cb4-157" aria-label="139"></a><span class="in">```</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-label="140"></a></span>
+<span id="cb4-159"><a href="#cb4-159" aria-label="141"></a>Antwort:</span>
+<span id="cb4-160"><a href="#cb4-160" aria-label="142"></a></span>
+<span id="cb4-161"><a href="#cb4-161" aria-label="143"></a><span class="fu">## Wie viele Personen sind im Datensatz? \[1 Punkt\]</span></span>
+<span id="cb4-162"><a href="#cb4-162" aria-label="144"></a></span>
+<span id="cb4-165"><a href="#cb4-165" aria-label="145"></a><span class="in">```{r}</span></span>
+<span id="cb4-166"><a href="#cb4-166" aria-label="146"></a><span class="in">```</span></span>
+<span id="cb4-167"><a href="#cb4-167" aria-label="147"></a></span>
+<span id="cb4-168"><a href="#cb4-168" aria-label="148"></a>Antwort:</span>
+<span id="cb4-169"><a href="#cb4-169" aria-label="149"></a></span>
+<span id="cb4-170"><a href="#cb4-170" aria-label="150"></a><span class="fu">## Wieviele Personen nehmen pro Jahr teil? \[2 Punkte\]</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-label="151"></a></span>
+<span id="cb4-172"><a href="#cb4-172" aria-label="152"></a>Ist das Panel balanced?</span>
+<span id="cb4-173"><a href="#cb4-173" aria-label="153"></a></span>
+<span id="cb4-176"><a href="#cb4-176" aria-label="154"></a><span class="in">```{r}</span></span>
+<span id="cb4-177"><a href="#cb4-177" aria-label="155"></a><span class="in">```</span></span>
+<span id="cb4-178"><a href="#cb4-178" aria-label="156"></a></span>
+<span id="cb4-179"><a href="#cb4-179" aria-label="157"></a>Antwort:</span>
+<span id="cb4-180"><a href="#cb4-180" aria-label="158"></a></span>
+<span id="cb4-181"><a href="#cb4-181" aria-label="159"></a><span class="fu">## Welche Variablen sind zeitkonstant und welche zeitveränderlich? \[3 Punkte\]</span></span>
+<span id="cb4-182"><a href="#cb4-182" aria-label="160"></a></span>
+<span id="cb4-185"><a href="#cb4-185" aria-label="161"></a><span class="in">```{r}</span></span>
+<span id="cb4-186"><a href="#cb4-186" aria-label="162"></a><span class="in">```</span></span>
+<span id="cb4-187"><a href="#cb4-187" aria-label="163"></a></span>
+<span id="cb4-188"><a href="#cb4-188" aria-label="164"></a>Antwort:</span>
+<span id="cb4-189"><a href="#cb4-189" aria-label="165"></a></span>
+<span id="cb4-190"><a href="#cb4-190" aria-label="166"></a><span class="fu">## Teilnahme \[2 Punkte\]</span></span>
+<span id="cb4-191"><a href="#cb4-191" aria-label="167"></a></span>
+<span id="cb4-192"><a href="#cb4-192" aria-label="168"></a>Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?</span>
+<span id="cb4-193"><a href="#cb4-193" aria-label="169"></a></span>
+<span id="cb4-196"><a href="#cb4-196" aria-label="170"></a><span class="in">```{r}</span></span>
+<span id="cb4-197"><a href="#cb4-197" aria-label="171"></a><span class="in">```</span></span>
+<span id="cb4-198"><a href="#cb4-198" aria-label="172"></a></span>
+<span id="cb4-199"><a href="#cb4-199" aria-label="173"></a>Antwort:</span>
+<span id="cb4-200"><a href="#cb4-200" aria-label="174"></a></span>
+<span id="cb4-201"><a href="#cb4-201" aria-label="175"></a><span class="fu"># Regressionen</span></span>
+<span id="cb4-202"><a href="#cb4-202" aria-label="176"></a></span>
+<span id="cb4-203"><a href="#cb4-203" aria-label="177"></a><span class="fu">## Schätzen Sie ein POLS Modell \[3 Punkte\]</span></span>
+<span id="cb4-204"><a href="#cb4-204" aria-label="178"></a></span>
+<span id="cb4-205"><a href="#cb4-205" aria-label="179"></a>... und interepretieren Sie die Koeffizienten.</span>
+<span id="cb4-206"><a href="#cb4-206" aria-label="180"></a></span>
+<span id="cb4-209"><a href="#cb4-209" aria-label="181"></a><span class="in">```{r}</span></span>
+<span id="cb4-210"><a href="#cb4-210" aria-label="182"></a><span class="in">```</span></span>
+<span id="cb4-211"><a href="#cb4-211" aria-label="183"></a></span>
+<span id="cb4-212"><a href="#cb4-212" aria-label="184"></a>Antwort:</span>
+<span id="cb4-213"><a href="#cb4-213" aria-label="185"></a></span>
+<span id="cb4-214"><a href="#cb4-214" aria-label="186"></a><span class="fu">## Schätzen Sie ein BE Modell \[3 Punkte\]</span></span>
+<span id="cb4-215"><a href="#cb4-215" aria-label="187"></a></span>
+<span id="cb4-216"><a href="#cb4-216" aria-label="188"></a>... und interepretieren Sie die Koeffizienten.</span>
+<span id="cb4-217"><a href="#cb4-217" aria-label="189"></a></span>
+<span id="cb4-220"><a href="#cb4-220" aria-label="190"></a><span class="in">```{r}</span></span>
+<span id="cb4-221"><a href="#cb4-221" aria-label="191"></a><span class="in">```</span></span>
+<span id="cb4-222"><a href="#cb4-222" aria-label="192"></a></span>
+<span id="cb4-223"><a href="#cb4-223" aria-label="193"></a>Antwort:</span>
+<span id="cb4-224"><a href="#cb4-224" aria-label="194"></a></span>
+<span id="cb4-225"><a href="#cb4-225" aria-label="195"></a><span class="fu">## Schätzen Sie ein FE Modell \[3 Punkte\]</span></span>
+<span id="cb4-226"><a href="#cb4-226" aria-label="196"></a></span>
+<span id="cb4-227"><a href="#cb4-227" aria-label="197"></a>... und interepretieren Sie die Koeffizienten.</span>
+<span id="cb4-228"><a href="#cb4-228" aria-label="198"></a></span>
+<span id="cb4-231"><a href="#cb4-231" aria-label="199"></a><span class="in">```{r}</span></span>
+<span id="cb4-232"><a href="#cb4-232" aria-label="200"></a><span class="in">```</span></span>
+<span id="cb4-233"><a href="#cb4-233" aria-label="201"></a></span>
+<span id="cb4-234"><a href="#cb4-234" aria-label="202"></a>Antwort:</span>
+<span id="cb4-235"><a href="#cb4-235" aria-label="203"></a></span>
+<span id="cb4-236"><a href="#cb4-236" aria-label="204"></a><span class="fu">## Schätzen Sie ein RE Modell \[3 Punkte\]</span></span>
+<span id="cb4-237"><a href="#cb4-237" aria-label="205"></a></span>
+<span id="cb4-238"><a href="#cb4-238" aria-label="206"></a>... und interepretieren Sie die Koeffizienten.</span>
+<span id="cb4-239"><a href="#cb4-239" aria-label="207"></a></span>
+<span id="cb4-242"><a href="#cb4-242" aria-label="208"></a><span class="in">```{r}</span></span>
+<span id="cb4-243"><a href="#cb4-243" aria-label="209"></a><span class="in">```</span></span>
+<span id="cb4-244"><a href="#cb4-244" aria-label="210"></a></span>
+<span id="cb4-245"><a href="#cb4-245" aria-label="211"></a>Antwort:</span>
+<span id="cb4-246"><a href="#cb4-246" aria-label="212"></a></span>
+<span id="cb4-247"><a href="#cb4-247" aria-label="213"></a><span class="fu">## Vergleich \[5 Punkte\]</span></span>
+<span id="cb4-248"><a href="#cb4-248" aria-label="214"></a></span>
+<span id="cb4-249"><a href="#cb4-249" aria-label="215"></a>Vergleichen Sie die vier Modelle. Lassen Sie sich 3 Nachkommestellen bei den Werten der Koeffizienten ausgeben. Erstellen Sie eine tabellarische Übersicht über alle Modelle.</span>
+<span id="cb4-250"><a href="#cb4-250" aria-label="216"></a></span>
+<span id="cb4-253"><a href="#cb4-253" aria-label="217"></a><span class="in">```{r}</span></span>
+<span id="cb4-254"><a href="#cb4-254" aria-label="218"></a><span class="in">```</span></span>
+<span id="cb4-255"><a href="#cb4-255" aria-label="219"></a></span>
+<span id="cb4-256"><a href="#cb4-256" aria-label="220"></a>a)  Warum wird im FE Modell kein Koeffizient für *female* geschätzt?</span>
+<span id="cb4-257"><a href="#cb4-257" aria-label="221"></a></span>
+<span id="cb4-258"><a href="#cb4-258" aria-label="222"></a><span class="in">    Antwort:</span></span>
+<span id="cb4-259"><a href="#cb4-259" aria-label="223"></a></span>
+<span id="cb4-260"><a href="#cb4-260" aria-label="224"></a>b)  Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?</span>
+<span id="cb4-261"><a href="#cb4-261" aria-label="225"></a></span>
+<span id="cb4-262"><a href="#cb4-262" aria-label="226"></a><span class="in">    Antwort:</span></span>
+<span id="cb4-263"><a href="#cb4-263" aria-label="227"></a></span>
+<span id="cb4-264"><a href="#cb4-264" aria-label="228"></a>c)  Interpretieren sie vergleichend die Koeffizienten des log. Einkommens.</span>
+<span id="cb4-265"><a href="#cb4-265" aria-label="229"></a></span>
+<span id="cb4-266"><a href="#cb4-266" aria-label="230"></a><span class="in">    Antwort:</span></span>
+<span id="cb4-267"><a href="#cb4-267" aria-label="231"></a></span>
+<span id="cb4-268"><a href="#cb4-268" aria-label="232"></a><span class="fu">## Hausman Test \[2 Punkte\]</span></span>
+<span id="cb4-269"><a href="#cb4-269" aria-label="233"></a></span>
+<span id="cb4-270"><a href="#cb4-270" aria-label="234"></a>Sollen wir das RE oder das FE Modell nutzen? Führen Sie einen Hausman Test durch. Wie entscheiden Sie sich und warum?</span>
+<span id="cb4-271"><a href="#cb4-271" aria-label="235"></a></span>
+<span id="cb4-274"><a href="#cb4-274" aria-label="236"></a><span class="in">```{r}</span></span>
+<span id="cb4-275"><a href="#cb4-275" aria-label="237"></a><span class="in">```</span></span>
+<span id="cb4-276"><a href="#cb4-276" aria-label="238"></a></span>
+<span id="cb4-277"><a href="#cb4-277" aria-label="239"></a>Antwort:</span>
+<span id="cb4-278"><a href="#cb4-278" aria-label="240"></a></span>
+<span id="cb4-279"><a href="#cb4-279" aria-label="241"></a><span class="fu"># Render \[7 Punkte\]</span></span>
+<span id="cb4-280"><a href="#cb4-280" aria-label="242"></a></span>
+<span id="cb4-281"><a href="#cb4-281" aria-label="243"></a>Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 9.1.2025 zwei Dokumente hoch:</span>
+<span id="cb4-282"><a href="#cb4-282" aria-label="244"></a></span>
+<span id="cb4-283"><a href="#cb4-283" aria-label="245"></a><span class="ss">-   </span>das Quarto-File (1_abgabe_Nachname.qmd)</span>
+<span id="cb4-284"><a href="#cb4-284" aria-label="246"></a><span class="ss">-   </span>entweder ein HTML ODER ein PDF (1_abgabe_Nachname.pdf oder 1_abgabe_Nachname.html)</span>
+<span id="cb4-285"><a href="#cb4-285" aria-label="247"></a></span>
+<span id="cb4-286"><a href="#cb4-286" aria-label="248"></a>Sie erhalten 7 Punkte, wenn die Prüferin lediglich das Arbeitsverzeichnis ändern muss und sonst das Quarto Dokument durchläuft.</span>
+<span id="cb4-287"><a href="#cb4-287" aria-label="249"></a></span>
+<span id="cb4-288"><a href="#cb4-288" aria-label="250"></a><span class="fu"># Bewertung</span></span>
+<span id="cb4-289"><a href="#cb4-289" aria-label="251"></a></span>
+<span id="cb4-290"><a href="#cb4-290" aria-label="252"></a>Es gibt insgesamt 50 Punkte.</span>
+<span id="cb4-291"><a href="#cb4-291" aria-label="253"></a></span>
+<span id="cb4-292"><a href="#cb4-292" aria-label="254"></a><span class="pp">|</span> Punktebereich <span class="pp">|</span> Note <span class="pp">|</span></span>
+<span id="cb4-293"><a href="#cb4-293" aria-label="255"></a><span class="pp">|---------------|------|</span></span>
+<span id="cb4-294"><a href="#cb4-294" aria-label="256"></a><span class="pp">|</span> 49 - 50       <span class="pp">|</span> 1,0  <span class="pp">|</span></span>
+<span id="cb4-295"><a href="#cb4-295" aria-label="257"></a><span class="pp">|</span> 46 - 48       <span class="pp">|</span> 1,3  <span class="pp">|</span></span>
+<span id="cb4-296"><a href="#cb4-296" aria-label="258"></a><span class="pp">|</span> 43 - 45       <span class="pp">|</span> 1,7  <span class="pp">|</span></span>
+<span id="cb4-297"><a href="#cb4-297" aria-label="259"></a><span class="pp">|</span> 40 - 42       <span class="pp">|</span> 2,0  <span class="pp">|</span></span>
+<span id="cb4-298"><a href="#cb4-298" aria-label="260"></a><span class="pp">|</span> 37 - 39       <span class="pp">|</span> 2,3  <span class="pp">|</span></span>
+<span id="cb4-299"><a href="#cb4-299" aria-label="261"></a><span class="pp">|</span> 34 - 36       <span class="pp">|</span> 2,7  <span class="pp">|</span></span>
+<span id="cb4-300"><a href="#cb4-300" aria-label="262"></a><span class="pp">|</span> 31 - 33       <span class="pp">|</span> 3,0  <span class="pp">|</span></span>
+<span id="cb4-301"><a href="#cb4-301" aria-label="263"></a><span class="pp">|</span> 28 - 30       <span class="pp">|</span> 3,3  <span class="pp">|</span></span>
+<span id="cb4-302"><a href="#cb4-302" aria-label="264"></a><span class="pp">|</span> 25 - 27       <span class="pp">|</span> 3,7  <span class="pp">|</span></span>
+<span id="cb4-303"><a href="#cb4-303" aria-label="265"></a><span class="pp">|</span> 22 - 24       <span class="pp">|</span> 4,0  <span class="pp">|</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, Daria Tisch</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with 💙 and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

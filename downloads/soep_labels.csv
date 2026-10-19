@@ -1,0 +1,16 @@
+variable,variable_label
+id,Personennummer (zufällig generiert)
+syear,Erhebungsjahr
+sex,Geschlecht
+alter,Alter der Befragungsperson
+anz_pers,Anzahl Personen im Haushalt
+anz_kind,Anzahl Kinder im Haushalt
+bildung,Anzahl an Bildungsjahren
+erwerb,Erwerbsstatus
+branche,Branche aktueller Beruf
+gesund_org,subj. Gesundheit
+lebensz_org,Ggw. Lebenszufriedenheit
+einkommenj1,Bruttoeinkommen/Jahr Hauptberuf
+einkommenj2,Bruttoeinkommen/Jahr Nebenberuf
+einkommenm1,Bruttoeinkommen/Monat Hauptberuf
+einkommenm2,Bruttoeinkommen/Monat Nebenberuf

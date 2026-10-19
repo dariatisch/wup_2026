@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
+
+  <meta name="author" content="Daria Tisch">
+  <title>Fortgeschrittene quantitative Methoden – 4. Seminar: Faktorielle Umfrageexperimente</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">4. Seminar: Faktorielle Umfrageexperimente</h1>
+  <p class="subtitle">Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Daria Tisch
+</div>
+</div>
+</div>
+
+</section>
+<section id="heutige-sitzung" class="slide level2 smaller">
+<h2>Heutige Sitzung</h2>
+<ol type="1">
+<li>Kausalität und Erhebungsdesign</li>
+<li>Experimente</li>
+<li>Faktorielle Umfrageexperimente (factorial surveys)</li>
+<li>Methodische Umsetzung</li>
+</ol>
+<p>Pflichtlektüre:</p>
+<ul>
+<li>Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden.</li>
+<li><a href="https://www.ncrm.ac.uk/resources/online/all/?main&amp;id=20781">Online Tutorial</a> von Tamara Gutfleisch</li>
+</ul>
+</section>
+<section>
+<section id="kausalität-und-erhebungsdesign" class="title-slide slide level1 center">
+<h1>Kausalität und Erhebungsdesign</h1>
+
+</section>
+<section id="kausalität-und-erhebungsdesign-1" class="slide level2">
+<h2>Kausalität und Erhebungsdesign</h2>
+<p><strong>Ex-post-facto-Design</strong>: Vergleichsgruppen werden nach der Datenerhebung gebildet (zB Männer und Frauen; Geschlecht als erklärende Variable)</p>
+<p><strong>Quasiexperimentelle Designs</strong>: Vergleichsgruppen werden vorab festgelegt, aber keine Randomisierung</p>
+<p><strong>Experiment</strong>: Vergleichsgruppen werden vor der Datenerhebung zufällig aufgeteilt</p>
+</section></section>
+<section>
+<section id="experimente" class="title-slide slide level1 center">
+<h1>Experimente</h1>
+
+</section>
+<section id="experimente-1" class="slide level2">
+<h2>Experimente</h2>
+<ul>
+<li><p>Versuchs- und Kontrollgruppe</p></li>
+<li><p>Randomisierung ➔ Keine unbeobachtete Heterogenität</p></li>
+<li><p>Kontrollierte Stimulussetzung</p>
+<ul>
+<li>Zeitliche Abfolge von UV und AV</li>
+<li>Keine Endogenität</li>
+</ul></li>
+<li><p>Kausalschluss</p></li>
+<li><p>Ethische Bedenken</p></li>
+</ul>
+</section>
+<section id="experimente-2" class="slide level2">
+<h2>Experimente</h2>
+
+<img data-src="images/clipboard-2747204091.png" class="r-stretch"><p>Aus: Berger, Roger, und Tobias Wolbring, 2015: Kontrafaktische Kausalität und eine Typologie sozialwissenschaftlicher Experimente. S. 45. In: Keuschnigg, Marc , und Tobias Wolbring (Hg.), Experimente in den Sozialwissenschaften. Baden-Baden: Nomos.</p>
+</section>
+<section id="gütekriterien-von-forschungsdesigns" class="slide level2">
+<h2>Gütekriterien von Forschungsdesigns:</h2>
+<p><strong>Externe Validität</strong></p>
+<ul>
+<li>Auf Grundgesamtheit übertragbar?</li>
+<li>Validität des Messinstruments wird vorausgesetzt</li>
+</ul>
+<p><strong>Interne Validität</strong></p>
+<ul>
+<li><p>Eindeutigkeit der Ergebnisinterpretation</p></li>
+<li><p>Ist der beobachtete Effekt tatsächlich auf die untersuchten Einflussvariablen zurückzuführen?</p></li>
+<li><p>Kausalanalytischer Anspruch von Experimenten</p></li>
+</ul>
+</section>
+<section id="experiment" class="slide level2">
+<h2>Experiment</h2>
+<p><strong>Voraussetzung</strong>:</p>
+<ul>
+<li><p>Mind. 2 experimentelle Gruppen</p></li>
+<li><p>Die Versuchspersonen werden der Kontroll- bzw. Vergleichsgruppe zufällig zugewiesen</p></li>
+<li><p>Versuchsgruppe („treatment group“)</p></li>
+<li><p>Kontrollgruppe („control group“)</p></li>
+<li><p>Die unabhängige (zu untersuchende) Variable wird von Forschenden manipuliert</p></li>
+</ul>
+</section></section>
+<section>
+<section id="faktorielle-umfrageexperimente-factorial-surveys" class="title-slide slide level1 center">
+<h1>Faktorielle Umfrageexperimente (factorial surveys)</h1>
+
+</section>
+<section id="faktorielle-umfrageexperimente" class="slide level2">
+<h2>Faktorielle Umfrageexperimente</h2>
+<ul>
+<li>auch: Vignettenexperimente</li>
+<li>Verbindet klassische Umfrageforschung mit experimenteller Versuchsanordnung</li>
+<li>„fiktive Situationen“: systematisches Variieren fiktiver Merkmale</li>
+<li>Erhebt Einstellungen und normative Vorstellungen von Personen zu einem spezifischen Sachverhalt (Einstellungs- oder Verhaltensintentionen)</li>
+<li>Wir untersuchen, wie Personen Informationen interpretieren, abwägen und handeln</li>
+</ul>
+</section>
+<section id="fachbegriffe" class="slide level2">
+<h2>Fachbegriffe</h2>
+<p><strong>Vignetten</strong> = Situations- oder Personenbeschreibungen (fiktiv)</p>
+<p><strong>Dimensionen (dimensions)</strong> = bestimmte Inhalte dieser Kurzbeschreibungen</p>
+<p><strong>Ausprägungen (levels)</strong> = Dimensionen können unterschiedliche Werte annehmen</p>
+<p>➔ Ausprägungen der Dimensionen werden innerhalb unterschiedlicher Vignetten systematisch variiert</p>
+</section></section>
+<section>
+<section id="beispiele" class="title-slide slide level1 center">
+<h1>Beispiele</h1>
+
+</section>
+<section id="akzeptanz-von-fortpflanzungsmedizin" class="slide level2 smaller">
+<h2>Akzeptanz von Fortpflanzungsmedizin</h2>
+
+<img data-src="images/clipboard-1126233870.png" class="r-stretch"><p>Aus: Rost, K., &amp; Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.</p>
+</section>
+<section id="akzeptanz-von-fortpflanzungsmedizin-1" class="slide level2 smaller">
+<h2>Akzeptanz von Fortpflanzungsmedizin</h2>
+
+<img data-src="images/clipboard-724776785.png" class="r-stretch"><p>Aus: Rost, K., &amp; Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.</p>
+</section>
+<section id="akzeptanz-von-fortpflanzungsmedizin-2" class="slide level2 smaller">
+<h2>Akzeptanz von Fortpflanzungsmedizin</h2>
+
+<img data-src="images/clipboard-1407299058.png" class="r-stretch"><p>Aus: Rost, K., &amp; Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.</p>
+</section>
+<section id="vertrauen-in-andere-menschen" class="slide level2 smaller">
+<h2>Vertrauen in andere Menschen</h2>
+<p><img data-src="images/dülmer.png"> Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden, S.865.</p>
+</section>
+<section id="faire-aufteilung-von-schenkungen" class="slide level2">
+<h2>Faire Aufteilung von Schenkungen</h2>
+
+<img data-src="images/vignette.png" class="r-stretch"><p>Aus: Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.</p>
+</section>
+<section id="anwendungsgebiete" class="slide level2 smaller">
+<h2>Anwendungsgebiete</h2>
+<ul>
+<li><p>Erforschung soziale Normen/ ethische Prinzipien („Einstellung zu…“)</p>
+<ul>
+<li><p>Nichtrauchernormen</p></li>
+<li><p>Leihmutterschaft / Fortpflanzungsmedizin</p></li>
+</ul></li>
+<li><p>Gerechtigkeitsforschung („Halte Sie das monatliche Einkommen für fair, zu niedrig, zu hochh?“)</p>
+<ul>
+<li>Verteilung von Gütern (Schenkungen, Gehälter)</li>
+</ul></li>
+<li><p>Diskriminierung</p>
+<ul>
+<li>Bewerberprofile (z.B. Geschlecht, Nationalität)</li>
+</ul></li>
+<li><p>Ausgestaltung von Reformen / Gesetzen</p>
+<ul>
+<li>Steuerreform, Sozialhilfereform, Rentenreform</li>
+</ul></li>
+</ul>
+</section>
+<section id="vorteile-gegenüber-anderen-methoden-klassische-umfragen" class="slide level2 smaller">
+<h2>Vorteile gegenüber anderen Methoden: klassische Umfragen</h2>
+<ul>
+<li><p>FS minimiert Interpretationsspielräume, wenn Ausgangssituation präzise formuliert</p></li>
+<li><p>In Umfragen werden Faktoren nacheinander abgefragt (mehrere Items), in FS variieren die Faktoren (Dimensionen) innerhalb einer Vignette →„trade-offs“</p></li>
+<li><p>Umfragen sind anfällig für Effekte sozialer Erwünschtheit, während in FS Fragestellungen subtiler gestellt werden können (z. B. Geschlecht einer Person in Anrede oder Vornamen).</p></li>
+<li><p>Umfragen setzen Zufallsstichprobe voraus, um auf die Grundgesamtheit zu schließen; Vignettendesign nicht per se (randomisierte Vignetten) → interne vs.&nbsp;externe Validität.</p></li>
+</ul>
+</section>
+<section id="vorteile-gegenüber-anderen-methoden-laborexperimenten" class="slide level2">
+<h2>Vorteile gegenüber anderen Methoden: Laborexperimenten</h2>
+<ul>
+<li>Laborexperimente häufig eindimensional (nur ein Testfaktor), Vignetten mehrdimensional</li>
+<li>Laborexperimente nicht anonym (Erwartungseffekte gegenüber VersuchsleiterIn)</li>
+<li>Externe Validität kritisch durch begrenzte Teilnehmerzahl (in Surveydesigns kann höhere Teilnehmerzahl realisiert werden); Teilnehmende der Vignettenbefragung i. d.&nbsp;R. heterogener.</li>
+</ul>
+</section>
+<section id="vorteile-gegenüber-anderen-methoden-beobachtungsmethoden" class="slide level2">
+<h2>Vorteile gegenüber anderen Methoden: Beobachtungsmethoden</h2>
+<ul>
+<li>Verhalten und Einstellung stimmen nicht überein (= Effekte sozialer Erwünschtheit)</li>
+</ul>
+</section></section>
+<section>
+<section id="methodische-umsetzung" class="title-slide slide level1 center">
+<h1>Methodische Umsetzung</h1>
+
+</section>
+<section id="datenerhebung-auswahl-der-dimensionen-und-ausprägungen-in-vignettenexperimenten" class="slide level2 smaller">
+<h2>Datenerhebung: Auswahl der Dimensionen und Ausprägungen in Vignettenexperimenten</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Wie erstelle ich meine Vignetten?</p>
+<p><strong>Vignettenpopulation</strong>: Gesamtmenge der Vignetten, die sich durch die Kombination der gewählten Dimensionsausprägungen erstellen lässt</p>
+<p>7 Dimensionen: 4 Dimensionen mit 3 Ausprägungen 3 Dimensionen mit 2 Ausprägungen</p>
+<p>3*3*3*3*2*2*2 = 648 Vignetten</p>
+</div><div class="column" style="width:60%;">
+<p><img data-src="images/clipboard-125703206.png"></p>
+</div></div>
+</section>
+<section id="beispiel-2" class="slide level2 smaller">
+<h2>Beispiel 2</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><strong>Vignettenpopulation</strong>: 3*3*3 = 27 Vignetten</p>
+<p>Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.</p>
+</div><div class="column" style="width:60%;">
+<p><img data-src="images/dimensionen.png"></p>
+</div></div>
+</section>
+<section id="bedingungen-eines-effizienten-designs" class="slide level2">
+<h2>Bedingungen eines effizienten Designs</h2>
+<p><strong>Orthogonalität</strong></p>
+<ul>
+<li><p>Jede Dimensionsausprägung erscheint gleich häufig mit jeder anderen Dimensionsausprägung</p></li>
+<li><p>Schließt Korrelationen zwischen verschiedenen Dimensionen aus</p></li>
+</ul>
+<p><strong>Balance</strong></p>
+<ul>
+<li><p>Jede Ausprägung innerhalb einer Dimension kommt gleich häufig vor</p></li>
+<li><p>Gewährleistet, dass verschiedene Vignetten die maximale Variation aufweisen</p></li>
+</ul>
+</section>
+<section id="teilnehmende-und-vignetten" class="slide level2">
+<h2>Teilnehmende und Vignetten</h2>
+<p><strong>Problem</strong>: Jede Person müsste 648 Vignetten bewerten</p>
+<p><strong>Lösung</strong>:</p>
+<ol type="1">
+<li><p>Stichprobe der Vignettenpopulation (d-efficient → Orthogonalität und Balance werden maximiert)</p></li>
+<li><p>JedeR TeilnehmerIn soll nur eine bestimmte Anzahl an Vignetten bewerten</p>
+<ol type="A">
+<li>Teilnehmende erhalten X zufällige Vignetten</li>
+<li>Teilnehmende erhalten ein zufälliges Vignettendeck (d-efficient erstellt)</li>
+</ol></li>
+</ol>
+<p>→ Reihenfolgeeffekte können durch Randomisierung minimiert werden</p>
+</section>
+<section id="einbettung-der-vignetten-in-den-fragebogen" class="slide level2">
+<h2>Einbettung der Vignetten in den Fragebogen</h2>
+<ul>
+<li>Lauftext versus Tabelle</li>
+<li>Namen versus “Herr A” und “Frau B”</li>
+<li>Antwortskala
+<ul>
+<li>Likert-Skala</li>
+<li>Zahl</li>
+<li>Aufteilung von z.B. Geld</li>
+</ul></li>
+</ul>
+</section>
+<section id="fragen-zum-design" class="slide level2">
+<h2>Fragen zum Design</h2>
+<ul>
+<li><p>Welche Dimensionen und Ausprägungen?</p></li>
+<li><p>Welche Merkmale müssen konstant gehalten werden?</p></li>
+<li><p>Wie viele Vignetten sollten aus der Grundgesamtheit entnommen werden?</p></li>
+<li><p>Wie viele Vignetten-Decks?</p></li>
+<li><p>Wie viele Vignetten pro Befragten?</p></li>
+<li><p>Welche Methode sollte für die Zusammenstellung der Vignettenstichprobe/des Vignettendecks verwendet werden (z. B. Zufallsstichproben, D-Effizienz, Quotenpläne)</p></li>
+<li><p>Größe der Befragtenstichprobe (was ist realisierbar?)</p></li>
+</ul>
+</section>
+<section id="datenauswertung" class="slide level2 smaller">
+<h2>Datenauswertung</h2>
+<ul>
+<li><p>Orthogonalität und Balance prüfen</p></li>
+<li><p>Deskriptiv: Häufigkeiten der einzelnen Urteile</p></li>
+<li><p>Multiple Regressionsanalyse</p>
+<ul>
+<li><p>Hierarchische Datenstruktur</p></li>
+<li><p>Vignette evaluations (Level 1) nested within respondents (Level 2)</p></li>
+<li><p>Erfordert die Anwendung von statistischen Modellen, die die Cluster berücksichtigen</p>
+<pre><code>- OLS mit robusten geclusterten Standardfehlern auf der Ebene der Befragten
+
+- Mehrebenen-Modelle </code></pre></li>
+</ul></li>
+</ul>
+</section>
+<section id="beispiel-faire-aufteilung-von-schenkungen" class="slide level2">
+<h2>Beispiel: Faire Aufteilung von Schenkungen</h2>
+
+<img data-src="images/vignette.png" class="r-stretch"></section>
+<section id="beispiel-faire-aufteilung-von-schenkungen-1" class="slide level2">
+<h2>Beispiel: Faire Aufteilung von Schenkungen</h2>
+
+<img data-src="images/dimensionen.png" class="r-stretch"></section>
+<section id="datenstruktur" class="slide level2 scrollable">
+<h2>Datenstruktur</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> pos variable        label               col_type missing values             
+ 1   id_resp         ID of respondent    dbl      0                          
+ 2   id_within       ID for each observ~ dbl      0                          
+ 3   id_vignette     ID of vignette      dbl      0                          
+ 4   deck            Vignette deck       dbl      0                          
+ 5   reihevig        Order of vignette   dbl      0                          
+ 6   firstborn       Vignette: firstbor~ dbl+lbl  0       [1] Son firstborn  
+                                                          [2] Twins          
+                                                          [3] Daughter first~
+ 7   need            Vignette: income    dbl+lbl  0       [1] Son unemployed 
+                                                          [2] Equal earnings 
+                                                          [3] Daughter unemp~
+ 8   help            Vignette: help      dbl+lbl  0       [1] Son helps      
+                                                          [2] Both help      
+                                                          [3] Daughter helps 
+ 9   daughter        Focal vignette per~ dbl+lbl  0       [0] No             
+                                                          [1] Yes            
+ 10  g_need          Child's relative i~ dbl+lbl  0       [1] Child unemploy~
+                                                          [2] Equal earnings 
+                                                          [3] Sibling unempl~
+ 11  g_help          Child's relative h~ dbl+lbl  0       [1] Child helps    
+                                                          [2] Both help      
+                                                          [3] Sibling helps  
+ 12  g_firstborn     Child's relative a~ dbl+lbl  0       [1] Child firstborn
+                                                          [2] Twins          
+                                                          [3] Sibling firstb~
+ 13  dau_vig         Vignette evaluatio~ dbl      2142                       
+ 14  son_vig         Vignette evaluatio~ dbl      2142                       
+ 15  child_vig       Child's amount of ~ dbl      0                          
+ 16  iv_received     inter vivos receiv~ dbl+lbl  18      [0] No             
+                                                          [1] Yes            
+ 17  iv_parents      Inter vivos from p~ dbl+lbl  576     [0] No             
+                                                          [1] Yes            
+ 18  iv_grandparents Inter vivos from g~ dbl+lbl  576     [0] No             
+                                                          [1] Yes            
+ 19  iv_siblings     Inter vivos from s~ dbl+lbl  576     [0] No             
+                                                          [1] Yes            
+ 20  lastiv          Amount last inter ~ dbl+lbl  672     [1] Below 500 Euro 
+                                                          [2] 500 - below 50~
+                                                          [3] 5000 - below 1~
+                                                          [4] 10000 - below ~
+                                                          [5] 50000 - below ~
+                                                          [6] 100000 Euro or~
+ 21  siblings        Having siblings     dbl+lbl  36      [0] No             
+                                                          [1] Yes            
+ 22  brothers        Number of brothers  dbl      726                        
+ 23  sisters         Number of sisters   dbl      726                        
+ 24  r_firstborn     Respond. firstborn  dbl+lbl  726     [0] No             
+                                                          [1] Yes            
+ 25  child           Having children     dbl+lbl  42      [0] No             
+                                                          [1] Yes            
+ 26  n_sons          Number of sons      dbl      2166                       
+ 27  n_daughters     Number of daughters dbl      2166                       
+ 28  gifted          Ever given an inte~ dbl+lbl  2166    [0] No             
+                                                          [1] Yes            
+ 29  principles      According to which~ dbl+lbl  3390    [1] Equality       
+                                                          [2] Equity         
+                                                          [3] Need           
+ 30  rel_mo          Relationship to mo~ dbl+lbl  708     [1] very good      
+                                                          [2] good           
+                                                          [3] ok             
+                                                          [4] bad            
+                                                          [5] very bad       
+ 31  rel_fa          Relationship to fa~ dbl+lbl  1128    [1] very good      
+                                                          [2] good           
+                                                          [3] ok             
+                                                          [4] bad            
+                                                          [5] very bad       
+ 32  rel_ch          Relationship to ch~ dbl+lbl  2208    [1] Very good      
+                                                          [2] Good           
+                                                          [3] Ok             
+                                                          [4] bad / very bad 
+ 33  hhparent        Lives with parent   dbl+lbl  540     [0] No             
+                                                          [1] Yes            
+ 34  hhhelp          Helps parent        dbl+lbl  864     [0] No             
+                                                          [1] Yes            
+ 35  relstatus       Relationship status dbl+lbl  54      [1] Divorced / civ~
+                                                          [2] Single         
+                                                          [3] Married / civi~
+                                                          [4] Married / civi~
+                                                          [5] Widowed / civi~
+ 36  partner         Having a partner    dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 37  partnerhh       Having a partner i~ dbl+lbl  1116    [0] No             
+                                                          [1] Yes            
+ 38  age             Age                 dbl      54                         
+ 39  deutsch         Born in Germany     dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 40  mig             Migration backgrou~ dbl+lbl  60      [0] No             
+                                                          [1] Yes            
+ 41  female          Female              dbl+lbl  72      [0] No             
+                                                          [1] Yes            
+ 42  bundl           Federal state       dbl+lbl  60      [1] Baden-Württemb~
+                                                          [2] Bayern         
+                                                          [3] Berlin         
+                                                          [4] Brandenburg    
+                                                          [5] Bremen         
+                                                          [6] Hamburg        
+                                                          [7] Hauptwohnsitz ~
+                                                          [8] Hessen         
+                                                          [9] Mecklenburg-Vo~
+                                                          [10] Niedersachsen 
+                                                          [11] Nordrhein-Wes~
+                                                          [12] Rheinland-Pfa~
+                                                          [13] Saarland      
+                                                          [14] Sachsen       
+                                                          [15] Sachsen-Anhalt
+                                                          [16] Schleswig-Hol~
+                                                          [17] Thüringen     
+ 43  abi             Abitur              dbl+lbl  144     [0] No             
+                                                          [1] Yes            
+ 44  employ          Employed            dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 45  student         Student             dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 46  unemp           Unemployed, active~ dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 47  unemp_nosearch  Unemployed, no act~ dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 48  disabled        Disabled            dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 49  retired         Retired             dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 50  house           Housework, care     dbl+lbl  54      [0] No             
+                                                          [1] Yes            
+ 51  r_income        Income categories   dbl+lbl  324     [1] Below 500 Euro 
+                                                          [2] 500 - below 10~
+                                                          [3] 1000 - below 2~
+                                                          [4] 2000 - below 3~
+                                                          [5] 3000 - below 4~
+                                                          [6] 4000 - below 5~
+                                                          [7] 5000 Euro or m~
+ 52  gideo1          House and children  dbl+lbl  84      [1] not at all     
+                                                          [5] totally agree  
+ 53  gideo2          Being housewife     dbl+lbl  90      [1] not at all     
+                                                          [5] totally agree  
+ 54  gideo3          Men: work, women: ~ dbl+lbl  84      [1] not at all     
+                                                          [5] totally agree  
+ 55  gideo4          Not good if men st~ dbl+lbl  90      [1] not at all     
+                                                          [5] totally agree  
+ 56  abi2            Abitur and Fachabi~ dbl+lbl  54      [1] Fachhochschulr~
+                                                          [2] Abitur         
+                                                          [3] Other          </code></pre>
+</div>
+</div>
+<p>Pos 1: Befragten ID</p>
+<p>Pos 3: Vignetten ID</p>
+<p>Pos 4: Deck ID</p>
+<p>Pos 6-8: Dimensionen und Ausprägungen</p>
+<p>Pos 13-15: Urteil der Befragten</p>
+<p>Pos 16-42: Charakteristiken der Befragten</p>
+</section>
+<section id="ende" class="slide level2 smaller">
+<h2>Ende</h2>
+<ul>
+<li><p>Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie Tamara Gutfleisch.</p></li>
+<li><p>Weitere Literatur:</p>
+<ul>
+<li>Auspurg, K., &amp; Hinz, T. (2015). Factorial survey experiments. SAGE Publications, Inc., https://doi.org/10.4135/9781483398075</li>
+<li>Rost, K., &amp; Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.</li>
+<li>Tamara Gutfleisch. (2021). An introduction to factorial survey experiments. National Centre for Research Methods online learning resource. Available at https://www.ncrm.ac.uk/resources/online/all/?main&amp;id=20781 [accessed: 20 January 2025]</li>
+</ul></li>
+</ul>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard","boardmarkerWidth":5},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../slides";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "..";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/dariatisch\.github\.io\/wup_2026\/");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
