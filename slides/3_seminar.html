@@ -206,7 +206,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">3. Seminar: Ereignisdaten</h1>
-  <p class="subtitle">Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025</p>
+  <p class="subtitle">Fortgeschrittene quantitative Methoden <br> Wintersemester 2026-2027</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -245,8 +245,8 @@ Daria Tisch
 <h2>Reaktive versus nicht-reaktive Daten</h2>
 <table class="caption-top">
 <colgroup>
-<col style="width: 36%">
-<col style="width: 63%">
+<col style="width: 37%">
+<col style="width: 62%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -455,26 +455,21 @@ Daria Tisch
 <h2>Package “survival”</h2>
 <p>Wir nutzen das R-Paket {survival} für unsere Ereignisdatenanalyse.</p>
 <div class="cell" data-setup="true" data-exercise="ex_1">
-<script type="exercise-setup-ex_1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMSIsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEiLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJsaWJyYXJ5KHN1cnZpdmFsKVxubGlicmFyeShkcGx5cilcblxuIyBEYXRlbnPDpHR6ZSwgZGllIGltIFBhY2thZ2Ugc3Vydml2YWwgZW50aGFsdGVuIHNpbmQsIGFuemVpZ2VuXG5kYXRhKHBhY2thZ2UgPSBcInN1cnZpdmFsXCIpXG5cbiMgTHVuZ2Vua3JlYnNkYXRlbnNhdHogYWxzIGRmIHNwZWljaGVybiBcbmRmID0gbHVuZyJ9
-</script>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a><span class="co"># Datensätze, die im Package survival enthalten sind, anzeigen</span></span>
+<span id="cb1-5"><a aria-label="5"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"survival"</span>)</span>
+<span id="cb1-6"><a aria-label="6"></a></span>
+<span id="cb1-7"><a aria-label="7"></a><span class="co"># Lungenkrebsdatensatz als df speichern </span></span>
+<span id="cb1-8"><a aria-label="8"></a>df <span class="ot">=</span> lung</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="lungenkrebsdaten" class="slide level2">
 <h2>Lungenkrebsdaten</h2>
 <p>Wir möchten das Überleben von PatientInnen mit fortgeschrittenem Lungenkrebs aus der “North Central Cancer Treatment Group” untersuchen. Schauen wir uns an, welche Variablen im Datensatz vorhanden sind:</p>
-<div class="cell">
-<div>
-<div id="webr-2" class="exercise-cell">
-
-</div>
-<script type="webr-2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEifSwiY29kZSI6ImxpYnJhcnkoc3Vydml2YWwpXG4/bHVuZyAgICAgIyBIaWxmZSB6dSBlaW5lciBGdW5rdGlvbiBvZGVyIGVpbmVtIE9iamVrdCAifQ==
-</script>
-</div>
-</div>
 </section>
-<section id="datenaufbereitung" class="slide level2">
+<section id="datenaufbereitung" class="slide level2 smaller scrollable">
 <h2>Datenaufbereitung</h2>
 <p>Wir brauchen für unsere Analyse 3 Variablen:</p>
 <ul>
@@ -482,43 +477,24 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 <li>Karnofsky-Index (0: &lt;=80 [niedrig], 1: &gt;80 [hoch])</li>
 <li>time (Tage)</li>
 </ul>
-<div class="cell" data-setup="true" data-exercise="ex_1">
-<script type="exercise-setup-ex_1-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMSIsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEiLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJsaWJyYXJ5KHN1cnZpdmFsKVxubGlicmFyeShkcGx5cilcbmRmID0gbHVuZyJ9
-</script>
+<div class="cell" data-setup="true">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb2-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-3"><a aria-label="3"></a>df <span class="ot">=</span> lung</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell" data-exercise="ex_1">
-<div>
-<div id="webr-4" class="exercise-cell">
-
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="co"># Lungenkrebsdatensatz als df speichern </span></span>
+<span id="cb3-2"><a aria-label="2"></a>df <span class="ot">=</span> lung</span>
+<span id="cb3-3"><a aria-label="3"></a><span class="fu">names</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "inst"      "time"      "status"    "age"       "sex"       "ph.ecog"  
+ [7] "ph.karno"  "pat.karno" "meal.cal"  "wt.loss"  </code></pre>
 </div>
-<script type="webr-4-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMSIsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEifSwiY29kZSI6IiMgTHVuZ2Vua3JlYnNkYXRlbnNhdHogYWxzIGRmIHNwZWljaGVybiBcbmRmID0gbHVuZ1xubmFtZXMoZGYpXG5kZiA8LSBkZiAlPiUgXG4gIG11dGF0ZShcbiAgICBfX19fX18gPSByZWNvZGUoc3RhdHVzLCBgMWAgPSAwLCBgMmAgPSAxKSxcbiAgICBrYXJub2Zza3lfaG9jaCA9IGlmZWxzZShwaC5rYXJubyA+ODAsIDEsIDApXG4gICkifQ==
-</script>
-</div>
-</div>
-<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_1">
-<div title="Solution">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Solution</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Lösung:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">names</span>(df)</span>
-<span id="cb1-2"><a aria-label="2"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-4"><a aria-label="4"></a>    <span class="at">dead =</span> <span class="fu">recode</span>(status, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>),</span>
-<span id="cb1-5"><a aria-label="5"></a>    <span class="at">karnofsky_hoch =</span> <span class="fu">ifelse</span>(ph.karno <span class="sc">&gt;</span><span class="dv">80</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb1-6"><a aria-label="6"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a aria-label="3"></a>    <span class="at">dead =</span> <span class="fu">recode</span>(status, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>),</span>
+<span id="cb5-4"><a aria-label="4"></a>    <span class="at">karnofsky_hoch =</span> <span class="fu">ifelse</span>(ph.karno <span class="sc">&gt;</span><span class="dv">80</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb5-5"><a aria-label="5"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="erstellen-von-survival-objects" class="slide level2">
@@ -536,17 +512,17 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb3-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-3"><a aria-label="3"></a><span class="fu">library</span>(ggsurvfit)</span>
-<span id="cb3-4"><a aria-label="4"></a></span>
-<span id="cb3-5"><a aria-label="5"></a>df <span class="ot">=</span> lung</span>
-<span id="cb3-6"><a aria-label="6"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb3-7"><a aria-label="7"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-8"><a aria-label="8"></a>    <span class="at">dead =</span> <span class="fu">recode</span>(status, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>),</span>
-<span id="cb3-9"><a aria-label="9"></a>    <span class="at">karnofsky_hoch =</span> <span class="fu">ifelse</span>(ph.karno <span class="sc">&gt;</span><span class="dv">80</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb3-10"><a aria-label="10"></a>  )</span>
-<span id="cb3-11"><a aria-label="11"></a><span class="fu">Surv</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>dead)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-3"><a aria-label="3"></a><span class="fu">library</span>(ggsurvfit)</span>
+<span id="cb7-4"><a aria-label="4"></a></span>
+<span id="cb7-5"><a aria-label="5"></a>df <span class="ot">=</span> lung</span>
+<span id="cb7-6"><a aria-label="6"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb7-7"><a aria-label="7"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-8"><a aria-label="8"></a>    <span class="at">dead =</span> <span class="fu">recode</span>(status, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>),</span>
+<span id="cb7-9"><a aria-label="9"></a>    <span class="at">karnofsky_hoch =</span> <span class="fu">ifelse</span>(ph.karno <span class="sc">&gt;</span><span class="dv">80</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb7-10"><a aria-label="10"></a>  )</span>
+<span id="cb7-11"><a aria-label="11"></a><span class="fu">Surv</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>dead)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  306   455  1010+  210   883  1022+  310   361   218   166 </code></pre>
 </div>
@@ -559,13 +535,11 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 <h2>100-Tage Überlebenswahrscheinlichkeit</h2>
 <p>Untersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:</p>
 <div class="cell">
-<div>
-<div id="webr-5" class="exercise-cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: survfit(formula = Surv(time, dead) ~ 1, data = df)
 
-</div>
-<script type="webr-5-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEifSwiY29kZSI6ImxpYnJhcnkoc3Vydml2YWwpXG5saWJyYXJ5KHRpZHl2ZXJzZSlcbmRmID0gbHVuZ1xuZGYgPC0gZGYgJT4lIFxuICBtdXRhdGUoXG4gICAgZGVhZCA9IHJlY29kZShzdGF0dXMsIGAxYCA9IDAsIGAyYCA9IDEpLFxuICAgIGthcm5vZnNreV9ob2NoID0gaWZlbHNlKHBoLmthcm5vID44MCwgMSwgMClcbiAgKVxuc3VtbWFyeShzdXJ2Zml0KFN1cnYodGltZSwgZGVhZCkgfiAxLCBkYXRhID0gZGYpLCB0aW1lcyA9IDEwMCkifQ==
-</script>
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+  100    196      31    0.864  0.0227        0.821         0.91</code></pre>
 </div>
 </div>
 </section>
@@ -603,68 +577,20 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQi
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">survfit2</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> df) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
-<span id="cb5-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-4"><a aria-label="4"></a>    <span class="at">x =</span> <span class="st">"Days"</span>,</span>
-<span id="cb5-5"><a aria-label="5"></a>    <span class="at">y =</span> <span class="st">"Overall survival probability"</span></span>
-<span id="cb5-6"><a aria-label="6"></a>  )<span class="sc">+</span> </span>
-<span id="cb5-7"><a aria-label="7"></a>  <span class="fu">add_confidence_interval</span>() <span class="sc">+</span></span>
-<span id="cb5-8"><a aria-label="8"></a>  <span class="fu">add_risktable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">survfit2</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> df) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a aria-label="2"></a>  <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-4"><a aria-label="4"></a>    <span class="at">x =</span> <span class="st">"Days"</span>,</span>
+<span id="cb10-5"><a aria-label="5"></a>    <span class="at">y =</span> <span class="st">"Overall survival probability"</span></span>
+<span id="cb10-6"><a aria-label="6"></a>  )<span class="sc">+</span> </span>
+<span id="cb10-7"><a aria-label="7"></a>  <span class="fu">add_confidence_interval</span>() <span class="sc">+</span></span>
+<span id="cb10-8"><a aria-label="8"></a>  <span class="fu">add_risktable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
 <p><img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="erstellen-von-kaplan-meier-kurven-2" class="slide level2 smaller scrollable">
-<h2>Erstellen von Kaplan-Meier Kurven</h2>
-<p>Probiert selbst:</p>
-<div class="cell" data-setup="true" data-exercise="ex_2">
-<script type="exercise-setup-ex_2-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMiIsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEiLCJzZXR1cCI6dHJ1ZX0sImNvZGUiOiJsaWJyYXJ5KHN1cnZpdmFsKVxubGlicmFyeShkcGx5cilcbmRmID0gbHVuZ1xuZGYgPC0gZGYgJT4lIFxuICBtdXRhdGUoXG4gICAgZGVhZCA9IHJlY29kZShzdGF0dXMsIGAxYCA9IDAsIGAyYCA9IDEpLFxuICAgIGthcm5vZnNreV9ob2NoID0gaWZlbHNlKHBoLmthcm5vID44MCwgMSwgMClcbiAgKSJ9
-</script>
-</div>
-<div class="cell" data-exercise="ex_2">
-<div>
-<div id="webr-7" class="exercise-cell">
-
-</div>
-<script type="webr-7-contents">
-eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImV4ZXJjaXNlIjoiZXhfMiIsImZpZy1oZWlnaHQiOiI1IiwiZmlnLXdpZHRoIjoiMTEifSwiY29kZSI6IlxubGlicmFyeShzdXJ2aXZhbClcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdnc3VydmZpdClcblxuc3VydmZpdDIoU3VydihfX19fX18sIF9fX19fXykgfiAxLCBkYXRhID0gZGYpICU+JSBcbiAgZ2dzdXJ2Zml0KCkgK1xuICBsYWJzKFxuICAgIHggPSBcIkRheXNcIixcbiAgICB5ID0gXCJPdmVyYWxsIHN1cnZpdmFsIHByb2JhYmlsaXR5XCJcbiAgKSsgXG4gIGFkZF9jb25maWRlbmNlX2ludGVydmFsKCkgK1xuICBhZGRfcmlza3RhYmxlKCkifQ==
-</script>
-</div>
-</div>
-<div class="webr-ojs-exercise exercise-solution d-none" data-exercise="ex_2">
-<div title="Solution">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Solution</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Lösung:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a><span class="fu">library</span>(survival)</span>
-<span id="cb6-2"><a aria-label="2"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-3"><a aria-label="3"></a><span class="fu">library</span>(ggsurvfit)</span>
-<span id="cb6-4"><a aria-label="4"></a></span>
-<span id="cb6-5"><a aria-label="5"></a><span class="fu">survfit2</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> df) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-6"><a aria-label="6"></a>  <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
-<span id="cb6-7"><a aria-label="7"></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-8"><a aria-label="8"></a>    <span class="at">x =</span> <span class="st">"Days"</span>,</span>
-<span id="cb6-9"><a aria-label="9"></a>    <span class="at">y =</span> <span class="st">"Overall survival probability"</span></span>
-<span id="cb6-10"><a aria-label="10"></a>  )<span class="sc">+</span> </span>
-<span id="cb6-11"><a aria-label="11"></a>  <span class="fu">add_confidence_interval</span>() <span class="sc">+</span></span>
-<span id="cb6-12"><a aria-label="12"></a>  <span class="fu">add_risktable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -682,7 +608,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
+<p><img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -690,22 +616,22 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUs
 </div>
 <div id="tabset-3-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a><span class="fu">survfit2</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
-<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-4"><a aria-label="4"></a>    <span class="at">x =</span> <span class="st">"Tage"</span>,</span>
-<span id="cb7-5"><a aria-label="5"></a>    <span class="at">y =</span> <span class="st">"Überlebenswahrscheinlichkeit"</span>,</span>
-<span id="cb7-6"><a aria-label="6"></a>    <span class="at">color =</span> <span class="st">"Karnofsky-Index"</span></span>
-<span id="cb7-7"><a aria-label="7"></a>  )<span class="sc">+</span> </span>
-<span id="cb7-8"><a aria-label="8"></a>  <span class="fu">add_confidence_interval</span>() <span class="sc">+</span></span>
-<span id="cb7-9"><a aria-label="9"></a>  <span class="fu">add_risktable</span>() <span class="sc">+</span> </span>
-<span id="cb7-10"><a aria-label="10"></a> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'darkblue'</span>, <span class="st">'pink'</span>),  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;=80"</span>, <span class="st">"&gt;80"</span>) ) <span class="sc">+</span></span>
-<span id="cb7-11"><a aria-label="11"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'darkblue'</span>, <span class="st">'pink'</span>),  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;=80"</span>, <span class="st">"&gt;80"</span>) ) <span class="sc">+</span></span>
-<span id="cb7-12"><a aria-label="12"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">survfit2</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">ggsurvfit</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a aria-label="3"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-4"><a aria-label="4"></a>    <span class="at">x =</span> <span class="st">"Tage"</span>,</span>
+<span id="cb11-5"><a aria-label="5"></a>    <span class="at">y =</span> <span class="st">"Überlebenswahrscheinlichkeit"</span>,</span>
+<span id="cb11-6"><a aria-label="6"></a>    <span class="at">color =</span> <span class="st">"Karnofsky-Index"</span></span>
+<span id="cb11-7"><a aria-label="7"></a>  )<span class="sc">+</span> </span>
+<span id="cb11-8"><a aria-label="8"></a>  <span class="fu">add_confidence_interval</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a aria-label="9"></a>  <span class="fu">add_risktable</span>() <span class="sc">+</span> </span>
+<span id="cb11-10"><a aria-label="10"></a> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'darkblue'</span>, <span class="st">'pink'</span>),  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;=80"</span>, <span class="st">"&gt;80"</span>) ) <span class="sc">+</span></span>
+<span id="cb11-11"><a aria-label="11"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">'darkblue'</span>, <span class="st">'pink'</span>),  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;=80"</span>, <span class="st">"&gt;80"</span>) ) <span class="sc">+</span></span>
+<span id="cb11-12"><a aria-label="12"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-14-1.png" width="960"></p>
+<p><img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -794,9 +720,9 @@ Score (logrank) test = 7.85  on 1 df,   p=0.005</code></pre>
 </div>
 <div id="tabset-4-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb9-2"><a aria-label="2"></a>model1 <span class="ot">=</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df)</span>
-<span id="cb9-3"><a aria-label="3"></a><span class="fu">summary</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb13-2"><a aria-label="2"></a>model1 <span class="ot">=</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df)</span>
+<span id="cb13-3"><a aria-label="3"></a><span class="fu">summary</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Call:
 coxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)
@@ -837,12 +763,12 @@ Score (logrank) test = 7.85  on 1 df,   p=0.005</code></pre>
 </div>
 <div id="tabset-5-2">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">library</span>(sjPlot)</span>
-<span id="cb11-2"><a aria-label="2"></a>model1 <span class="ot">=</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df)</span>
-<span id="cb11-3"><a aria-label="3"></a><span class="fu">tab_model</span>(model1,</span>
-<span id="cb11-4"><a aria-label="4"></a>          <span class="at">show.ci =</span> <span class="cn">FALSE</span>, <span class="at">p.style =</span> <span class="st">"stars"</span>,</span>
-<span id="cb11-5"><a aria-label="5"></a>          <span class="at">string.se =</span> <span class="st">"se"</span>, <span class="at">string.est =</span> <span class="st">"HR"</span>,</span>
-<span id="cb11-6"><a aria-label="6"></a>          <span class="at">string.pred =</span> <span class="st">" "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">library</span>(sjPlot)</span>
+<span id="cb15-2"><a aria-label="2"></a>model1 <span class="ot">=</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df)</span>
+<span id="cb15-3"><a aria-label="3"></a><span class="fu">tab_model</span>(model1,</span>
+<span id="cb15-4"><a aria-label="4"></a>          <span class="at">show.ci =</span> <span class="cn">FALSE</span>, <span class="at">p.style =</span> <span class="st">"stars"</span>,</span>
+<span id="cb15-5"><a aria-label="5"></a>          <span class="at">string.se =</span> <span class="st">"se"</span>, <span class="at">string.est =</span> <span class="st">"HR"</span>,</span>
+<span id="cb15-6"><a aria-label="6"></a>          <span class="at">string.pred =</span> <span class="st">" "</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top" style="border-collapse:collapse; border:none;">
 <tbody>
@@ -882,23 +808,23 @@ Score (logrank) test = 7.85  on 1 df,   p=0.005</code></pre>
 <p>Nun testen wir die Proportionalitätsannahme.</p>
 <p>Nullhypothese: Hazard-Raten proportional, also kein Zusammenhang mit der Zeit</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>model1 <span class="ot">=</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df)</span>
-<span id="cb12-2"><a aria-label="2"></a></span>
-<span id="cb12-3"><a aria-label="3"></a><span class="co"># Überprüfung der Proportionalitätsannahme</span></span>
-<span id="cb12-4"><a aria-label="4"></a>test_proportionality <span class="ot">&lt;-</span> <span class="fu">cox.zph</span>(model1)</span>
-<span id="cb12-5"><a aria-label="5"></a></span>
-<span id="cb12-6"><a aria-label="6"></a><span class="co"># Ergebnisse anzeigen</span></span>
-<span id="cb12-7"><a aria-label="7"></a><span class="fu">print</span>(test_proportionality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>model1 <span class="ot">=</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, dead) <span class="sc">~</span> karnofsky_hoch, <span class="at">data =</span> df)</span>
+<span id="cb16-2"><a aria-label="2"></a></span>
+<span id="cb16-3"><a aria-label="3"></a><span class="co"># Überprüfung der Proportionalitätsannahme</span></span>
+<span id="cb16-4"><a aria-label="4"></a>test_proportionality <span class="ot">&lt;-</span> <span class="fu">cox.zph</span>(model1)</span>
+<span id="cb16-5"><a aria-label="5"></a></span>
+<span id="cb16-6"><a aria-label="6"></a><span class="co"># Ergebnisse anzeigen</span></span>
+<span id="cb16-7"><a aria-label="7"></a><span class="fu">print</span>(test_proportionality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>               chisq df    p
 karnofsky_hoch  1.59  1 0.21
 GLOBAL          1.59  1 0.21</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a><span class="co"># Grafische Darstellung</span></span>
-<span id="cb14-2"><a aria-label="2"></a><span class="fu">plot</span>(test_proportionality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a><span class="co"># Grafische Darstellung</span></span>
+<span id="cb18-2"><a aria-label="2"></a><span class="fu">plot</span>(test_proportionality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-18-1.png" width="960" class="r-stretch"></section>
+<img data-src="3_seminar_files/figure-revealjs/unnamed-chunk-16-1.png" width="960" class="r-stretch"></section>
 <section id="ende" class="slide level2 smaller">
 <h2>Ende</h2>
 <ul>
@@ -911,11 +837,8 @@ GLOBAL          1.59  1 0.21</code></pre>
 </ul>
 
 
-<script type="webr-data">
-eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC40LjEvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyJdLCJyZXBvcyI6W119LCJyZW5kZXJfZGYiOiJkZWZhdWx0In0=
-</script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC03IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV83O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzcgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcIndlYnItNy1jb250ZW50c1wiLFxuICAgICAgZW52aXI6IGBleGVyY2lzZS1lbnYtJHtibG9jay5hdHRyLmV4ZXJjaXNlfWAsXG4gICAgICBlcnJvcjogZmFsc2UsXG4gICAgICBjYXB0aW9uOiAnRXhlcmNpc2UnLFxuICAgIH0sXG4gICAgYmxvY2suYXR0clxuICApO1xuXG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxudmlld29mIF93ZWJyX3ZhbHVlXzcgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzcsIHt9KTtcbl93ZWJyX2ZlZWRiYWNrXzcgPSB7XG4gIGNvbnN0IHsgV2ViUkdyYWRlciB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3QgZW1wdHlGZWVkYmFjayA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xuXG4gIGNvbnN0IGdyYWRlciA9IG5ldyBXZWJSR3JhZGVyKF93ZWJyX3ZhbHVlXzcuZXZhbHVhdG9yKTtcbiAgY29uc3QgZmVlZGJhY2sgPSBhd2FpdCBncmFkZXIuZ3JhZGVFeGVyY2lzZSgpO1xuICBpZiAoIWZlZWRiYWNrKSByZXR1cm4gZW1wdHlGZWVkYmFjaztcbiAgcmV0dXJuIGZlZWRiYWNrO1xufVxuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzU7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici01IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfNSA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTUtY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici01LWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzUgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC00IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV80O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzQgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgLy8gRGVmYXVsdCBleGVyY2lzZSBjb25maWd1cmF0aW9uXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKFxuICAgIHtcbiAgICAgIGlkOiBcIndlYnItNC1jb250ZW50c1wiLFxuICAgICAgZW52aXI6IGBleGVyY2lzZS1lbnYtJHtibG9jay5hdHRyLmV4ZXJjaXNlfWAsXG4gICAgICBlcnJvcjogZmFsc2UsXG4gICAgICBjYXB0aW9uOiAnRXhlcmNpc2UnLFxuICAgIH0sXG4gICAgYmxvY2suYXR0clxuICApO1xuXG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxudmlld29mIF93ZWJyX3ZhbHVlXzQgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzQsIHt9KTtcbl93ZWJyX2ZlZWRiYWNrXzQgPSB7XG4gIGNvbnN0IHsgV2ViUkdyYWRlciB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3QgZW1wdHlGZWVkYmFjayA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO1xuXG4gIGNvbnN0IGdyYWRlciA9IG5ldyBXZWJSR3JhZGVyKF93ZWJyX3ZhbHVlXzQuZXZhbHVhdG9yKTtcbiAgY29uc3QgZmVlZGJhY2sgPSBhd2FpdCBncmFkZXIuZ3JhZGVFeGVyY2lzZSgpO1xuICBpZiAoIWZlZWRiYWNrKSByZXR1cm4gZW1wdHlGZWVkYmFjaztcbiAgcmV0dXJuIGZlZWRiYWNrO1xufVxuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzI7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0yIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMiA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTItY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0yLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzIgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ3ZWJST2pzID0ge1xuICBjb25zdCB7IFdlYlIgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWUuV2ViUjtcbiAgY29uc3Qge1xuICAgIFdlYlJFdmFsdWF0b3IsXG4gICAgV2ViUkVudmlyb25tZW50TWFuYWdlcixcbiAgICBzZXR1cFIsXG4gICAgYjY0RGVjb2RlLFxuICAgIGNvbGxhcHNlUGF0aFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gd2ViUiBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICAvLyBJbml0aWFsaXNlIHdlYlIgYW5kIHNldHVwIGZvciBSIGNvZGUgZXZhbHVhdGlvblxuICBsZXQgd2ViUlByb21pc2UgPSAoYXN5bmMgKHdlYlIpID0+IHtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHdlYlJgO1xuICAgIGF3YWl0IHdlYlIuaW5pdCgpO1xuXG4gICAgLy8gSW5zdGFsbCBwcm92aWRlZCBsaXN0IG9mIHBhY2thZ2VzXG4gICAgLy8gRW5zdXJlIHdlYlIgZGVmYXVsdCByZXBvIGlzIGluY2x1ZGVkXG4gICAgZGF0YS5wYWNrYWdlcy5yZXBvcy5wdXNoKFwiaHR0cHM6Ly9yZXBvLnItd2FzbS5vcmdcIilcbiAgICBhd2FpdCBkYXRhLnBhY2thZ2VzLnBrZ3MubWFwKChwa2cpID0+ICgpID0+IHtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcGFja2FnZTogJHtwa2d9YDtcbiAgICAgIHJldHVybiB3ZWJSLmV2YWxSVm9pZChgXG4gICAgICAgIHdlYnI6Omluc3RhbGwocGtnLCByZXBvcyA9IHJlcG9zKVxuICAgICAgICBsaWJyYXJ5KHBrZywgY2hhcmFjdGVyLm9ubHkgPSBUUlVFKVxuICAgICAgYCwgeyBlbnY6IHtcbiAgICAgICAgcGtnOiBwa2csXG4gICAgICAgIHJlcG9zOiBkYXRhLnBhY2thZ2VzLnJlcG9zLFxuICAgICAgfX0pO1xuICAgIH0pLnJlZHVjZSgoY3VyLCBuZXh0KSA9PiBjdXIudGhlbihuZXh0KSwgUHJvbWlzZS5yZXNvbHZlKCkpO1xuXG4gICAgLy8gRG93bmxvYWQgYW5kIGluc3RhbGwgcmVzb3VyY2VzXG4gICAgYXdhaXQgZmlsZXMubWFwKChmaWxlKSA9PiBhc3luYyAoKSA9PiB7XG4gICAgICBjb25zdCBuYW1lID0gZmlsZS5zdWJzdHJpbmcoZmlsZS5sYXN0SW5kZXhPZignLycpICsgMSk7XG4gICAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYERvd25sb2FkaW5nIHJlc291cmNlOiAke25hbWV9YDtcbiAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgZmV0Y2goZmlsZSk7XG4gICAgICBpZiAoIXJlc3BvbnNlLm9rKSB7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgQ2FuJ3QgZG93bmxvYWQgXFxgJHtmaWxlfVxcYC4gRXJyb3IgJHtyZXNwb25zZS5zdGF0dXN9OiBcIiR7cmVzcG9uc2Uuc3RhdHVzVGV4dH1cIi5gKTtcbiAgICAgIH1cbiAgICAgIGNvbnN0IGRhdGEgPSBhd2FpdCByZXNwb25zZS5hcnJheUJ1ZmZlcigpO1xuXG4gICAgICAvLyBTdG9yZSBVUkxzIGluIHRoZSBjd2Qgd2l0aG91dCBhbnkgc3ViZGlyZWN0b3J5IHN0cnVjdHVyZVxuICAgICAgaWYgKGZpbGUuaW5jbHVkZXMoXCI6Ly9cIikpIHtcbiAgICAgICAgZmlsZSA9IG5hbWU7XG4gICAgICB9XG5cbiAgICAgIC8vIENvbGxhcHNlIGhpZ2hlciBkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBmaWxlID0gY29sbGFwc2VQYXRoKGZpbGUpO1xuXG4gICAgICAvLyBDcmVhdGUgZGlyZWN0b3J5IHRyZWUsIGlnbm9yaW5nIFwiZGlyZWN0b3J5IGV4aXN0c1wiIFZGUyBlcnJvcnNcbiAgICAgIGNvbnN0IHBhcnRzID0gZmlsZS5zcGxpdCgnLycpLnNsaWNlKDAsIC0xKTtcbiAgICAgIGxldCBwYXRoID0gJyc7XG4gICAgICB3aGlsZSAocGFydHMubGVuZ3RoID4gMCkge1xuICAgICAgICBwYXRoICs9IHBhcnRzLnNoaWZ0KCkgKyAnLyc7XG4gICAgICAgIHRyeSB7XG4gICAgICAgICAgYXdhaXQgd2ViUi5GUy5ta2RpcihwYXRoKTtcbiAgICAgICAgfSBjYXRjaCAoZSkge1xuICAgICAgICAgIGlmICghZS5tZXNzYWdlLmluY2x1ZGVzKFwiRlMgZXJyb3JcIikpIHtcbiAgICAgICAgICAgIHRocm93IGU7XG4gICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICB9XG5cbiAgICAgIC8vIFdyaXRlIHRoaXMgZmlsZSB0byB0aGUgVkZTXG4gICAgICByZXR1cm4gYXdhaXQgd2ViUi5GUy53cml0ZUZpbGUoZmlsZSwgbmV3IFVpbnQ4QXJyYXkoZGF0YSkpO1xuICAgIH0pLnJlZHVjZSgoY3VyLCBuZXh0KSA9PiBjdXIudGhlbihuZXh0KSwgUHJvbWlzZS5yZXNvbHZlKCkpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBJbnN0YWxsaW5nIHdlYlIgc2hpbXNgO1xuICAgIGF3YWl0IHdlYlIuZXZhbFJWb2lkKGB3ZWJyOjpzaGltX2luc3RhbGwoKWApO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBXZWJSIGVudmlyb25tZW50IHNldHVwYDtcbiAgICBhd2FpdCBzZXR1cFIod2ViUiwgZGF0YSk7XG5cbiAgICBzdGF0dXNUZXh0LnJlbW92ZSgpO1xuICAgIGlmIChzdGF0dXNDb250YWluZXIuY2hpbGRyZW4ubGVuZ3RoID09IDApIHtcbiAgICAgIHN0YXR1c0NvbnRhaW5lci5wYXJlbnROb2RlLnJlbW92ZSgpO1xuICAgIH1cbiAgICByZXR1cm4gd2ViUjtcbiAgfSkobmV3IFdlYlIoZGF0YS5vcHRpb25zKSk7XG5cbiAgLy8gS2VlcCB0cmFjayBvZiBpbml0aWFsIE9KUyBibG9jayByZW5kZXJcbiAgY29uc3QgcmVuZGVyZWRPanMgPSB7fTtcblxuICBjb25zdCBwcm9jZXNzID0gYXN5bmMgKGNvbnRleHQsIGlucHV0cykgPT4ge1xuICAgIGNvbnN0IHdlYlIgPSBhd2FpdCB3ZWJSUHJvbWlzZTtcbiAgICBjb25zdCBldmFsdWF0b3IgPSBuZXcgV2ViUkV2YWx1YXRvcih3ZWJSLCBjb250ZXh0KVxuICAgIGF3YWl0IGV2YWx1YXRvci5wcm9jZXNzKGlucHV0cyk7XG4gICAgcmV0dXJuIGV2YWx1YXRvci5jb250YWluZXI7XG4gIH1cblxuICByZXR1cm4ge1xuICAgIHByb2Nlc3MsXG4gICAgd2ViUlByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gIH07XG59XG4ifV19
+eyJjb250ZW50cyI6W119
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">

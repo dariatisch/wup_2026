@@ -1386,28 +1386,6 @@
     ]
   },
   {
-    "objectID": "slides/1_seminar.html#interaktive-folien",
-    "href": "slides/1_seminar.html#interaktive-folien",
-    "title": "1. Seminar",
-    "section": "Interaktive Folien",
-    "text": "Interaktive Folien",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Seminar"
-    ]
-  },
-  {
-    "objectID": "slides/1_seminar.html#interaktive-übungsaufgaben-mit-lösungen",
-    "href": "slides/1_seminar.html#interaktive-übungsaufgaben-mit-lösungen",
-    "title": "1. Seminar",
-    "section": "Interaktive Übungsaufgaben mit Lösungen",
-    "text": "Interaktive Übungsaufgaben mit Lösungen\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp: Rechne: 10-1-2-3\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Seminar"
-    ]
-  },
-  {
     "objectID": "slides/1_seminar.html#themen-heute",
     "href": "slides/1_seminar.html#themen-heute",
     "title": "1. Seminar",
@@ -1577,7 +1555,7 @@
     "href": "slides/1_seminar.html#computational-setup",
     "title": "1. Seminar",
     "section": "Computational setup",
-    "text": "Computational setup\n\n## Packages\npkgs &lt;- c(\n  \"stevedata\",\n  \"tidyverse\",\n  \"broom.helpers\",\n  \"ggplot2\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\nlist()\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\nWarning: package 'tidyverse' was built under R version 4.2.3\n\n\nWarning: package 'ggplot2' was built under R version 4.2.3\n\n\nWarning: package 'tibble' was built under R version 4.2.3\n\n\nWarning: package 'tidyr' was built under R version 4.2.3\n\n\nWarning: package 'readr' was built under R version 4.2.3\n\n\nWarning: package 'purrr' was built under R version 4.2.3\n\n\nWarning: package 'dplyr' was built under R version 4.2.3\n\n\nWarning: package 'stringr' was built under R version 4.2.3\n\n\nWarning: package 'forcats' was built under R version 4.2.3\n\n\nWarning: package 'lubridate' was built under R version 4.2.3\n\n\n[[1]]\n[1] \"stevedata\" \"stats\"     \"graphics\"  \"grDevices\" \"utils\"     \"datasets\" \n[7] \"methods\"   \"base\"     \n\n[[2]]\n [1] \"lubridate\" \"forcats\"   \"stringr\"   \"dplyr\"     \"purrr\"     \"readr\"    \n [7] \"tidyr\"     \"tibble\"    \"ggplot2\"   \"tidyverse\" \"stevedata\" \"stats\"    \n[13] \"graphics\"  \"grDevices\" \"utils\"     \"datasets\"  \"methods\"   \"base\"     \n\n[[3]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n[[4]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)",
+    "text": "Computational setup\n\n## Packages\npkgs &lt;- c(\n  \"stevedata\",\n  \"tidyverse\",\n  \"broom.helpers\",\n  \"ggplot2\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\nlist()\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n[[1]]\n[1] \"stevedata\" \"stats\"     \"graphics\"  \"grDevices\" \"utils\"     \"datasets\" \n[7] \"methods\"   \"base\"     \n\n[[2]]\n [1] \"lubridate\" \"forcats\"   \"stringr\"   \"dplyr\"     \"purrr\"     \"readr\"    \n [7] \"tidyr\"     \"tibble\"    \"ggplot2\"   \"tidyverse\" \"stevedata\" \"stats\"    \n[13] \"graphics\"  \"grDevices\" \"utils\"     \"datasets\"  \"methods\"   \"base\"     \n\n[[3]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n[[4]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1610,7 +1588,7 @@
     "href": "slides/1_seminar.html#datenvisualisierung",
     "title": "1. Seminar",
     "section": "Datenvisualisierung",
-    "text": "Datenvisualisierung\n\nggplot(df, \n       aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) + \n  labs(\n    x = \"Age\" , \n    y = \"Log(income)\"\n  )",
+    "text": "Datenvisualisierung",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1621,7 +1599,7 @@
     "href": "slides/1_seminar.html#fit-a-line",
     "title": "1. Seminar",
     "section": "Fit a line",
-    "text": "Fit a line\n… um die Beziehung zwischen Alter und Einkommen zu beschreiben\n\np &lt;- ggplot(data = df, \n            mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) + \n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  labs(\n    x = \"Age\" , \n    y = \"Log(income)\"\n  )\n\np\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "text": "Fit a line\n… um die Beziehung zwischen Alter und Einkommen zu beschreiben",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1632,7 +1610,7 @@
     "href": "slides/1_seminar.html#terminologie",
     "title": "1. Seminar",
     "section": "Terminologie",
-    "text": "Terminologie\n\nX → Y\n\n\n\n\nOutcome, Y: Variable, die das Merkmal von Interesse beinhaltet\nPredictor, X: Variable, die uns hilft, die Varianz des Outcomes zu verstehen\n\n\n\np\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "text": "Terminologie\n\nX → Y\n\n\n\n\nOutcome, Y: Variable, die das Merkmal von Interesse beinhaltet\nPredictor, X: Variable, die uns hilft, die Varianz des Outcomes zu verstehen",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1654,7 +1632,7 @@
     "href": "slides/1_seminar.html#regressionsmodel-2",
     "title": "1. Seminar",
     "section": "Regressionsmodel",
-    "text": "Regressionsmodel\n\n\n\\[\n  \\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon\n\\end{aligned}\n\\]\n\n\nm &lt;- lm(log(realrinc) ~ age, data = df)\ndf$predicted &lt;- predict(m)\n\nggplot(data = df, \n       mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) + \n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  labs(x = \"X\", y = \"Y\") +\n  theme_minimal() +\n  theme(\n    axis.text = element_blank(),\n    axis.ticks.x = element_blank(), \n    axis.ticks.y = element_blank()\n  )\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "text": "Regressionsmodel\n\n\n\\[\n  \\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon\n\\end{aligned}\n\\]",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1665,7 +1643,7 @@
     "href": "slides/1_seminar.html#regressionsmodel-residuen",
     "title": "1. Seminar",
     "section": "Regressionsmodel + Residuen",
-    "text": "Regressionsmodel + Residuen\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n\\end{aligned}\\]\n\n\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "text": "Regressionsmodel + Residuen\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n\\end{aligned}\\]",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1698,7 +1676,7 @@
     "href": "slides/1_seminar.html#residuen",
     "title": "1. Seminar",
     "section": "Residuen",
-    "text": "Residuen\n\nPlotCode\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\\text{Residuen} = \\text{Beobachted} - \\text{Vorhergesagt} = y - \\hat{y}\\]\n\nSummer der Residuen = 0",
+    "text": "Residuen\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\\[\\text{Residuen} = \\text{Beobachted} - \\text{Vorhergesagt} = y - \\hat{y}\\]\n\nSummer der Residuen = 0",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1720,7 +1698,7 @@
     "href": "slides/1_seminar.html#interpretation-1",
     "title": "1. Seminar",
     "section": "Interpretation",
-    "text": "Interpretation\n\nOutputCode\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income   \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income  \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\nSlope: Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% (\\((e^{0.01} - 1) \\times 100\\))",
+    "text": "Interpretation\n\nOutputCode\n\n\n\n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income  \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\nSlope: Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% (\\((e^{0.01} - 1) \\times 100\\))",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1731,7 +1709,7 @@
     "href": "slides/1_seminar.html#interpretation-2",
     "title": "1. Seminar",
     "section": "Interpretation",
-    "text": "Interpretation\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income    \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\nIntercept: Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?",
+    "text": "Interpretation\n\n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\nIntercept: Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1765,28 +1743,6 @@
     "title": "1. Seminar",
     "section": "Exkurs: Variablen und Skalenniveaus",
     "text": "Exkurs: Variablen und Skalenniveaus\n\nVerhältnis (Rangordnung, Abstände und Verhältnisse, absoluter Nullpunkt)\n\nEinkommen\nAlter\n\nIntervallskala (Rangordnung und Abstände)\n\nGrad Celsius\nGeburtsjahr\n\nOrdinales Skalenniveau (Rangordnung)\n\nSchulnoten\nZufriedenheit\n\nNominalskala (gleich/ungleich)\n\nBlutgruppe\nFamilienname",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Seminar"
-    ]
-  },
-  {
-    "objectID": "slides/1_seminar.html#regression",
-    "href": "slides/1_seminar.html#regression",
-    "title": "1. Seminar",
-    "section": "Regression",
-    "text": "Regression\nBitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.\n\nÜbungTippLösung\n\n\n\n\n\n\n\n\n\n\n\n\n\nDu brauchst die Variablen Geschlecht und Einkommen. Du findest sie, wenn Du Die alle Variablen anzeigen lässt:\n\nnames(df)\n\n [1] \"year\"       \"realrinc\"   \"age\"        \"occ10\"      \"occrecode\" \n [6] \"prestg10\"   \"childs\"     \"wrkstat\"    \"gender\"     \"educcat\"   \n[11] \"maritalcat\" \"predicted\" \n\n\n\n\n\n\nLösung:z.B.\n\n\nlibrary(\"stevedata\")\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\n\n# Lineare Regression\nmodel &lt;- lm(realrinc ~ gender, data = df)\n\n# Zusammenfassung der Regressionsergebnisse\nsummary(model)\n\n# Ergebnisse übersichtlich darstellen\nbroom::tidy(model)\nlibrary(\"stevedata\")\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\n\n# Lineare Regression\nmodel &lt;- lm(realrinc ~ gender, data = df)\n\n# Zusammenfassung der Regressionsergebnisse\nsummary(model)\n\n# Ergebnisse übersichtlich darstellen\nbroom::tidy(model)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Seminar"
-    ]
-  },
-  {
-    "objectID": "slides/1_seminar.html#geschlechterunterschiede-im-einkommen",
-    "href": "slides/1_seminar.html#geschlechterunterschiede-im-einkommen",
-    "title": "1. Seminar",
-    "section": "Geschlechterunterschiede im Einkommen",
-    "text": "Geschlechterunterschiede im Einkommen\nGraphische Darstellung\nBitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.\n\nÜbungTippLösung\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe gesuchte Variable lautet: gender\n\n\nDas findest Du heraus, indem Du dir die Daten anschaust\n\nnames(df)\n\n [1] \"year\"       \"realrinc\"   \"age\"        \"occ10\"      \"occrecode\" \n [6] \"prestg10\"   \"childs\"     \"wrkstat\"    \"gender\"     \"educcat\"   \n[11] \"maritalcat\" \"predicted\" \n\n\n\n\n\n\nLösung:\nEin Beispiel:\n\n\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\nggplot(df, aes(x = gender, y = realrinc, fill = gender)) +\n  geom_violin(trim = FALSE) +\n  labs(\n    title = \"Geschlechterunterschiede beim Einkommen (2018)\",\n    x = \"Geschlecht\",\n    y = \"Reales Einkommen\",\n    fill = \"Geschlecht\"\n  ) +\n  theme_minimal()\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\nggplot(df, aes(x = gender, y = realrinc, fill = gender)) +\n  geom_violin(trim = FALSE) +\n  labs(\n    title = \"Geschlechterunterschiede beim Einkommen (2018)\",\n    x = \"Geschlecht\",\n    y = \"Reales Einkommen\",\n    fill = \"Geschlecht\"\n  ) +\n  theme_minimal()",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1968,7 +1924,7 @@
     "href": "slides/1_uebung.html#hallo-welt",
     "title": "1. Übung",
     "section": "“Hallo Welt!”",
-    "text": "“Hallo Welt!”",
+    "text": "“Hallo Welt!”\n\nprint(\"Hello World!\")\n\n[1] \"Hello World!\"",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Übung"
@@ -1990,7 +1946,7 @@
     "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
     "title": "1. Übung",
     "section": "Pinguine Datensatz inspizieren",
-    "text": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren\n\nlibrary(palmerpenguins)\nlibrary(dplyr)\ndf = penguins\nhead(df)\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Übung"
@@ -2012,7 +1968,7 @@
     "href": "slides/1_uebung.html#pinguine-übung",
     "title": "1. Übung",
     "section": "Pinguine Übung",
-    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\n\n\n\n\n\n\n\n\nTipp: Suche die Variable, die die Spezie der Pinguine enthält\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n# Anzahl Pinguine im Datensatz\ncount(df)\n\n# Anzahl Pinguine pro Spezie\ndf %&gt;% \n  count(species)",
+    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\ncount(df)\n\n# A tibble: 1 × 1\n      n\n  &lt;int&gt;\n1   344\n\ndf %&gt;% \n  count(species)\n\n# A tibble: 3 × 2\n  species       n\n  &lt;fct&gt;     &lt;int&gt;\n1 Adelie      152\n2 Chinstrap    68\n3 Gentoo      124",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Übung"
@@ -2287,7 +2243,7 @@
     "href": "slides/3_seminar.html#package-survival",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Package “survival”",
-    "text": "Package “survival”\nWir nutzen das R-Paket {survival} für unsere Ereignisdatenanalyse.",
+    "text": "Package “survival”\nWir nutzen das R-Paket {survival} für unsere Ereignisdatenanalyse.\n\nlibrary(survival)\nlibrary(dplyr)\n\n# Datensätze, die im Package survival enthalten sind, anzeigen\ndata(package = \"survival\")\n\n# Lungenkrebsdatensatz als df speichern \ndf = lung",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Seminar  (Ereignisdaten)"
@@ -2309,7 +2265,7 @@
     "href": "slides/3_seminar.html#datenaufbereitung",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Datenaufbereitung",
-    "text": "Datenaufbereitung\nWir brauchen für unsere Analyse 3 Variablen:\n\ndead (0: lebend, 1: tot)\nKarnofsky-Index (0: &lt;=80 [niedrig], 1: &gt;80 [hoch])\ntime (Tage)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\nnames(df)\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )",
+    "text": "Datenaufbereitung\nWir brauchen für unsere Analyse 3 Variablen:\n\ndead (0: lebend, 1: tot)\nKarnofsky-Index (0: &lt;=80 [niedrig], 1: &gt;80 [hoch])\ntime (Tage)\n\n\nlibrary(survival)\nlibrary(dplyr)\ndf = lung\n\n\n# Lungenkrebsdatensatz als df speichern \ndf = lung\nnames(df)\n\n [1] \"inst\"      \"time\"      \"status\"    \"age\"       \"sex\"       \"ph.ecog\"  \n [7] \"ph.karno\"  \"pat.karno\" \"meal.cal\"  \"wt.loss\"  \n\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Seminar  (Ereignisdaten)"
@@ -2331,7 +2287,7 @@
     "href": "slides/3_seminar.html#tage-überlebenswahrscheinlichkeit",
     "title": "3. Seminar: Ereignisdaten",
     "section": "100-Tage Überlebenswahrscheinlichkeit",
-    "text": "100-Tage Überlebenswahrscheinlichkeit\nUntersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:",
+    "text": "100-Tage Überlebenswahrscheinlichkeit\nUntersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:\n\n\nCall: survfit(formula = Surv(time, dead) ~ 1, data = df)\n\n time n.risk n.event survival std.err lower 95% CI upper 95% CI\n  100    196      31    0.864  0.0227        0.821         0.91",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Seminar  (Ereignisdaten)"
@@ -2354,17 +2310,6 @@
     "title": "3. Seminar: Ereignisdaten",
     "section": "Erstellen von Kaplan-Meier Kurven",
     "text": "Erstellen von Kaplan-Meier Kurven\nKaplan-Meier-Methode gängigste Methode zur Visualisierung von Überlebenswahrscheinlichkeiten\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "3 - Seminar  (Ereignisdaten)"
-    ]
-  },
-  {
-    "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-2",
-    "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-2",
-    "title": "3. Seminar: Ereignisdaten",
-    "section": "Erstellen von Kaplan-Meier Kurven",
-    "text": "Erstellen von Kaplan-Meier Kurven\nProbiert selbst:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\nlibrary(survival)\nlibrary(dplyr)\nlibrary(ggsurvfit)\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Seminar  (Ereignisdaten)"
