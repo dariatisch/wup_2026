@@ -8,7 +8,7 @@ format:
       boardmarker-width: 5
       buttons: true
 title: "1. Übung"
-subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2026-2027"
 author: "Daria Tisch"
 webr:
   cell-options:
@@ -117,7 +117,8 @@ Bitte folgende Ordnerstruktur anlegen:
 
 ## "Hallo Welt!"
 
-```{webr}
+```{r}
+#| echo: true
 print("Hello World!")
 ```
 
@@ -127,8 +128,10 @@ print("Hello World!")
 
 ## Pinguine Datensatz inspizieren
 
-```{webr}
+```{r}
+#| echo: true
 library(palmerpenguins)
+library(dplyr)
 df = penguins
 head(df)
 
@@ -143,36 +146,16 @@ head(df)
 -   Wie viele Pinguine sind im Datensatz?
 -   Wie viele Spezien?
 
-```{webr}
-#| exercise: pin1
-#| caption: Pinguine Übung 
-
-# Anzahl Pinguine im Datensatz
+```{r}
+#| echo: true
+#| 
 count(df)
 
-# Anzahl Pinguine pro Spezie
-df %>% 
-  count(______)
-```
-
-::: {.hint exercise="pin1"}
-Tipp: Suche die Variable, die die Spezie der Pinguine enthält
-:::
-
-:::: {.solution exercise="pin1"}
-::: {.callout-tip title="Solution" collapse="true"}
-**Lösung:**
-
-``` r
-# Anzahl Pinguine im Datensatz
-count(df)
-
-# Anzahl Pinguine pro Spezie
 df %>% 
   count(species)
 ```
-:::
-::::
+
+
 
 ## Datenvisualisierung {.smaller}
 

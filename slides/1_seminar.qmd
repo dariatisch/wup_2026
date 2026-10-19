@@ -8,7 +8,7 @@ format:
       boardmarker-width: 5
       buttons: true
 title: "1. Seminar"
-subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2026-2027"
 author: "Daria Tisch"
 webr:
   cell-options:
@@ -36,46 +36,6 @@ editor: visual
     -   Interaktive Präsentationen
     -   Datensätze
 -   Fragen + Anregungen jederzeit erwünscht
-
-## Interaktive Folien
-
-```{webr}
-2+2
-```
-
-## Interaktive Übungsaufgaben mit Lösungen
-
-Bitte vervollständige den Code, sodass die Summe 10 ergibt.
-
-```{webr}
-#| exercise: ex0
-#| caption: Übung
-1 + 2 + 3 + ______
-```
-
-```{webr}
-#| exercise: ex0
-#| check: true
-if (.result == 10) {
-  list(message = "Hervorragend!", correct = TRUE)
-} else {
-  list(message = "Das ist leider falsch", correct = FALSE)
-}
-```
-
-::: {.hint exercise="ex0"}
-Tipp: Rechne: 10-1-2-3
-:::
-
-::: {.solution exercise="ex1"}
-::: {.callout-tip title="Solution" collapse="true"}
-**Lösung:**
-
-``` r
-1 + 2 + 3 + 4
-```
-:::
-:::
 
 ## Themen heute
 
@@ -330,7 +290,7 @@ p
 
 <center>X → Y</center>
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 -   **Outcome, *Y***: Variable, die das Merkmal von Interesse beinhaltet
 -   **Predictor, X**: Variable, die uns hilft, die Varianz des Outcomes zu verstehen
@@ -342,7 +302,7 @@ p
 p
 ```
 :::
-:::
+:::::
 
 ## Regressionsmodel
 
@@ -354,7 +314,7 @@ $$\begin{aligned} Y &= \color{black}{\textbf{Model}} + \text{Error} \\[8pt]
 
 ## Regressionsmodel
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 $$
   \begin{aligned} Y &= \color{purple}{\textbf{Model}} + \text{Error} \\[8pt]
@@ -382,11 +342,11 @@ ggplot(data = df,
   )
 ```
 :::
-:::
+:::::
 
 ## Regressionsmodel + Residuen
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 $$\begin{aligned} Y &= \color{purple}{\textbf{Model}} + \color{blue}{\textbf{Error}} \\[8pt]
 &= \color{purple}{\mathbf{f(X)}} + \color{blue}{\boldsymbol{\epsilon}} \\[8pt]
@@ -412,7 +372,7 @@ ggplot(data = df,
   )
 ```
 :::
-:::
+:::::
 
 # Einfache lineare Regression
 
@@ -456,6 +416,7 @@ ggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +
 
 ```{r}
 #| echo: true
+#| eval: false
 
 ggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +
   geom_point(alpha = 0.5) +
@@ -620,138 +581,6 @@ predicted_real_income # real income
 <!-- lapply(pkgs, library, character.only = TRUE) -->
 
 <!-- ``` -->
-
-# Nun wird es noch praktischer
-
-## Regression {.smaller}
-
-Bitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.
-
-::: panel-tabset
-## Übung
-
-```{webr}
-#| caption: Übung Geschlechterunterschied
-#| exercise: ex1
-#| check: false
-library("stevedata")
-df <- stevedata::gss_wages %>% filter(year==2018) %>%
-  filter(!is.na(age)) %>% filter(!is.na(realrinc))
-
-# Lineare Regression
-model <- lm(______ ~ ______, data = df)
-
-# Zusammenfassung der Regressionsergebnisse
-summary(model)
-
-# Ergebnisse übersichtlich darstellen
-broom::tidy(model)
-
-```
-
-## Tipp
-
-::: {.hint exercise="ex1"}
-Du brauchst die Variablen Geschlecht und Einkommen. Du findest sie, wenn Du Die alle Variablen anzeigen lässt:
-
-```{r}
-#| echo: true 
-names(df)
-```
-:::
-
-## Lösung
-
-::: {.solution exercise="ex1"}
-**Lösung:z.B.**
-
-```{webr}
-#| exercise: ex1
-#| solution: true
-library("stevedata")
-df <- stevedata::gss_wages %>% filter(year==2018) %>%
-  filter(!is.na(age)) %>% filter(!is.na(realrinc))
-
-# Lineare Regression
-model <- lm(realrinc ~ gender, data = df)
-
-# Zusammenfassung der Regressionsergebnisse
-summary(model)
-
-# Ergebnisse übersichtlich darstellen
-broom::tidy(model)
-```
-:::
-:::
-
-## Geschlechterunterschiede im Einkommen {.smaller}
-
-### Graphische Darstellung
-
-Bitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.
-
-::: panel-tabset
-## Übung
-
-```{webr}
-#| exercise: ex2
-#| check: false
-df <- stevedata::gss_wages %>% filter(year==2018) %>%
-  filter(!is.na(age)) %>% filter(!is.na(realrinc))
-
-ggplot(df, aes(x = ______, y = realrinc, fill = ______)) +
-  geom_violin(trim = FALSE) +
-  labs(
-    title = "Geschlechterunterschiede beim Einkommen (2018)",
-    x = "Geschlecht",
-    y = "Reales Einkommen",
-    fill = "Geschlecht"
-  ) +
-  theme_minimal()
-
-```
-
-## Tipp
-
-::: {.hint exercise="ex2"}
-The gesuchte Variable lautet: gender
-:::
-
-::: {.hint exercise="ex2"}
-Das findest Du heraus, indem Du dir die Daten anschaust
-
-```{r}
-#| echo: true 
-names(df)
-```
-:::
-
-## Lösung
-
-::: {.solution exercise="ex2"}
-**Lösung:**
-
-Ein Beispiel:
-
-```{webr}
-#| exercise: ex2
-#| solution: true
-df <- stevedata::gss_wages %>% filter(year==2018) %>%
-  filter(!is.na(age)) %>% filter(!is.na(realrinc))
-ggplot(df, aes(x = gender, y = realrinc, fill = gender)) +
-  geom_violin(trim = FALSE) +
-  labs(
-    title = "Geschlechterunterschiede beim Einkommen (2018)",
-    x = "Geschlecht",
-    y = "Reales Einkommen",
-    fill = "Geschlecht"
-  ) +
-  theme_minimal()
-
-```
-:::
-:::
-
 ## Ende
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von:

@@ -8,17 +8,8 @@ format:
       boardmarker-width: 5
       buttons: true
 title: "3. Seminar: Ereignisdaten"
-subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2026-2027"
 author: "Daria Tisch"
-webr:
-  cell-options:
-    autorun: true
-    fig-width: 11
-    fig-height: 5
-  # webr:
-  # packages:
-  #   - dplyr
-  #   - ggplot2
 editor: visual
 engine: knitr
 ---
@@ -45,7 +36,7 @@ Pflichtlektüre:
 ## Reaktive versus nicht-reaktive Daten {.smaller}
 
 | Reaktive Messung | Nicht-reaktive Messung |
-|--------------------------|---------------------------------------------|
+|---------------------------|---------------------------------------------|
 | Umfragedaten | Amtliche Statistik / Registerdaten |
 | Laborexperimente | Verhaltensspuren / digital trace data: z.B. Social Media, Smartphone, Wearables |
 |  | Journalistische Datensätze: z. B. Reichenlisten, WikiLeaks |
@@ -195,7 +186,7 @@ Analyse erfolgt idR in 2 Schritten:
 
 Wir nutzen das R-Paket {survival} für unsere Ereignisdatenanalyse.
 
-```{webr}
+```{r}
 #| echo: true
 #| setup: true
 #| exercise: ex_1
@@ -213,12 +204,12 @@ df = lung
 
 Wir möchten das Überleben von PatientInnen mit fortgeschrittenem Lungenkrebs aus der "North Central Cancer Treatment Group" untersuchen. Schauen wir uns an, welche Variablen im Datensatz vorhanden sind:
 
-```{webr}
+```{r}
 library(survival)
 ?lung     # Hilfe zu einer Funktion oder einem Objekt 
 ```
 
-## Datenaufbereitung
+## Datenaufbereitung {.smaller .scrollable}
 
 Wir brauchen für unsere Analyse 3 Variablen:
 
@@ -226,43 +217,27 @@ Wir brauchen für unsere Analyse 3 Variablen:
 -   Karnofsky-Index (0: \<=80 \[niedrig\], 1: \>80 \[hoch\])
 -   time (Tage)
 
-```{webr}
+```{r}
 #| setup: true
-#| exercise: ex_1
+#| echo: true
 library(survival)
 library(dplyr)
 df = lung
 ```
 
-```{webr}
+```{r}
 #| echo: true
-#| exercise: ex_1
 # Lungenkrebsdatensatz als df speichern 
 df = lung
-names(df)
-df <- df %>% 
-  mutate(
-    ______ = recode(status, `1` = 0, `2` = 1),
-    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
-  )
-
-
-```
-
-:::: {.solution exercise="ex_1"}
-::: {.callout-tip title="Solution" collapse="true"}
-**Lösung:**
-
-``` r
 names(df)
 df <- df %>% 
   mutate(
     dead = recode(status, `1` = 0, `2` = 1),
     karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
   )
+
+
 ```
-:::
-::::
 
 ## Erstellen von "survival objects"
 
@@ -308,8 +283,7 @@ Surv(df$time, df$dead)[1:10]
 
 Untersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:
 
-
-```{webr}
+```{r}
 library(survival)
 library(tidyverse)
 df = lung
@@ -377,62 +351,6 @@ survfit2(Surv(time, dead) ~ 1, data = df) %>%
 ```
 :::
 
-## Erstellen von Kaplan-Meier Kurven {.smaller .scrollable}
-
-Probiert selbst:
-
-```{webr}
-#| setup: true
-#| exercise: ex_2
-library(survival)
-library(dplyr)
-df = lung
-df <- df %>% 
-  mutate(
-    dead = recode(status, `1` = 0, `2` = 1),
-    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
-  )
-```
-
-```{webr}
-#| echo: true
-#| exercise: ex_2
-
-library(survival)
-library(dplyr)
-library(ggsurvfit)
-
-survfit2(Surv(______, ______) ~ 1, data = df) %>% 
-  ggsurvfit() +
-  labs(
-    x = "Days",
-    y = "Overall survival probability"
-  )+ 
-  add_confidence_interval() +
-  add_risktable()
-
-```
-
-:::: {.solution exercise="ex_2"}
-::: {.callout-tip title="Solution" collapse="true"}
-**Lösung:**
-
-``` r
-library(survival)
-library(dplyr)
-library(ggsurvfit)
-
-survfit2(Surv(time, dead) ~ 1, data = df) %>% 
-  ggsurvfit() +
-  labs(
-    x = "Days",
-    y = "Overall survival probability"
-  )+ 
-  add_confidence_interval() +
-  add_risktable()
-```
-:::
-::::
 
 ## Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index {.smaller .scrollable}
 

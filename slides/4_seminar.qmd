@@ -8,7 +8,7 @@ format:
       boardmarker-width: 5
       buttons: true
 title: "4. Seminar: Faktorielle Umfrageexperimente"
-subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2026-2027"
 author: "Daria Tisch"
 # webr:
 #   cell-options:
@@ -53,9 +53,10 @@ Pflichtlektüre:
 
 -   Randomisierung ➔ Keine unbeobachtete Heterogenität
 
--   Kontrollierte Stimulussetzung 
-    - Zeitliche Abfolge von UV und AV 
-    - Keine Endogenität
+-   Kontrollierte Stimulussetzung
+
+    -   Zeitliche Abfolge von UV und AV
+    -   Keine Endogenität
 
 -   Kausalschluss
 
@@ -136,10 +137,9 @@ Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenscha
 
 Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
 
+## Vertrauen in andere Menschen {.smaller}
 
-## Vertrauen in andere Menschen  {.smaller}
-![](images/dülmer.png)
-Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden, S.865.
+![](images/dülmer.png) Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden, S.865.
 
 ## Faire Aufteilung von Schenkungen
 
@@ -147,9 +147,7 @@ Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Met
 
 Aus: Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.
 
-
-
-## Anwendungsgebiete  {.smaller}
+## Anwendungsgebiete {.smaller}
 
 -   Erforschung soziale Normen/ ethische Prinzipien („Einstellung zu…“)
 
@@ -169,7 +167,7 @@ Aus: Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimenta
 
     -   Steuerreform, Sozialhilfereform, Rentenreform
 
-## Vorteile gegenüber anderen Methoden: klassische Umfragen  {.smaller}
+## Vorteile gegenüber anderen Methoden: klassische Umfragen {.smaller}
 
 -   FS minimiert Interpretationsspielräume, wenn Ausgangssituation präzise formuliert
 

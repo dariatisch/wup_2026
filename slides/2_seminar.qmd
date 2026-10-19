@@ -8,7 +8,7 @@ format:
       boardmarker-width: 5
       buttons: true
 title: "2. Seminar: Paneldaten"
-subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2026-2027"
 author: "Daria Tisch"
 # webr:
 #   cell-options:
@@ -23,6 +23,7 @@ editor: visual
 ---
 
 <!-- {{< include ../_extensions/r-wasm/live/_knitr.qmd >}} -->
+
 # Erhebung und Auswertung von Paneldaten
 
 ## Heutige Sitzung {.smaller}
@@ -272,7 +273,7 @@ work_dir = ifelse(Sys.info()['nodename']=="P2010",
                   ifelse(Sys.info()['nodename']=="P2101",
                          "",
                          ifelse(Sys.info()['nodename']=="DARIASLAPTOP",
-                                "D:/seafile/main/teaching/2024_wuppertal/wup2024/uebungen",
+                                "D:/OneDrive/teaching/2026_wup/wup_2026/uebungen",
                                 "")))
 setwd(work_dir)
 
