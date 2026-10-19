@@ -1,0 +1,827 @@
+---
+format:
+  live-revealjs:
+    theme: default
+    slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
+title: "2. Seminar: Paneldaten"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+# webr:
+#   cell-options:
+#     autorun: true
+#     fig-width: 11
+#     fig-height: 5
+  # webr:
+  # packages:
+  #   - dplyr
+  #   - ggplot2
+editor: visual
+---
+
+<!-- {{< include ../_extensions/r-wasm/live/_knitr.qmd >}} -->
+# Erhebung und Auswertung von Paneldaten
+
+## Heutige Sitzung {.smaller}
+
+1.  Erhebungsdesigns: Querschnitt-, Trend- und **Paneldaten**
+2.  Fehlerquellen: Datenerhebung vs. Datenauswertung
+3.  Kausalanalyse mit Paneldaten
+4.  Regressionsmodelle mit Paneldaten
+
+Pflichtlektüre:
+
+-   Elwert, F. and Winship, C. (2014). ‘Endogenous Selection Bias: The Problem of Conditioning on a Collider Variable’. Annual Review of Sociology 40: 31–53.
+
+-   Brüderl, J. (2010). Kausalanalyse mit Paneldaten. In Handbuch der sozialwissenschaftlichen Datenanalyse (pp. 963-994). VS Verlag für Sozialwissenschaften.
+
+# Erhebungsdesigns
+
+## Erhebungsdesigns vergleichen
+
+-   **Querschnittdesign**: Daten zu einem Zeitpunkt von verschiedenen Personen
+
+-   **Trenddesign**: Daten zu mehreren Zeitpunkten, aber unterschiedliche Personen
+
+-   **Paneldesign**: Daten zu mehreren Zeitpunkten von denselben Personen
+
+## Querschnitt-, Trend- und Paneldaten
+
+Welche Fragestellungen bieten sich bei welchem Studiendesign an?
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# Beispiel-Daten erstellen: Querschnitt
+querschnitt <- data.frame(
+  Jahr = 1985,
+  Person = c("Person 1", "Person 2", "Person 3"),
+  Einkommen = c(3600, 2000, 900),
+  Design = "Querschnitt"
+)
+
+# Panelerhebung erstellen
+panel <- expand.grid(
+  Jahr = 1983:1989,
+  Person = c("Person 1", "Person 2", "Person 3")
+) %>%
+  mutate(
+    Einkommen = case_when(
+      Person == "Person 1" ~ 4000 + (Jahr - 1983) * 100,
+      Person == "Person 2" ~ 3000 + (Jahr - 1983) * 150,
+      Person == "Person 3" ~ 1000 + (Jahr - 1983) * 200
+    ),
+    Design = "Panel"
+  )
+
+# Trenderhebung erstellen
+trend <- expand.grid(
+  Jahr = 1983:1989,
+  Person = c("Stichprobe 1", "Stichprobe 2", "Stichprobe 3")
+) %>%
+  mutate(
+    Einkommen = case_when(
+      Person == "Stichprobe 1" ~ 4000 + rnorm(n(), 0, 300),
+      Person == "Stichprobe 2" ~ 3000 + rnorm(n(), 0, 300),
+      Person == "Stichprobe 3" ~ 1000 + rnorm(n(), 0, 300)
+    ),
+    Design = "Trend"
+  )
+
+# Kombinierte Daten
+combined_data <- bind_rows(querschnitt, panel, trend)
+
+# Alle Designs in einem Plot
+ggplot(combined_data, aes(x = Jahr, y = Einkommen, color = Design, group = interaction(Person, Design))) +
+  # Panel and Trend Designs: Linien
+  geom_line(data = combined_data %>% filter(Design == "Panel"), size = 1) +
+  # Alle Datenpunkte
+  geom_point(size = 3) +
+  # Querschnitt Design: Labels
+  geom_text(data = querschnitt, aes(label = Person), hjust = -0.2, vjust = -0.5, show.legend = FALSE) +
+   geom_text(data = panel%>% filter(Jahr == 1988), aes(label = Person), hjust = +0.4, vjust = -0.7, show.legend = FALSE) +
+  labs(
+    title = "Vergleich der Erhebungsdesigns",
+    x = "Jahr",
+    y = "Variable (z. B. Einkommen)",
+    color = "Design"
+  ) +
+  theme_minimal()
+```
+
+## Paneldaten
+
+-   Paneldaten: wiederholte Messung derselben Variablen an denselben Untersuchungseinheiten (Brüderl 2010)
+-   Wenn N = 1: Zeitreihendaten
+-   Vorteile gegenüber Querschnittsdaten
+    -   intraindividuelle Veränderungen
+    -   zeitliche Abfolge von Veränderungen
+    -   Problem der unbeobachteter Heterogenität abmildern
+
+## Wichtige Panelstudien {.smaller}
+
+-   Panel Study of Income Dynamics (PSID)
+
+-   SOEP
+
+-   Understanding Society (UKHLS)
+
+-   Familienpanel (pairfam)
+
+-   FreDa
+
+-   Nationales Bildungspanel (NEPS)
+
+-   Survey of Health, Ageing and Retirement in Europe (SHARE)
+
+-   Arbeitsmarkt und soziale Sicherung (PASS)
+
+-   TwinLife
+
+-   Children of Immigrants (CILS4EU)
+
+-   GESIS Panel (auch offline)
+
+-   SoSci Panel
+
+-   Übersicht: [Forschungsdaten in Deutschland](https://www.konsortswd.de/angebote/forschende/alle-datenzentren/)
+
+# Fehlerquellen: Datenerhebung &. Datenauswertung
+
+# Fehlerquellen {.smaller}
+
+![](images/clipboard-2497836276.png)
+
+M. Groves, Lars Lyberg, Total Survey Error: Past, Present, and Future, Public Opinion Quarterly, Volume 74, Issue 5, 2010, Pages 849–879, https://doi.org/10.1093/poq/nfq065
+
+## Potentielle Panelprobleme {.smaller}
+
+***Konstanz der Messinstrumente***: Semantische Gehalt von Begriffen kann sich über die Jahre ändern (Frageformulierungen)
+
+***Ausfallrate / Panelmortalität***: Befragte nehmen nicht mehr an der Umfrage teil
+
+-   Ursachen: Fehlende Motivation, Umzug, Tod/Krankheit
+
+-   Problem: systematischer Ausfall
+
+-   Lösungsansatz: Höherer Stichprobenumfang, intensive Panelpflege; Anreize (Incentivierung)
+
+***Paneleffekte (reaktive Messungen)***:
+
+-   Interviewereffekte (Interviewer und Befragte lernen sich über die Wellen kennen)
+-   Verhalten des Interviewers weicht von Erstbefragung ab (kennt den Ablauf)
+-   Belastungs- und Gewöhnungseffekte
+
+## Gütekriterien für Messinstrumente:
+
+-   Validität (Gültigkeit): Messen wir eigentlich das richtige?
+
+-   Reliabilität (Zuverlässigkeit): Wiederholte Messungen müssen zum gleichen Ergebnis führen
+
+    -   Voraussetzung für Validität (aber nicht umgekehrt)
+
+-   Objektivität: Unabhängigkeit der Ergebnisse von der jeweiligen Person, die das Messinstrument anwendet
+
+## Validität
+
+**Externe Validität**
+
+-   Auf Grundgesamtheit übertragbar?
+
+-   Validität des Messinstruments wird vorausgesetzt
+
+**Interne Validität**
+
+-   Eindeutigkeit der Ergebnisinterpretation
+
+-   „Je besser ein Design dazu geeignet ist, die aufgestellten Hypothesen zu prüfen und Alternativerklärungen auszuschließen, umso höher ist die interne Validität“
+
+-   Kausalanalytischer Anspruch von Experimenten (können Störfaktoren eliminieren)
+
+# Kausalanalyse mit Paneldaten
+
+## Kontrafaktischer Kausalitätsbegriff
+
+<center>X ➯ Y</center>
+
+$$
+\Delta_i = Y(X=1, t_0) - Y(X=0, t_0)
+$$ Vergleich eines faktischen und eines kontrafaktischen Outcomes.
+
+## Between-Schätzer
+
+<center>X ➯ Y</center>
+
+Between-Schätzer:
+
+$$
+\Delta_i^B = Y_i(X=1, t_0) - Y_j(X=0, t_0)
+$$
+
+Zentrale Annahme: $Person_i$ und $Person_j$ unterscheiden sich nur in X
+
+⇨ keine unbeobachtete Heterogenität (unbeobachtete personen- oder zeitspezifische Einflussfaktoren)
+
+## Within-Schätzer
+
+<center>X ➯ Y</center>
+
+Within-Schätzer:
+
+$$
+\Delta_i^W = Y_i(X=1, t_1) - Y_i(X=0, t_0)
+$$ Zentrale Annahme: $Person_i$ unterscheidet sich über die Zeit nur in X (keine **zeitveränderliche** unbeobachtete Heterogenität)
+
+# Regressionsmodelle mit Paneldaten
+
+## Regressionsmodelle: POLS
+
+POLS (pooled OLS): Wir behandeln die Daten, als wären es eine Reihe von Querschnittsdaten (Personen- und Zeitdimension wird ignoriert)
+
+Annahme: unabhängige Beobachtungen
+
+$$
+y_{it} = \alpha + \beta_{POLS} x_{it} + \upsilon_{it},
+$$
+
+i: individual
+
+t: time point
+
+## POLS
+
+$$
+y_{it} = \alpha + \beta_{POLS} x_{it} + \upsilon_{it},
+$$
+
+::: panel-tabset
+## Output
+
+```{r}
+#| echo: false
+#| message: false
+#| results: "hide"
+# set working directory
+Sys.info()['nodename']
+work_dir = ifelse(Sys.info()['nodename']=="P2010", 
+                  "C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/wup2024/uebungen",
+                  ifelse(Sys.info()['nodename']=="P2101",
+                         "",
+                         ifelse(Sys.info()['nodename']=="DARIASLAPTOP",
+                                "D:/seafile/main/teaching/2024_wuppertal/wup2024/uebungen",
+                                "")))
+setwd(work_dir)
+
+library(tidyverse)
+library(sjPlot)
+
+
+
+# read data
+df = read.csv("../daten/soep_uebung.csv") %>% filter(!is.na(alter), lebensz_org!="") %>%
+  mutate(lz =  as.numeric(sub("\\[([0-9]+)\\].*", "\\1", lebensz_org)),
+         id_name = as.character(id)) %>%
+  filter(id<50)
+
+df <- df %>%
+  group_by(id) %>%
+  mutate(count_within_group = row_number())
+
+df_labels = read.csv("../daten/soep_labels.csv")
+```
+
+```{r}
+#| warning: false
+#| message: false
+
+m_pols <- lm(lz ~ alter, data = df)
+tab_model(m_pols)
+```
+
+## Code
+
+```{r}
+#| echo: true
+
+m_pols <- lm(lz ~ alter, data = df)
+tab_model(m_pols)
+```
+:::
+
+## POLS, graphisch
+
+::: panel-tabset
+## Output
+
+```{r}
+
+# The palette with black:
+cbp2 <- c("#000000", 
+          "#E69F00", 
+          "#56B4E9", 
+          "#009E73",
+          "#F0E442", 
+          "#0072B2", 
+          "#D55E00", 
+          "#CC79A7")
+
+# Save the residual values
+df$predicted <- predict(m_pols)
+df$residuals <- residuals(m_pols)
+
+p_pols <- ggplot(df, aes(alter, lz)) +
+  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill = id_name), 
+              size = 2, stroke = 1) +
+  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE,
+              color  = "cyan") +
+  geom_segment(aes(xend = alter, yend = predicted), 
+               alpha = .3, color = "deeppink") +
+  annotate("text", x = 30, y = 9.9, 
+           label = paste0("beta[POLS] ==", round(m_pols$coefficients[2], 3)), 
+           parse = TRUE) +
+  scale_colour_manual(values = cbp2[-c(1)]) +
+  scale_fill_manual(values = cbp2[-c(1)]) +
+  scale_shape_manual(values = c(15:18, 25, 20, 21)) +
+  ggtitle("POLS") +
+  theme_classic() +
+  theme(legend.key = element_blank(), 
+        legend.title = element_blank(),
+        text = element_text(size = 10),
+        legend.position = c(1,0), 
+        legend.justification = c("right", "bottom"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) 
+p_pols
+```
+
+## Code
+
+```{r}
+#| echo: true
+# The palette with black:
+cbp2 <- c("#000000", 
+          "#E69F00", 
+          "#56B4E9", 
+          "#009E73",
+          "#F0E442", 
+          "#0072B2", 
+          "#D55E00", 
+          "#CC79A7")
+
+# Save the residual values
+df$predicted <- predict(m_pols)
+df$residuals <- residuals(m_pols)
+
+p_pols <- ggplot(df, aes(alter, lz)) +
+  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill = id_name), 
+              size = 2, stroke = 1) +
+  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE,
+              color  = "cyan") +
+  geom_segment(aes(xend = alter, yend = predicted), 
+               alpha = .3, color = "deeppink") +
+  annotate("text", x = 30, y = 9.9, 
+           label = paste0("beta[POLS] ==", round(m_pols$coefficients[2], 3)), 
+           parse = TRUE) +
+  scale_colour_manual(values = cbp2[-c(1)]) +
+  scale_fill_manual(values = cbp2[-c(1)]) +
+  scale_shape_manual(values = c(15:18, 25, 20, 21)) +
+  ggtitle("POLS") +
+  theme_classic() +
+  theme(legend.key = element_blank(), 
+        legend.title = element_blank(),
+        text = element_text(size = 10),
+        legend.position = c(1,0), 
+        legend.justification = c("right", "bottom"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) 
+p_pols
+```
+:::
+
+Interpretation: Je höher das Alter einer Person, desto höher ihre Lebenszufriedenheit.
+
+## Regressionsmodelle: BE
+
+BE (Between Estimator): vergleicht verschiedene Personen und ignoriert die innerpersonelle Varianz. Modell verwendet nur die personenspezifischen Mittelwerte.
+
+$$
+\bar{y_{i}} = \alpha + \beta_{BE} \bar{x_{i}} + \bar{\upsilon_{i}},
+$$
+
+::: panel-tabset
+## Output
+
+```{r}
+df$m_lz <- ave(df$lz, df$id, FUN = mean)
+df$m_alter <- ave(df$alter, df$id, FUN = mean)
+
+m_be <- lm(m_lz ~ m_alter, data = df %>% filter(count_within_group ==1))
+tab_model(m_be)
+```
+
+## Code (by hand)
+
+```{r}
+#| echo: true
+df$m_lz <- ave(df$lz, df$id, FUN = mean)
+df$m_alter <- ave(df$alter, df$id, FUN = mean)
+
+m_be <- lm(m_lz ~ m_alter, data = df %>% filter(count_within_group ==1))
+tab_model(m_be)
+```
+
+## Code with package plm
+
+```{r}
+#| echo: true
+library(plm)
+m_be2 <- plm(lz ~ alter, data = df,
+           index = c("id", "syear"),
+           effect = "individual", model = "between")
+tab_model(m_be2)
+```
+:::
+
+## BE, graphisch
+
+::: panel-tabset
+## Output
+
+```{r}
+df2 <- df
+df2$lz <- df2$m_lz
+df2$alter <- df2$m_alter
+df2 <- df2[which(df2$syear == 2019), ]
+
+# Save the residual values
+m_be <- lm(m_lz ~ m_alter, data = df2)
+df2$predicted <- predict(m_be)
+df2$residuals <- residuals(m_be)
+
+p_be <- ggplot(df, aes(alter, lz)) +
+  geom_point(aes(x = alter, y = lz, shape = id_name), 
+              size = 2, stroke = 1, colour = alpha("black", .3), fill = alpha("black", .3)) +
+  geom_point(aes(x = m_alter, y = m_lz, shape = id_name, colour = id_name,
+                 fill = id_name), 
+             size = 2, stroke = 1) +
+  geom_smooth(data = df2, 
+              method = 'lm', formula = y ~ x, se = FALSE,
+              color  = "cyan") +
+  geom_segment(data = df2, aes(xend = alter, yend = predicted), 
+               alpha = .3, color = "deeppink") +
+  annotate("text", x = 30, y = 9.9,
+           label = paste0("beta[Between] ==", round(m_be$coefficients[2], 3)), 
+           parse = TRUE) +
+  scale_colour_manual(values = cbp2[-c(1)]) + 
+  scale_fill_manual(values = cbp2[-c(1)]) + 
+  scale_shape_manual(values = c(15:18, 25, 20, 21)) +
+  ggtitle("BE") +
+  theme_classic() +
+  theme(legend.key = element_blank(), 
+        legend.title = element_blank(),
+        text = element_text(size = 14),
+        legend.position = c(1,0), 
+        legend.justification = c("right", "bottom"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"))
+
+p_be  
+```
+
+## Code
+
+```{r}
+#| echo: true
+df2 <- df
+df2$lz <- df2$m_lz
+df2$alter <- df2$m_alter
+df2 <- df2[which(df2$syear == 2019), ]
+
+# Save the residual values
+m_be <- lm(m_lz ~ m_alter, data = df2)
+df2$predicted <- predict(m_be)
+df2$residuals <- residuals(m_be)
+
+p_be <- ggplot(df, aes(alter, lz)) +
+  geom_point(aes(x = alter, y = lz, shape = id_name), 
+              size = 2, stroke = 1, colour = alpha("black", .3), fill = alpha("black", .3)) +
+  geom_point(aes(x = m_alter, y = m_lz, shape = id_name, colour = id_name,
+                 fill = id_name), 
+             size = 2, stroke = 1) +
+  geom_smooth(data = df2, 
+              method = 'lm', formula = y ~ x, se = FALSE,
+              color  = "cyan") +
+  geom_segment(data = df2, aes(xend = alter, yend = predicted), 
+               alpha = .3, color = "deeppink") +
+  annotate("text", x = 30, y = 9.9,
+           label = paste0("beta[Between] ==", round(m_be$coefficients[2], 3)), 
+           parse = TRUE) +
+  scale_colour_manual(values = cbp2[-c(1)]) + 
+  scale_fill_manual(values = cbp2[-c(1)]) + 
+  scale_shape_manual(values = c(15:18, 25, 20, 21)) +
+  ggtitle("BE") +
+  theme_classic() +
+  theme(legend.key = element_blank(), 
+        legend.title = element_blank(),
+        text = element_text(size = 14),
+        legend.position = c(1,0), 
+        legend.justification = c("right", "bottom"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"))
+
+p_be  
+```
+:::
+
+## Regressionsmodelle: Within Schätzer {.smaller}
+
+$$
+y_{it} - \bar{y}_{i}= \alpha_i-\alpha_i + \beta_1(x_{it}- \bar{x}_i) +  \beta_2(z_{i}- \bar{z}_i) + \epsilon_{it}-\bar{\epsilon}_{i} + u_{i}-\bar{u}_{i},
+$$
+
+$$
+y_{it} - \bar{y}_{i}=  \beta_1(x_{it}- \bar{x}_i) +   \epsilon_{it}-\bar{\epsilon}_{i},
+$$
+
+![](images/clipboard-4222393806.png)
+
+## Regressionsmodelle: Within Schätzer {.scrollable}
+
+$$
+y_{it} - \bar{y}_{i}= \alpha_i-\alpha_i + \beta_1(x_{it}- \bar{x}_i) +  \beta_2(z_{i}- \bar{z}_i) + \epsilon_{it}-\bar{\epsilon}_{i} + u_{i}-\bar{u}_{i},
+$$
+
+$$
+y_{it} - \bar{y}_{i}=  \beta_1(x_{it}- \bar{x}_i) +   \epsilon_{it}-\bar{\epsilon}_{i},
+$$
+
+$$
+y_{it} = \alpha_i + \beta_{WI} x_{it} + \epsilon_{it},
+$$
+
+Within-Schätzer: vergleicht **nur** verschiedene Zeitpunkte innerhalb derselben Person
+
+Vorgehen: Für jede Person wird ein Dummy hinzugefügt
+
+→ Kontrolle auf zeitkonstante unbeobachtete Heterogenität
+
+## Within Schätzer, Anwendung {.scrollable}
+
+::: panel-tabset
+## Output
+
+```{r}
+m_fe <- lm(lz ~ alter + id_name, data = df)
+tab_model(m_fe)
+```
+
+Interpretation: Zunehmendes Alter einer Person geht mit einer zunehmenden Zufriedenheit derselben Person einher. \## Code (by hand)
+
+```{r}
+#| echo: true
+m_fe <- lm(lz ~ alter + id_name, data = df)
+tab_model(m_fe)
+```
+
+## Code with package plm
+
+```{r}
+#| echo: true
+m_fe2 <- plm(lz ~ alter, data = df,
+           index = c("id", "syear"),
+           effect = "individual", model = "within")
+tab_model(m_fe2)
+```
+:::
+
+## Within, graphisch
+
+::: panel-tabset
+## Output
+
+```{r}
+
+# Lineares regressionsmodell für jede Person i
+# und Residuen speichern
+for(i in unique(df$id)){
+  oo <- which(df$id == i)
+  lmt <- lm(lz ~ alter, data = df[oo, ])
+  df$predicted[oo] <- predict(lmt)
+  df$residuals[oo] <- residuals(lmt)
+}
+
+
+g_wi <- ggplot(df, aes(alter, lz)) +
+  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill  = id_name), 
+              size = 2, stroke = 1) +
+  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE, show.legend = FALSE,
+              mapping = aes(group = id_name),
+              color  = "blue", linetype = "dotted") +
+  geom_segment(data = df, aes(xend = alter, yend = predicted), 
+               alpha = .3, color = "deeppink") +
+  annotate("text", x = 30, y = 9.9, 
+           label = paste0("beta[Within] ==", round(m_fe$coefficients[2], 3)), 
+           parse = TRUE) +
+  scale_fill_manual(values = cbp2[-c(1)]) +
+  scale_colour_manual(values = cbp2[-c(1)]) + 
+  scale_shape_manual(values = c(15:18, 25, 20, 21)) +
+  ggtitle("WI (Fixed Effects)") +
+  theme_classic() +
+  theme(legend.key = element_blank(), 
+        legend.title = element_blank(),
+        text = element_text(size = 14),
+        legend.position = c(1,0), 
+        legend.justification = c("right", "bottom"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"))
+
+g_wi
+
+```
+
+## Code
+
+```{r}
+#| echo: true
+
+# Lineares regressionsmodell für jede Person i
+# und Residuen speichern
+for(i in unique(df$id)){
+  oo <- which(df$id == i)
+  lmt <- lm(lz ~ alter, data = df[oo, ])
+  df$predicted[oo] <- predict(lmt)
+  df$residuals[oo] <- residuals(lmt)
+}
+
+
+g_wi <- ggplot(df, aes(alter, lz)) +
+  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill  = id_name), 
+              size = 2, stroke = 1) +
+  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE, show.legend = FALSE,
+              mapping = aes(group = id_name),
+              color  = "blue", linetype = "dotted") +
+  geom_segment(data = df, aes(xend = alter, yend = predicted), 
+               alpha = .3, color = "deeppink") +
+  annotate("text", x = 30, y = 9.9, 
+           label = paste0("beta[Within] ==", round(m_fe$coefficients[2], 3)), 
+           parse = TRUE) +
+  scale_fill_manual(values = cbp2[-c(1)]) +
+  scale_colour_manual(values = cbp2[-c(1)]) + 
+  scale_shape_manual(values = c(15:18, 25, 20, 21)) +
+  ggtitle("WI (Fixed Effects)") +
+  theme_classic() +
+  theme(legend.key = element_blank(), 
+        legend.title = element_blank(),
+        text = element_text(size = 14),
+        legend.position = c(1,0), 
+        legend.justification = c("right", "bottom"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"))
+
+g_wi
+```
+:::
+
+## Regressionsmodelle: RE
+
+**Random effects** Schätzer:
+
+-   wird häugig in Mehrebenenanalysen genutzt
+-   Vorteile gegenüber FE:
+    -   effizienter (kleinere Standardfehler)
+    -   Effekte von zeitkonstanten Variablen können geschätzt werden
+-   Aber: Annahme, dass es keine (zeitkonstante und zeitveränderliche) unbeobachtete Heterogenität gibt
+
+## Regressionsmodelle: RE
+
+RE als quasi-demeaned Schätzer (gewichteter Durchschnitt des Between- und Within-Schätzers) $$
+y_{it} - \lambda\bar{y}_{i}=  (1-\lambda)\alpha_i+\beta_1(x_{it}- \lambda\bar{x}_i) +   \epsilon_{it}-\lambda\bar{\epsilon}_{i},
+$$ mit $$
+\hat{\lambda} = 1 - \sqrt{\frac{\sigma^2_\epsilon}{\sigma^2_\epsilon + T\sigma^2_\alpha}}
+$$\
+$\lambda = 0$: POLS
+
+$\lambda = 1$: FE
+
+$\sigma^2$ = Varianz
+
+$T$ = Anzahl an Zeitpunkten
+
+## RE Schätzer, Anwendung {.scrollable}
+
+::: panel-tabset
+## Output
+
+```{r}
+m_re <- plm(lz ~ alter, data = df,
+           index = c("id", "syear"),
+           effect = "individual", model = "random")
+tab_model(m_re)
+```
+
+## Code
+
+```{r}
+#| echo: true
+m_re <- plm(lz ~ alter, data = df,
+           index = c("id", "syear"),
+           effect = "individual", model = "random")
+tab_model(m_re)
+```
+:::
+
+## Hausman Test
+
+Testet ein „immer“ konsistentes Modell (FE-Modell) gegen ein „manchmal“ konsistentes aber dann effizientes Modell (RE-Modell) (Brüderl, S. 976)
+
+Idee: Man berechnet die standardisierte Differenz der Parameterschätzer. Ist die groß, so weicht das RE-Modell stark vom FE-Modell ab und es sollte das FE-Modell verwendet werden.
+
+$$
+H = (\hat{\beta}_{RE} -\hat{\beta}_{FE})'[\hat{V}(\hat{\beta}_{RE}) -\hat{V}(\hat{\beta}_{FE})]^{-1}\hat{\beta}_{RE} -\hat{\beta}_{FE}),
+$$ $\hat{V}(.)$: geschätzte Varianz-Kovarianzmatrix der Schätzer
+
+## Hausman Test, Anwendung
+
+```{r}
+#| echo: true
+phtest(m_fe2, m_re)
+```
+
+::: notes
+Hausmantest = nicht signifikant Nullhypothese wird nicht abgelehnt RE Schätzer ist nicht verzerrt durch unbeobachtete Heterogenität
+:::
+
+## Vergleich RE versus FE {.smaller}
+
+|   | RE Modell | FE Modell |
+|------------------|---------------------------|---------------------------|
+| Unbeobachtete Heterogenität | Verzerrt, wenn personenspezifische unbeobachtete Heterogenität vorliegt (Selbstselektion) | Nicht verzerrt durch personenspezifische unbeobachteter Heterogenität (within-Vergleich) |
+| Zeitkonstante Variablen | Können mitgeschätzt werden (sind aber verzerrt, wenn unbeobachtete Heterogenität vorliegt) | Können nicht mitgeschätzt werden, werden aber implizit mitkontrolliert = konsistent |
+| Standardfehler | Tendenziell kleiner (da mehr Variation in den Daten genutzt wird) | Tendenziell größer (da nur within-Varianz genutzt wird) |
+| Zeitveränderliche Variablen |  | Ohne Veränderung (before-after comparison) kann keine within-Varianz geschätzt werden |
+
+## Vergleich {.smaller}
+
+```{r}
+library(sjPlot)
+tab_model(list(m_pols, m_be2, m_fe2, m_re), digits = 3, show.ci = FALSE,
+          dv.labels = c("POLS", "BE", "FE", "RE"))
+```
+
+# Zurück zur Kausalanalyse
+
+## Drittvariablenkontrolle
+
+Idee von Regressionsverfahren: Kontrolle von Drittvariablenkontrolle, um unbeobachtete Heterogenität zu verringern.
+
+Aber: gezielte Auswahl von Variablen notwendig!
+
+## DAGs
+
+Direct acyclic graph (DAG): eine grafische Darstellung der kausalen Annahmen in dem Datengenerierungsprozess
+
+![Elwert & Winship (2014)](images/clipboard-198247011.png)
+
+## 3 Probleme bei der Drittvariablenkontrolle
+
+-   Overcontrol bias
+
+-   Confounding bias
+
+-   Endogenous selection bias
+
+## Overcontrol bias
+
+![Elwert & Winship (2014)](images/clipboard-4178067939.png)
+
+## Confounding
+
+![Elwert & Winship (2014)](images/clipboard-822005744.png)
+
+## Endogenous selection bias
+
+![Elwert & Winship (2014)](images/clipboard-2354627611.png)
+
+::: notes
+Frage: Führt Talent zu hübschen Aussehen? (Kausal: nein!) A: Talent B: Beauty C: Hollywood success
+
+-   beauty and talent are unassociated
+-   beauty führt zu Erfolg
+-   talent führt zu Erfolg
+
+Kontrolle auf Erfolg (zb looking at the relationship between beauty and talent only among successful Hollywood actors): conditioning on the collider (Erfolg) has created a spurious association between beauty and talent among the successful. This spurious association is endogenous selection bias.
+:::
+
+## Ende
+
+-   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von
+
+-   https://ruettenauer.github.io/Panel-Data-Analysis/
+
+-   Weitere Literatur:
+
+    -   Josef Brüderl and Volker Ludwig: [Folien](https://www.ls3.soziologie.uni-muenchen.de/studium-lehre/archiv/teaching-marterials/panel-analysis_april-2019.pdf)

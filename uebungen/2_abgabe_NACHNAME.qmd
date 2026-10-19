@@ -1,0 +1,165 @@
+---
+title: "2. Abgabe (Ereignisdatenanalyse)"
+author: "Bitte Namen eintragen"
+format: 
+  html:
+    toc: true 
+    code-fold: true
+    code-tools: true
+    df-print: paged
+    code-line-numbers: true
+  pdf: default
+editor: visual
+number-sections: true
+---
+
+# Organisation
+
+## Arbeitsverzeichnis festsetzen
+
+```{r}
+# set working directory
+setwd("D:/Seafile/main/teaching/2024_wuppertal/studis/abgaben")
+
+```
+
+## Packages installieren und laden
+
+```{r}
+#| echo: true
+#| results: "hide"
+#| warning: false
+# Packages
+pkgs <- c(
+  "tidyverse",
+  "survminer", 
+  "ggsurvfit", 
+  "survival",
+  "grid",
+  "gridExtra",
+  "sjPlot",
+  "broom",
+  "dotwhisker"
+) 
+
+## Install uninstalled packages
+lapply(pkgs[!(pkgs %in% installed.packages())], install.packages)
+
+## Load all packages to library
+lapply(pkgs, library, character.only = TRUE)
+
+```
+
+## Daten einlesen \[1 Punkt\]
+
+In dieser Abgabe replizieren Sie Ergebnisse der Ereignisdatenanalyse in einem veröffentlichten Artikel:
+
+Ischinsky, E., & Tisch, D. (2022). Women in the Global Super Rich. An Analysis of the Forbes World’s Billionaires List, 2010–2023. Australian Feminist Studies, 37(114), 458–474. https://doi.org/10.1080/08164649.2023.2243649
+
+Den Datensatz können sie hier herunterladen: https://osf.io/yekqx/ oder auch auf der [Kurswebsite](https://dariatisch.github.io/wup2024/downloads/soep_labels.csv).
+
+Lesen Sie den Datensatz ein und speichern Sie ihn als *df*.
+
+```{r}
+
+```
+
+# Datenexploration
+
+## Wieviele Beobachtungen enthält der Datensatz? \[1 Punkt\]
+
+```{r}
+
+```
+
+## Wieviele Personen enthält der Datensatz? \[1 Punkt\]
+
+```{r}
+
+```
+
+## Wieso unterscheidet sich die Anzahl an Personen von der Anzahl an Beobachtungen? \[2 Punkte\]
+
+## Anzahl weiblicher und männlicher Analyseeinheiten \[2 Punkte\]
+
+Wie viele weibliche Beobachtungen (= Zeilen bzw. Analyseeinheiten) und wie viele männliche Beobachtungen gibt es im Datensatz?
+
+```{r}
+
+```
+
+# Ereignisdatenanalyse
+
+## Was ist das Ziel einer Ereignisdatenanalyse? \[2 Punkte\]
+
+## Wahrscheinlichkeit, 5 Jahre auf der Forbes Liste zu stehen \[5 Punkte\]
+
+Wie hoch ist die 5-Jahres-Überlebensrate (5 Jahre in Folge auf der Forbes Liste zu stehen)?
+
+```{r}
+
+```
+
+Wie hoch ist die 5-Jahres-Überlebensrate für Frauen? Und für Männer?
+
+```{r}
+
+```
+
+# Replikation von Figure 2 \[12 Punkte\]
+
+Replizieren Sie Figure 2 (Seite 10).
+
+```{r}
+
+
+
+
+```
+
+```{r}
+
+```
+
+# Replikation von Figure 3, Panel A \[15 Punkte\]
+
+Replizieren Sie nun Figure 3, Panel A (Seite 11).
+
+```{r}
+
+```
+
+```{r}
+
+
+```
+
+## Interpretation \[2 Punkte\]
+
+Interpretieren Sie den Koeffizienten zugehörig zur Variable *female* im ersten Modell (Modell beinhaltet nur die unabhänigen Variablen *female* und *selfmade*).
+
+# Render \[7 Punkte\]
+
+Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 30.1.2025 zwei Dokumente hoch:
+
+-   das Quarto-File (1_abgabe_Nachname.qmd)
+-   entweder ein HTML ODER ein PDF (1_abgabe_Nachname.pdf oder 1_abgabe_Nachname.html)
+
+Sie erhalten 7 Punkte, wenn die Prüferin lediglich das Arbeitsverzeichnis ändern muss und sonst das Quarto Dokument durchläuft.
+
+# Bewertung
+
+Es gibt insgesamt 50 Punkte.
+
+| Punktebereich | Note |
+|---------------|------|
+| 49 - 50       | 1,0  |
+| 46 - 48       | 1,3  |
+| 43 - 45       | 1,7  |
+| 40 - 42       | 2,0  |
+| 37 - 39       | 2,3  |
+| 34 - 36       | 2,7  |
+| 31 - 33       | 3,0  |
+| 28 - 30       | 3,3  |
+| 25 - 27       | 3,7  |
+| 22 - 24       | 4,0  |

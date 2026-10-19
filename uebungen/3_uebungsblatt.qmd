@@ -1,0 +1,273 @@
+---
+title: "3. Übungsblatt (Ereignisdatenanalyse)"
+author: "Daria Tisch"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+    code-link: true
+    df-print: paged
+    code-line-numbers: true
+  pdf: default
+editor: visual
+number-sections: true
+---
+
+# Organisation
+
+## Arbeitsverzeichnis festsetzen
+
+```{r}
+# set working directory
+setwd("C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/studis/uebungen")
+```
+
+## Packages installieren und laden
+
+```{r}
+#| echo: true
+#| results: "hide"
+#| warning: false
+# Packages
+pkgs <- c(
+  "tidyverse",
+  "sjPlot", # nice html tables
+  "survival", # survival analysis
+  "ggsurvfit" # flexible time-to-event figures
+) 
+
+## Install uninstalled packages
+lapply(pkgs[!(pkgs %in% installed.packages())], install.packages)
+
+## Load all packages to library
+lapply(pkgs, library, character.only = TRUE)
+
+```
+
+## Daten einlesen
+
+Wir arbeiten mit einem Datensatz, der Teil des R-Pakets {survival} ist. Bitte lasse Dir alle Datensätze des Pakets anzeigen und speichere den Datensatz lung als *df*.
+
+Datensätze, die im Package survival enthalten sind, anzeigen:
+
+```{r}
+data(package = "survival")
+```
+
+*lung* Datensatz als *df* speichern:
+
+```{r}
+# Lungenkrebsdatensatz als df speichern 
+df = lung
+```
+
+Schaue Dir nun die Beschreibung des Datensatzes an:
+
+```{r}
+?lung
+```
+
+Der Datensatz enthält also Informationen zu PatientInnen der North Central Cancer Treatment Group.
+
+# Datenaufbereitung
+
+In dieser Übung möchten wir untersuchen, ob es Unterschiede zwischen Männern und Frauen in der Überlebenszeit bei Lungenkrebs gibt.
+
+Wir brauchen für unsere Analyse daher die folgenden 3 Variablen:
+
+-   dead (0: lebend, 1: tot)
+-   female (0: männlich, 1: weiblich)
+-   time (Tage)
+
+Bitte suche diese heraus oder erstelle sie.
+
+```{r}
+df <- df %>% 
+  mutate(
+    dead = recode(status, `1` = 0, `2` = 1),
+    female = recode(sex, `1` = 0, `2` = 1)
+  )
+```
+
+# Datenexploration
+
+## Anzahl Beobachtungen
+
+Wie viele Personen sind in dem Datensatz?
+
+```{r}
+length(df$dead)
+
+nrow(lung)
+```
+
+## Anzahl Frauen und Männer
+
+Wie viele Frauen und Männer sind jewils in dem Datensatz?
+
+```{r}
+table(df$female)
+```
+
+## Anzahl Personden, die im Beobachtungszeitraum gestorben sind
+
+Wie viele Personen sind im Beobachtungszeitraum gestorben?
+
+```{r}
+table(df$dead)
+```
+
+## Kreuztabelle Geschlecht und Überleben
+
+Wie viel Prozent der Frauen und wie viel Prozent der Männer sind im Beobachtungszeitraum gestorben?
+
+```{r}
+df %>%
+  group_by(female) %>%
+  summarise(
+    total = n(),                           # Gesamtanzahl je Geschlecht
+    deaths = sum(dead == 1),             # Anzahl der gestorbenen Personen
+    percent_deaths = (deaths / total) * 100  # Prozentsatz der Gestorbenen
+  ) %>%
+  arrange(female) 
+```
+
+# Ereignisdatenanalyse
+
+## Zensierung
+
+Wie viele rechtszensierte und wie viele linkszentrierte Beobachtungen liegen vor?
+
+```{r}
+table(df$dead)
+```
+
+## Erste 10 Fälle
+
+Schauen wir uns die ersten 10 Fälle des Datensatzes an. Was bedeutet das + hinter einer Zahl?
+
+```{r}
+Surv(df$time, df$dead)[1:10]
+```
+
+Das + bedeutet, dass es sich um rechtszensierte Fälle handelt. Diese Personen leben zum Ende des Beobachtungszeintraums noch.
+
+Was ist wohl der Nullpunkt der Zeitvariable *time*?
+
+## Kaplan-Meier-Kurve
+
+Erstelle eine Kaplan-Meier-Kurve.
+
+```{r}
+survfit2(Surv(time, dead) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Tage",
+    y = "Überlebenswahrscheinlichkeit"
+  )
+```
+
+## Kaplan-Meier-Kurve mit KI
+
+Nun ergänze die Kurve mit einem Konfidenzintervall.
+
+```{r}
+survfit2(Surv(time, dead) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Tage",
+    y = "Überlebenswahrscheinlichkeit"
+  )+ 
+  add_confidence_interval()
+```
+
+## Kaplan-Meier-Kurve mit Ki und Risikotabelle
+
+Und nun füge bitte noch eine Risikotabelle hinzu.
+
+```{r}
+survfit2(Surv(time, dead) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Tage",
+    y = "Überlebenswahrscheinlichkeit"
+  )+ 
+  add_confidence_interval() +
+  add_risktable()
+```
+
+Wie viele Personen leben nach 500 Tagen noch?
+
+## Schätzung der Überlebensrate nach einem Jahr
+
+```{r}
+summary(survfit(Surv(time, dead) ~ 1, data = df), times = 365)
+```
+
+Wir stellen fest, dass die 1-Jahres-Überlebenswahrscheinlichkeit in dieser Studie 41% beträgt.
+
+# Überlebenszeit im Median
+
+Wie viele Tage übleben die PatientInnen im Median?
+
+```{r}
+survfit(Surv(time, dead) ~ 1, data = df)
+```
+
+# Kaplan-Meier-Kurve nach Geschlecht
+
+Nun möchten wir die Geschlechterunterschiede in der Überlebenswahrscheinlichkeit über die Zeit graphisch untersuchen.
+
+```{r}
+survfit2(Surv(time, dead) ~ female, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Tage",
+    y = "Überlebenswahrscheinlichkeit",
+    color = "Geschlecht"
+  )+ 
+  add_confidence_interval() +
+  add_risktable() + 
+ scale_color_manual(values = c('darkblue', 'darkred'),  labels = c("Männer", "Frauen") ) +
+  scale_fill_manual(values = c('darkblue', 'darkred'),  labels = c("Männer", "Frauen") ) +
+  theme_minimal() + guides(fill = "none")
+```
+
+# Cox Proportional Hazards Model
+
+Nun schätzen wir ein Cox Proportional Hazards Model. Gibt es signifikante Geschlechterunterschiede? Ist die Proportionalitätsannahme erfüllt?
+
+```{r}
+model1 = coxph(Surv(time, dead) ~ female, data = df)
+summary(model1)
+cox.zph(model1)
+```
+
+Erstelle eine Tabelle zur besseren Übersicht
+
+```{r}
+tab_model(model1,
+          show.ci = FALSE, p.style = "stars",
+          string.se = "se", string.est = "HR",
+          string.pred = " ")
+```
+
+## Interpretiere den Koeffizienten von *female*:
+
+Bei einem Cox-Regressionsmodell interessieren wir uns meist für die Hazard Ratio (HR). Die HR stellt das Verhältnis der Risiken zwischen zwei Gruppen zu einem bestimmten Zeitpunkt dar. Die HR wird als die momentane Rate des Auftretens des interessierenden Ereignisses bei denjenigen interpretiert, die noch ein Risiko für dieses Ereignis haben. Die HR ist exp(β).
+
+-   HR \< 1: verringertes Sterberisiko
+-   HR \> 1: erhöhtes Sterberisiko
+
+HR = 0,59: Zu einem bestimmten Zeitpunkt sterben 0,59 mal so viele Frauen wie Männer. Frauen haben in dieser Stichprobe ein deutlich geringeres Sterberisiko als Männer.
+
+# Render
+
+Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
+
+# Weiterführende Literatur
+
+-   [R for Data Science](https://r4ds.had.co.nz/)
+-   [https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
+
+

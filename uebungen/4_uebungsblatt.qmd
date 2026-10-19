@@ -1,0 +1,315 @@
+---
+title: "4. Übungsblatt (Faktorielle Umfrageexperimente)"
+author: "Daria Tisch"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+    code-link: true
+    df-print: paged
+    code-line-numbers: true
+  pdf: default
+editor: visual
+number-sections: true
+---
+
+# Organisation
+
+## Arbeitsverzeichnis festsetzen
+
+```{r setup, include=FALSE}
+# set working directory
+knitr::opts_knit$set(root.dir = "D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
+```
+
+## Packages installieren und laden
+
+```{r}
+#| echo: true
+#| results: "hide"
+#| warning: false
+# Packages
+pkgs <- c(
+  "tidyverse",
+  "sjPlot",
+  "haven",
+  "labelled" ,
+  "sandwich",
+  "lmtest",
+  "Hmisc"
+) 
+
+## Install uninstalled packages
+lapply(pkgs[!(pkgs %in% installed.packages())], install.packages)
+
+## Load all packages to library
+lapply(pkgs, library, character.only = TRUE)
+
+```
+
+## Einführung
+
+In dieser Übung replizieren wir die Ergebnisse folgender Studie:
+
+Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.
+
+Der Datensatz kann [hier](https://dariatisch.github.io/wup2024/downloads/just_transfers.csv) heruntergeladen werden.
+
+Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?
+
+## Daten einlesen
+
+```{r}
+# Load the data file
+df <- read.csv("../daten/just_transfers.csv")
+
+```
+
+## Variablenlabels einlesen
+
+```{r}
+# Load the variable labels
+variable_labels <- read.csv("../daten/just_transfers_variable_labels.csv", row.names = 1, stringsAsFactors = FALSE)
+
+# View variable labels
+#print(variable_labels)
+
+
+# Loop through the labels and assign them to variables in the dataset
+for (var in names(variable_labels)) {
+  if (var %in% names(df)) {
+    var_label(df[[var]]) <- variable_labels[[var]]
+  }
+}
+
+```
+
+## Value labels einlesen
+
+```{r}
+# Load the value labels
+value_labels <- read.csv("../daten/value_labels.csv", stringsAsFactors = FALSE)
+
+# View value labels
+head(value_labels)
+```
+
+# Kennenlernen des Datensatzes
+
+## Wie viele Beobachtungen enthält der Datensatz?
+
+```{r}
+nrow(df)
+```
+
+## Wie viele befragte Personen sind im Datensatz enthalten?
+
+```{r}
+length(unique(df$id_resp))
+```
+
+## Wie viele Vignetten hat jede befragte Person bewertet?
+
+```{r}
+length(unique(df$id_within))
+table(df$id_within)
+1428/2
+```
+
+## Wie viele Vignetten gibt es?
+
+```{r}
+table(df$id_vignette)
+length(unique(df$id_vignette))
+```
+
+## Wie viele Decks gibt es?
+
+```{r}
+table(df$deck)
+length(unique(df$deck))
+```
+
+## Dimensionen und Ausprägungen
+
+Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels
+
+```{r}
+head(value_labels, 9)
+```
+
+# Orthogonalität und Balance
+
+## Sind die Dimensionen orthogonal?
+
+```{r}
+# Dummy-Variablen mit dplyr erstellen
+df <- df %>%
+  mutate(
+    # Dummy-Variablen für firstborn
+    firstborn_1 = if_else(firstborn == 1, 1, 0),
+    firstborn_2 = if_else(firstborn == 2, 1, 0),
+    firstborn_3 = if_else(firstborn == 3, 1, 0),
+    
+    # Dummy-Variablen für help
+    help_1 = if_else(help == 1, 1, 0),
+    help_2 = if_else(help == 2, 1, 0),
+    help_3 = if_else(help == 3, 1, 0),
+    
+    # Dummy-Variablen für need
+    need_1 = if_else(need == 1, 1, 0),
+    need_2 = if_else(need == 2, 1, 0),
+    need_3 = if_else(need == 3, 1, 0)
+  )
+
+
+# Select relevant columns
+selected_columns <- df[, c("firstborn_1", 
+                           "firstborn_2",
+                           "firstborn_3",
+                           "need_1",
+                           "need_2",
+                           "need_3",
+                           "help_1",
+                           "help_2", 
+                           "help_3")]
+
+# Compute pairwise correlations with significance
+cor_results <- rcorr(as.matrix(selected_columns))
+
+# Display results
+print(cor_results)
+
+```
+
+## Sind die Dimensionen / Ausprägungen balanced?
+
+```{r}
+# Check balance
+table(df$firstborn)
+table(df$need)
+table(df$help)
+```
+
+# Deskriptive Statistik
+
+## Replikation Tabelle 2
+
+Nun wollen wir Tabelle 2 aus dem Artikel replizieren.
+
+```{r}
+
+# Filter für die Daten anwenden
+filtered_data <- df %>%
+  filter(id_within == 1, daughter == 1)
+
+# Deskriptive Statistiken berechnen
+descriptive_stats <- filtered_data %>%
+  summarise(
+    Female_Mean = mean(female, na.rm = TRUE),
+    Female_SD = sd(female, na.rm = TRUE),
+    Female_Min = min(female, na.rm = TRUE),
+    Female_Max = max(female, na.rm = TRUE),
+    Female_N = sum(!is.na(female)),
+    
+    Age_Mean = mean(age, na.rm = TRUE),
+    Age_SD = sd(age, na.rm = TRUE),
+    Age_Min = min(age, na.rm = TRUE),
+    Age_Max = max(age, na.rm = TRUE),
+    Age_N = sum(!is.na(age)),
+    
+    Child_Mean = mean(child, na.rm = TRUE),
+    Child_SD = sd(child, na.rm = TRUE),
+    Child_Min = min(child, na.rm = TRUE),
+    Child_Max = max(child, na.rm = TRUE),
+    Child_N = sum(!is.na(child)),
+    
+    Mig_Mean = mean(mig, na.rm = TRUE),
+    Mig_SD = sd(mig, na.rm = TRUE),
+    Mig_Min = min(mig, na.rm = TRUE),
+    Mig_Max = max(mig, na.rm = TRUE),
+    Mig_N = sum(!is.na(mig)),
+    
+    Gifted_Mean = mean(gifted, na.rm = TRUE),
+    Gifted_SD = sd(gifted, na.rm = TRUE),
+    Gifted_Min = min(gifted, na.rm = TRUE),
+    Gifted_Max = max(gifted, na.rm = TRUE),
+    Gifted_N = sum(!is.na(gifted)),
+    
+    IV_Received_Mean = mean(iv_received, na.rm = TRUE),
+    IV_Received_SD = sd(iv_received, na.rm = TRUE),
+    IV_Received_Min = min(iv_received, na.rm = TRUE),
+    IV_Received_Max = max(iv_received, na.rm = TRUE),
+    IV_Received_N = sum(!is.na(iv_received)),
+    
+    ABI_Mean = mean(abi, na.rm = TRUE),
+    ABI_SD = sd(abi, na.rm = TRUE),
+    ABI_Min = min(abi, na.rm = TRUE),
+    ABI_Max = max(abi, na.rm = TRUE),
+    ABI_N = sum(!is.na(abi))
+  )
+
+# Umstrukturierung der Tabelle
+descriptive_stats_long <- descriptive_stats %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = c("Variable", ".value"),
+    names_pattern = "(.*)_(.*)"
+  )
+
+# Tabelle mit sjPlot anzeigen
+tab_df(
+  descriptive_stats_long,
+  title = "Descriptive Statistics of Respondent Characteristics",
+  col.header = c("Variable", "Mean", "SD", "Min", "Max", "N")
+)
+
+```
+
+## Replikation Figure 1
+
+```{r}
+# Create the histogram
+ggplot(df, aes(x = child_vig)) +
+  geom_histogram(aes(y = ..count../sum(..count..)*100), binwidth = 250, 
+                 fill = "grey", color = "black", alpha = 0.7) +
+  scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+  labs(title = "Histogram",
+       x = "Child's amount",
+       y = "Percent") +
+  theme_minimal()
+```
+
+# Regression
+
+## Replikation von Tabelle 3
+
+```{r}
+
+# Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.
+df$g_firstborn <- relevel(as.factor(df$g_firstborn), ref = "2")
+df$g_help <- relevel(as.factor(df$g_help), ref = "2")
+df$g_need <- relevel(as.factor(df$g_need), ref = "2")
+
+# Run the regression model
+model <- lm(child_vig ~ daughter * g_firstborn +
+                      g_help * daughter +
+                      g_need * daughter, 
+            data = df)
+
+# Clustered standard errors
+clustered_se <- coeftest(model, vcov = vcovCL, cluster = ~ id_resp)
+
+# Output the results
+summary(model)         # Regression summary
+print(clustered_se)    # Results with clustered SE
+tab_model(model)
+```
+
+# Render
+
+Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
+
+# Weiterführende Literatur
+
+-   [R for Data Science](https://r4ds.had.co.nz/)

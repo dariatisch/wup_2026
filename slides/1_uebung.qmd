@@ -1,0 +1,293 @@
+---
+format:
+  live-revealjs:
+    theme: default
+    slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
+title: "1. Übung"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+webr:
+  cell-options:
+    autorun: true
+    fig-width: 11
+    fig-height: 5
+  packages:
+  - dplyr
+  - palmerpenguins
+  - ggplot2
+  - stevedata
+  - broom.helpers
+editor: visual
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+# Forschungs-datenmanagement {.smaller}
+
+## Was ist Forschungsdatenmanagement? {.smaller}
+
+-   "Gesundheitsvorsorge" für Ihre Daten
+-   Schützt die Daten vor Schaden
+-   Macht Daten funktional, nutzbar und auffindbar
+-   Alle Strategien, Prozesse und Maßnahmen zum Sammeln, Organisieren, Strukturieren, Speichern, Analysieren, Veröffentlichen, Weitergeben und Archivieren von Informationen, die im Rahmen eines Forschungsprojekts verwendet oder erzeugt werden
+-   Behandelt auch rechtliche und ethische Fragen (z. B. Einwilligungserklärungen, Eigentum, Lizenzierung)
+
+## Übersicht: Forschungsdatenmanagement
+
+![](images/rdm.png)
+
+## Warum Forschungsdatenmanagement? {.smaller}
+
+-   Verbessert Arbeitsabläufe
+-   Minimiert das Risiko von Datenverlusten
+-   Erfüllung der Anforderungen von Finanzierungs- und Aufsichtsbehörden
+-   Anerkennung für die Weitergabe eigener Daten
+-   Gute wissenschaftliche Praxis
+-   Erhält Datenqualität
+-   Spart Ressourcen und nutzt die öffentlichen Mittel optimal
+
+::: notes
+Preserves the integrity of research Transparent research Reproducible research
+:::
+
+## Konkrete Anwendung
+
+-   Alle Übungsaufgaben werden mit Skripten gelöst → Reproduzierbarkeit
+-   Gute Praktiken der Dateiverwaltung & -bennenung
+-   Gute Dokumentation des Codes
+
+# Arbeitsabläufe organisieren
+
+## Wie wir arbeiten
+
+-   Interaktive Folien zum gemeinsamen Lernen
+-   Quarto Dokumente als Übungsaufgaben
+-   Quarto Dokumente als Abgaben (**09. Jan** und **30. Jan**!)
+
+## Ordnerstruktur
+
+Bitte folgende Ordnerstruktur anlegen:
+
+![](images/ordnerstruktur.png)
+
+-   Datensätze entweder auf der Website oder in Moodle
+-   Übungsblätter auf der Website
+-   Abgaben auf der Website, aber Einreichen über Moodle
+
+→ Herunterladen und im richtigen Ordner abspeichern
+
+## Abgaben
+
+-   Quarto Dokument sowie PDF oder HTML Dokument
+-   Gut kommentiert
+-   Rechtzeitig über Moodle!
+
+# Quarto und R
+
+## Was ist Quarto?
+
+-   ist ein neues, quelloffenes, wissenschaftliches und technisches Publikationssystem
+
+-   Das Ziel von Quarto ist es, den Prozess der Erstellung und Zusammenarbeit an wissenschaftlichen und technischen Dokumenten deutlich zu verbessern
+
+    ![](images/rstudio-qmd-how-it-works.png)
+
+## Warum Quarto? {.smaller}
+
+::: incremental
+-   Code und Ergbenisdokument in einem Zuge erstellen
+-   Kein lästiges hin und herkopieren
+-   Konsistente Implementierung attraktiver und praktischer Funktionen für alle Ausgaben: Tabsets, Code-Folding, Syntax-Highlighting, etc.
+-   Zugänglichere Standardeinstellungen
+-   Visual editor
+-   Leitplanken, besonders hilfreich für neue Lernende: YAML-Vervollständigung, informative Syntaxfehler, etc.
+:::
+
+## Warum R?
+
+-   mehr statistische Modellierungsmöglichkeiten als Stata
+-   kostenlos und open source
+-   viel Unterstützungsmaterial online
+
+# Fangen wir mit R an
+
+## "Hallo Welt!"
+
+```{webr}
+print("Hello World!")
+```
+
+## Hallo Pinguine!
+
+![Artwork by \@allison_horst](images/penguins.png)
+
+## Pinguine Datensatz inspizieren
+
+```{webr}
+library(palmerpenguins)
+df = penguins
+head(df)
+
+```
+
+## Pinguine Datensatz inspizieren
+
+![Artwork by \@allison_horst](images/culmen_depth.png)
+
+## Pinguine Übung
+
+-   Wie viele Pinguine sind im Datensatz?
+-   Wie viele Spezien?
+
+```{webr}
+#| exercise: pin1
+#| caption: Pinguine Übung 
+
+# Anzahl Pinguine im Datensatz
+count(df)
+
+# Anzahl Pinguine pro Spezie
+df %>% 
+  count(______)
+```
+
+::: {.hint exercise="pin1"}
+Tipp: Suche die Variable, die die Spezie der Pinguine enthält
+:::
+
+:::: {.solution exercise="pin1"}
+::: {.callout-tip title="Solution" collapse="true"}
+**Lösung:**
+
+``` r
+# Anzahl Pinguine im Datensatz
+count(df)
+
+# Anzahl Pinguine pro Spezie
+df %>% 
+  count(species)
+```
+:::
+::::
+
+## Datenvisualisierung {.smaller}
+
+::: panel-tabset
+## Output
+
+```{r}
+#install.packages("palmerpenguins")
+library(palmerpenguins)
+library(ggplot2)
+df = penguins
+# Scatterplot: penguin bill length versus bill depth
+ggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2)  +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+## Code
+
+```{r}
+#| echo: true
+#install.packages("palmerpenguins")
+library(palmerpenguins)
+df = penguins
+# Scatterplot: penguin bill length versus bill depth
+ggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2)  +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+:::
+
+# Und nun Quarto
+
+## YAML {.smaller}
+
+Dokument metadata
+
+::::: columns
+::: {.column width="50%"}
+``` yaml
+title: "Hello, Penguins!"
+format: html
+editor: visual
+```
+:::
+
+::: {.column width="50%"}
+![](images/yaml-less.png){fig-alt="Rendered YAML with title (Hello, Penguins!)."}
+:::
+:::::
+
+## YAML ausführlicher {.smaller}
+
+Dokument metadata
+
+::::: columns
+::: {.column width="50%"}
+``` yaml
+format:
+  live-revealjs:
+    theme: default
+    slideNumber: true
+title: "1. Übung"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+editor: visual
+```
+:::
+
+::: {.column width="50%"}
+![](images/yaml-all.png){fig-alt="Rendered YAML with title (Hello, Penguins!)."}
+:::
+:::::
+
+## Text {.smaller}
+
+Markdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.
+
+::::: columns
+::: {.column width="50%"}
+![](images/source.png)
+:::
+
+::: {.column width="50%"}
+![](images/visual.png)
+:::
+:::::
+
+## Code {.smaller}
+
+Code kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden
+
+::::: columns
+::: {.column width="50%"}
+![](images/code_source.png)
+:::
+
+::: {.column width="50%"}
+![](images/code_visual.png)
+:::
+:::::
+
+## Quarto Output Dokumente
+
+-   Folien / Präsentation (HTML, PDF, PowerPoint)
+-   Manuskripte (Word Dokument, PDF, HTML)
+-   Websites (HTML)
+
+# Jetzt wechseln wir zum lokalen Quarto Übungsdokument
+
+## Ende {.smaller}
+
+-   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:
+    -   https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/

@@ -1,0 +1,586 @@
+---
+format:
+  live-revealjs:
+    theme: default
+    slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
+title: "3. Seminar: Ereignisdaten"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+webr:
+  cell-options:
+    autorun: true
+    fig-width: 11
+    fig-height: 5
+  # webr:
+  # packages:
+  #   - dplyr
+  #   - ggplot2
+editor: visual
+engine: knitr
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+# Ereignisdaten
+
+## Heutige Sitzung {.smaller}
+
+1.  Datenerhebung in den Sozialwissenschaften
+2.  Probleme und Vorteile nicht-reaktiver Daten
+3.  Ereignisdaten
+4.  Ereignisdatenanalyse
+
+Pflichtlektüre:
+
+-   Watteler, O. (2022). Daten in den Sozialwissenschaften. In Forschungsstrategien in den Sozialwissenschaften (pp. 225-256). Springer VS, Wiesbaden.
+
+-   Blossfeld, H. P. (2010). Survival- und Ereignisanalyse. In Handbuch der sozialwissenschaftlichen Datenanalyse (pp. 995-1016). VS Verlag für Sozialwissenschaften.
+
+# Datenerhebung in den Sozialwissenschaften
+
+## Reaktive versus nicht-reaktive Daten {.smaller}
+
+| Reaktive Messung | Nicht-reaktive Messung |
+|--------------------------|---------------------------------------------|
+| Umfragedaten | Amtliche Statistik / Registerdaten |
+| Laborexperimente | Verhaltensspuren / digital trace data: z.B. Social Media, Smartphone, Wearables |
+|  | Journalistische Datensätze: z. B. Reichenlisten, WikiLeaks |
+
+**Reaktive Daten**: Einfluss des Messvorgangs auf die Reaktionen (=Daten) von Untersuchungspersonen, für wissenschaftliche Zwecke erhoben
+
+**Nicht-reaktive Daten**: nicht mit dem Ziel der Verwendung für sozialwissenschaftliche Forschung generiert, sondern als Folge alltäglichen Verhaltens von Menschen
+
+::: notes
+Umfragen Face-to-face interview; Computer-assisted (CAPI/CAMI); Telephone interview (CATI); Self-administered questionnaire: Paper; Self-administered questionnaire: Web-based (CAWI); Web-based interview; Face-to-face interview: Paper-and-pencil (PAPI)
+:::
+
+# Probleme und Vorteile nicht-reaktiver Daten
+
+## Probleme nicht-reaktiver Daten {.smaller}
+
+::: incremental
+-   Generalisierbarkeit: Stichprobenprobleme / selektive Auswahl: Social Media Nutzer Over/Undercoverage (doppelte Accounts)
+
+-   Archivierung/Verfügbarkeit des Materials: (plötzliche) Einschränkungen bei Facebook, Twitter API etc.
+
+-   Zugang zum Material: Private Organisationen, Akteneinsicht, Zugang zu historischen Archiven
+
+-   Datenschutz: Anonymisierungsproblematik, Einverständnis
+
+-   Validität: Objektive Realität = subjektive Realität? („produzierte“ Daten; Facebook-“Freunde“) Artefakte (Ironie; Nutzer≠Menschen)
+
+-   Keine einheitliche Definition: unkontrollierbare Datenherkunft
+:::
+
+## Vorteile prozess-produzierter Daten (gegenüber reaktiver Daten)
+
+::: incremental
+-   Zielpersonen können per Interviews nicht erreicht werden (oder eine sehr niedrige response rate wird erwartet)
+-   Das soziale Phänomen liegt in der Vergangenheit (Erinnerungseffekte)
+-   Es wird ein falsches/verzerrtes Antwortverhalten erwartet: Sensible/heikle Fragen; soziale Erwünschtheit
+:::
+
+# Ereignisdaten
+
+## Ereignisdaten
+
+-   dokumentieren spezifische, zeitlich und/oder räumlich begrenzte Ereignisse
+-   Untersuchung von **Zustandswechseln**
+-   Zustände sind abzählbar
+-   Ereignisse können zu beliebigen Zeiten stattfinden
+
+## Beispiel: Biographie der Partnerschaft
+
+![Biographie der Partnerschaft](images/partner.png)
+
+## Beispiel: Arbeitslosigkeit
+
+![Arbeitslosigkeit](images/job.png)
+
+## Beispiel: Sterblichkeit einer Geburtskohorte
+
+![Sterblichkeit einer Geburtskohorte](images/death.png)
+
+## Beispiele: Überleben von start-up Firmen
+
+![Überleben von neu gegründeten Unternehmen](images/start_up.png)
+
+# Ereignisdatenanalyse
+
+## Ziele der Ereignisdatenanalyse
+
+-   Analyse der Dauer bis zu bestimmten Ereignissen (Beschreibung)
+-   Welche Faktoren beeinflussen die Zeit bis zum Eintreten eines bestimmten Ereignisses? (Erklärung)
+
+## Anwendungsgebiete der Ereignisdatenanalyse {.smaller}
+
+-   Lebensverlaufsforschung
+-   Familiensoziologie: Entstehung von Partnerschaften, Heirat
+-   Arbeitsmarktsoziologie: Erwerbsverläufe, Eintritt in die Rente
+-   Migrationssoziologie: Wohnortswechsel
+
+Fragestellungen:
+
+-   Welche Faktoren beeinflussen die Dauer der Arbeitslosigkeit bis zum Beginn einer neuen Erwerbstätigkeit?
+
+-   Welche Faktoren beeinflussen die Dauer bis zu einem Umzug an einen anderen Ort?
+
+## Grundbegriffe {.smaller}
+
+**Ereignis**:
+
+-   Zustandswechsel von einem diskreten Zustand in einen anderen
+-   Einfache Zuordnung: Berufseintritt, Verrentung, Erstberufung (Professur)
+-   Mehrfache Zuordnung: Kündigungen, Hochzeiten, Berufungen (Professur)
+
+**Episode**:
+
+-   Zeitintervall zwischen zwei Zuständen
+-   rechts-zensiert: Episoden zum Beobachtungsende noch nicht abgeschlossen
+-   links-zensiert: Informationen nur nach einem bestimmten Ereignis bekannt
+
+## Grundbegriffe {.smaller}
+
+![](images/clipboard-3637219421.png)
+
+Aus: Windzio, M. (2013). Regressionsmodelle für Zustände und Ereignisse: Eine Einführung. Springer-Verlag, S. 88.
+
+## Grundbegriffe {.smaller}
+
+![](images/censor.png)
+
+## Grundbegriffe {.smaller}
+
+**Prozesszeit/Verweildauer**:
+
+-   Dauer der Episode (bis zum Eintreten des Ereignisses oder bis zur Zensierung)
+-   Nullpunkt wird definiert (z.B. Geburt, Jahr, Erste Arbeitslosigkeit)
+
+**Risikomenge**:
+
+-   Anzahl der Untersuchungseinheiten, die dem Zustandswechsel ausgesetzt sind
+
+## Analyseverfahren {.smaller}
+
+1.  Nicht-parametrische Verfahren (deskriptive Verfahren)
+    -   Keine Annahmen über Verteilung, nur über Wirkungsweisen von Variablen
+    -   Beispiel: Kaplan-Meier, Sterbetafelmethode
+2.  Parametrische Regressionsmodelle
+    -   Verlauf der Hazardrate (baseline hazard) wird spezifiziert
+    -   Kovariateneinflüsse werden spezifiziert
+    -   Beispiel: Exponentialmodell, Weibull-Modell, Gompertz-Modell
+3.  Semi-parametrische Regressionsmodelle
+    -   Verlauf der Hazardrate bleibt unspezifiziert
+    -   Kovariateneinflüsse werden spezifiziert
+    -   Beispiel: Cox-Regressionen
+
+::: notes
+-   BEi KM: rechtszenztrierung kein Problem
+:::
+
+## Analyseverfahren
+
+Analyse erfolgt idR in 2 Schritten:
+
+-   Deskriptive Verfahren
+-   Multivariates Regressionsmodell
+
+# Los geht's
+
+## Package "survival"
+
+Wir nutzen das R-Paket {survival} für unsere Ereignisdatenanalyse.
+
+```{webr}
+#| echo: true
+#| setup: true
+#| exercise: ex_1
+library(survival)
+library(dplyr)
+
+# Datensätze, die im Package survival enthalten sind, anzeigen
+data(package = "survival")
+
+# Lungenkrebsdatensatz als df speichern 
+df = lung
+```
+
+## Lungenkrebsdaten
+
+Wir möchten das Überleben von PatientInnen mit fortgeschrittenem Lungenkrebs aus der "North Central Cancer Treatment Group" untersuchen. Schauen wir uns an, welche Variablen im Datensatz vorhanden sind:
+
+```{webr}
+library(survival)
+?lung     # Hilfe zu einer Funktion oder einem Objekt 
+```
+
+## Datenaufbereitung
+
+Wir brauchen für unsere Analyse 3 Variablen:
+
+-   dead (0: lebend, 1: tot)
+-   Karnofsky-Index (0: \<=80 \[niedrig\], 1: \>80 \[hoch\])
+-   time (Tage)
+
+```{webr}
+#| setup: true
+#| exercise: ex_1
+library(survival)
+library(dplyr)
+df = lung
+```
+
+```{webr}
+#| echo: true
+#| exercise: ex_1
+# Lungenkrebsdatensatz als df speichern 
+df = lung
+names(df)
+df <- df %>% 
+  mutate(
+    ______ = recode(status, `1` = 0, `2` = 1),
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
+  )
+
+
+```
+
+:::: {.solution exercise="ex_1"}
+::: {.callout-tip title="Solution" collapse="true"}
+**Lösung:**
+
+``` r
+names(df)
+df <- df %>% 
+  mutate(
+    dead = recode(status, `1` = 0, `2` = 1),
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
+  )
+```
+:::
+::::
+
+## Erstellen von "survival objects"
+
+Die Surv() Funktion aus dem the {survival} Paket erstellt ein "survival object". Schauen wir und die ersten 10 Beobachtungen an:
+
+::: panel-tabset
+## Output
+
+```{r}
+#| warning: false
+#| message: false
+library(survival)
+library(dplyr)
+
+df = lung
+df <- df %>% 
+  mutate(
+    dead = recode(status, `1` = 0, `2` = 1),
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
+  )
+Surv(df$time, df$dead)[1:10]
+```
+
+## Code
+
+```{r}
+#| echo: true
+library(survival)
+library(dplyr)
+library(ggsurvfit)
+
+df = lung
+df <- df %>% 
+  mutate(
+    dead = recode(status, `1` = 0, `2` = 1),
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
+  )
+Surv(df$time, df$dead)[1:10]
+```
+:::
+
+## 100-Tage Überlebenswahrscheinlichkeit
+
+Untersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:
+
+
+```{webr}
+library(survival)
+library(tidyverse)
+df = lung
+df <- df %>% 
+  mutate(
+    dead = recode(status, `1` = 0, `2` = 1),
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
+  )
+summary(survfit(Surv(time, dead) ~ 1, data = df), times = 100)
+```
+
+## Erstellen von Kaplan-Meier Kurven {.smaller .scrollable}
+
+Kaplan-Meier-Formel zur Schätzung der Überlebensfunktion:
+
+$$
+\widehat{S}(t) = \prod_{i: t_i \leq t} \left(1 - \frac{d_i}{n_i}\right)
+$$
+
+-   $\widehat{S}(t)$: Geschätzte Wahrscheinlichkeit, dass Individuum über den Zeitpunkt $t$ hinaus überlebt.
+
+-   $\prod$: Produktsymbol. Überlebenswahrscheinlichkeit $\widehat{S}(t)$wird durch Multiplikation berechnet wird.
+
+-   $t_i$: Zeitpunkt, an dem ein Ereignis beobachtet wird
+
+-   $d_i$: Anzahl der Ereignisse, die zum Zeitpunkt $t_i$ eintreten.
+
+-   $n_i$: Anzahl der Personen, die unmittelbar vor dem Zeitpunkt $t_i$ noch „at risk“ sind
+
+-   $\left(1 - \frac{d_i}{n_i}\right)$: Anteil der Überlebenden zum Zeitpunkt $t_i$.
+
+## Erstellen von Kaplan-Meier Kurven {.smaller .scrollable}
+
+Kaplan-Meier-Methode gängigste Methode zur Visualisierung von Überlebenswahrscheinlichkeiten
+
+::: panel-tabset
+## Output
+
+```{r}
+#| warning: false
+#| message: false
+
+survfit2(Surv(time, dead) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Days",
+    y = "Overall survival probability"
+  )+ 
+  add_confidence_interval() +
+  add_risktable()
+```
+
+## Code
+
+```{r}
+#| echo: true
+survfit2(Surv(time, dead) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Days",
+    y = "Overall survival probability"
+  )+ 
+  add_confidence_interval() +
+  add_risktable()
+```
+:::
+
+## Erstellen von Kaplan-Meier Kurven {.smaller .scrollable}
+
+Probiert selbst:
+
+```{webr}
+#| setup: true
+#| exercise: ex_2
+library(survival)
+library(dplyr)
+df = lung
+df <- df %>% 
+  mutate(
+    dead = recode(status, `1` = 0, `2` = 1),
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
+  )
+```
+
+```{webr}
+#| echo: true
+#| exercise: ex_2
+
+library(survival)
+library(dplyr)
+library(ggsurvfit)
+
+survfit2(Surv(______, ______) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Days",
+    y = "Overall survival probability"
+  )+ 
+  add_confidence_interval() +
+  add_risktable()
+
+```
+
+:::: {.solution exercise="ex_2"}
+::: {.callout-tip title="Solution" collapse="true"}
+**Lösung:**
+
+``` r
+library(survival)
+library(dplyr)
+library(ggsurvfit)
+
+survfit2(Surv(time, dead) ~ 1, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Days",
+    y = "Overall survival probability"
+  )+ 
+  add_confidence_interval() +
+  add_risktable()
+```
+:::
+::::
+
+## Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index {.smaller .scrollable}
+
+Unterscheiden sich PatientInnen mit niedrigem oder hohem Karnofsky-Index?
+
+::: panel-tabset
+## Output
+
+```{r}
+#| warning: false
+#| message: false
+survfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Tage",
+    y = "Überlebenswahrscheinlichkeit",
+    color = "Karnofsky-Index"
+  )+ 
+  add_confidence_interval() +
+  add_risktable() + 
+ scale_color_manual(values = c('darkblue', 'pink'),  labels = c("<=80", ">80") ) +
+  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c("<=80", ">80") ) +
+  theme_minimal() + guides(fill = "none")
+```
+
+## Code
+
+```{r}
+#| echo: true
+survfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %>% 
+  ggsurvfit() +
+  labs(
+    x = "Tage",
+    y = "Überlebenswahrscheinlichkeit",
+    color = "Karnofsky-Index"
+  )+ 
+  add_confidence_interval() +
+  add_risktable() + 
+ scale_color_manual(values = c('darkblue', 'pink'),  labels = c("<=80", ">80") ) +
+  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c("<=80", ">80") ) +
+  theme_minimal() + guides(fill = "none")
+```
+:::
+
+## Cox Proportional Hazards Model {.smaller .scrollable}
+
+$h(t) = h_0(t)*exp(X\beta)$
+
+-   Abhängige Variable: $h(t)$
+    -   Hazardrate (*hazard*)
+    -   „momentane Neigung einer Untersuchungseinheit, im nächsten Augenblick ein Ereignis zu erleben“
+-   Basline-Hazard $h_0(t)$
+    -   nicht-parametrisch geschätzt (keine Verteilungsannahme)
+    -   Konstante steckt in der Baseline Hazardrate
+-   Regressionskoeffizient $\beta$:
+    -   $X$ können proportionale Änderungen der Hazardrate bewirken
+    -   Veränderung der log. Hazardrate, wenn sich unabhängige Variable um eine Einheit erhöht
+    -   Berechnung der Hazard-Ratio: $HR = exp(\beta)$
+    -   HR \< 1: verringertes Sterberisiko
+    -   HR \> 1: erhöhtes Sterberisiko
+
+## Cox Proportional Hazards Model {.smaller .scrollable}
+
+$h(t) = h_0(t)*exp(X\beta)$
+
+-   Partial-Likelihood-Methode
+    -   Genauer Zeitpunkt des Ereignisses irrelevant, sondern Reihenfolgen
+    -   Keine Verteilungsannahme über die Hazardrate
+-   Bedindung: Proportionalitätsannahme muss erfüllt sein (da proportionalle Änderungen der Hazardrate geschätzt werden)
+
+::: notes
+Proportionalitätsannahme: Hazard Ratio (das Verhältnis der Hazard Rates zwischen zwei Gruppen) bleibt im Laufe der Zeit konstant
+:::
+
+## Cox Proportional Hazards Model {.smaller .scrollable}
+
+::: panel-tabset
+## Output
+
+```{r}
+#| warning: false
+#| message: false
+library(sjPlot)
+model1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)
+summary(model1)
+```
+
+## Code
+
+```{r}
+#| echo: true
+library(sjPlot)
+model1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)
+summary(model1)
+```
+:::
+
+## Cox Proportional Hazards Model, Interpretation {.smaller .scrollable}
+
+::: panel-tabset
+## Interpretation
+
+Das Risiko zu sterben (in jedem kurzen Zeitraum) ist höher bei Personen mit einem Karnofsky-Index kleiner-gleich 80 im Vergleich zu Personen mit einem Karnofsky-Index über 80.
+
+**Hazard-Ratio**: Personen mit einem Karnofsky-Index über 80 haben ein 36% geringeres Risiko zu sterben (in jedem kurzen Zeitraum) als Personen mit einem Karnofsky-Index unter/gleich 80. Oder: Personen mit einem Karnofsky-Index über 80 haben ein 0.64 mal so hohes Risiko zu sterben (in jedem kurzen Zeitraum) wie Personen mit einem Karnofsky-Index unter/gleich 80.
+
+-   HR \< 1: verringertes Sterberisiko
+-   HR \> 1: erhöhtes Sterberisiko
+
+## Code
+
+```{r}
+#| echo: true
+library(sjPlot)
+model1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)
+tab_model(model1,
+          show.ci = FALSE, p.style = "stars",
+          string.se = "se", string.est = "HR",
+          string.pred = " ")
+```
+:::
+
+## Proportionalitätsannahme {.smaller .scrollable}
+
+Nun testen wir die Proportionalitätsannahme.
+
+Nullhypothese: Hazard-Raten proportional, also kein Zusammenhang mit der Zeit
+
+```{r}
+#| echo: true
+
+model1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)
+
+# Überprüfung der Proportionalitätsannahme
+test_proportionality <- cox.zph(model1)
+
+# Ergebnisse anzeigen
+print(test_proportionality)
+
+# Grafische Darstellung
+plot(test_proportionality)
+```
+
+## Ende {.smaller}
+
+-   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Hans-Jürgen Andreß
+
+-   Weitere Literatur:
+
+    -   <https://ehar.se/r/ehar2/>
+    -   <https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html>

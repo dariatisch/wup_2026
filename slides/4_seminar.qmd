@@ -1,0 +1,394 @@
+---
+format:
+  live-revealjs:
+    theme: default
+    slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
+title: "4. Seminar: Faktorielle Umfrageexperimente"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+# webr:
+#   cell-options:
+#     autorun: true
+#     fig-width: 11
+#     fig-height: 5
+  # webr:
+  # packages:
+  #   - dplyr
+  #   - ggplot2
+editor: visual
+engine: knitr
+---
+
+## Heutige Sitzung {.smaller}
+
+1.  Kausalität und Erhebungsdesign
+2.  Experimente
+3.  Faktorielle Umfrageexperimente (factorial surveys)
+4.  Methodische Umsetzung
+
+Pflichtlektüre:
+
+-   Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden.
+-   [Online Tutorial](https://www.ncrm.ac.uk/resources/online/all/?main&id=20781) von Tamara Gutfleisch
+
+# Kausalität und Erhebungsdesign
+
+## Kausalität und Erhebungsdesign
+
+**Ex-post-facto-Design**: Vergleichsgruppen werden nach der Datenerhebung gebildet (zB Männer und Frauen; Geschlecht als erklärende Variable)
+
+**Quasiexperimentelle Designs**: Vergleichsgruppen werden vorab festgelegt, aber keine Randomisierung
+
+**Experiment**: Vergleichsgruppen werden vor der Datenerhebung zufällig aufgeteilt
+
+# Experimente
+
+## Experimente
+
+-   Versuchs- und Kontrollgruppe
+
+-   Randomisierung ➔ Keine unbeobachtete Heterogenität
+
+-   Kontrollierte Stimulussetzung 
+    - Zeitliche Abfolge von UV und AV 
+    - Keine Endogenität
+
+-   Kausalschluss
+
+-   Ethische Bedenken
+
+## Experimente
+
+![](images/clipboard-2747204091.png)
+
+Aus: Berger, Roger, und Tobias Wolbring, 2015: Kontrafaktische Kausalität und eine Typologie sozialwissenschaftlicher Experimente. S. 45. In: Keuschnigg, Marc , und Tobias Wolbring (Hg.), Experimente in den Sozialwissenschaften. Baden-Baden: Nomos.
+
+## Gütekriterien von Forschungsdesigns:
+
+**Externe Validität**
+
+-   Auf Grundgesamtheit übertragbar?
+-   Validität des Messinstruments wird vorausgesetzt
+
+**Interne Validität**
+
+-   Eindeutigkeit der Ergebnisinterpretation
+
+-   Ist der beobachtete Effekt tatsächlich auf die untersuchten Einflussvariablen zurückzuführen?
+
+-   Kausalanalytischer Anspruch von Experimenten
+
+## Experiment
+
+**Voraussetzung**:
+
+-   Mind. 2 experimentelle Gruppen
+
+-   Die Versuchspersonen werden der Kontroll- bzw. Vergleichsgruppe zufällig zugewiesen
+
+-   Versuchsgruppe („treatment group“)
+
+-   Kontrollgruppe („control group“)
+
+-   Die unabhängige (zu untersuchende) Variable wird von Forschenden manipuliert
+
+# Faktorielle Umfrageexperimente (factorial surveys)
+
+## Faktorielle Umfrageexperimente
+
+-   auch: Vignettenexperimente
+-   Verbindet klassische Umfrageforschung mit experimenteller Versuchsanordnung
+-   „fiktive Situationen“: systematisches Variieren fiktiver Merkmale
+-   Erhebt Einstellungen und normative Vorstellungen von Personen zu einem spezifischen Sachverhalt (Einstellungs- oder Verhaltensintentionen)
+-   Wir untersuchen, wie Personen Informationen interpretieren, abwägen und handeln
+
+## Fachbegriffe
+
+**Vignetten** = Situations- oder Personenbeschreibungen (fiktiv)
+
+**Dimensionen (dimensions)** = bestimmte Inhalte dieser Kurzbeschreibungen
+
+**Ausprägungen (levels)** = Dimensionen können unterschiedliche Werte annehmen
+
+➔ Ausprägungen der Dimensionen werden innerhalb unterschiedlicher Vignetten systematisch variiert
+
+# Beispiele
+
+## Akzeptanz von Fortpflanzungsmedizin {.smaller}
+
+![](images/clipboard-1126233870.png)
+
+Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
+
+## Akzeptanz von Fortpflanzungsmedizin {.smaller}
+
+![](images/clipboard-724776785.png)
+
+Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
+
+## Akzeptanz von Fortpflanzungsmedizin {.smaller}
+
+![](images/clipboard-1407299058.png)
+
+Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
+
+
+## Vertrauen in andere Menschen  {.smaller}
+![](images/dülmer.png)
+Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden, S.865.
+
+## Faire Aufteilung von Schenkungen
+
+![](images/vignette.png)
+
+Aus: Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.
+
+
+
+## Anwendungsgebiete  {.smaller}
+
+-   Erforschung soziale Normen/ ethische Prinzipien („Einstellung zu…“)
+
+    -   Nichtrauchernormen
+
+    -   Leihmutterschaft / Fortpflanzungsmedizin
+
+-   Gerechtigkeitsforschung („Halte Sie das monatliche Einkommen für fair, zu niedrig, zu hochh?“)
+
+    -   Verteilung von Gütern (Schenkungen, Gehälter)
+
+-   Diskriminierung
+
+    -   Bewerberprofile (z.B. Geschlecht, Nationalität)
+
+-   Ausgestaltung von Reformen / Gesetzen
+
+    -   Steuerreform, Sozialhilfereform, Rentenreform
+
+## Vorteile gegenüber anderen Methoden: klassische Umfragen  {.smaller}
+
+-   FS minimiert Interpretationsspielräume, wenn Ausgangssituation präzise formuliert
+
+-   In Umfragen werden Faktoren nacheinander abgefragt (mehrere Items), in FS variieren die Faktoren (Dimensionen) innerhalb einer Vignette →„trade-offs“
+
+-   Umfragen sind anfällig für Effekte sozialer Erwünschtheit, während in FS Fragestellungen subtiler gestellt werden können (z. B. Geschlecht einer Person in Anrede oder Vornamen).
+
+-   Umfragen setzen Zufallsstichprobe voraus, um auf die Grundgesamtheit zu schließen; Vignettendesign nicht per se (randomisierte Vignetten) → interne vs. externe Validität.
+
+## Vorteile gegenüber anderen Methoden: Laborexperimenten
+
+-   Laborexperimente häufig eindimensional (nur ein Testfaktor), Vignetten mehrdimensional
+-   Laborexperimente nicht anonym (Erwartungseffekte gegenüber VersuchsleiterIn)
+-   Externe Validität kritisch durch begrenzte Teilnehmerzahl (in Surveydesigns kann höhere Teilnehmerzahl realisiert werden); Teilnehmende der Vignettenbefragung i. d. R. heterogener.
+
+## Vorteile gegenüber anderen Methoden: Beobachtungsmethoden
+
+-   Verhalten und Einstellung stimmen nicht überein (= Effekte sozialer Erwünschtheit)
+
+# Methodische Umsetzung
+
+## Datenerhebung: Auswahl der Dimensionen und Ausprägungen in Vignettenexperimenten {.smaller}
+
+::::: columns
+::: {.column width="40%"}
+Wie erstelle ich meine Vignetten?
+
+**Vignettenpopulation**: Gesamtmenge der Vignetten, die sich durch die Kombination der gewählten Dimensionsausprägungen erstellen lässt
+
+7 Dimensionen: 4 Dimensionen mit 3 Ausprägungen 3 Dimensionen mit 2 Ausprägungen
+
+3\*3\*3\*3\*2\*2\*2 = 648 Vignetten
+:::
+
+::: {.column width="60%"}
+![](images/clipboard-125703206.png)
+:::
+:::::
+
+## Beispiel 2 {.smaller}
+
+::::: columns
+::: {.column width="40%"}
+**Vignettenpopulation**: 3\*3\*3 = 27 Vignetten
+
+Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.
+:::
+
+::: {.column width="60%"}
+![](images/dimensionen.png)
+:::
+:::::
+
+## Bedingungen eines effizienten Designs
+
+**Orthogonalität**
+
+-   Jede Dimensionsausprägung erscheint gleich häufig mit jeder anderen Dimensionsausprägung
+
+-   Schließt Korrelationen zwischen verschiedenen Dimensionen aus
+
+**Balance**
+
+-   Jede Ausprägung innerhalb einer Dimension kommt gleich häufig vor
+
+-   Gewährleistet, dass verschiedene Vignetten die maximale Variation aufweisen
+
+## Teilnehmende und Vignetten
+
+**Problem**: Jede Person müsste 648 Vignetten bewerten
+
+**Lösung**:
+
+1.  Stichprobe der Vignettenpopulation (d-efficient → Orthogonalität und Balance werden maximiert)
+
+2.  JedeR TeilnehmerIn soll nur eine bestimmte Anzahl an Vignetten bewerten
+
+    (A) Teilnehmende erhalten X zufällige Vignetten
+    (B) Teilnehmende erhalten ein zufälliges Vignettendeck (d-efficient erstellt)
+
+→ Reihenfolgeeffekte können durch Randomisierung minimiert werden
+
+## Einbettung der Vignetten in den Fragebogen
+
+-   Lauftext versus Tabelle
+-   Namen versus "Herr A" und "Frau B"
+-   Antwortskala
+    -   Likert-Skala
+    -   Zahl
+    -   Aufteilung von z.B. Geld
+
+## Fragen zum Design
+
+-   Welche Dimensionen und Ausprägungen?
+
+-   Welche Merkmale müssen konstant gehalten werden?
+
+-   Wie viele Vignetten sollten aus der Grundgesamtheit entnommen werden?
+
+-   Wie viele Vignetten-Decks?
+
+-   Wie viele Vignetten pro Befragten?
+
+-   Welche Methode sollte für die Zusammenstellung der Vignettenstichprobe/des Vignettendecks verwendet werden (z. B. Zufallsstichproben, D-Effizienz, Quotenpläne)
+
+-   Größe der Befragtenstichprobe (was ist realisierbar?)
+
+## Datenauswertung {.smaller}
+
+-   Orthogonalität und Balance prüfen
+
+-   Deskriptiv: Häufigkeiten der einzelnen Urteile
+
+-   Multiple Regressionsanalyse
+
+    -   Hierarchische Datenstruktur
+
+    -   Vignette evaluations (Level 1) nested within respondents (Level 2)
+
+    -   Erfordert die Anwendung von statistischen Modellen, die die Cluster berücksichtigen
+
+        ```         
+        - OLS mit robusten geclusterten Standardfehlern auf der Ebene der Befragten
+
+        - Mehrebenen-Modelle 
+        ```
+
+```{r}
+#| echo: false
+
+# Load the haven package
+library(haven)
+library(labelled)
+
+# Load the Stata file
+df <- read_dta("just_transfers.dta")
+
+# View the first few rows of the dataset
+#head(df)
+
+# Save df as a CSV file
+write.csv(df, "just_transfers.csv", row.names = TRUE)
+
+# Access variable labels
+var_labels <- var_label(df)
+#print(var_labels)
+
+
+# Loop through the labels and assign them to variables in the dataset
+for (var in names(var_labels)) {
+  if (var %in% names(df)) {
+    var_label(df[[var]]) <- var_labels[[var]]
+  }
+}
+
+# Verify that the labels are applied
+#print(var_label(df))
+
+# Save variable labels as a CSV
+write.csv(as.data.frame(var_labels), "just_transfers_variable_labels.csv", row.names = TRUE)
+
+
+
+# Access value labels (as attributes of the variables)
+# Example for a variable called 'var1'
+value_labels <- attr(df$daughter, "labels")
+#print(value_labels)
+
+
+
+# Extract value labels for each variable and save them
+value_labels <- lapply(df, function(var) attr(var, "labels"))
+value_labels_df <- do.call(rbind, lapply(names(value_labels), function(var_name) {
+  if (!is.null(value_labels[[var_name]])) {
+    data.frame(
+      variable = var_name,
+      label = names(value_labels[[var_name]]),
+      value = value_labels[[var_name]]
+    )
+  }
+}))
+
+
+write.csv(value_labels_df, "value_labels.csv", row.names = FALSE)
+
+```
+
+## Beispiel: Faire Aufteilung von Schenkungen
+
+![](images/vignette.png)
+
+## Beispiel: Faire Aufteilung von Schenkungen
+
+![](images/dimensionen.png)
+
+## Datenstruktur {.scrollable}
+
+```{r}
+look_for(df)
+```
+
+Pos 1: Befragten ID
+
+Pos 3: Vignetten ID
+
+Pos 4: Deck ID
+
+Pos 6-8: Dimensionen und Ausprägungen
+
+Pos 13-15: Urteil der Befragten
+
+Pos 16-42: Charakteristiken der Befragten
+
+## Ende {.smaller}
+
+-   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie Tamara Gutfleisch.
+
+-   Weitere Literatur:
+
+    -   Auspurg, K., & Hinz, T. (2015). Factorial survey experiments. SAGE Publications, Inc., https://doi.org/10.4135/9781483398075
+    -   Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
+    -   Tamara Gutfleisch. (2021). An introduction to factorial survey experiments. National Centre for Research Methods online learning resource. Available at https://www.ncrm.ac.uk/resources/online/all/?main&id=20781 \[accessed: 20 January 2025\]

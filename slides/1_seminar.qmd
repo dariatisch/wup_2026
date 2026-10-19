@@ -1,0 +1,760 @@
+---
+format:
+  live-revealjs:
+    theme: default
+    slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
+title: "1. Seminar"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+webr:
+  cell-options:
+    autorun: true
+    fig-width: 11
+    fig-height: 5
+  webr:
+  packages:
+    - dplyr
+    - palmerpenguins
+    - ggplot2
+    - stevedata
+    - broom.helpers
+editor: visual
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+## Wie arbeiten wir in diesem Kurs?
+
+-   Vormittags: Seminar
+-   Nachmittags: Übung (Datenanalyse in R)
+-   [Kurswebsite](https://dariatisch.github.io/wup2024/)
+    -   Übersicht
+    -   Interaktive Präsentationen
+    -   Datensätze
+-   Fragen + Anregungen jederzeit erwünscht
+
+## Interaktive Folien
+
+```{webr}
+2+2
+```
+
+## Interaktive Übungsaufgaben mit Lösungen
+
+Bitte vervollständige den Code, sodass die Summe 10 ergibt.
+
+```{webr}
+#| exercise: ex0
+#| caption: Übung
+1 + 2 + 3 + ______
+```
+
+```{webr}
+#| exercise: ex0
+#| check: true
+if (.result == 10) {
+  list(message = "Hervorragend!", correct = TRUE)
+} else {
+  list(message = "Das ist leider falsch", correct = FALSE)
+}
+```
+
+::: {.hint exercise="ex0"}
+Tipp: Rechne: 10-1-2-3
+:::
+
+::: {.solution exercise="ex1"}
+::: {.callout-tip title="Solution" collapse="true"}
+**Lösung:**
+
+``` r
+1 + 2 + 3 + 4
+```
+:::
+:::
+
+## Themen heute
+
+-   Forschungsdesigns
+-   Datenquellen
+-   Datenauswertung
+
+Pflichtlektüre: Hinz, T. (2018). Methoden der Arbeitsmarktforschung (S. 479-524). In: Abraham, M., Hinz, T. (eds) Arbeitsmarktsoziologie. Springer VS, Wiesbaden.
+
+# Forschungsdesign
+
+## Forschungsdesign
+
+"eine systematische, transparente sowie dem jeweiligen Forschungsproblem angemessene Vorgehensweise, um zu einer belastbaren Antwort auf die Forschungsfrage zu gelangen" (S.480).
+
+Forschungsfragen:
+
+-   Beschreibend
+
+-   Erklärend
+
+Beispiele?
+
+## Forschungsdesign {.smaller}
+
+1.  Beobachtungsdesign
+    -   Datenerhebung (Messung), Dokumentation, Auswertung
+    -   Explanandum (= zu erklärendes Phänomen) vom Forschungsprozess unabhängig
+    -   Zusammenhänge werden im Zuge des Forschungsprozesses "entdeckt"
+
+<!-- -->
+
+2.  Experimentaldesigns
+    -   Manipulation: Forscherin greift in den zu erklärenden Prozess ein
+    -   Experimentalgruppe erhält Treatment, Kontrollgruppe nicht
+    -   Randomisierte Zuteilung
+
+::: notes
+warum nicht nur Experimentaldesigns?
+:::
+
+## Beobachtungsdesign
+
+-   Längsschnitt
+-   Querschnitt
+-   Beispiele?
+
+## Kausalanalyse mit Beobachtungsdesign {.smaller}
+
+-   Explanandum: Gender wage gap
+-   Konstanthaltung durch Drittvariablenkontrolle
+-   Probleme:
+    -   Endogenous selection bias
+    -   Omitted variable bias
+    -   Overcontrol bias
+    -   Collider Bias
+
+## Experimentaldesign
+
+-   Forscherin setzt experimentellen Stimulus (=Treatment)
+-   Randomisierte Zuteilung des Treatments schließt Einfluss von Drittvariablen aus
+-   Einfach Auswertung: Mittelwertunterschiede
+-   Für Identifikation von Kausaleffekten ist Randomisierung notwendig, aber keine Zufallsstichprobe. Warum trotzdem sinnvoll?
+
+::: notes
+Externe Validität
+:::
+
+## Experimentaldesigns
+
+-   Laborexperimente
+-   Feldexperimente
+-   Umfrageexperimente
+-   Natürliche Experimente (exogene Ereignisse sorgen für faktische Randomisierung eines Treatments)
+
+::: notes
+Natürliche Experimente: zB Gesetzesänderungen
+:::
+
+# Datenquellen
+
+## Datenquellen
+
+::: incremental
+-   Umfragedaten
+-   Prozessproduzierte Daten (aus administrativen Prozessen, die nicht zum Zweck der Forschung entstanden)
+-   Social Media
+-   Welche noch?
+:::
+
+## Umfragedaten
+
+::: incremental
+Zufallsstichprobe - Wofür?
+
+-   Verallgemeinerbarkeit
+-   Repräsentativität
+-   Inferenzstatistik
+:::
+
+## Umfragedaten: Beispiele
+
+::: incremental
+-   Beispiele:
+    -   SOEP
+    -   Allbus
+    -   Neps
+    -   GESIS Panel
+    -   Mikrozensus
+:::
+
+## Umfragedaten: Inhalte
+
+::: incremental
+-   Einstellungen
+-   Biographien
+-   Einkommen und Vermögen
+:::
+
+## Umfragedaten mit experimentellen Teilen
+
+-   Factorial Survey Experimente
+-   Conjoint-Analysen
+-   Choice-Experimente
+
+::: notes
+Beispiele: - FS: Fair earings, just gender wage gao - Conjoint: Bsp: Attraktivität in der Partnerwahl, Prioritäten setzen, Trad-offs, Entscheidungen zwischen diskreten Alternativen -Choice: Befragte wählen aus verschiedenen (Handlungs-)Alternativen die von ihnen am meisten präferierte aus https://link.springer.com/article/10.1007/s11577-011-0136-3
+:::
+
+## Prozessproduzierte Daten {.smaller}
+
+= nicht für die sozialwissenschaftliche Analyse generierte Daten
+
+::: incremental
+-   Administrative Daten: Sozialversicherungen, Steuerdaten
+    -   Teilweise Verknüpfung mit Umfragedaten
+-   Fehlzeiten von Arbeitsnehmerinnen
+-   Internet Movie Base: Karriereinformationen
+-   Gerichtsakten
+-   Soziale Medien
+-   ...
+:::
+
+::: notes
+Vorteile:objektiv (soziale Erwünschtheit kein Problem)
+:::
+
+# Datenauswertung
+
+## Datenauswertung
+
+1.  Beschreibung von erkennbaren Mustern in den Daten
+2.  Kausalschlüsse ziehen
+
+## Deskriptive Statistik
+
+-   Uni- und bivariate Statistik
+    -   Verteilungen von 1 bzw. 2 Variablen
+    -   Verteilungen werden durch Ausprägungen (=Antwortkategorien) gebildet
+    -   Eigenschaften von Verteilungen durch statistische Maßzahlen
+    -   Darstellung: Statistische Maßzahlen, Tabellen oder Diagramme
+
+# Los geht's mit angewandter Regressionsanalyse
+
+## Computational setup {.scrollable}
+
+```{r packages}
+#| echo: true
+#| message: false
+
+## Packages
+pkgs <- c(
+  "stevedata",
+  "tidyverse",
+  "broom.helpers",
+  "ggplot2"
+)
+
+## Install uninstalled packages
+lapply(pkgs[!(pkgs %in% installed.packages())], install.packages)
+
+## Load all packages to library
+lapply(pkgs, library, character.only = TRUE)
+
+# set default theme and larger font size for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
+
+# set default figure parameters for knitr
+knitr::opts_chunk$set(
+  fig.width = 8,
+  fig.asp = 0.618,
+  fig.retina = 3,
+  dpi = 300,
+  out.width = "80%"
+)
+```
+
+# Daten
+
+## GSS
+
+-   General Social Survey (1974-2018)
+-   Nur Einkommensdaten und ein paar weitere Variablen
+-   Package: stevedata
+
+## Daten Einlesen und Überblick
+
+-   prestg10: respondent's occupational prestige score
+-   realrinc: respondent's base income (in constant 1986 USD)
+
+```{r data-read-overview}
+#| echo: true
+df <- stevedata::gss_wages %>% filter(year==2018) %>%
+  filter(!is.na(age)) %>% filter(!is.na(realrinc))
+         
+glimpse(df)
+```
+
+## Datenvisualisierung
+
+```{r}
+ggplot(df, 
+       aes(x = age, y = log(realrinc))) +
+  geom_point(alpha = 0.5) + 
+  labs(
+    x = "Age" , 
+    y = "Log(income)"
+  )
+```
+
+# Regressionsmodel
+
+## Fit a line
+
+... um die Beziehung zwischen Alter und Einkommen zu *beschreiben*
+
+```{r}
+#| out.width: "70%"
+p <- ggplot(data = df, 
+            mapping = aes(x = age, y = log(realrinc))) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm", color = "purple", se = FALSE) +
+  labs(
+    x = "Age" , 
+    y = "Log(income)"
+  )
+
+p
+```
+
+## Terminologie
+
+<center>X → Y</center>
+
+::: columns
+::: {.column width="30%"}
+-   **Outcome, *Y***: Variable, die das Merkmal von Interesse beinhaltet
+-   **Predictor, X**: Variable, die uns hilft, die Varianz des Outcomes zu verstehen
+:::
+
+::: {.column width="70%"}
+```{r}
+#| out.width: "100%"
+p
+```
+:::
+:::
+
+## Regressionsmodel
+
+Ein **Regressionsmodel** ist eine Funktion, die den Zusammenhang zwischen dem Outcome, $Y$, und dem Prädiktor, $X$, beschreibt.
+
+$$\begin{aligned} Y &= \color{black}{\textbf{Model}} + \text{Error} \\[8pt]
+&= \color{black}{\mathbf{f(X)}} + \epsilon \\[8pt]
+&= \color{black}{\boldsymbol{\mu_{Y|X}}} + \epsilon \end{aligned}$$
+
+## Regressionsmodel
+
+::: columns
+::: {.column width="30%"}
+$$
+  \begin{aligned} Y &= \color{purple}{\textbf{Model}} + \text{Error} \\[8pt]
+&= \color{purple}{\mathbf{f(X)}} + \epsilon \\[8pt]
+&= \color{purple}{\boldsymbol{\mu_{Y|X}}} + \epsilon 
+\end{aligned}
+$$
+:::
+
+::: {.column width="70%"}
+```{r}
+m <- lm(log(realrinc) ~ age, data = df)
+df$predicted <- predict(m)
+
+ggplot(data = df, 
+       mapping = aes(x = age, y = log(realrinc))) +
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm", color = "purple", se = FALSE) +
+  labs(x = "X", y = "Y") +
+  theme_minimal() +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks.x = element_blank(), 
+    axis.ticks.y = element_blank()
+  )
+```
+:::
+:::
+
+## Regressionsmodel + Residuen
+
+::: columns
+::: {.column width="30%"}
+$$\begin{aligned} Y &= \color{purple}{\textbf{Model}} + \color{blue}{\textbf{Error}} \\[8pt]
+&= \color{purple}{\mathbf{f(X)}} + \color{blue}{\boldsymbol{\epsilon}} \\[8pt]
+&= \color{purple}{\boldsymbol{\mu_{Y|X}}} + \color{blue}{\boldsymbol{\epsilon}} \\[8pt]
+\end{aligned}$$
+:::
+
+::: {.column width="70%"}
+```{r}
+#| echo: false
+ggplot(data = df,
+       mapping = aes(x = age, y = log(realrinc))) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = "purple", se = FALSE) +
+    geom_segment(aes(x = age, xend = age, 
+                   y = log(realrinc), yend = predicted), 
+               color = "blue") +
+  labs(x = "X", y = "Y") +
+  theme(
+    axis.text = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+```
+:::
+:::
+
+# Einfache lineare Regression
+
+## Einfache lineare Regression
+
+$$\Large{Y = \beta_0 + \beta_1 X + \epsilon}$$
+
+::: incremental
+-   $\beta_1$: Wahrer slope der Beziehung zwischen $X$ und $Y$
+-   $\beta_0$: Wahrer intercept der Beziehung zwischen $X$ und $Y$
+-   $\epsilon$: Error (Residuen)
+:::
+
+## Einfache lineare Regression
+
+$$\Large{\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X}$$
+
+-   $\hat{\beta}_1$: Geschätzter slope
+-   $\hat{\beta}_0$: Geschätzter intercept
+-   Kein Fehlerterm!
+
+## Residuen
+
+::: panel-tabset
+## Plot
+
+```{r}
+#| warning: false
+#| message: false
+
+
+ggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = "purple", se = FALSE) +
+  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = "steel blue") +
+  labs(x = "Alter", y = "Einkommen") +
+  theme(legend.position = "none")
+```
+
+## Code
+
+```{r}
+#| echo: true
+
+ggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = "purple", se = FALSE) +
+  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = "steel blue") +
+  labs(x = "Alter", y = "Einkommen") +
+  theme(legend.position = "none")
+```
+:::
+
+$$\text{Residuen} = \text{Beobachted} - \text{Vorhergesagt} = y - \hat{y}$$
+
+::: notes
+Summer der Residuen = 0
+:::
+
+## Kleinstquadrate
+
+-   Residuum für die $i^{te}$ Beobachtung
+
+$$e_i = \text{beobachtet} - \text{vorhergesagt} = y_i - \hat{y}_i$$
+
+-   Die Summe der quadrierten Residuen ist
+
+$$e^2_1 + e^2_2 + \dots + e^2_n$$
+
+-   **Methode der kleinsten Quadrate** minimiert die Summe der quadratischen Residuen
+
+# Interpretation
+
+## Interpretation {.smaller}
+
+::: panel-tabset
+## Output
+
+```{r}
+#| warning: false
+#| message: false
+m_income <- lm(log(realrinc) ~ age, data = df)
+m_income   
+
+```
+
+## Code
+
+```{r}
+#| echo: true
+m_income <- lm(log(realrinc) ~ age, data = df)
+m_income  
+```
+:::
+
+$$\widehat{\text{log(Einkommen)}} = 8.91 + 0.01 \times \text{Alter}$$
+
+::: incremental
+-   **Slope:** Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% ($(e^{0.01} - 1) \times 100$)
+:::
+
+## Interpretation {.smaller}
+
+```{r}
+m_income <- lm(log(realrinc) ~ age, data = df)
+m_income    
+```
+
+$$\widehat{\text{log(Einkommen)}} = 8.91 + 0.01 \times \text{Alter}$$
+
+::: incremental
+-   **Intercept:** Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?
+:::
+
+## Vorhersagen machen {.smaller}
+
+Jemand ist 28 Jahre alt. Wie hoch ist nach diesem Modell das Einkommen?
+
+::: panel-tabset
+## Händisch
+
+$$
+\begin{aligned}
+\widehat{\text{log(income)}} &= 8.91 + 0.01 \times \text{age} \\
+&= 8.91 + 0.01 \times 28 \\
+&= 9.19
+\end{aligned}
+$$
+
+## in R
+
+```{r}
+#| echo: true
+# Create a new data frame for age = 28
+new_data <- data.frame(age = 28)
+
+
+# Predict log(realrinc) for age = 28
+predicted_log_income <- predict(m_income, newdata = new_data)
+
+# Optionally reverse the log transformation
+predicted_real_income <- exp(predicted_log_income)
+
+# View results
+predicted_log_income  # log(realrinc)
+predicted_real_income # real income
+```
+:::
+
+## OLS Regression: Annahmen {.smaller}
+
+1.  **Funktionaler** linearer Zusammenhang der UV und AV (linear in parameters)
+2.  AV ist metrisch\
+3.  Keine Multikollinearität der UVs
+4.  Normalverteilung der Residuen
+5.  Homoskedastizität der Residuen: $\text{Var}(\epsilon|X) = \text{const}$.
+6.  Residuen haben einen Mittelwert von 0: $\text{E}(\varepsilon|X) = 0$.
+7.  Strikte Exogenitätsannahme: $\text{Cov}(\varepsilon|X) = 0$.
+8.  Zufallsstichprobe (Inferenzstatistik)
+9.  Keine Messfehler
+
+::: notes
+4-6: Verletzung führt zu verzerrten Standardfehlern (fehlerhafte Signifikanztests und Konfidenzintervalle)  ineffizient Verletzung führt nicht zu verzerrten Regressionskoeffizienten  konsistent 7:Verletzung führt zu verzerrten Regressionskoeffizienten und Standardfehlern (ineffizient und inkonsistent) Theoretische Modellspezifikation: „\[Das Modell\] muss also einerseits alle bedeutsamen unabhängigen Variablen enthalten und darf keine für die Erklärung der abhängigen Variablen irrelevanten unabhängigen Variablen enthalten.“ -\> „omitted variable bias“ / unbeobachtete Heterogenität
+:::
+
+## Exkurs: Variablen und Skalenniveaus {.smaller}
+
+::: incremental
+-   Verhältnis (Rangordnung, Abstände und Verhältnisse, absoluter Nullpunkt)
+    -   Einkommen
+    -   Alter
+-   Intervallskala (Rangordnung und Abstände)
+    -   Grad Celsius
+    -   Geburtsjahr
+-   Ordinales Skalenniveau (Rangordnung)
+    -   Schulnoten
+    -   Zufriedenheit
+-   Nominalskala (gleich/ungleich)
+    -   Blutgruppe
+    -   Familienname
+:::
+
+<!-- ## Nun wird es noch praktischer -->
+
+<!-- ```{webr} -->
+
+<!-- ## Packages -->
+
+<!-- pkgs <- c( -->
+
+<!--   "tidyverse", -->
+
+<!--   "tidymodels", -->
+
+<!--   "stevedata" -->
+
+<!-- ) -->
+
+<!-- ## Install uninstalled packages -->
+
+<!-- lapply(pkgs[!(pkgs %in% installed.packages())], install.packages) -->
+
+<!-- ## Load all packages to library -->
+
+<!-- lapply(pkgs, library, character.only = TRUE) -->
+
+<!-- ``` -->
+
+# Nun wird es noch praktischer
+
+## Regression {.smaller}
+
+Bitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.
+
+::: panel-tabset
+## Übung
+
+```{webr}
+#| caption: Übung Geschlechterunterschied
+#| exercise: ex1
+#| check: false
+library("stevedata")
+df <- stevedata::gss_wages %>% filter(year==2018) %>%
+  filter(!is.na(age)) %>% filter(!is.na(realrinc))
+
+# Lineare Regression
+model <- lm(______ ~ ______, data = df)
+
+# Zusammenfassung der Regressionsergebnisse
+summary(model)
+
+# Ergebnisse übersichtlich darstellen
+broom::tidy(model)
+
+```
+
+## Tipp
+
+::: {.hint exercise="ex1"}
+Du brauchst die Variablen Geschlecht und Einkommen. Du findest sie, wenn Du Die alle Variablen anzeigen lässt:
+
+```{r}
+#| echo: true 
+names(df)
+```
+:::
+
+## Lösung
+
+::: {.solution exercise="ex1"}
+**Lösung:z.B.**
+
+```{webr}
+#| exercise: ex1
+#| solution: true
+library("stevedata")
+df <- stevedata::gss_wages %>% filter(year==2018) %>%
+  filter(!is.na(age)) %>% filter(!is.na(realrinc))
+
+# Lineare Regression
+model <- lm(realrinc ~ gender, data = df)
+
+# Zusammenfassung der Regressionsergebnisse
+summary(model)
+
+# Ergebnisse übersichtlich darstellen
+broom::tidy(model)
+```
+:::
+:::
+
+## Geschlechterunterschiede im Einkommen {.smaller}
+
+### Graphische Darstellung
+
+Bitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.
+
+::: panel-tabset
+## Übung
+
+```{webr}
+#| exercise: ex2
+#| check: false
+df <- stevedata::gss_wages %>% filter(year==2018) %>%
+  filter(!is.na(age)) %>% filter(!is.na(realrinc))
+
+ggplot(df, aes(x = ______, y = realrinc, fill = ______)) +
+  geom_violin(trim = FALSE) +
+  labs(
+    title = "Geschlechterunterschiede beim Einkommen (2018)",
+    x = "Geschlecht",
+    y = "Reales Einkommen",
+    fill = "Geschlecht"
+  ) +
+  theme_minimal()
+
+```
+
+## Tipp
+
+::: {.hint exercise="ex2"}
+The gesuchte Variable lautet: gender
+:::
+
+::: {.hint exercise="ex2"}
+Das findest Du heraus, indem Du dir die Daten anschaust
+
+```{r}
+#| echo: true 
+names(df)
+```
+:::
+
+## Lösung
+
+::: {.solution exercise="ex2"}
+**Lösung:**
+
+Ein Beispiel:
+
+```{webr}
+#| exercise: ex2
+#| solution: true
+df <- stevedata::gss_wages %>% filter(year==2018) %>%
+  filter(!is.na(age)) %>% filter(!is.na(realrinc))
+ggplot(df, aes(x = gender, y = realrinc, fill = gender)) +
+  geom_violin(trim = FALSE) +
+  labs(
+    title = "Geschlechterunterschiede beim Einkommen (2018)",
+    x = "Geschlecht",
+    y = "Reales Einkommen",
+    fill = "Geschlecht"
+  ) +
+  theme_minimal()
+
+```
+:::
+:::
+
+## Ende
+
+-   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von:
+    -   https://sta210-s22.github.io/website/slides/lec-2.html#/title-slide
+-   Weiterführende Informationen:
+    -   Hinz, T. (2018). Methoden der Arbeitsmarktforschung (S. 479-524). In: Abraham, M., Hinz, T. (eds) Arbeitsmarktsoziologie. Springer VS, Wiesbaden.
