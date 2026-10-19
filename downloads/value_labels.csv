@@ -1,0 +1,130 @@
+"variable","label","value"
+"firstborn","Son firstborn",1
+"firstborn","Twins",2
+"firstborn","Daughter firstborn",3
+"need","Son unemployed",1
+"need","Equal earnings",2
+"need","Daughter unemployed",3
+"help","Son helps",1
+"help","Both help",2
+"help","Daughter helps",3
+"daughter","No",0
+"daughter","Yes",1
+"g_need","Child unemployed",1
+"g_need","Equal earnings",2
+"g_need","Sibling unemployed",3
+"g_help","Child helps",1
+"g_help","Both help",2
+"g_help","Sibling helps",3
+"g_firstborn","Child firstborn",1
+"g_firstborn","Twins",2
+"g_firstborn","Sibling firstborn",3
+"iv_received","No",0
+"iv_received","Yes",1
+"iv_parents","No",0
+"iv_parents","Yes",1
+"iv_grandparents","No",0
+"iv_grandparents","Yes",1
+"iv_siblings","No",0
+"iv_siblings","Yes",1
+"lastiv","Below 500 Euro",1
+"lastiv","500 - below 5000 Euro",2
+"lastiv","5000 - below 10000 Euro",3
+"lastiv","10000 - below 50000 Euro",4
+"lastiv","50000 - below 100000 Euro",5
+"lastiv","100000 Euro or more",6
+"siblings","No",0
+"siblings","Yes",1
+"r_firstborn","No",0
+"r_firstborn","Yes",1
+"child","No",0
+"child","Yes",1
+"gifted","No",0
+"gifted","Yes",1
+"principles","Equality",1
+"principles","Equity",2
+"principles","Need",3
+"rel_mo","very good",1
+"rel_mo","good",2
+"rel_mo","ok",3
+"rel_mo","bad",4
+"rel_mo","very bad",5
+"rel_fa","very good",1
+"rel_fa","good",2
+"rel_fa","ok",3
+"rel_fa","bad",4
+"rel_fa","very bad",5
+"rel_ch","Very good",1
+"rel_ch","Good",2
+"rel_ch","Ok",3
+"rel_ch","bad / very bad",4
+"hhparent","No",0
+"hhparent","Yes",1
+"hhhelp","No",0
+"hhhelp","Yes",1
+"relstatus","Divorced / civil union annulled",1
+"relstatus","Single",2
+"relstatus","Married / civil union, living apart",3
+"relstatus","Married / civil union, living together",4
+"relstatus","Widowed / civil union, partner deceased",5
+"partner","No",0
+"partner","Yes",1
+"partnerhh","No",0
+"partnerhh","Yes",1
+"deutsch","No",0
+"deutsch","Yes",1
+"mig","No",0
+"mig","Yes",1
+"female","No",0
+"female","Yes",1
+"bundl","Baden-Württemberg",1
+"bundl","Bayern",2
+"bundl","Berlin",3
+"bundl","Brandenburg",4
+"bundl","Bremen",5
+"bundl","Hamburg",6
+"bundl","Hauptwohnsitz außerhalb Deutschlands",7
+"bundl","Hessen",8
+"bundl","Mecklenburg-Vorpommern",9
+"bundl","Niedersachsen",10
+"bundl","Nordrhein-Westfalen",11
+"bundl","Rheinland-Pfalz",12
+"bundl","Saarland",13
+"bundl","Sachsen",14
+"bundl","Sachsen-Anhalt",15
+"bundl","Schleswig-Holstein",16
+"bundl","Thüringen",17
+"abi","No",0
+"abi","Yes",1
+"employ","No",0
+"employ","Yes",1
+"student","No",0
+"student","Yes",1
+"unemp","No",0
+"unemp","Yes",1
+"unemp_nosearch","No",0
+"unemp_nosearch","Yes",1
+"disabled","No",0
+"disabled","Yes",1
+"retired","No",0
+"retired","Yes",1
+"house","No",0
+"house","Yes",1
+"r_income","Below 500 Euro",1
+"r_income","500 - below 1000 Euro",2
+"r_income","1000 - below 2000 Euro",3
+"r_income","2000 - below 3000 Euro",4
+"r_income","3000 - below 4000 Euro",5
+"r_income","4000 - below 5000 Euro",6
+"r_income","5000 Euro or more",7
+"gideo1","not at all",1
+"gideo1","totally agree",5
+"gideo2","not at all",1
+"gideo2","totally agree",5
+"gideo3","not at all",1
+"gideo3","totally agree",5
+"gideo4","not at all",1
+"gideo4","totally agree",5
+"abi2","Fachhochschulreife",1
+"abi2","Abitur",2
+"abi2","Other",3

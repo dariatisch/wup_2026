@@ -67,7 +67,7 @@ if (.result == 10) {
 Tipp: Rechne: 10-1-2-3
 :::
 
-:::: {.solution exercise="ex1"}
+::: {.solution exercise="ex1"}
 ::: {.callout-tip title="Solution" collapse="true"}
 **Lösung:**
 
@@ -75,7 +75,7 @@ Tipp: Rechne: 10-1-2-3
 1 + 2 + 3 + 4
 ```
 :::
-::::
+:::
 
 ## Themen heute
 
@@ -330,7 +330,7 @@ p
 
 <center>X → Y</center>
 
-::::: columns
+::: columns
 ::: {.column width="30%"}
 -   **Outcome, *Y***: Variable, die das Merkmal von Interesse beinhaltet
 -   **Predictor, X**: Variable, die uns hilft, die Varianz des Outcomes zu verstehen
@@ -342,7 +342,7 @@ p
 p
 ```
 :::
-:::::
+:::
 
 ## Regressionsmodel
 
@@ -354,7 +354,7 @@ $$\begin{aligned} Y &= \color{black}{\textbf{Model}} + \text{Error} \\[8pt]
 
 ## Regressionsmodel
 
-::::: columns
+::: columns
 ::: {.column width="30%"}
 $$
   \begin{aligned} Y &= \color{purple}{\textbf{Model}} + \text{Error} \\[8pt]
@@ -382,11 +382,11 @@ ggplot(data = df,
   )
 ```
 :::
-:::::
+:::
 
 ## Regressionsmodel + Residuen
 
-::::: columns
+::: columns
 ::: {.column width="30%"}
 $$\begin{aligned} Y &= \color{purple}{\textbf{Model}} + \color{blue}{\textbf{Error}} \\[8pt]
 &= \color{purple}{\mathbf{f(X)}} + \color{blue}{\boldsymbol{\epsilon}} \\[8pt]
@@ -412,7 +412,7 @@ ggplot(data = df,
   )
 ```
 :::
-:::::
+:::
 
 # Einfache lineare Regression
 
@@ -627,7 +627,7 @@ predicted_real_income # real income
 
 Bitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.
 
-::::: panel-tabset
+::: panel-tabset
 ## Übung
 
 ```{webr}
@@ -682,7 +682,7 @@ summary(model)
 broom::tidy(model)
 ```
 :::
-:::::
+:::
 
 ## Geschlechterunterschiede im Einkommen {.smaller}
 
@@ -690,7 +690,7 @@ broom::tidy(model)
 
 Bitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.
 
-:::::: panel-tabset
+::: panel-tabset
 ## Übung
 
 ```{webr}
@@ -750,7 +750,7 @@ ggplot(df, aes(x = gender, y = realrinc, fill = gender)) +
 
 ```
 :::
-::::::
+:::
 
 ## Ende
 

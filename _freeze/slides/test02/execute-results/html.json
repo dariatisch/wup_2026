@@ -1,0 +1,15 @@
+{
+  "hash": "f1e2de4f3d5a953b43a44f12bf88df5c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"R Workshop 1\"\nauthor: \"Daria\"\nfilters:\n  - webr\n  - panelize\nwebr:                            \n  packages: ['ggplot2', 'dplyr', 'palmerpenguins']\neditor: visual\n# params: \n#   hide_answers: true\n\n#https://quarto-webr.thecoatlessprofessor.com/qwebr-first-steps.html\n# In terminal: quarto add coatless/quarto-webR\n---\n\n\n\n```{webr-r}\n#| context: setup\n\nlibrary(dplyr)\nlibrary(ggplot2)\nlibrary(penguins)\n```\n\nQ1: What is the mean of `mpg` in the `mtcars` data?\n\n\n**Answer**\n\nCalculate the mean using the `mean()` function:\n\n\n\n:::{.panel-tabset}\n### Source\n```{webr-r}\n\n```\n### Results\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\n\n:::\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

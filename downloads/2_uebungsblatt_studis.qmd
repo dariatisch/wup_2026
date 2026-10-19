@@ -1,0 +1,318 @@
+---
+title: "2. Übungsblatt (Paneldaten)"
+author: "Daria Tisch"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+    code-link: true
+    df-print: paged
+    code-line-numbers: true
+  pdf: default
+editor: visual
+number-sections: true
+---
+
+# Organisation
+
+## Arbeitsverzeichnis festsetzen
+
+```{r}
+# set working directory
+setwd("D:/Seafile/main/teaching/2024_wuppertal/studis/uebungen")
+```
+
+## Packages installieren und laden
+
+```{r}
+#| echo: true
+#| results: "hide"
+#| warning: false
+# Packages
+pkgs <- c(
+  "tidyverse",
+  "sjlabelled", # for variable labels
+  "plm", # Panelregressionen
+  "sjPlot" # um Regressionstabellen schön darzustellen
+) 
+
+## Install uninstalled packages
+lapply(pkgs[!(pkgs %in% installed.packages())], install.packages)
+
+## Load all packages to library
+lapply(pkgs, library, character.only = TRUE)
+
+```
+
+## Daten einlesen
+
+Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.
+
+```{r}
+# read data
+df = read.csv("../daten/soep_uebung.csv")
+df_labels = read.csv("../daten/soep_labels.csv")
+
+# Add variable labels
+for (i in 1:nrow(df_labels)) {
+  variable_name <- df_labels$variable[i]
+  variable_label <- df_labels$variable_label[i]
+  
+  # Apply the label to the corresponding column in df
+  df[[variable_name]] <- set_label(df[[variable_name]], variable_label)
+}
+# show variable labels
+get_label(df)
+```
+
+# Datenaufbereitung
+
+In dieser Übung möchten wir herausfinden, welche Faktoren mit Lebenszufriedenheit (lebensz_org) zusammenhängen. Denkbar wären zum Beispiel: Geschlecht (sex), Alter(alter), Anzahl an Kindern im Haushalt (anz_kind), Bildung (bildung) und Einkommen (einkommenj1).
+
+Um die Analysen durchzuführen, müssen wir die Variablen erst einmal aufbereiten. Überprüfe bei jeder Variable,
+
+-   ob fehlende Werte als solche markiert sind
+-   um welchen Typ es sich bei den Variablen hanelt und ob etwa eine Umwandlung erforderlich ist.
+
+## Lebenszufriedenheit
+
+```{r}
+table(df$lebensz_org, useNA = "always")
+
+df = df %>%
+  mutate(lz = as.numeric(sub("\\[([0-9]+)\\].*", "\\1", df$lebensz_org)))
+
+table(df$lz, useNA = "always")
+```
+
+## Geschlecht
+
+```{r}
+table(df$sex, useNA = "always")
+
+df = df %>%
+  mutate(female = as.numeric(sub("\\[([0-9]+)\\].*", "\\1", df$sex)))
+
+table(df$female, useNA = "always")
+```
+
+## Alter
+
+```{r}
+table(df$alter, useNA = "always")
+class(df$alter)
+```
+
+## Anzahl an Kindern im Haushalt
+
+```{r}
+table(df$anz_kind, useNA = "always")
+class(df$anz_kind)
+sum(is.na(df$anz_kind))
+```
+
+## Bildung
+
+```{r}
+table(df$bildung, useNA = "always")
+class(df$bildung)
+sum(is.na(df$bildung))
+```
+
+## Einkommen
+
+```{r}
+summary(df$einkommenj1)
+class(df$einkommenj1)
+sum(is.na(df$einkommenj1))
+```
+
+## Analysesample bilden
+
+(a) Selektiere nur die Variablen, die wir brauchen
+
+```{r}
+df = df %>%
+  select(______,______, ______,______, ______, ______, ______, ______)
+```
+
+(b) Nun bilden wir das Analysesample. Wir wenden "listwise deletion".
+
+```{r}
+df <- df[complete.cases(df[, c("lz","female", "alter", "anz_kind", "bildung", "einkommenj1")]), ]
+```
+
+(c) Wie viele Beobachtungen gehen uns verloren?
+
+```{r}
+# Initialize a data frame to store the results
+results <- data.frame(
+  Variable = character(),
+  Cases_Remaining = integer(),
+  Cases_Lost = integer(),
+  stringsAsFactors = FALSE
+)
+
+# Total number of rows initially
+initial_rows <- nrow(df)
+
+# Iterate over each variable
+for (var in names(df)) {
+  # Perform listwise deletion based on the current variable
+  remaining_rows <- sum(complete.cases(df[, var, drop = FALSE]))
+  
+  # Calculate cases lost
+  cases_lost <- initial_rows - remaining_rows
+  
+  # Append to the results data frame
+  results <- rbind(
+    results,
+    data.frame(
+      Variable = var,
+      Cases_Remaining = remaining_rows,
+      Cases_Lost = cases_lost
+    )
+  )
+}
+
+results
+```
+
+# Datenexploration
+
+## Wieviele Personenjahre sind im Datensatz?
+
+```{r}
+nrow(______)
+```
+
+## Wie viele Personen sind im Datensatz?
+
+```{r}
+length(unique(df$______))
+
+```
+
+## Wieviele Personen nehmen pro Jahr teil?
+
+```{r}
+table(df$______) 
+```
+
+Wir haben also ein sogenanntes "unbalanced panel".
+
+## Was ist das Durchschnittsalter im Jahr 2015
+
+```{r}
+# Berechnung des Durchschnittsalters für das Jahr 2015
+mean(df$______[df$syear == ______], na.rm = TRUE)
+
+# Alternative mit dplyr
+durchschnittsalter <- df %>%
+  filter(syear == ______) %>%       # Filtert die Daten für das Jahr 2015
+  summarise(mean_alter = mean(______, na.rm = TRUE)) %>%  # Berechnet den Durchschnitt
+  pull(mean_alter)               # Extrahiert den berechneten Wert
+
+cat("Das Durchschnittsalter im Jahr 2015 beträgt:", round(durchschnittsalter,2), "Jahre.")
+```
+
+## Welche Variablen sind zeitkonstant und welche zeitveränderlich?
+
+```{r}
+# Analyse: Zeitkonstante und zeitveränderliche Variablen
+
+variablen_analyse <- df %>%
+  mutate(id2 = id) %>%
+  group_by(______) %>%                        # Gruppiert die Daten nach ID
+  summarise_all(~ n_distinct(.)) %>%      # Zählt die Anzahl der einzigartigen Werte je ID
+  summarise(across(everything(), max))    # Nimmt das Maximum der einzigartigen Werte je Variable
+
+
+# Ergebnis interpretieren
+zeitkonstant <- names(variablen_analyse)[variablen_analyse == 1]  # Variablen mit nur einem Wert je ID
+zeitveraenderlich <- names(variablen_analyse)[variablen_analyse > 1]  # Variablen mit mehreren Werten je ID
+
+# Ausgabe
+cat("Zeitkonstante Variablen:\n",zeitkonstant )
+
+
+cat("\nZeitveränderliche Variablen:\n", zeitveraenderlich)
+
+```
+
+## Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?
+```{r}
+# Anteil der Personen, die an allen fünf Wellen teilgenommen haben
+data_summary <- df %>%
+  group_by(id) %>%
+  summarize(years_observed = n_distinct(______))
+table(data_summary$years_observed)  # Verteilung der Beobachtungsjahre
+
+# Durchschnittliche Beobachtungsjahre pro Person
+mean(data_summary$______)
+```
+
+
+# Regressionen
+
+## Schätze ein POLS Modell
+
+... und interepretiere die Koeffizienten.
+```{r}
+
+```
+
+## Schätze ein BE Modell
+
+... und interepretiere die Koeffizienten.
+```{r}
+
+```
+## Schätze ein FE Modell
+
+... und interepretiere die Koeffizienten.
+```{r}
+
+```
+## Schätze ein RE Modell
+
+... und interepretiere die Koeffizienten.
+```{r}
+
+```
+
+## Vergleich
+Vergleiche die vier Modelle. 
+
+```{r}
+
+```
+
+
+a) Warum wird im FE kein Koeffizient für *female* geschätzt?
+
+b) Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?
+
+
+## Hausman Test
+
+Sollen wir das RE oder das FE Modell nutzen? Führe einen Hausman Test durch. Wie entscheidest Du Dich?
+```{r}
+phtest(______, ______)
+```
+
+
+## Kausalanalyse
+
+Wir sind am kausalen Effekt von Einkommen auf Lebenszufriedenheit interessiert. Auf welche Variablen sollten wir kontrollieren und auf welche nicht? 
+Nenne Beispiele für mögliche confounder, collider und Variablen, die zu overcontrol führen. Begründe die Auswahl der Variablen jeweils in einem Satz.
+Es können durchaus Variablen genannt werden, die **nicht** im Datensatz enthalten sind.
+
+# Render
+
+Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
+
+# Weiterführende Literatur
+
+-   [R for Data Science](https://r4ds.had.co.nz/)
+-   https://ruettenauer.github.io/Panel-Data-Analysis/

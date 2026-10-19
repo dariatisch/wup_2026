@@ -11,7 +11,7 @@ website:
 
   page-footer:
     right: "This page is built with 💙 and [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright 2026, Daria Tisch"
+    left: "&copy; Copyright 2024, Daria Tisch"
     background: "#20a1a1"
 
   sidebar:
@@ -21,7 +21,7 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/dariatisch/wup_2026
+        href: https://github.com/dariatisch/wup2024
         text: GitHub
     style: docked
     search: true

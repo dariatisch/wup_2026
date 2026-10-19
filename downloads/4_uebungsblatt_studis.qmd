@@ -1,0 +1,231 @@
+---
+title: "4. Übungsblatt (Faktorielle Umfrageexperimente)"
+author: "Daria Tisch"
+format: 
+  html:
+    code-fold: true
+    code-tools: true
+    code-link: true
+    df-print: paged
+    code-line-numbers: true
+  pdf: default
+editor: visual
+number-sections: true
+---
+
+# Organisation
+
+## Arbeitsverzeichnis festsetzen
+
+```{r setup, include=FALSE}
+# set working directory
+knitr::opts_knit$set(root.dir = "D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
+```
+
+## Packages installieren und laden
+
+```{r}
+#| echo: true
+#| results: "hide"
+#| warning: false
+# Packages
+pkgs <- c(
+  "tidyverse",
+  "sjPlot",
+  "haven",
+  "labelled" ,
+  "sandwich",
+  "lmtest",
+  "Hmisc"
+) 
+
+## Install uninstalled packages
+lapply(pkgs[!(pkgs %in% installed.packages())], install.packages)
+
+## Load all packages to library
+lapply(pkgs, library, character.only = TRUE)
+
+```
+
+## Einführung
+
+In dieser Übung replizieren wir die Ergebnisse folgender Studie:
+
+Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.
+
+Der Datensatz kann [hier](https://dariatisch.github.io/wup2024/downloads/just_transfers.csv) heruntergeladen werden.
+
+Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?
+
+## Daten einlesen
+
+```{r}
+# Load the data file
+df <- read.csv("../daten/just_transfers.csv")
+
+```
+
+## Variablenlabels einlesen
+
+```{r}
+# Load the variable labels
+variable_labels <- read.csv("../daten/just_transfers_variable_labels.csv", row.names = 1, stringsAsFactors = FALSE)
+
+# View variable labels
+#print(variable_labels)
+
+
+# Loop through the labels and assign them to variables in the dataset
+for (var in names(variable_labels)) {
+  if (var %in% names(df)) {
+    var_label(df[[var]]) <- variable_labels[[var]]
+  }
+}
+
+```
+
+## Value labels einlesen
+
+```{r}
+# Load the value labels
+value_labels <- read.csv("../daten/value_labels.csv", stringsAsFactors = FALSE)
+```
+
+# Kennenlernen des Datensatzes
+
+## Wie viele Beobachtungen enthält der Datensatz?
+
+```{r}
+
+```
+
+## Wie viele befragte Personen sind im Datensatz enthalten?
+
+```{r}
+
+```
+
+## Wie viele Vignetten hat jede befragte Person bewertet?
+
+```{r}
+
+```
+
+## Wie viele Vignetten gibt es?
+
+```{r}
+
+```
+
+## Wie viele Decks gibt es?
+
+```{r}
+
+```
+## Dimensionen und Ausprägungen
+
+Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen?
+Tipp: Nutze den Datensatz: value_labels
+
+```{r}
+
+```
+
+# Orthogonalität und Balance
+
+## Sind die Dimensionen orthogonal?
+
+```{r}
+# Dummy-Variablen mit dplyr erstellen
+# df <- df %>%
+#   mutate(
+#     # Dummy-Variablen für firstborn
+#     firstborn_1 = if_else(firstborn == 1, 1, 0),
+#     firstborn_2 = if_else(firstborn == 2, 1, 0),
+#     firstborn_3 = if_else(firstborn == 3, 1, 0),
+#     
+#     # Dummy-Variablen für help
+#     help_1 = if_else(help == 1, 1, 0),
+#     help_2 = if_else(help == 2, 1, 0),
+#     help_3 = if_else(help == 3, 1, 0),
+#     
+#     # Dummy-Variablen für need
+#   _____________________
+#   )
+
+
+# Select relevant columns
+# selected_columns <- df[, c("firstborn_1", 
+#                            "firstborn_2",
+#                            "firstborn_3",
+#                            "need_1",
+#                            "need_2",
+#                            "need_3",
+#                            "help_1",
+#                            "help_2", 
+#                            "help_3")]
+
+# Compute pairwise correlations with significance
+# cor_results <- rcorr(as.matrix(selected_columns))
+# 
+# # Display results
+# print(______)
+
+```
+
+## Sind die Dimensionen / Ausprägungen balanced?
+
+```{r}
+# Check balance
+
+```
+
+# Deskriptive Statistik
+
+## Replikation Tabelle 2
+
+Nun wollen wir Tabelle 2 aus dem Artikel replizieren.
+
+```{r}
+
+# Filter für die Daten anwenden, da wir auf Personenebene auswerten wollen
+# filtered_data <- df %>%
+#   filter(id_within == 1, daughter == 1)
+
+```
+
+## Replikation Figure 1
+
+```{r}
+# Create the histogram
+# ggplot(df, aes(x = ______)) +
+#   ______(aes(y = ..count../sum(..count..)*100), binwidth = 250, 
+#                  fill = "grey", color = "black", alpha = 0.7) +
+#   scale_y_continuous(labels = scales::percent_format(scale = 1)) +
+#   labs(title = "Histogram",
+#        x = "______",
+#        y = "_______") +
+#   theme_minimal()
+```
+
+# Regression
+
+## Replikation von Tabelle 3
+
+```{r}
+
+# Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.
+# df$g_firstborn <- relevel(as.factor(df$g_firstborn), ref = "2")
+# df$g_help <- relevel(as.factor(df$g_help), ref = "2")
+# df$g_need <- relevel(as.factor(df$g_need), ref = "2")
+
+
+```
+
+# Render
+
+Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
+
+# Weiterführende Literatur
+
+-   [R for Data Science](https://r4ds.had.co.nz/)
