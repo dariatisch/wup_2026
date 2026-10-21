@@ -31,7 +31,7 @@ editor: visual
 
 -   Vormittags: Seminar
 -   Nachmittags: Übung (Datenanalyse in R)
--   [Kurswebsite](https://dariatisch.github.io/wup2024/)
+-   [Kurswebsite](https://dariatisch.github.io/wup_2026/)
     -   Übersicht
     -   Interaktive Präsentationen
     -   Datensätze
@@ -581,6 +581,7 @@ predicted_real_income # real income
 <!-- lapply(pkgs, library, character.only = TRUE) -->
 
 <!-- ``` -->
+
 ## Ende
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von:
