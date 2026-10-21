@@ -66,7 +66,7 @@ Preserves the integrity of research Transparent research Reproducible research
 
 -   Interaktive Folien zum gemeinsamen Lernen
 -   Quarto Dokumente als Übungsaufgaben
--   Quarto Dokumente als Abgaben (**09. Jan** und **30. Jan**!)
+-   Quarto Dokumente als Abgaben
 
 ## Ordnerstruktur
 
@@ -154,8 +154,6 @@ count(df)
 df %>% 
   count(species)
 ```
-
-
 
 ## Datenvisualisierung {.smaller}
 
