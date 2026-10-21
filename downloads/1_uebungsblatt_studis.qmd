@@ -44,7 +44,7 @@ Als ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere
 
 ```{r}
 # set working directory
-setwd("Bitte eigenes Arbeitsverzeichnis einfügen")
+setwd("D:/OneDrive/teaching/2026_wup/test")
 ```
 
 ## Packages installieren und laden
@@ -121,7 +121,7 @@ glimpse(df)
 Wie viele Beobachtungen im Datensatz sind Frauen?
 
 ```{r}
-table(df$______)
+# table(df$______)
 ```
 
 ## Balkendiagramm mit ggplot()
@@ -129,14 +129,14 @@ table(df$______)
 Erstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.
 
 ```{r}
-ggplot(df, aes(x = ______)) +
-  geom_bar(fill = "skyblue", color = "black") +
-  labs(
-    title = "Verteilung des Alters",
-    x = "Alter",
-    y = "Häufigkeit"
-  ) +
-  theme_minimal()
+# ggplot(df, aes(x = ______)) +
+#   geom_bar(fill = "skyblue", color = "black") +
+#   labs(
+#     title = "Verteilung des Alters",
+#     x = "Alter",
+#     y = "Häufigkeit"
+#   ) +
+#   theme_minimal()
 ```
 
 ## Summary Statistics
@@ -160,8 +160,8 @@ Welcher Variablentyp ist Geschlecht (sex)? Welcher Alter? Welcher Bildung?
 Wie viele Beobachtungen gibt es pro Jahr? Und getrennt nach Geschlecht?
 
 ```{r}
-table(df$______)
-table(df$______, ______)
+# table(df$______)
+# table(df$______, ______)
 ```
 
 ## Datensatz Exploration
@@ -195,14 +195,14 @@ Stelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar
 ```{r}
 
 # Barplot erstellen
-ggplot(df, aes(x = factor(______))) +
-  geom_bar(fill = "skyblue", color = "black") +
-  labs(
-    title = "Univariate Verteilung des subjektiven Gesundheitsstatus",
-    x = "Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)",
-    y = "Häufigkeit"
-  ) +
-  theme_minimal()
+# ggplot(df, aes(x = factor(______))) +
+#   geom_bar(fill = "skyblue", color = "black") +
+#   labs(
+#     title = "Univariate Verteilung des subjektiven Gesundheitsstatus",
+#     x = "Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)",
+#     y = "Häufigkeit"
+#   ) +
+#   theme_minimal()
 
 ```
 
@@ -237,7 +237,7 @@ Und nun mit logarithmiertem Einkommen. Was fällt auf?
 
 Wandle dieses Dokument in ein PDF und ein HTML Dokument um. Wo wird es gespeichert?
 
-Tipp: in the YAML add "pdf: default" to the format.
+Tipp: Fügen Sie in der YAML-Datei „pdf: default“ zum Format hinzu.
 
 # Weiterführende Literatur
 
