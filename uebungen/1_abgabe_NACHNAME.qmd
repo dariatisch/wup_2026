@@ -258,7 +258,7 @@ Antwort:
 
 # Render \[7 Punkte\]
 
-Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 9.1.2025 zwei Dokumente hoch:
+Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 13.11.2026 zwei Dokumente hoch:
 
 -   das Quarto-File (1_abgabe_Nachname.qmd)
 -   entweder ein HTML ODER ein PDF (1_abgabe_Nachname.pdf oder 1_abgabe_Nachname.html)
