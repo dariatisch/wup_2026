@@ -19,7 +19,7 @@ number-sections: true
 
 ```{r}
 # set working directory
-setwd("D:/Seafile/main/teaching/2024_wuppertal/studis/uebungen")
+setwd("D:/OneDrive/teaching/2026_wup/wup_2026/uebungen")
 ```
 
 ## Packages installieren und laden

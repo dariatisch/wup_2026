@@ -19,7 +19,7 @@ number-sections: true
 
 ```{r}
 # set working directory
-setwd("D:/Seafile/main/teaching/2024_wuppertal/studis/abgaben")
+#setwd("")
 
 ```
 
@@ -56,7 +56,7 @@ In dieser Abgabe replizieren Sie Ergebnisse der Ereignisdatenanalyse in einem ve
 
 Ischinsky, E., & Tisch, D. (2022). Women in the Global Super Rich. An Analysis of the Forbes World’s Billionaires List, 2010–2023. Australian Feminist Studies, 37(114), 458–474. https://doi.org/10.1080/08164649.2023.2243649
 
-Den Datensatz können sie hier herunterladen: https://osf.io/yekqx/ oder auch auf der [Kurswebsite](https://dariatisch.github.io/wup2024/downloads/soep_labels.csv).
+Den Datensatz können sie hier herunterladen: https://osf.io/yekqx/ oder auch auf der [Kurswebsite](https://dariatisch.github.io/wup_2026/downloads/forbes_constant.csv).
 
 Lesen Sie den Datensatz ein und speichern Sie ihn als *df*.
 
@@ -140,7 +140,7 @@ Interpretieren Sie den Koeffizienten zugehörig zur Variable *female* im ersten 
 
 # Render \[7 Punkte\]
 
-Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 30.1.2025 zwei Dokumente hoch:
+Wandlen Sie dieses Dokument in ein PDF und ein HTML Dokument um. Laden Sie bis zum 18.12.2026 zwei Dokumente hoch:
 
 -   das Quarto-File (1_abgabe_Nachname.qmd)
 -   entweder ein HTML ODER ein PDF (1_abgabe_Nachname.pdf oder 1_abgabe_Nachname.html)

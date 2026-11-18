@@ -8,8 +8,8 @@ Dozentin: [Daria Tisch](https://dariatisch.github.io/), Sprechstunde nach Verein
 
 Abgaben: 
 
-- xx.xx.2026: Analyse von Paneldaten
+- 13.11.2026: Analyse von Paneldaten
 
-- xx.xx.2026: Replikation einer Ereignisdatenanalyse
+- 18.12.2026: Replikation einer Ereignisdatenanalyse
 
 Weitere Informationen zu den Abgaben auf Moodle.

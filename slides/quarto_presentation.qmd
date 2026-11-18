@@ -1,0 +1,122 @@
+---
+title: "Warum das Einkommen logarithmieren?"
+subtitle: "Regressionsanalysen"
+author: "Daria Tisch"
+format: 
+  revealjs:
+    theme: default
+    slide-number: true
+    code-fold: true
+    echo: true
+execute:
+  warning: false
+  message: false
+---
+
+## 1. Das Problem: Die Verteilung des Einkommens {.scrollable}
+
+```{r}
+#| label: setup-data
+library(stevedata)
+library(tidyverse)
+library(sjPlot)
+library(gridExtra)
+
+df_clean <- stevedata::gss_wages %>%
+  filter(!is.na(age), !is.na(realrinc), realrinc > 0)
+```
+
+Einkommen sind typischerweise **rechtsschief** verteilt: Wenige Top-Verdiener ziehen den Mittelwert nach rechts.
+
+```{r}
+#| label: fig-distributions
+#| fig-width: 10
+#| fig-height: 4
+p_real = ggplot(df_clean, aes(x = realrinc)) +
+  geom_histogram(bins = 50, fill = "steelblue", color = "white") +
+  theme_minimal() +
+  labs(title = "Rohes Einkommen", x = "USD", y = "Häufigkeit")
+
+p_log = ggplot(df_clean, aes(x = log(realrinc))) +
+  geom_histogram(bins = 50, fill = "forestgreen", color = "white") +
+  theme_minimal() +
+  labs(title = "Logarithmiertes Einkommen", x = "log(USD)", y = "Häufigkeit")
+
+grid.arrange(p_real, p_log, ncol = 2)
+```
+
+## 2. Lineares vs. Log-lineares Modell {.scrollable}
+
+Vergleich der Regression von Einkommen auf das Alter ($\text{Einkommen} \sim \text{Alter}$).
+
+```{r}
+#| label: models
+m_linear <- lm(realrinc ~ age, data = df_clean)
+m_log <- lm(log(realrinc) ~ age, data = df_clean)
+```
+
+### Lineares Modell {.scrollable}
+
+```{r}
+#| results: 'asis'
+tab_model(m_linear, show.aic = TRUE)
+```
+
+## 2. Das Log-lineare Modell im Vergleich {.scrollable}
+
+### Log-lineares Modell ($\ln(\text{Einkommen}) \sim \text{Alter}$) {.scrollable}
+
+```{r}
+#| results: 'asis'
+tab_model(m_log, show.aic = TRUE)
+```
+
+## 3. Das Heteroskedastie-Problem (Residuenplot) {.scrollable}
+
+```{r}
+#| label: fig-residuals
+#| fig-width: 10
+#| fig-height: 4
+df_clean <- df_clean %>%
+  mutate(
+    fitted_lin = fitted(m_linear),
+    resid_lin  = residuals(m_linear),
+    fitted_log = fitted(m_log),
+    resid_log  = residuals(m_log)
+  )
+
+p1 <- ggplot(df_clean, aes(x = fitted_lin, y = resid_lin)) +
+  geom_point(alpha = 0.2, color = "darkred") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_minimal() +
+  labs(title = "Lineares Modell", subtitle = "Trichterform (Heteroskedastie)",
+       x = "Vorhergesagt", y = "Residuen")
+
+p2 <- ggplot(df_clean, aes(x = fitted_log, y = resid_log)) +
+  geom_point(alpha = 0.2, color = "darkgreen") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  theme_minimal() +
+  labs(title = "Log-lineares Modell", subtitle = "Konstantere Streuung",
+       x = "Vorhergesagt (log)", y = "Residuen")
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+## 4. Interpretation des Koeffizienten {.scrollable}
+
+Wie interpretieren wir den Effekt des Alters im Log-Modell?
+
+```{r}
+#| echo: true
+beta_age <- coef(m_log)["age"]
+
+# Faustregel-Interpretation
+prozent_faustregel <- beta_age * 100
+
+# Exakte Interpretation: (exp(beta) - 1) * 100
+prozent_exakt <- (exp(beta_age) - 1) * 100
+```
+
+-   **Koeffizient (**$\beta$): `r round(beta_age, 4)`
+-   **Faustregel (**$100 \cdot \beta$): `r round(prozent_faustregel, 2)`% pro Lebensjahr
+-   **Exakt (**$(e^\beta - 1) \cdot 100$): `r round(prozent_exakt, 2)`% pro Lebensjahr

@@ -759,7 +759,7 @@ Hausmantest = nicht signifikant Nullhypothese wird nicht abgelehnt RE Schätzer 
 ## Vergleich RE versus FE {.smaller}
 
 |   | RE Modell | FE Modell |
-|------------------|---------------------------|---------------------------|
+|----|----|----|
 | Unbeobachtete Heterogenität | Verzerrt, wenn personenspezifische unbeobachtete Heterogenität vorliegt (Selbstselektion) | Nicht verzerrt durch personenspezifische unbeobachteter Heterogenität (within-Vergleich) |
 | Zeitkonstante Variablen | Können mitgeschätzt werden (sind aber verzerrt, wenn unbeobachtete Heterogenität vorliegt) | Können nicht mitgeschätzt werden, werden aber implizit mitkontrolliert = konsistent |
 | Standardfehler | Tendenziell kleiner (da mehr Variation in den Daten genutzt wird) | Tendenziell größer (da nur within-Varianz genutzt wird) |
