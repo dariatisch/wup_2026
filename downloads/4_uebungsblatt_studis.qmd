@@ -19,7 +19,7 @@ number-sections: true
 
 ```{r setup, include=FALSE}
 # set working directory
-knitr::opts_knit$set(root.dir = "D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
+
 ```
 
 ## Packages installieren und laden
@@ -122,10 +122,10 @@ value_labels <- read.csv("../daten/value_labels.csv", stringsAsFactors = FALSE)
 ```{r}
 
 ```
+
 ## Dimensionen und Ausprägungen
 
-Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen?
-Tipp: Nutze den Datensatz: value_labels
+Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels
 
 ```{r}
 

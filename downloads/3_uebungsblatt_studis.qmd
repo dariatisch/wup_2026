@@ -142,7 +142,6 @@ Schauen wir uns die ersten 10 Fälle des Datensatzes an. Was bedeutet das + hint
 #Surv(______$______, ______$______)[1:10]
 ```
 
-
 Was ist wohl der Nullpunkt der Zeitvariable *time*?
 
 ## Kaplan-Meier-Kurve
@@ -232,8 +231,6 @@ Erstelle eine Tabelle zur besseren Übersicht
 
 ## Interpretiere den Koeffizienten von *female*:
 
-
-
 # Render
 
 Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
@@ -241,6 +238,4 @@ Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
 # Weiterführende Literatur
 
 -   [R for Data Science](https://r4ds.had.co.nz/)
--   [https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
-
-
+-   <https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html>
