@@ -2663,7 +2663,7 @@
     "href": "uebungen/3_uebungsblatt.html",
     "title": "3. Übungsblatt (Ereignisdatenanalyse)",
     "section": "",
-    "text": "Code\n# set working directory\nsetwd(\"C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/studis/uebungen\")\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjPlot\", # nice html tables\n  \"survival\", # survival analysis\n  \"ggsurvfit\" # flexible time-to-event figures\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit einem Datensatz, der Teil des R-Pakets {survival} ist. Bitte lasse Dir alle Datensätze des Pakets anzeigen und speichere den Datensatz lung als df.\nDatensätze, die im Package survival enthalten sind, anzeigen:\n\n\nCode\ndata(package = \"survival\")\n\n\nlung Datensatz als df speichern:\n\n\nCode\n# Lungenkrebsdatensatz als df speichern \ndf = lung\n\n\nSchaue Dir nun die Beschreibung des Datensatzes an:\n\n\nCode\n?lung\n\n\nstarte den http Server für die Hilfe fertig\n\n\nDer Datensatz enthält also Informationen zu PatientInnen der North Central Cancer Treatment Group.",
+    "text": "Code\n# set working directory\n#setwd(\"\")\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjPlot\", # nice html tables\n  \"survival\", # survival analysis\n  \"ggsurvfit\" # flexible time-to-event figures\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit einem Datensatz, der Teil des R-Pakets {survival} ist. Bitte lasse Dir alle Datensätze des Pakets anzeigen und speichere den Datensatz lung als df.\nDatensätze, die im Package survival enthalten sind, anzeigen:\n\n\nCode\ndata(package = \"survival\")\n\n\nlung Datensatz als df speichern:\n\n\nCode\n# Lungenkrebsdatensatz als df speichern \ndf = lung\n\n\nSchaue Dir nun die Beschreibung des Datensatzes an:\n\n\nCode\n?lung\n\n\nstarting httpd help server ... done\n\n\nDer Datensatz enthält also Informationen zu PatientInnen der North Central Cancer Treatment Group.",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Übungsblatt (Ereignisdaten)"
@@ -2674,7 +2674,7 @@
     "href": "uebungen/3_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
     "title": "3. Übungsblatt (Ereignisdatenanalyse)",
     "section": "",
-    "text": "Code\n# set working directory\nsetwd(\"C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/studis/uebungen\")",
+    "text": "Code\n# set working directory\n#setwd(\"\")",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Übungsblatt (Ereignisdaten)"
@@ -2696,7 +2696,7 @@
     "href": "uebungen/3_uebungsblatt.html#daten-einlesen",
     "title": "3. Übungsblatt (Ereignisdatenanalyse)",
     "section": "",
-    "text": "Wir arbeiten mit einem Datensatz, der Teil des R-Pakets {survival} ist. Bitte lasse Dir alle Datensätze des Pakets anzeigen und speichere den Datensatz lung als df.\nDatensätze, die im Package survival enthalten sind, anzeigen:\n\n\nCode\ndata(package = \"survival\")\n\n\nlung Datensatz als df speichern:\n\n\nCode\n# Lungenkrebsdatensatz als df speichern \ndf = lung\n\n\nSchaue Dir nun die Beschreibung des Datensatzes an:\n\n\nCode\n?lung\n\n\nstarte den http Server für die Hilfe fertig\n\n\nDer Datensatz enthält also Informationen zu PatientInnen der North Central Cancer Treatment Group.",
+    "text": "Wir arbeiten mit einem Datensatz, der Teil des R-Pakets {survival} ist. Bitte lasse Dir alle Datensätze des Pakets anzeigen und speichere den Datensatz lung als df.\nDatensätze, die im Package survival enthalten sind, anzeigen:\n\n\nCode\ndata(package = \"survival\")\n\n\nlung Datensatz als df speichern:\n\n\nCode\n# Lungenkrebsdatensatz als df speichern \ndf = lung\n\n\nSchaue Dir nun die Beschreibung des Datensatzes an:\n\n\nCode\n?lung\n\n\nstarting httpd help server ... done\n\n\nDer Datensatz enthält also Informationen zu PatientInnen der North Central Cancer Treatment Group.",
     "crumbs": [
       "Zeitplan und Dateien",
       "3 - Übungsblatt (Ereignisdaten)"
