@@ -19,7 +19,7 @@ number-sections: true
 
 ```{r}
 # set working directory
-setwd("D:/OneDrive/teaching/2026_wup/wup_2026/uebungen")
+#setwd("D:/OneDrive/teaching/2026_wup/wup_2026/uebungen")
 ```
 
 ## Packages installieren und laden
