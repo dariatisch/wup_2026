@@ -19,7 +19,7 @@ number-sections: true
 
 ```{r}
 # set working directory
-setwd("C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/studis/uebungen")
+#setwd("")
 ```
 
 ## Packages installieren und laden
@@ -268,6 +268,4 @@ Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
 # Weiterführende Literatur
 
 -   [R for Data Science](https://r4ds.had.co.nz/)
--   [https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
-
-
+-   <https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html>
